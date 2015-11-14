@@ -174,7 +174,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select max(cast(fxsyid as unsigned))+1 from xsy_info');
+    sql.Add('select max(cast(fxsyid, as unsign))+1 from xsy_info');
     open;
     if not eof then
        strXsyBH := fields[0].AsString;

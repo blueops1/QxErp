@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, ADODB, ComCtrls, Grids;
+  Dialogs, StdCtrls, DB, ADODB, ComCtrls, Grids, ExtCtrls;
 
 type
   TForm9 = class(TForm)
@@ -33,7 +33,6 @@ type
     Label11: TLabel;
     Label13: TLabel;
     Label14: TLabel;
-    Label15: TLabel;
     Label16: TLabel;
     Edit3: TEdit;
     Edit5: TEdit;
@@ -51,23 +50,17 @@ type
     Button6: TButton;
     StringGrid2: TStringGrid;
     ADOQuery1: TADOQuery;
-    GroupBox1: TGroupBox;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
-    GroupBox2: TGroupBox;
-    RadioButton1: TRadioButton;
-    RadioButton4: TRadioButton;
+    RadioGroup1: TRadioGroup;
+    RadioGroup2: TRadioGroup;
     procedure Edit16Change(Sender: TObject);
-    procedure Button7Click(Sender: TObject);
-    procedure StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
-      var CanSelect: Boolean);
     procedure Button1Click(Sender: TObject);
     procedure Edit7Change(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
     procedure StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
-    procedure Button3Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -138,29 +131,9 @@ begin
     Application.MessageBox('请将必填项目填写完整！','应收款管理提示');
 end;
 
-procedure TForm9.Button5Click(Sender: TObject);
-begin
-  stringgrid3.Visible:=not stringgrid3.Visible;
-  edit7.Visible:= not edit7.Visible;
-  label16.Visible:= not label16.Visible;
-  groupbox2.Visible:= not groupbox2.Visible;
-end;
-
-procedure TForm9.Button7Click(Sender: TObject);
-begin
-  stringgrid4.Visible:=not stringgrid4.Visible;
-  edit16.Visible:= not edit16.Visible;
-  label30.Visible:= not label30.Visible;
-  groupbox1.Visible:= not groupbox1.Visible;
-end;
-
 procedure TForm9.Edit16Change(Sender: TObject);
 var y:integer;
 begin
-  if (RadioButton2.Checked=false) and (RadioButton3.Checked=false) then
-  begin
-   Application.MessageBox('请选择查询项目！','应收款管理提示');
-  end else
   begin
     y:=1;
     if edit16.Text<>'' then
@@ -170,10 +143,10 @@ begin
       begin
         close;
         sql.Clear;
-        if RadioButton3.Checked=True then
+        if radiogroup1.ItemIndex=1 then
         sql.Add('select fyskbh,fkhmc from (select fyskbh,fkhmc,fxsyid from (select fyskbh,fkhid,fxsyid from yskxx  where fisdel=''N'') as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join (select fxsyid,fxsyxm from Xsy_info  where fxsyxm like ''%'+edit16.Text+'%'') as d on c.fxsyid=d.fxsyid');
-        if RadioButton2.Checked=True then
-        sql.Add('select fyskbh,fkhmc+''--''+fxsyxm from (select fyskbh,fkhmc,fxsybh from (select fyskbh,fhtbh from yskxx) as c join (select fhtbh,fkhmc,fxsybh from (select fhtbh,fkhbh,fxsybh from ht_info) as a right join (select fkdhid,fkhmc from Kh_info where fkhmc like ''%'+edit16.Text+'%'') as b on a.fkhbh=b.fkdhid) as d on c.fhtbh=d.fhtbh) as e join (select fxsyid,fxsyxm from Xsy_info) as f on e.fxsybh=f.fxsyid');
+        if radiogroup1.ItemIndex=0 then
+        sql.Add('select fyskbh,CONCAT(fkhmc,''--'',fxsyxm) from (select fyskbh,fkhmc,fxsybh from (select fyskbh,fhtbh from yskxx) as c join (select fhtbh,fkhmc,fxsybh from (select fhtbh,fkhbh,fxsybh from ht_info) as a right join (select fkdhid,fkhmc from Kh_info where fkhmc like ''%'+edit16.Text+'%'') as b on a.fkhbh=b.fkdhid) as d on c.fhtbh=d.fhtbh)'+''+' as e join (select fxsyid,fxsyxm from Xsy_info) as f on e.fxsybh=f.fxsyid');
         open;
         stringgrid4.RowCount:=RecordCount+1;
         while not eof do
@@ -188,17 +161,12 @@ begin
             Application.MessageBox('查询失败！','应收款管理提示');
       end;
     end;
-  end;
+end;
 end;
 
 procedure TForm9.Edit7Change(Sender: TObject);
 var y:integer;
 begin
-  if (RadioButton1.Checked=false) and (RadioButton4.Checked=false) then
-  begin
-   Application.MessageBox('请选择查询项目！','应收款管理提示');
-  end else
-  begin
     y:=1;
     if edit7.Text<>'' then
     begin
@@ -207,10 +175,10 @@ begin
       begin
         close;
         sql.Clear;
-        if RadioButton4.Checked=True then
+        if radiogroup2.ItemIndex=1 then
         sql.Add('select fyskbh,fkhmc from (select fyskbh,fkhmc,fxsyid from (select fyskbh,fkhid,fxsyid from yskxx  where fisdel=''N'') as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join (select fxsyid,fxsyxm from Xsy_info  where fxsyxm like ''%'+edit7.Text+'%'') as d on c.fxsyid=d.fxsyid');
-        if RadioButton1.Checked=True then
-        sql.Add('select fyskbh,fkhmc+''--''+fxsyxm from (select fyskbh,fkhmc,fxsybh from (select fyskbh,fhtbh from yskxx) as c join (select fhtbh,fkhmc,fxsybh from (select fhtbh,fkhbh,fxsybh from ht_info) as a right join (select fkdhid,fkhmc from Kh_info where fkhmc like ''%'+edit7.Text+'%'') as b on a.fkhbh=b.fkdhid) as d on c.fhtbh=d.fhtbh) as e join (select fxsyid,fxsyxm from Xsy_info) as f on e.fxsybh=f.fxsyid');
+        if radiogroup2.ItemIndex=0 then
+        sql.Add('select fyskbh,CONCAT(fkhmc,'--',fxsyxm) from (select fyskbh,fkhmc,fxsybh from (select fyskbh,fhtbh from yskxx) as c join (select fhtbh,fkhmc,fxsybh from (select fhtbh,fkhbh,fxsybh from ht_info) as a right join (select fkdhid,fkhmc from Kh_info where fkhmc like ''%'+edit7.Text+'%'') as b on a.fkhbh=b.fkdhid) as d on c.fhtbh=d.fhtbh) as e join (select fxsyid,fxsyxm from Xsy_info) as f on e.fxsybh=f.fxsyid');
         open;
         stringgrid3.RowCount:=RecordCount+1;
         while not eof do
@@ -226,11 +194,26 @@ begin
       end;
     end;
   end;
-end;
+
+
+
 procedure TForm9.FormActivate(Sender: TObject);
 begin
   datetimepicker1.DateTime := date();
   datetimepicker2.DateTime := date();
 end;
 
-procedure TForm9.StringGrid3Sele
+procedure TForm9.StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+edit3.Text:=stringgrid3.Cells[0,ARow];
+end;
+
+procedure TForm9.StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+edit1.Text:=stringgrid4.Cells[0,ARow];
+end;
+
+end.
+

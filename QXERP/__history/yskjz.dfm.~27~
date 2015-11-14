@@ -26,24 +26,11 @@ object Form9: TForm9
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #26032#22686#24212#25910#27454#35760#24080
-      object Label7: TLabel
-        Left = 248
-        Top = 349
-        Width = 57
-        Height = 13
-        Caption = '* '#20026#24517#22635#39033
-        Color = clRed
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clRed
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentColor = False
-        ParentFont = False
-      end
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object Label1: TLabel
-        Left = 113
-        Top = 120
+        Left = 48
+        Top = 472
         Width = 81
         Height = 13
         Alignment = taRightJustify
@@ -51,46 +38,45 @@ object Form9: TForm9
         Caption = #24212#25910#27454#32534#21495
       end
       object Label2: TLabel
-        Left = 113
-        Top = 176
-        Width = 80
+        Left = 312
+        Top = 472
+        Width = 54
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #26032#22686#37329#39069
       end
       object Label3: TLabel
-        Left = 113
-        Top = 232
-        Width = 81
+        Left = 538
+        Top = 472
+        Width = 56
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #35760#24080#26085#26399
       end
       object Label4: TLabel
-        Left = 113
-        Top = 288
-        Width = 81
+        Left = 745
+        Top = 472
+        Width = 33
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #22791#27880
       end
       object Label30: TLabel
-        Left = 481
-        Top = 48
+        Left = 57
+        Top = 32
         Width = 72
         Height = 13
         Caption = #36755#20837#26597#35810#21517#31216
-        Visible = False
       end
       object Label5: TLabel
-        Left = 391
-        Top = 120
-        Width = 57
+        Left = 261
+        Top = 472
+        Width = 36
         Height = 13
-        Caption = '* '#20026#24517#22635#39033
+        Caption = #24517#22635#39033
         Color = clRed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
@@ -101,11 +87,11 @@ object Form9: TForm9
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 391
-        Top = 176
-        Width = 57
+        Left = 496
+        Top = 472
+        Width = 36
         Height = 13
-        Caption = '* '#20026#24517#22635#39033
+        Caption = #24517#22635#39033
         Color = clRed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
@@ -116,8 +102,8 @@ object Form9: TForm9
         ParentFont = False
       end
       object Button1: TButton
-        Left = 135
-        Top = 401
+        Left = 806
+        Top = 522
         Width = 75
         Height = 25
         Caption = #30830#23450
@@ -125,75 +111,74 @@ object Form9: TForm9
         OnClick = Button1Click
       end
       object Button2: TButton
-        Left = 248
-        Top = 401
+        Left = 919
+        Top = 522
         Width = 75
         Height = 25
         Caption = #21462#28040
         TabOrder = 1
       end
       object Edit1: TEdit
-        Left = 208
-        Top = 117
-        Width = 177
+        Left = 135
+        Top = 469
+        Width = 120
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 2
       end
       object Edit2: TEdit
-        Left = 208
-        Top = 173
-        Width = 177
+        Left = 372
+        Top = 469
+        Width = 114
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 3
       end
       object Edit4: TEdit
-        Left = 208
-        Top = 285
-        Width = 177
+        Left = 792
+        Top = 469
+        Width = 233
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 4
       end
       object Edit16: TEdit
-        Left = 559
-        Top = 45
+        Left = 135
+        Top = 29
         Width = 169
         Height = 21
         ImeMode = imDisable
         ImeName = #20013#25991'('#31616#20307') - '#25628#29399#25340#38899#36755#20837#27861
         TabOrder = 5
-        Visible = False
         OnChange = Edit16Change
       end
       object StringGrid4: TStringGrid
-        Left = 481
-        Top = 72
-        Width = 560
-        Height = 354
+        Left = 57
+        Top = 64
+        Width = 968
+        Height = 361
         ColCount = 2
         FixedCols = 0
         TabOrder = 6
-        Visible = False
         OnSelectCell = StringGrid4SelectCell
         ColWidths = (
           64
-          480)
+          876)
       end
       object Button7: TButton
-        Left = 351
-        Top = 401
-        Width = 97
+        Left = 760
+        Top = 23
+        Width = 106
         Height = 25
         Caption = #32534#21495#36741#21161#26597#35810'>>'
         TabOrder = 7
+        Visible = False
         OnClick = Button7Click
       end
       object DateTimePicker1: TDateTimePicker
-        Left = 208
-        Top = 227
-        Width = 177
+        Left = 616
+        Top = 469
+        Width = 105
         Height = 21
         Date = 42180.606373275460000000
         Time = 42180.606373275460000000
@@ -201,16 +186,15 @@ object Form9: TForm9
         TabOrder = 8
       end
       object GroupBox1: TGroupBox
-        Left = 583
-        Top = 449
+        Left = 352
+        Top = 11
         Width = 369
-        Height = 65
+        Height = 47
         Caption = #26597#35810#36873#39033
         TabOrder = 9
-        Visible = False
         object RadioButton2: TRadioButton
           Left = 56
-          Top = 24
+          Top = 16
           Width = 113
           Height = 17
           Caption = #23458#25143#21517#31216#26597#35810
@@ -218,7 +202,7 @@ object Form9: TForm9
         end
         object RadioButton3: TRadioButton
           Left = 221
-          Top = 24
+          Top = 16
           Width = 113
           Height = 17
           Caption = #38144#21806#22995#21517#26597#35810
@@ -230,8 +214,8 @@ object Form9: TForm9
       Caption = #24212#25910#27454#22238#25910#35760#24080
       ImageIndex = 1
       object Label8: TLabel
-        Left = 113
-        Top = 120
+        Left = 73
+        Top = 469
         Width = 81
         Height = 13
         Alignment = taRightJustify
@@ -239,11 +223,11 @@ object Form9: TForm9
         Caption = #24212#25910#27454#32534#21495
       end
       object Label9: TLabel
-        Left = 391
-        Top = 120
-        Width = 57
+        Left = 294
+        Top = 469
+        Width = 36
         Height = 13
-        Caption = '* '#20026#24517#22635#39033
+        Caption = #24517#22635#39033
         Color = clRed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
@@ -254,11 +238,11 @@ object Form9: TForm9
         ParentFont = False
       end
       object Label10: TLabel
-        Left = 391
-        Top = 176
-        Width = 57
+        Left = 561
+        Top = 469
+        Width = 36
         Height = 13
-        Caption = '* '#20026#24517#22635#39033
+        Caption = #24517#22635#39033
         Color = clRed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
@@ -269,8 +253,8 @@ object Form9: TForm9
         ParentFont = False
       end
       object Label11: TLabel
-        Left = 104
-        Top = 176
+        Left = 321
+        Top = 469
         Width = 89
         Height = 13
         Alignment = taRightJustify
@@ -278,8 +262,8 @@ object Form9: TForm9
         Caption = #22238#25910#37329#39069
       end
       object Label13: TLabel
-        Left = 113
-        Top = 232
+        Left = 593
+        Top = 469
         Width = 81
         Height = 13
         Alignment = taRightJustify
@@ -287,57 +271,41 @@ object Form9: TForm9
         Caption = #35760#24080#26085#26399
       end
       object Label14: TLabel
-        Left = 113
-        Top = 288
+        Left = 757
+        Top = 469
         Width = 81
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #22791#27880
       end
-      object Label15: TLabel
-        Left = 248
-        Top = 349
-        Width = 57
-        Height = 13
-        Caption = '* '#20026#24517#22635#39033
-        Color = clRed
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clRed
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentColor = False
-        ParentFont = False
-      end
       object Label16: TLabel
-        Left = 481
-        Top = 48
+        Left = 56
+        Top = 28
         Width = 72
         Height = 13
         Caption = #36755#20837#26597#35810#21517#31216
-        Visible = False
       end
       object Edit3: TEdit
-        Left = 208
-        Top = 117
-        Width = 177
+        Left = 160
+        Top = 466
+        Width = 115
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 0
       end
       object Edit5: TEdit
-        Left = 208
-        Top = 173
-        Width = 177
+        Left = 432
+        Top = 466
+        Width = 115
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 1
       end
       object DateTimePicker2: TDateTimePicker
-        Left = 208
-        Top = 227
-        Width = 177
+        Left = 687
+        Top = 466
+        Width = 105
         Height = 21
         Date = 42180.606373275460000000
         Time = 42180.606373275460000000
@@ -345,16 +313,16 @@ object Form9: TForm9
         TabOrder = 2
       end
       object Edit6: TEdit
-        Left = 208
-        Top = 285
+        Left = 852
+        Top = 466
         Width = 177
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 3
       end
       object Button3: TButton
-        Left = 159
-        Top = 401
+        Left = 805
+        Top = 521
         Width = 75
         Height = 25
         Caption = #30830#23450
@@ -362,57 +330,55 @@ object Form9: TForm9
         OnClick = Button3Click
       end
       object Button4: TButton
-        Left = 248
-        Top = 401
+        Left = 917
+        Top = 521
         Width = 75
         Height = 25
         Caption = #21462#28040
         TabOrder = 5
       end
       object Button5: TButton
-        Left = 342
-        Top = 401
+        Left = 783
+        Top = 23
         Width = 97
         Height = 25
         Caption = #32534#21495#36741#21161#26597#35810'>>'
         TabOrder = 6
+        Visible = False
         OnClick = Button5Click
       end
       object StringGrid3: TStringGrid
-        Left = 472
-        Top = 72
-        Width = 585
-        Height = 354
+        Left = 52
+        Top = 64
+        Width = 973
+        Height = 369
         ColCount = 2
         FixedCols = 0
         TabOrder = 7
-        Visible = False
         OnSelectCell = StringGrid3SelectCell
         ColWidths = (
           78
-          493)
+          857)
       end
       object Edit7: TEdit
-        Left = 559
-        Top = 45
+        Left = 134
+        Top = 25
         Width = 169
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 8
-        Visible = False
         OnChange = Edit7Change
       end
       object GroupBox2: TGroupBox
-        Left = 583
-        Top = 449
+        Left = 361
+        Top = 11
         Width = 369
-        Height = 65
+        Height = 47
         Caption = #26597#35810#36873#39033
         TabOrder = 9
-        Visible = False
         object RadioButton1: TRadioButton
           Left = 56
-          Top = 24
+          Top = 16
           Width = 113
           Height = 17
           Caption = #23458#25143#21517#31216#26597#35810
@@ -420,7 +386,7 @@ object Form9: TForm9
         end
         object RadioButton4: TRadioButton
           Left = 221
-          Top = 24
+          Top = 16
           Width = 113
           Height = 17
           Caption = #38144#21806#22995#21517#26597#35810
@@ -481,7 +447,7 @@ object Form9: TForm9
   object ADOQuery1: TADOQuery
     Connection = Form1.ADOConnection1
     Parameters = <>
-    Left = 944
-    Top = 568
+    Left = 960
+    Top = 32
   end
 end

@@ -24,10 +24,9 @@ object Form9: TForm9
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = 1
     object TabSheet1: TTabSheet
       Caption = #26032#22686#24212#25910#27454#35760#24080
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label1: TLabel
         Left = 48
         Top = 472
@@ -162,8 +161,8 @@ object Form9: TForm9
         TabOrder = 6
         OnSelectCell = StringGrid4SelectCell
         ColWidths = (
-          64
-          876)
+          81
+          861)
       end
       object Button7: TButton
         Left = 760
@@ -173,7 +172,6 @@ object Form9: TForm9
         Caption = #32534#21495#36741#21161#26597#35810'>>'
         TabOrder = 7
         Visible = False
-        OnClick = Button7Click
       end
       object DateTimePicker1: TDateTimePicker
         Left = 616
@@ -185,34 +183,25 @@ object Form9: TForm9
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 8
       end
-      object GroupBox1: TGroupBox
-        Left = 352
-        Top = 11
-        Width = 369
-        Height = 47
+      object RadioGroup1: TRadioGroup
+        Left = 387
+        Top = 16
+        Width = 277
+        Height = 41
         Caption = #26597#35810#36873#39033
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          #23458#25143#21517#31216#26597#35810
+          #38144#21806#22995#21517#26597#35810)
         TabOrder = 9
-        object RadioButton2: TRadioButton
-          Left = 56
-          Top = 16
-          Width = 113
-          Height = 17
-          Caption = #23458#25143#21517#31216#26597#35810
-          TabOrder = 0
-        end
-        object RadioButton3: TRadioButton
-          Left = 221
-          Top = 16
-          Width = 113
-          Height = 17
-          Caption = #38144#21806#22995#21517#26597#35810
-          TabOrder = 1
-        end
       end
     end
     object TabSheet2: TTabSheet
       Caption = #24212#25910#27454#22238#25910#35760#24080
       ImageIndex = 1
+      ExplicitLeft = 8
+      ExplicitTop = 28
       object Label8: TLabel
         Left = 73
         Top = 469
@@ -280,8 +269,8 @@ object Form9: TForm9
         Caption = #22791#27880
       end
       object Label16: TLabel
-        Left = 56
-        Top = 28
+        Left = 58
+        Top = 32
         Width = 72
         Height = 13
         Caption = #36755#20837#26597#35810#21517#31216
@@ -345,11 +334,10 @@ object Form9: TForm9
         Caption = #32534#21495#36741#21161#26597#35810'>>'
         TabOrder = 6
         Visible = False
-        OnClick = Button5Click
       end
       object StringGrid3: TStringGrid
-        Left = 52
-        Top = 64
+        Left = 56
+        Top = 66
         Width = 973
         Height = 369
         ColCount = 2
@@ -357,41 +345,33 @@ object Form9: TForm9
         TabOrder = 7
         OnSelectCell = StringGrid3SelectCell
         ColWidths = (
-          78
+          82
           857)
       end
       object Edit7: TEdit
-        Left = 134
-        Top = 25
+        Left = 136
+        Top = 29
         Width = 169
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 8
         OnChange = Edit7Change
       end
-      object GroupBox2: TGroupBox
-        Left = 361
-        Top = 11
-        Width = 369
-        Height = 47
+      object RadioGroup2: TRadioGroup
+        Left = 388
+        Top = 16
+        Width = 277
+        Height = 41
         Caption = #26597#35810#36873#39033
+        Color = clBtnHighlight
+        Columns = 2
+        ItemIndex = 0
+        Items.Strings = (
+          #23458#25143#21517#31216#26597#35810
+          #38144#21806#22995#21517#26597#35810)
+        ParentBackground = False
+        ParentColor = False
         TabOrder = 9
-        object RadioButton1: TRadioButton
-          Left = 56
-          Top = 16
-          Width = 113
-          Height = 17
-          Caption = #23458#25143#21517#31216#26597#35810
-          TabOrder = 0
-        end
-        object RadioButton4: TRadioButton
-          Left = 221
-          Top = 16
-          Width = 113
-          Height = 17
-          Caption = #38144#21806#22995#21517#26597#35810
-          TabOrder = 1
-        end
       end
     end
     object TabSheet3: TTabSheet

@@ -92,7 +92,7 @@ begin
       strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
       strUserName:=cfginifile.ReadString('服务器设置','用户','');
       strPwd:=cfginifile.ReadString('服务器设置','密码','');
-      main.Form1.ADOConnection1.ConnectionString :=  'Provider=SQLNCLI11.1;Integrated Security="";Persist Security Info=False;User ID='+strUserName+';Initial Catalog='+strDBName+';Data Source='+strServerName;
+      main.Form1.ADOConnection1.ConnectionString :='Provider=MSDASQL.1;Persist Security Info=False;User ID='+strUserName+';Data Source='+strServerName+';Initial Catalog='+strDBName;
       main.Form1.ADOConnection1.Connected := true;
       main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
       main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strServerName;

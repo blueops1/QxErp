@@ -144,7 +144,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select max(cast(fZGbh as unsigned))+1 from ZG_info');
+    sql.Add('select top 1 fZGbh+1 from ZG_info order by CONVERT(int,fZGbh) desc');
     open;
     if not eof then
        strZGBH := fields[0].AsString

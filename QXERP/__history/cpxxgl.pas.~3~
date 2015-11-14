@@ -172,7 +172,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select max(cast(fcpbh as unsigned))+1 from cpkcb');
+    sql.Add('select top 1 fcpbh+1 from cpkcb order by CONVERT(int,fcpbh) desc');
     open;
     if not eof then
        strCPBH := fields[0].AsString;

@@ -136,7 +136,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select max(cast(fbcpbh as unsigned))+1 from BCPLXk_info');
+    sql.Add('select top 1 fbcpbh+1 from BCPLXk_info order by CONVERT(int,fbcpbh) desc');
     open;
     if not eof then
        strBCPBH := fields[0].AsString

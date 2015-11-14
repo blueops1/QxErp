@@ -26,6 +26,10 @@ object Form4: TForm4
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20027#31649#21333#20301
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label1: TLabel
         Left = 152
         Top = 80

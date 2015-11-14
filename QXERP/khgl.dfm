@@ -206,6 +206,10 @@ object Form5: TForm5
       Caption = #21512#21516#26041#20449#24687#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label12: TLabel
         Left = 464
         Top = 46

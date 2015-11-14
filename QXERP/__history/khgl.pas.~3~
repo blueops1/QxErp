@@ -274,7 +274,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select max(cast(fkdhid as unsigned))+1 from Kh_info');
+    sql.Add('select top 1 fkdhid+1 from Kh_info order by CONVERT(int,fkdhid) desc');
     open;
     if not eof then
       strKhBH := fields[0].AsString;

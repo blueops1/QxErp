@@ -56,12 +56,8 @@ object Form2: TForm2
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 866
-    ExplicitHeight = 485
     object TabSheet1: TTabSheet
       Caption = #26032#22686#38144#21806#21592
-      ExplicitWidth = 858
-      ExplicitHeight = 457
       object Label1: TLabel
         Left = 152
         Top = 144
@@ -194,6 +190,8 @@ object Form2: TForm2
       Caption = #38144#21806#21592#20449#24687#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 858
       ExplicitHeight = 455
       object Label12: TLabel
@@ -238,7 +236,6 @@ object Form2: TForm2
         ItemHeight = 13
         TabOrder = 0
         OnClick = ListBox1Click
-        ExplicitHeight = 455
       end
       object Edit5: TEdit
         Left = 224

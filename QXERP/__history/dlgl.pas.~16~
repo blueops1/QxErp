@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, DB, ADODB,inifiles;
+  Dialogs, ExtCtrls, StdCtrls, DB, ADODB,inifiles,math;
 
 type
   TForm10 = class(TForm)
@@ -50,7 +50,7 @@ begin
       main.strUser:=fields[0].AsString;
       main.strUserQX:=fields[1].AsString;
       main.isLogined:=true;
-      Main.Form1.StatusBar1.Panels.Items[2].Text := '操作员:'+strUserName ;
+      Main.Form1.StatusBar1.Panels.Items[2].Text := '操作员:'+main.strUser ;
       form10.Close;
       end else
       begin
@@ -92,7 +92,7 @@ begin
       strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
       strUserName:=cfginifile.ReadString('服务器设置','用户','');
       strPwd:=cfginifile.ReadString('服务器设置','密码','');
-      main.Form1.ADOConnection1.ConnectionString :=  'Provider=SQLNCLI11.1;Integrated Security="";Persist Security Info=False;User ID='+strUserName+';Initial Catalog='+strDBName+';Data Source='+strServerName;
+      main.Form1.ADOConnection1.ConnectionString :='Provider=MSDASQL.1;Persist Security Info=False;User ID='+edit2.Text+';Data Source='+edit1.Text+';Initial Catalog='+edit4.Text;
       main.Form1.ADOConnection1.Connected := true;
       main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
       main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strServerName;

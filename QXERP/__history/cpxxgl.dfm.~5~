@@ -201,10 +201,6 @@ object Form8: TForm8
       Enabled = False
       ImageIndex = 1
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label5: TLabel
         Left = 328
         Top = 38
@@ -374,10 +370,6 @@ object Form8: TForm8
     object TabSheet3: TTabSheet
       Caption = #25104#21697#24211#23384#26597#35810
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label12: TLabel
         Left = 45
         Top = 24
