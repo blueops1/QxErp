@@ -275,7 +275,6 @@ object Form1: TForm1
   end
   object ADOConnection1: TADOConnection
     LoginPrompt = False
-    Provider = 'SQLOLEDB'
     Left = 808
     Top = 104
   end

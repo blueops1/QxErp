@@ -13,6 +13,7 @@ object Form1: TForm1
   Menu = MainMenu1
   OldCreateOrder = False
   WindowState = wsMaximized
+  OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -25,12 +26,15 @@ object Form1: TForm1
       item
         Alignment = taCenter
         Text = #24403#21069#26102#38388
-        Width = 350
+        Width = 367
       end
       item
         Alignment = taCenter
         Text = #27993#27743#31206#23665#27233#33014#24037#31243#32929#20221#20844#21496#26377#38480#20844#21496
-        Width = 500
+        Width = 367
+      end
+      item
+        Width = 367
       end>
   end
   object PageControl1: TPageControl
@@ -40,7 +44,13 @@ object Form1: TForm1
     Height = 738
     ActivePage = TabSheet1
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
     MultiLine = True
+    ParentFont = False
     TabOrder = 1
     TabPosition = tpLeft
     object TabSheet1: TTabSheet
@@ -51,8 +61,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 28
-      ExplicitTop = 2
       object Button1: TButton
         Left = 160
         Top = 104

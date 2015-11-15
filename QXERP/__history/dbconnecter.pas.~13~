@@ -41,11 +41,10 @@ procedure TForm3.Button1Click(Sender: TObject);
 begin
     if Main.Form1.ADOConnection1.Connected = false then
     begin
-      Main.Form1.ADOConnection1.ConnectionString := 'Provider=SQLNCLI10.1;Integrated Security="";Persist Security Info=False;User ID='+edit2.Text+';Initial Catalog='+edit4.Text+';Data Source='+edit1.Text+';Initial File Name="";Server SPN=""';
+      main.Form1.ADOConnection1.ConnectionString :='Provider=MSDASQL.1;Persist Security Info=False;User ID='+edit2.Text+';Password='+edit3.Text+'Data Source='+edit4.Text+';Initial Catalog='+edit2.Text;
       Main.Form1.ADOConnection1.Connected := true;
       Main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
       Main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+edit1.Text;
-      Main.Form1.StatusBar1.Panels.Items[2].Text := strUserName ;
       Form3.Close;
     end else
     begin
