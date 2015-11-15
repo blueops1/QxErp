@@ -1,11 +1,10 @@
-object Form7: TForm7
+object Form16: TForm16
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = #24212#25910#27454#26597#35810
-  ClientHeight = 695
-  ClientWidth = 1091
+  Caption = #29983#20135#32479#35745#26597#35810
+  ClientHeight = 705
+  ClientWidth = 1100
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,13 +19,13 @@ object Form7: TForm7
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1091
-    Height = 695
+    Width = 1100
+    Height = 705
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
-      Caption = #24212#25910#27454#26597#35810
+      Caption = #25104#21697#20986#20837#24211#24080#25143
       object Label2: TLabel
         Left = 112
         Top = 27
@@ -35,23 +34,16 @@ object Form7: TForm7
         Caption = #33258
       end
       object Label3: TLabel
-        Left = 247
+        Left = 328
         Top = 27
         Width = 12
         Height = 13
         Caption = #33267
       end
-      object Label1: TLabel
-        Left = 400
-        Top = 27
-        Width = 36
-        Height = 13
-        Caption = #38144#21806#21592
-      end
       object DateTimePicker1: TDateTimePicker
         Left = 136
         Top = 24
-        Width = 105
+        Width = 186
         Height = 21
         Date = 42187.350045567130000000
         Time = 42187.350045567130000000
@@ -59,9 +51,9 @@ object Form7: TForm7
         TabOrder = 0
       end
       object DateTimePicker2: TDateTimePicker
-        Left = 274
+        Left = 346
         Top = 24
-        Width = 103
+        Width = 186
         Height = 21
         Date = 42187.350101030090000000
         Time = 42187.350101030090000000
@@ -69,7 +61,7 @@ object Form7: TForm7
         TabOrder = 1
       end
       object Button1: TButton
-        Left = 640
+        Left = 552
         Top = 22
         Width = 75
         Height = 25
@@ -79,57 +71,46 @@ object Form7: TForm7
       end
       object StringGrid1: TStringGrid
         Left = 3
-        Top = 64
-        Width = 1077
-        Height = 298
+        Top = 77
+        Width = 529
+        Height = 585
         Align = alCustom
-        FixedCols = 0
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
         TabOrder = 3
         OnSelectCell = StringGrid1SelectCell
         ColWidths = (
-          74
-          450
-          323
+          64
+          99
+          106
           104
           115)
       end
       object StringGrid2: TStringGrid
-        Left = 3
-        Top = 368
-        Width = 1077
-        Height = 296
+        Left = 552
+        Top = 77
+        Width = 527
+        Height = 585
         Align = alCustom
-        FixedCols = 0
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
         TabOrder = 4
         ColWidths = (
-          77
-          142
-          155
-          159
-          289)
-      end
-      object ComboBox1: TComboBox
-        Left = 456
-        Top = 24
-        Width = 161
-        Height = 21
-        TabOrder = 5
-        Text = '*|'#20840#37096
-        OnDropDown = ComboBox1DropDown
+          64
+          99
+          106
+          104
+          115)
       end
       object Button5: TButton
-        Left = 736
+        Left = 712
         Top = 22
         Width = 91
         Height = 25
         Caption = #23548#20986#21040'EXECL'
-        TabOrder = 6
+        TabOrder = 5
         OnClick = Button5Click
       end
       object RadioGroup1: TRadioGroup
-        Left = 848
+        Left = 824
         Top = 3
         Width = 225
         Height = 55
@@ -140,7 +121,7 @@ object Form7: TForm7
           #34920#19968
           #34920#20108
           #20840#37096)
-        TabOrder = 7
+        TabOrder = 6
       end
     end
     object TabSheet2: TTabSheet
@@ -163,6 +144,7 @@ object Form7: TForm7
         Height = 25
         Caption = #26597#35810
         TabOrder = 1
+        OnClick = Button2Click
       end
       object StringGrid3: TStringGrid
         Left = 3
@@ -172,6 +154,7 @@ object Form7: TForm7
         Align = alCustom
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
         TabOrder = 2
+        OnSelectCell = StringGrid3SelectCell
         ColWidths = (
           64
           99
@@ -194,6 +177,29 @@ object Form7: TForm7
           104
           115)
       end
+      object Button6: TButton
+        Left = 688
+        Top = 24
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button6Click
+      end
+      object RadioGroup2: TRadioGroup
+        Left = 800
+        Top = 5
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
+      end
     end
     object TabSheet3: TTabSheet
       Caption = #25353#26376#32479#35745
@@ -215,6 +221,7 @@ object Form7: TForm7
         Height = 25
         Caption = #26597#35810
         TabOrder = 1
+        OnClick = Button3Click
       end
       object StringGrid5: TStringGrid
         Left = 3
@@ -224,6 +231,7 @@ object Form7: TForm7
         Align = alCustom
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
         TabOrder = 2
+        OnSelectCell = StringGrid5SelectCell
         ColWidths = (
           64
           99
@@ -246,6 +254,29 @@ object Form7: TForm7
           104
           115)
       end
+      object Button7: TButton
+        Left = 688
+        Top = 24
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button7Click
+      end
+      object RadioGroup3: TRadioGroup
+        Left = 800
+        Top = 5
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
+      end
     end
     object TabSheet4: TTabSheet
       Caption = #25353#24180#32479#35745
@@ -267,6 +298,7 @@ object Form7: TForm7
         Height = 25
         Caption = #26597#35810
         TabOrder = 1
+        OnClick = Button4Click
       end
       object StringGrid7: TStringGrid
         Left = 3
@@ -276,6 +308,7 @@ object Form7: TForm7
         Align = alCustom
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
         TabOrder = 2
+        OnSelectCell = StringGrid7SelectCell
         ColWidths = (
           64
           99
@@ -297,6 +330,29 @@ object Form7: TForm7
           106
           104
           115)
+      end
+      object Button8: TButton
+        Left = 688
+        Top = 24
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button8Click
+      end
+      object RadioGroup4: TRadioGroup
+        Left = 800
+        Top = 5
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
       end
     end
   end

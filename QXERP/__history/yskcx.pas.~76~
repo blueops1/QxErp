@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls;
+  Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls,ComObj;
 
 type
   TForm7 = class(TForm)
@@ -26,7 +26,6 @@ type
     DateTimePicker4: TDateTimePicker;
     Button3: TButton;
     StringGrid5: TStringGrid;
-    StringGrid6: TStringGrid;
     TabSheet4: TTabSheet;
     DateTimePicker5: TDateTimePicker;
     Button4: TButton;
@@ -43,6 +42,8 @@ type
       var CanSelect: Boolean);
     procedure FormActivate(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,7 +60,6 @@ implementation
 //  uses DLLTools;
 
 {$R *.dfm}
-
 
 procedure TForm7.Button1Click(Sender: TObject);
 var y:integer;
@@ -115,15 +115,107 @@ begin
 end;
 
 
+procedure TForm7.Button2Click(Sender: TObject);
+var y:integer;
+begin
+  y:=1;
+  stringgrid3.RowCount:=1;
+  stringgrid3.Cells[0,0]:='应收款编号';
+  stringgrid3.Cells[1,0]:='客户名称';
+  stringgrid3.Cells[2,0]:='主管单位名称';
+  stringgrid3.Cells[3,0]:='当前余额';
+  stringgrid3.Cells[4,0]:='末笔收款日期';
+  try
+    with adoquery1 do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where week(flastdate)=week('''+datetimetostr(datetimepicker3.Date)+''')and year(flastdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.flastdate,c.fdqye desc');
+      open;
+      stringgrid3.RowCount:=RecordCount+2;
+      while not eof do
+      begin
+        stringgrid3.Cells[0,y]:=fields[0].AsString;
+        stringgrid3.Cells[1,y]:=fields[1].AsString;
+        stringgrid3.Cells[2,y]:=fields[2].AsString;
+        stringgrid3.Cells[3,y]:=fields[3].AsString;
+        stringgrid3.Cells[4,y]:=fields[4].AsString;
+        y := y +1;
+        next;
+      end;
+      sql.Clear;
+      sql.Add('select ''合计'',count(*),'''',SUM(c.fdqye),'''' from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where week(flastdate)=week('''+datetimetostr(datetimepicker3.Date)+''')and year(flastdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.flastdate,c.fdqye desc');
+      open;
+      if not eof then
+      begin
+        stringgrid3.Cells[0,y]:=fields[0].AsString;
+        stringgrid3.Cells[1,y]:=fields[1].AsString;
+        stringgrid3.Cells[2,y]:=fields[2].AsString;
+        stringgrid3.Cells[3,y]:=fields[3].AsString;
+        stringgrid3.Cells[4,y]:=fields[4].AsString;
+      end;
+    end;
+  Except
+    Application.MessageBox('查询失败！','生产统计查询提示');
+  end;
+end;
+
+procedure TForm7.Button3Click(Sender: TObject);
+var y:integer;
+begin
+  y:=1;
+  stringgrid5.RowCount:=1;
+  stringgrid5.Cells[0,0]:='应收款编号';
+  stringgrid5.Cells[1,0]:='客户名称';
+  stringgrid5.Cells[2,0]:='主管单位名称';
+  stringgrid5.Cells[3,0]:='新增金额';
+  stringgrid5.Cells[4,0]:='回收金额';
+  stringgrid5.Cells[5,0]:='收款日期';
+  try
+    with adoquery1 do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('select d.*,e.fxzje,e.fhsje,e.fskdate from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker3.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
+      open;
+      stringgrid5.RowCount:=RecordCount+2;
+      while not eof do
+      begin
+        stringgrid5.Cells[0,y]:=fields[0].AsString;
+        stringgrid5.Cells[1,y]:=fields[1].AsString;
+        stringgrid5.Cells[2,y]:=fields[2].AsString;
+        stringgrid5.Cells[3,y]:=fields[3].AsString;
+        stringgrid5.Cells[4,y]:=fields[4].AsString;
+        stringgrid5.Cells[5,y]:=fields[5].AsString;
+        y := y +1;
+        next;
+      end;
+      sql.Clear;
+      sql.Add('select ''合计'',count(*),'''',sum(e.fxzje),SUM(e.fhsje),'''' from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker3.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
+      open;
+      if not eof then
+      begin
+        stringgrid5.Cells[0,y]:=fields[0].AsString;
+        stringgrid5.Cells[1,y]:=fields[1].AsString;
+        stringgrid5.Cells[2,y]:=fields[2].AsString;
+        stringgrid5.Cells[3,y]:=fields[3].AsString;
+        stringgrid5.Cells[4,y]:=fields[4].AsString;
+        stringgrid5.Cells[5,y]:=fields[5].AsString;
+      end;
+    end;
+  Except
+    Application.MessageBox('查询失败！','生产统计查询提示');
+  end;
+end;
+
 procedure TForm7.Button5Click(Sender: TObject);
 begin
-{  case radiogroup1.ItemIndex of
+  case radiogroup1.ItemIndex of
     0: ExportStrGridToExcel([StringGrid1]);
     1: ExportStrGridToExcel([StringGrid2]);
     2: ExportStrGridToExcel([StringGrid1,StringGrid2]);
   end;
-  }
-  ExportStrGridToExcel([StringGrid1,StringGrid2]);
+  //ExportStrGridToExcel([StringGrid1,StringGrid2]);
 end;
 
 procedure TForm7.ComboBox1DropDown(Sender: TObject);
@@ -134,7 +226,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select rtrim(fxsyid)+''|''+fxsyxm from Xsy_info');
+    sql.Add('select concat(trim(fxsyid),''|'',trim(fxsyxm)) from Xsy_info');
     open;
     while not eof do
     begin

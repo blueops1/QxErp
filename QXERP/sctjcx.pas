@@ -76,7 +76,7 @@ procedure TForm16.Button1Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  stringgrid1.RowCount:=1;
+  //stringgrid1.RowCount:=1;
   stringgrid1.Cells[0,0]:='产品编号';
   stringgrid1.Cells[1,0]:='产品名称';
   stringgrid1.Cells[2,0]:='产品种类';
@@ -121,7 +121,7 @@ procedure TForm16.Button2Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  stringgrid3.RowCount:=1;
+  //stringgrid3.RowCount:=1;
   stringgrid3.Cells[0,0]:='产品编号';
   stringgrid3.Cells[1,0]:='产品名称';
   stringgrid3.Cells[2,0]:='产品种类';
@@ -166,7 +166,7 @@ procedure TForm16.Button3Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  stringgrid5.RowCount:=1;
+  //stringgrid5.RowCount:=1;
   stringgrid5.Cells[0,0]:='产品编号';
   stringgrid5.Cells[1,0]:='产品名称';
   stringgrid5.Cells[2,0]:='产品种类';
@@ -211,7 +211,7 @@ procedure TForm16.Button4Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  stringgrid7.RowCount:=1;
+  //stringgrid7.RowCount:=1;
   stringgrid7.Cells[0,0]:='产品编号';
   stringgrid7.Cells[1,0]:='产品名称';
   stringgrid7.Cells[2,0]:='产品种类';

@@ -71,7 +71,7 @@ var y:integer;
 tmpxsyid:string;
 begin
   y:=1;
-  //stringgrid1.RowCount:=2;
+  stringgrid1.RowCount:=1;
   stringgrid1.Cells[0,0]:='应收款编号';
   stringgrid1.Cells[1,0]:='客户名称';
   stringgrid1.Cells[2,0]:='主管单位名称';
@@ -124,7 +124,7 @@ procedure TForm7.Button2Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  //stringgrid3.RowCount:=1;
+  stringgrid3.RowCount:=1;
   stringgrid3.Cells[0,0]:='应收款编号';
   stringgrid3.Cells[1,0]:='客户名称';
   stringgrid3.Cells[2,0]:='主管单位名称';
@@ -169,7 +169,7 @@ procedure TForm7.Button3Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  //stringgrid5.RowCount:=1;
+  stringgrid5.RowCount:=1;
   stringgrid5.Cells[0,0]:='应收款编号';
   stringgrid5.Cells[1,0]:='客户名称';
   stringgrid5.Cells[2,0]:='主管单位名称';
@@ -181,7 +181,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select d.*,e.fxzje,e.fhsje,e.fskdate from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker4.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
+      sql.Add('select d.*,e.fxzje,e.fhsje,e.fskdate from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker3.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
       open;
       stringgrid5.RowCount:=RecordCount+2;
       while not eof do
@@ -196,7 +196,7 @@ begin
         next;
       end;
       sql.Clear;
-      sql.Add('select ''合计'',count(*),'''',sum(e.fxzje),SUM(e.fhsje),'''' from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker4.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
+      sql.Add('select ''合计'',count(*),'''',sum(e.fxzje),SUM(e.fhsje),'''' from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker3.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
       open;
       if not eof then
       begin
@@ -217,7 +217,7 @@ procedure TForm7.Button4Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  //stringgrid6.RowCount:=1;
+  stringgrid6.RowCount:=1;
   stringgrid6.Cells[0,0]:='应收款编号';
   stringgrid6.Cells[1,0]:='客户名称';
   stringgrid6.Cells[2,0]:='主管单位名称';

@@ -71,7 +71,7 @@ var y:integer;
 tmpxsyid:string;
 begin
   y:=1;
-  //stringgrid1.RowCount:=2;
+  stringgrid1.RowCount:=2;
   stringgrid1.Cells[0,0]:='应收款编号';
   stringgrid1.Cells[1,0]:='客户名称';
   stringgrid1.Cells[2,0]:='主管单位名称';
@@ -124,7 +124,7 @@ procedure TForm7.Button2Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  //stringgrid3.RowCount:=1;
+  stringgrid3.RowCount:=1;
   stringgrid3.Cells[0,0]:='应收款编号';
   stringgrid3.Cells[1,0]:='客户名称';
   stringgrid3.Cells[2,0]:='主管单位名称';
@@ -169,7 +169,7 @@ procedure TForm7.Button3Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  //stringgrid5.RowCount:=1;
+  stringgrid5.RowCount:=1;
   stringgrid5.Cells[0,0]:='应收款编号';
   stringgrid5.Cells[1,0]:='客户名称';
   stringgrid5.Cells[2,0]:='主管单位名称';
@@ -217,7 +217,7 @@ procedure TForm7.Button4Click(Sender: TObject);
 var y:integer;
 begin
   y:=1;
-  //stringgrid6.RowCount:=1;
+  stringgrid6.RowCount:=1;
   stringgrid6.Cells[0,0]:='应收款编号';
   stringgrid6.Cells[1,0]:='客户名称';
   stringgrid6.Cells[2,0]:='主管单位名称';

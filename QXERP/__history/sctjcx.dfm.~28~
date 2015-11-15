@@ -1,7 +1,7 @@
 object Form16: TForm16
   Left = 0
   Top = 0
-  BorderStyle = bsToolWindow
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = #29983#20135#32479#35745#26597#35810
   ClientHeight = 705
   ClientWidth = 1100
@@ -100,6 +100,29 @@ object Form16: TForm16
           104
           115)
       end
+      object Button5: TButton
+        Left = 712
+        Top = 22
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 5
+        OnClick = Button5Click
+      end
+      object RadioGroup1: TRadioGroup
+        Left = 824
+        Top = 3
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 6
+      end
     end
     object TabSheet2: TTabSheet
       Caption = #25353#21608#32479#35745
@@ -153,6 +176,29 @@ object Form16: TForm16
           106
           104
           115)
+      end
+      object Button6: TButton
+        Left = 688
+        Top = 24
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button6Click
+      end
+      object RadioGroup2: TRadioGroup
+        Left = 800
+        Top = 5
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
       end
     end
     object TabSheet3: TTabSheet
@@ -208,12 +254,33 @@ object Form16: TForm16
           104
           115)
       end
+      object Button7: TButton
+        Left = 688
+        Top = 24
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button7Click
+      end
+      object RadioGroup3: TRadioGroup
+        Left = 800
+        Top = 5
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
+      end
     end
     object TabSheet4: TTabSheet
       Caption = #25353#24180#32479#35745
       ImageIndex = 3
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object DateTimePicker5: TDateTimePicker
         Left = 136
         Top = 24
@@ -263,6 +330,29 @@ object Form16: TForm16
           106
           104
           115)
+      end
+      object Button8: TButton
+        Left = 688
+        Top = 24
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button8Click
+      end
+      object RadioGroup4: TRadioGroup
+        Left = 800
+        Top = 5
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
       end
     end
   end
