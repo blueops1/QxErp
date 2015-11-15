@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls;
+  Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls,ComObj;
 
 type
   TForm7 = class(TForm)
@@ -56,10 +56,9 @@ var
 
 implementation
 
-  //uses DLLTools;
+//  uses DLLTools;
 
 {$R *.dfm}
-
 
 procedure TForm7.Button1Click(Sender: TObject);
 var y:integer;
@@ -120,8 +119,9 @@ begin
   case radiogroup1.ItemIndex of
     0: ExportStrGridToExcel([StringGrid1]);
     1: ExportStrGridToExcel([StringGrid2]);
-    2: ExportStrGridToExcel([StringGrid1, StringGrid2]);
+    2: ExportStrGridToExcel([StringGrid1,StringGrid2]);
   end;
+  //ExportStrGridToExcel([StringGrid1,StringGrid2]);
 end;
 
 procedure TForm7.ComboBox1DropDown(Sender: TObject);

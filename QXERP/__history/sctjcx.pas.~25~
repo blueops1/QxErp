@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, ComCtrls, DB, ADODB, StdCtrls;
+  Dialogs, Grids, ComCtrls, DB, ADODB, StdCtrls, ExtCtrls;
 
 type
   TForm16 = class(TForm)
@@ -28,6 +28,19 @@ type
     Button3: TButton;
     StringGrid5: TStringGrid;
     StringGrid6: TStringGrid;
+    TabSheet4: TTabSheet;
+    DateTimePicker5: TDateTimePicker;
+    Button4: TButton;
+    StringGrid7: TStringGrid;
+    StringGrid8: TStringGrid;
+    Button5: TButton;
+    RadioGroup1: TRadioGroup;
+    Button6: TButton;
+    RadioGroup2: TRadioGroup;
+    Button7: TButton;
+    RadioGroup3: TRadioGroup;
+    Button8: TButton;
+    RadioGroup4: TRadioGroup;
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
@@ -38,6 +51,13 @@ type
     procedure Button3Click(Sender: TObject);
     procedure StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure Button4Click(Sender: TObject);
+    procedure StringGrid7SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +66,7 @@ type
 
 var
   Form16: TForm16;
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
 
@@ -111,7 +132,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select a.fcpbh,b.fcpmc,b.fcpzl,a.rkzs,a.ckzs from (select fcpbh,sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where datename(week,fjzdate)=datename(week,'''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' group by fcpbh) as a join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh');
+      sql.Add('select a.fcpbh,b.fcpmc,b.fcpzl,a.rkzs,a.ckzs from (select fcpbh,sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where week(fjzdate)=week('''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' group by fcpbh) as a join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh');
       open;
       stringgrid3.RowCount:=RecordCount+2;
       while not eof do
@@ -125,7 +146,7 @@ begin
         next;
       end;
       sql.Clear;
-      sql.Add('select ''合计'',''0'',''0'',sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where datename(week,fjzdate)=datename(week,'''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N''');
+      sql.Add('select ''合计'',''0'',''0'',sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where week(fjzdate)=week('''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N''');
       open;
       if not eof then
       begin
@@ -185,12 +206,95 @@ begin
     Application.MessageBox('查询失败！','生产统计查询提示');
   end;
 end;
+
+procedure TForm16.Button4Click(Sender: TObject);
+var y:integer;
+begin
+  y:=1;
+  stringgrid7.RowCount:=1;
+  stringgrid7.Cells[0,0]:='产品编号';
+  stringgrid7.Cells[1,0]:='产品名称';
+  stringgrid7.Cells[2,0]:='产品种类';
+  stringgrid7.Cells[3,0]:='入库数量';
+  stringgrid7.Cells[4,0]:='出库数量';
+  try
+    with adoquery1 do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('select a.fcpbh,b.fcpmc,b.fcpzl,a.rkzs,a.ckzs from (select fcpbh,sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where datename(year,fjzdate)=datename(year,'''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and fisdel=''N'' group by fcpbh) as a join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh');
+      open;
+      stringgrid7.RowCount:=RecordCount+2;
+      while not eof do
+      begin
+        stringgrid7.Cells[0,y]:=fields[0].AsString;
+        stringgrid7.Cells[1,y]:=fields[1].AsString;
+        stringgrid7.Cells[2,y]:=fields[2].AsString;
+        stringgrid7.Cells[3,y]:=fields[3].AsString;
+        stringgrid7.Cells[4,y]:=fields[4].AsString;
+        y := y +1;
+        next;
+      end;
+      sql.Clear;
+      sql.Add('select ''合计'',''0'',''0'',sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where datename(year,fjzdate)=datename(year,'''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and fisdel=''N''');
+      open;
+      if not eof then
+      begin
+        stringgrid7.Cells[0,y]:=fields[0].AsString;
+        stringgrid7.Cells[1,y]:=fields[1].AsString;
+        stringgrid7.Cells[2,y]:=fields[2].AsString;
+        stringgrid7.Cells[3,y]:=fields[3].AsString;
+        stringgrid7.Cells[4,y]:=fields[4].AsString;
+      end;
+    end;
+  Except
+    Application.MessageBox('查询失败！','生产统计查询提示');
+  end;
+end;
+
+procedure TForm16.Button5Click(Sender: TObject);
+begin
+  case radiogroup1.ItemIndex of
+    0: ExportStrGridToExcel([StringGrid1]);
+    1: ExportStrGridToExcel([StringGrid2]);
+    2: ExportStrGridToExcel([StringGrid1,StringGrid2]);
+  end;
+end;
+
+procedure TForm16.Button6Click(Sender: TObject);
+begin
+  case radiogroup2.ItemIndex of
+    0: ExportStrGridToExcel([StringGrid3]);
+    1: ExportStrGridToExcel([StringGrid4]);
+    2: ExportStrGridToExcel([StringGrid3,StringGrid4]);
+  end;
+end;
+
+procedure TForm16.Button7Click(Sender: TObject);
+begin
+  case radiogroup3.ItemIndex of
+    0: ExportStrGridToExcel([StringGrid5]);
+    1: ExportStrGridToExcel([StringGrid6]);
+    2: ExportStrGridToExcel([StringGrid5,StringGrid6]);
+  end;
+end;
+
+procedure TForm16.Button8Click(Sender: TObject);
+begin
+  case radiogroup4.ItemIndex of
+    0: ExportStrGridToExcel([StringGrid7]);
+    1: ExportStrGridToExcel([StringGrid8]);
+    2: ExportStrGridToExcel([StringGrid7,StringGrid8]);
+  end;
+end;
+
 procedure TForm16.FormActivate(Sender: TObject);
 begin
   datetimepicker1.DateTime := date();
   datetimepicker2.DateTime := date();
   datetimepicker3.DateTime := date();
   datetimepicker4.DateTime := date();
+  datetimepicker5.DateTime := date();
 end;
 
 procedure TForm16.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -283,7 +387,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where datename(month,fjzdate)=datename(month,'''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where datename(month,fjzdate)=datename(month,'''+datetimetostr(datetimepicker4.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker4.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
       open;
       stringgrid6.RowCount:=RecordCount+1;
       while not eof do
@@ -293,6 +397,42 @@ begin
         stringgrid6.Cells[2,y]:=fields[2].AsString;
         stringgrid6.Cells[3,y]:=fields[3].AsString;
         stringgrid6.Cells[4,y]:=fields[4].AsString;
+        y := y +1;
+        next;
+      end;
+    end;
+  Except
+    Application.MessageBox('查询失败！','生产统计查询提示');
+  end;
+end;
+
+procedure TForm16.StringGrid7SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+var y:integer;
+var strCpbh:string;
+begin
+  y:=1;
+  strCpbh:=stringgrid7.Cells[0,ARow];
+  stringgrid8.Cells[0,0]:='产品编号';
+  stringgrid8.Cells[1,0]:='入库数量';
+  stringgrid8.Cells[2,0]:='出库数量';
+  stringgrid8.Cells[3,0]:='记帐日期';
+  stringgrid8.Cells[4,0]:='备注';
+  try
+    with adoquery1 do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where datename(year,fjzdate)=datename(year,'''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
+      open;
+      stringgrid8.RowCount:=RecordCount+1;
+      while not eof do
+      begin
+        stringgrid8.Cells[0,y]:=fields[0].AsString;
+        stringgrid8.Cells[1,y]:=fields[1].AsString;
+        stringgrid8.Cells[2,y]:=fields[2].AsString;
+        stringgrid8.Cells[3,y]:=fields[3].AsString;
+        stringgrid8.Cells[4,y]:=fields[4].AsString;
         y := y +1;
         next;
       end;

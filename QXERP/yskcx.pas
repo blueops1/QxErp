@@ -132,7 +132,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select rtrim(fxsyid)+''|''+fxsyxm from Xsy_info');
+    sql.Add('select concat(trim(fxsyid),''|'',trim(fxsyxm)) from Xsy_info');
     open;
     while not eof do
     begin
