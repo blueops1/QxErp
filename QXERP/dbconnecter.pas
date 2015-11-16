@@ -19,6 +19,10 @@ type
     Button3: TButton;
     Label4: TLabel;
     Edit4: TEdit;
+    Label6: TLabel;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Edit6: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -39,7 +43,7 @@ uses Main;
 
 procedure TForm3.Button1Click(Sender: TObject);
 begin
-    if Main.Form1.ADOConnection1.Connected = false then
+{    if Main.Form1.ADOConnection1.Connected = false then
     begin
       main.Form1.ADOConnection1.ConnectionString :='Provider=MSDASQL.1;Persist Security Info=True;User ID='+edit2.Text+';Password='+edit3.Text+'Data Source='+edit4.Text+';Initial Catalog='+edit1.Text;
       Main.Form1.ADOConnection1.Connected := true;
@@ -50,6 +54,24 @@ begin
     begin
        Main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接失败!';
        Main.Form1.StatusBar1.Panels.Items[1].Text := '';
+    end;
+    }
+    main.Form1.ZConnection1.HostName:=edit1.Text;
+    main.Form1.ZConnection1.Port:=strtoint(edit5.Text);
+    main.Form1.ZConnection1.Database:=edit4.Text;
+    main.Form1.ZConnection1.User:=edit2.Text;
+    main.Form1.ZConnection1.Password:=edit3.Text;
+    main.Form1.ZConnection1.ClientCodepage:=edit6.Text;
+    main.Form1.ZConnection1.Connect();
+    if main.Form1.ZConnection1.Connected then
+    begin
+      Main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
+      Main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+edit1.Text;
+      Form3.Close;
+    end else
+    begin
+      Main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接失败!';
+      Main.Form1.StatusBar1.Panels.Items[1].Text := '';
     end;
 end;
 
@@ -63,7 +85,8 @@ begin
     edit4.Text:=cfginifile.ReadString('服务器设置','数据库名称','');
     edit2.Text:=cfginifile.ReadString('服务器设置','用户','');
     edit3.Text:=cfginifile.ReadString('服务器设置','密码','');
-
+    edit5.Text:=cfginifile.ReadString('服务器设置','端口','');
+    edit6.Text:=cfginifile.ReadString('服务器设置','编码','');
 end;
 
 procedure TForm3.Button3Click(Sender: TObject);
@@ -72,6 +95,8 @@ begin
   cfginifile.WriteString('服务器设置','数据库名称',edit4.Text);
   cfginifile.WriteString('服务器设置','用户',edit2.Text);
   cfginifile.WriteString('服务器设置','密码',edit3.Text);
+  cfginifile.WriteString('服务器设置','端口',edit5.Text);
+  cfginifile.WriteString('服务器设置','编码',edit6.Text);
 end;
 
 

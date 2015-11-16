@@ -273,9 +273,11 @@ object Form1: TForm1
       end
     end
   end
-  object ADOConnection1: TADOConnection
-    LoginPrompt = False
-    Left = 808
-    Top = 104
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Port = 0
+    Protocol = 'mysql-5'
+    Left = 496
+    Top = 344
   end
 end

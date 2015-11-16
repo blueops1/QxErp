@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math;
+  Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math,
+  ZAbstractConnection, ZConnection;
 
 type
   TForm1 = class(TForm)
@@ -25,7 +26,6 @@ type
     Button2: TButton;
     Button5: TButton;
     Button8: TButton;
-    ADOConnection1: TADOConnection;
     Button4: TButton;
     Button3: TButton;
     N3: TMenuItem;
@@ -43,6 +43,7 @@ type
     Button16: TButton;
     Button17: TButton;
     Button18: TButton;
+    ZConnection1: TZConnection;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -80,7 +81,8 @@ var
   strUserQX:string;
   strUser:string;
   filename:string;
-
+  strPort:string;
+  strPageCode:string;
 implementation
 uses dbconnecter,xsygl,zgdwgl,khgl,htgl,cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,scjh;
 

@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, Grids, StdCtrls, ComCtrls;
+  Dialogs, DB, ADODB, Grids, StdCtrls, ComCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   TForm11 = class(TForm)
@@ -46,7 +47,6 @@ type
     Edit9: TEdit;
     Button6: TButton;
     StringGrid2: TStringGrid;
-    ADOQuery1: TADOQuery;
     Edit7: TEdit;
     TabSheet4: TTabSheet;
     Label10: TLabel;
@@ -66,6 +66,7 @@ type
     Edit16: TEdit;
     StringGrid4: TStringGrid;
     Button12: TButton;
+    ZQuery1: TZQuery;
     procedure Button10Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
@@ -103,7 +104,7 @@ procedure TForm11.Button10Click(Sender: TObject);
 var strBCPBH : String;
 begin
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -132,7 +133,7 @@ procedure TForm11.Button12Click(Sender: TObject);
 var strBCPBH : String;
 begin
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -154,7 +155,7 @@ begin
   if (edit1.Text <> '') and (edit2.Text <> '') and (edit7.Text <> '') and (combobox2.Text <> '') then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -186,7 +187,7 @@ begin
   if (edit11.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -213,7 +214,7 @@ end;
 procedure TForm11.Button5Click(Sender: TObject);
 begin
   listbox1.Clear;
-  with ADOQuery1 do
+  with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -245,13 +246,13 @@ begin
   //stringgrid1.RowCount:=1;
   y:=1;
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
     sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
     open;
-    stringgrid1.RowCount:=adoquery1.RecordCount+1;
+    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
 
     while not eof do
     begin
@@ -280,7 +281,7 @@ begin
    end else
    begin
    try
-     with ADOQuery1 do
+     with ZQuery1 do
      begin
        close;
        sql.Clear;
@@ -330,7 +331,7 @@ end;
 procedure TForm11.ComboBox2DropDown(Sender: TObject);
 begin
   combobox2.Items.Clear;
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -351,7 +352,7 @@ begin
   if edit16.Text<>'' then
    begin
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -377,7 +378,7 @@ procedure TForm11.ListBox1Click(Sender: TObject);
 var strBcplxmc:String;
 begin
   strBcplxmc := listbox1.Items.Strings[listbox1.itemindex];
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -410,7 +411,7 @@ begin
   begin
     y:=1;
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -418,7 +419,7 @@ begin
       open;
       if not eof then
       begin
-        stringgrid2.RowCount:=adoquery1.RecordCount+1;
+        stringgrid2.RowCount:=ZQuery1.RecordCount+1;
       end else
       begin
         stringgrid2.RowCount:=1;
@@ -452,7 +453,7 @@ procedure TForm11.TabSheet2Show(Sender: TObject);
 
 begin
 listbox1.Clear;
-with ADOQuery1 do
+with ZQuery1 do
   begin
     close;
     sql.Clear;

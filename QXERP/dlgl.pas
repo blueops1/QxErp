@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, DB, ADODB,inifiles,math;
+  Dialogs, ExtCtrls, StdCtrls, DB, ADODB,inifiles,math, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   TForm10 = class(TForm)
@@ -14,7 +15,7 @@ type
     Label2: TLabel;
     Button1: TButton;
     Button2: TButton;
-    ADOQuery1: TADOQuery;
+    ZQuery1: TZQuery;
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -39,7 +40,7 @@ begin
   begin
     
     try
-    with  Adoquery1 do
+    with  ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -62,8 +63,6 @@ begin
         Application.MessageBox('数据库查询失败！','系统提示');
     end;
   end;
-
-
 end;
 
 procedure TForm10.Button2Click(Sender: TObject);
@@ -79,33 +78,39 @@ end;
 
 procedure TForm10.FormActivate(Sender: TObject);
 begin
-
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin
       dbconnecter.Form3.ShowModal;
     end else
     begin
-      try
-      cfginifile:=tinifile.Create(filename);
-      strServerName:=cfginifile.ReadString('服务器设置','服务器名称','');
-      strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
-      strUserName:=cfginifile.ReadString('服务器设置','用户','');
-      strPwd:=cfginifile.ReadString('服务器设置','密码','');
-      main.Form1.ADOConnection1.ConnectionString :='Provider=MSDASQL.1;Persist Security Info=False;User ID='+strUserName+';Data Source='+strServerName+';Initial Catalog='+strDBName;
-      main.Form1.ADOConnection1.Connected := true;
-      main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
-      main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strServerName;
-
-      if main.Form1.ADOConnection1.Connected = False then
-      begin
-       dbconnecter.Form3.ShowModal;
-       main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接失败!';
-      end;
-
-    Except
-       dbconnecter.Form3.ShowModal;
-    end;
+        try
+        cfginifile:=tinifile.Create(filename);
+        strServerName:=cfginifile.ReadString('服务器设置','服务器名称','');
+        strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
+        strUserName:=cfginifile.ReadString('服务器设置','用户','');
+        strPwd:=cfginifile.ReadString('服务器设置','密码','');
+        strPort:=cfginifile.ReadString('服务器设置','端口','');
+        strPageCode:=cfginifile.ReadString('服务器设置','编码','');
+        main.Form1.ZConnection1.HostName:=strServerName;
+        main.Form1.ZConnection1.Port:=strtoint(strPort);
+        main.Form1.ZConnection1.Database:=strDBName;
+        main.Form1.ZConnection1.User:=edit2.Text;
+        main.Form1.ZConnection1.Password:=strPwd;
+        main.Form1.ZConnection1.ClientCodepage:=strPageCode;
+        main.Form1.ZConnection1.Connect();
+        if main.Form1.ZConnection1.Connected then
+        begin
+            main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
+            main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strServerName;
+        end else
+        begin
+             dbconnecter.Form3.ShowModal;
+             main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接失败!';
+        end;
+        Except
+         dbconnecter.Form3.ShowModal;
+        end;
     end;
 end;
 

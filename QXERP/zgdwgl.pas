@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, StdCtrls, ComCtrls;
+  Dialogs, DB, ADODB, StdCtrls, ComCtrls, ZAbstractRODataset, ZAbstractDataset,
+  ZDataset;
 
 type
   TForm4 = class(TForm)
@@ -29,7 +30,6 @@ type
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     CheckBox4: TCheckBox;
-    ADOQuery1: TADOQuery;
     Edit4: TEdit;
     Label8: TLabel;
     Edit5: TEdit;
@@ -42,6 +42,7 @@ type
     Edit9: TEdit;
     Label12: TLabel;
     Button5: TButton;
+    ZQuery1: TZQuery;
     procedure FormShow(Sender: TObject);
     procedure TabSheet2Show(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
@@ -72,7 +73,7 @@ begin
   if (edit3.Text <> '') and (edit2.Text <> '') then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -109,7 +110,7 @@ begin
    end else
    begin
    try
-     with ADOQuery1 do
+     with ZQuery1 do
      begin
        close;
        sql.Clear;
@@ -152,7 +153,7 @@ end;
 procedure TForm4.Button5Click(Sender: TObject);
 begin
 listbox1.Clear;
-with ADOQuery1 do
+with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -195,7 +196,7 @@ end;
 procedure TForm4.FormShow(Sender: TObject);
 var strZgdwBH : String;
 begin
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -211,7 +212,7 @@ procedure TForm4.ListBox1Click(Sender: TObject);
 var strZgdwMC:String;
 begin
   strZgdwMC := listbox1.Items.Strings[listbox1.itemindex];
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -230,7 +231,7 @@ end;
 procedure TForm4.TabSheet2Show(Sender: TObject);
 begin
 listbox1.Clear;
-with ADOQuery1 do
+with ZQuery1 do
   begin
     close;
     sql.Clear;

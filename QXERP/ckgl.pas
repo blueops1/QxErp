@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, StdCtrls, Grids, ComCtrls, ExtCtrls;
+  Dialogs, DB, ADODB, StdCtrls, Grids, ComCtrls, ExtCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   Tfrom9 = class(TForm)
@@ -30,7 +31,6 @@ type
     Edit9: TEdit;
     Button6: TButton;
     StringGrid2: TStringGrid;
-    ADOQuery1: TADOQuery;
     DateTimePicker1: TDateTimePicker;
     Label5: TLabel;
     Label6: TLabel;
@@ -52,6 +52,7 @@ type
     Label16: TLabel;
     Button8: TButton;
     RadioGroup1: TRadioGroup;
+    ZQuery1: TZQuery;
     procedure Edit16Change(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -89,7 +90,7 @@ begin
   if (edit1.Text <> '') and (edit2.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -119,7 +120,7 @@ begin
   if (edit3.Text <> '') and (edit5.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -194,13 +195,13 @@ begin
   //stringgrid1.RowCount:=1;
   y:=1;
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
     sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
     open;
-    stringgrid1.RowCount:=adoquery1.RecordCount+1;
+    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
 
     while not eof do
     begin
@@ -245,7 +246,7 @@ begin
       if edit16.Text<>'' then
       begin
         try
-        with ADOQuery1 do
+        with ZQuery1 do
         begin
           close;
           sql.Clear;
@@ -277,7 +278,7 @@ begin
       if edit7.Text<>'' then
       begin
         try
-        with ADOQuery1 do
+        with ZQuery1 do
         begin
           close;
           sql.Clear;
@@ -329,7 +330,7 @@ begin
   begin
     y:=1;
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -337,7 +338,7 @@ begin
       open;
       if not eof then
       begin
-        stringgrid2.RowCount:=adoquery1.RecordCount+1;
+        stringgrid2.RowCount:=ZQuery1.RecordCount+1;
       end else
       begin
         stringgrid2.RowCount:=1;

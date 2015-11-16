@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, StdCtrls, ComCtrls, DB, ADODB, ExtCtrls;
+  Dialogs, Grids, StdCtrls, ComCtrls, DB, ADODB, ExtCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   TForm8 = class(TForm)
@@ -31,7 +32,6 @@ type
     Edit9: TEdit;
     Button6: TButton;
     StringGrid2: TStringGrid;
-    ADOQuery1: TADOQuery;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     ListBox1: TListBox;
@@ -53,6 +53,7 @@ type
     ComboBox4: TComboBox;
     Label14: TLabel;
     Edit6: TEdit;
+    ZQuery1: TZQuery;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure ComboBox1DropDown(Sender: TObject);
@@ -78,7 +79,7 @@ begin
   if (edit2.Text <> '') and (combobox1.Text <> '') and (combobox2.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -122,13 +123,13 @@ begin
   //stringgrid1.RowCount:=1;
   y:=1;
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
     sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
     open;
-    stringgrid1.RowCount:=adoquery1.RecordCount+1;
+    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
 
     while not eof do
     begin
@@ -151,7 +152,7 @@ end;
 
 procedure TForm8.ComboBox1DropDown(Sender: TObject);
 begin
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -168,7 +169,7 @@ end;
 procedure TForm8.FormShow(Sender: TObject);
 var strCPBH : String;
 begin
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -202,7 +203,7 @@ begin
   begin
     y:=1;
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -210,7 +211,7 @@ begin
       open;
       if not eof then
       begin
-        stringgrid2.RowCount:=adoquery1.RecordCount+1;
+        stringgrid2.RowCount:=ZQuery1.RecordCount+1;
       end else
       begin
         stringgrid2.RowCount:=1;

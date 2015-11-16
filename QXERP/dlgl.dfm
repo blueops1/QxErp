@@ -64,10 +64,10 @@ object Form10: TForm10
     TabOrder = 3
     OnClick = Button2Click
   end
-  object ADOQuery1: TADOQuery
-    Connection = Form1.ADOConnection1
-    Parameters = <>
-    Left = 16
-    Top = 8
+  object ZQuery1: TZQuery
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 368
+    Top = 104
   end
 end

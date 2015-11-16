@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, ADODB, ComCtrls, Grids, ExtCtrls;
+  Dialogs, StdCtrls, DB, ADODB, ComCtrls, Grids, ExtCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   TForm9 = class(TForm)
@@ -49,9 +50,9 @@ type
     Edit9: TEdit;
     Button6: TButton;
     StringGrid2: TStringGrid;
-    ADOQuery1: TADOQuery;
     RadioGroup1: TRadioGroup;
     RadioGroup2: TRadioGroup;
+    ZQuery1: TZQuery;
     procedure Edit16Change(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Edit7Change(Sender: TObject);
@@ -81,7 +82,7 @@ begin
   if (edit1.Text <> '') and (edit2.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -109,7 +110,7 @@ begin
   if (edit3.Text <> '') and (edit5.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -139,7 +140,7 @@ begin
     if edit16.Text<>'' then
     begin
       try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -171,7 +172,7 @@ begin
     if edit7.Text<>'' then
     begin
       try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;

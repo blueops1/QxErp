@@ -381,10 +381,10 @@ object Form14: TForm14
       end
     end
   end
-  object ADOQuery1: TADOQuery
-    Connection = Form1.ADOConnection1
-    Parameters = <>
-    Left = 712
-    Top = 40
+  object ZQuery1: TZQuery
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 792
+    Top = 200
   end
 end

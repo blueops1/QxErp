@@ -195,8 +195,6 @@ object Form7: TForm7
     object TabSheet4: TTabSheet
       Caption = #24180#24212#25910#27454#26032#22686#22238#25910#32479#35745
       ImageIndex = 3
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object DateTimePicker5: TDateTimePicker
         Left = 136
         Top = 24
@@ -246,10 +244,6 @@ object Form7: TForm7
     object TabSheet2: TTabSheet
       Caption = #27599#21608#26032#22686#24212#25910#32479#35745
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DateTimePicker3: TDateTimePicker
         Left = 136
         Top = 24
@@ -295,10 +289,10 @@ object Form7: TForm7
       end
     end
   end
-  object ADOQuery1: TADOQuery
-    Connection = Form1.ADOConnection1
-    Parameters = <>
-    Left = 40
-    Top = 616
+  object ZQuery1: TZQuery
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 392
+    Top = 448
   end
 end

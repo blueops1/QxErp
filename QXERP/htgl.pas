@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, DB, ADODB, Grids, ExtCtrls;
+  Dialogs, StdCtrls, ComCtrls, DB, ADODB, Grids, ExtCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   TForm6 = class(TForm)
@@ -48,7 +49,6 @@ type
     Label26: TLabel;
     Label27: TLabel;
     Label28: TLabel;
-    ADOQuery1: TADOQuery;
     Edit5: TEdit;
     Edit6: TEdit;
     Edit7: TEdit;
@@ -76,6 +76,7 @@ type
     RadioButton3: TRadioButton;
     Button8: TButton;
     RadioGroup1: TRadioGroup;
+    ZQuery1: TZQuery;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -117,7 +118,7 @@ begin
   if (edit1.Text <> '') and (edit2.Text <> '') and (edit3.Text <> '')and (edit4.Text <> '')and (edit10.Text <> '')and (edit11.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -154,7 +155,7 @@ begin
 if (edit5.Text <> '')and (edit6.Text <> '')and (edit7.Text <> '')and (edit8.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -192,13 +193,13 @@ var y:integer;
 begin
   y:=1;
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
     sql.Add('select fhtbh,fhtdate,fkhmc,fxsyxm,flxr,flxrdh,fhtzje,ffhjsbz,fmemo from (select * from (select fhtbh,fkhbh,fhtdate,fxsybh,flxr,flxrdh,fhtzje,ffhjsbz,fmemo from ht_info where fkhbh in (select fkdhid from Kh_info where fkhmc like ''%'+edit9.Text+'%'') and fisdel=''N'') as a inner join (select fkdhid,fkhmc from Kh_info) as b on a.fkhbh=b.fkdhid) as c inner join (select fxsyid,fxsyxm from Xsy_info) as d on c.fxsybh=d.fxsyid');
     open;
-    stringgrid1.RowCount:=adoquery1.RecordCount+1;
+    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
     while not eof do
     begin
       stringgrid2.Rows[y].Clear;
@@ -244,7 +245,7 @@ begin
   if edit15.Text<>'' then
   begin
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -273,7 +274,7 @@ begin
   if edit15.Text<>'' then
   begin
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -307,7 +308,7 @@ begin
     if edit16.Text<>'' then
     begin
       try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
@@ -424,7 +425,7 @@ begin
     y:=1;
     floatZje:=0;
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -432,7 +433,7 @@ begin
       open;
       if not eof then
       begin
-        stringgrid2.RowCount:=adoquery1.RecordCount+2;
+        stringgrid2.RowCount:=ZQuery1.RecordCount+2;
       end else
       begin
         stringgrid2.RowCount:=1;

@@ -4,13 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Grids, ComCtrls, DB, ADODB, StdCtrls, ExtCtrls;
+  Dialogs, Grids, ComCtrls, DB, ADODB, StdCtrls, ExtCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   TForm16 = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    ADOQuery1: TADOQuery;
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
     Label2: TLabel;
@@ -41,6 +41,7 @@ type
     RadioGroup3: TRadioGroup;
     Button8: TButton;
     RadioGroup4: TRadioGroup;
+    ZQuery1: TZQuery;
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
@@ -83,7 +84,7 @@ begin
   stringgrid1.Cells[3,0]:='入库数量';
   stringgrid1.Cells[4,0]:='出库数量';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -128,7 +129,7 @@ begin
   stringgrid3.Cells[3,0]:='入库数量';
   stringgrid3.Cells[4,0]:='出库数量';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -173,7 +174,7 @@ begin
   stringgrid5.Cells[3,0]:='入库数量';
   stringgrid5.Cells[4,0]:='出库数量';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -218,7 +219,7 @@ begin
   stringgrid7.Cells[3,0]:='入库数量';
   stringgrid7.Cells[4,0]:='出库数量';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -310,7 +311,7 @@ begin
   stringgrid2.Cells[3,0]:='记帐日期';
   stringgrid2.Cells[4,0]:='备注';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -346,7 +347,7 @@ begin
   stringgrid4.Cells[3,0]:='记帐日期';
   stringgrid4.Cells[4,0]:='备注';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -383,7 +384,7 @@ begin
   stringgrid6.Cells[3,0]:='记帐日期';
   stringgrid6.Cells[4,0]:='备注';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -419,7 +420,7 @@ begin
   stringgrid8.Cells[3,0]:='记帐日期';
   stringgrid8.Cells[4,0]:='备注';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;

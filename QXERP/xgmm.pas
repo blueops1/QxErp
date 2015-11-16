@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DB, ADODB;
+  Dialogs, StdCtrls, DB, ADODB, ZAbstractRODataset, ZAbstractDataset, ZDataset;
 
 type
   TForm15 = class(TForm)
@@ -18,7 +18,7 @@ type
     Label4: TLabel;
     Button1: TButton;
     Button2: TButton;
-    ADOQuery1: TADOQuery;
+    ZQuery1: TZQuery;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -42,7 +42,7 @@ begin
   if edit2.Text <>'' then
   begin
     try
-      with adoquery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;

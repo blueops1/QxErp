@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls,ComObj;
+  Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls,ComObj,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset;
 
 type
   TForm7 = class(TForm)
@@ -26,7 +27,6 @@ type
     Button4: TButton;
     ComboBox1: TComboBox;
     Label1: TLabel;
-    ADOQuery1: TADOQuery;
     Button5: TButton;
     RadioGroup1: TRadioGroup;
     StringGrid6: TStringGrid;
@@ -37,6 +37,7 @@ type
     Button6: TButton;
     Button7: TButton;
     Button8: TButton;
+    ZQuery1: TZQuery;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -61,7 +62,7 @@ var
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
-
+uses main;
 //  uses DLLTools;
 
 {$R *.dfm}
@@ -79,7 +80,7 @@ begin
   stringgrid1.Cells[4,0]:='末笔收款日期';
   tmpxsyid:=splitstring(combobox1.Text,'|');
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -131,7 +132,7 @@ begin
   stringgrid3.Cells[3,0]:='当前余额';
   stringgrid3.Cells[4,0]:='末笔收款日期';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -177,7 +178,7 @@ begin
   stringgrid5.Cells[4,0]:='回收金额';
   stringgrid5.Cells[5,0]:='收款日期';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -225,7 +226,7 @@ begin
   stringgrid6.Cells[4,0]:='回收金额';
   stringgrid6.Cells[5,0]:='收款日期';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -290,7 +291,7 @@ procedure TForm7.ComboBox1DropDown(Sender: TObject);
 begin
   combobox1.Items.Clear;
   combobox1.Items.Add('*|全部');
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
@@ -327,7 +328,7 @@ begin
   stringgrid2.Cells[3,0]:='记帐日期';
   stringgrid2.Cells[4,0]:='备注';
   try
-    with adoquery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
