@@ -122,10 +122,7 @@ end else
 end;
 
 procedure TForm18.Button2Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -142,10 +139,7 @@ begin
 end;
 
 procedure TForm18.Button3Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -162,10 +156,7 @@ begin
 end;
 
 procedure TForm18.Button4Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -182,10 +173,7 @@ begin
 end;
 
 procedure TForm18.Button5Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -202,10 +190,7 @@ begin
 end;
 
 procedure TForm18.Button6Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -223,10 +208,7 @@ end;
 
 
 procedure TForm18.Button7Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -243,10 +225,7 @@ begin
 end;
 
 procedure TForm18.Button8Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -263,10 +242,7 @@ begin
 end;
 
 procedure TForm18.Button9Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin

@@ -153,7 +153,7 @@ begin
       sql.Clear;
       sql.Add('update message_online set fisfavorite=''Y'' where fid='+strFavMessid);
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid2);
+      DeleteStringGridRow(selectFavRow,stringgrid2);
       memo3.Lines.Clear;
     end;
   except
@@ -213,7 +213,7 @@ begin
       sql.Clear;
       sql.Add('update message_online set fisdel=''Y'' where fid='+strOldmessid);
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid3);
+      DeleteStringGridRow(selectOldRow,stringgrid3);
       memo4.Lines.Clear;
     end;
   except
@@ -234,7 +234,7 @@ begin
       sql.Clear;
       sql.Add('update message_online set fisdel=''Y'' where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y''');
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid3);
+      stringgrid3.RowCount:=1;
       memo4.Lines.Clear;
     end;
   except
@@ -254,7 +254,7 @@ begin
       sql.Clear;
       sql.Add('delete from message_online where fid='+strDelmessid);
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid4);
+      DeleteStringGridRow(selectDelRow,stringgrid4);
       memo5.Lines.Clear;
     end;
   except
@@ -274,7 +274,7 @@ begin
       sql.Clear;
       sql.Add('delete message_online from where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisdel=''Y''');
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid3);
+      stringgrid4.RowCount:=1;
       memo5.Lines.Clear;
     end;
   except
@@ -478,7 +478,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''Y''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''Y'' and fisdel=''N''');
         open;
         stringgrid2.RowCount:=RecordCount+1;
         while not eof do
@@ -511,7 +511,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y'' and fisdel=''N''');
         open;
         stringgrid3.RowCount:=RecordCount+1;
         while not eof do

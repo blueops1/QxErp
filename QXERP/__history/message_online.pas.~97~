@@ -61,6 +61,7 @@ type
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -121,10 +122,7 @@ end else
 end;
 
 procedure TForm18.Button2Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -152,7 +150,7 @@ begin
       sql.Clear;
       sql.Add('update message_online set fisfavorite=''Y'' where fid='+strFavMessid);
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid2);
+      DeleteStringGridRow(selectFavRow,stringgrid2);
       memo3.Lines.Clear;
     end;
   except
@@ -181,10 +179,7 @@ begin
 end;
 
 procedure TForm18.Button5Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -210,10 +205,10 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('delete from message_online where fid='+strOldmessid);
+      sql.Add('update message_online set fisdel=''Y'' where fid='+strOldmessid);
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid3);
-      memo5.Lines.Clear;
+      DeleteStringGridRow(selectOldRow,stringgrid3);
+      memo4.Lines.Clear;
     end;
   except
     application.MessageBox('删除失败!','消息处理提示');
@@ -233,7 +228,7 @@ begin
       sql.Clear;
       sql.Add('update message_online set fisdel=''Y'' where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y''');
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid3);
+      stringgrid3.RowCount:=1;
       memo4.Lines.Clear;
     end;
   except
@@ -241,7 +236,7 @@ begin
   end;
 end;
 
-procedure TForm18.Button9Click(Sender: TObject);
+procedure TForm18.Button8Click(Sender: TObject);
 var
 y:integer;
 begin
@@ -251,13 +246,30 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('delete message_online from where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisdel=''Y''');
+      sql.Add('delete from message_online where fid='+strDelmessid);
       execsql;
-      DeleteStringGridRow(selectRow,stringgrid3);
+      DeleteStringGridRow(selectDelRow,stringgrid4);
       memo5.Lines.Clear;
     end;
   except
-    application.MessageBox('删除失败!','消息处理提示');
+    application.MessageBox('彻底删除失败!','消息处理提示');
+  end;
+end;
+
+procedure TForm18.Button9Click(Sender: TObject);
+begin
+  try
+    with zquery1 do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('delete message_online from where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisdel=''Y''');
+      execsql;
+      stringgrid4.RowCount:=1;
+      memo5.Lines.Clear;
+    end;
+  except
+    application.MessageBox('彻底删除失败!','消息处理提示');
   end;
 end;
 
@@ -457,7 +469,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''Y''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''Y'' and fisdel=''N''');
         open;
         stringgrid2.RowCount:=RecordCount+1;
         while not eof do
@@ -490,7 +502,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y'' and fisdel=''N''');
         open;
         stringgrid3.RowCount:=RecordCount+1;
         while not eof do
