@@ -1,0 +1,51 @@
+unit message_online;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset, StdCtrls,
+  ComCtrls;
+
+type
+  TForm18 = class(TForm)
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    Label2: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    ZQuery1: TZQuery;
+    procedure ComboBox1DropDown(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form18: TForm18;
+
+implementation
+ uses main;
+{$R *.dfm}
+
+procedure TForm18.ComboBox1DropDown(Sender: TObject);
+begin
+  with ZQuery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select concat(fuserid,''|'',fuser) from user_info');
+    open;
+    while not eof do
+    begin
+       combobox1.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
+end.

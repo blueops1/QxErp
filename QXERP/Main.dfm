@@ -52,7 +52,6 @@ object Form1: TForm1
     MultiLine = True
     ParentFont = False
     TabOrder = 1
-    TabPosition = tpLeft
     object TabSheet1: TTabSheet
       Caption = #38144#21806#31649#29702
       Font.Charset = DEFAULT_CHARSET
@@ -76,6 +75,12 @@ object Form1: TForm1
         Width = 97
         Height = 65
         Caption = #20027#31649#21333#20301#31649#29702
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 1
         OnClick = Button2Click
       end
@@ -244,6 +249,43 @@ object Form1: TForm1
         OnClick = Button12Click
       end
     end
+    object TabSheet7: TTabSheet
+      Caption = 'OA'#21150#20844
+      ImageIndex = 6
+      object Button19: TButton
+        Left = 160
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #25991#20214#31649#29702
+        TabOrder = 0
+      end
+      object Button20: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #22312#32447#28040#24687
+        TabOrder = 1
+        OnClick = Button20Click
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 892
+    Top = 635
+    Width = 185
+    Height = 97
+    TabOrder = 2
+    object Label1: TLabel
+      Left = 24
+      Top = 40
+      Width = 3
+      Height = 13
+      OnClick = Label1Click
+      OnMouseMove = Label1MouseMove
+      OnMouseLeave = Label1MouseLeave
+    end
   end
   object MainMenu1: TMainMenu
     Left = 112
@@ -279,5 +321,16 @@ object Form1: TForm1
     Protocol = 'mysql-5'
     Left = 496
     Top = 344
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 560
+    Top = 480
+  end
+  object ZQuery1: TZQuery
+    Connection = ZConnection1
+    Params = <>
+    Left = 696
+    Top = 408
   end
 end

@@ -20,7 +20,8 @@ uses
   zhqxgl in 'zhqxgl.pas' {Form14},
   xgmm in 'xgmm.pas' {Form15},
   sctjcx in 'sctjcx.pas' {Form16},
-  scjh in 'scjh.pas' {Form17};
+  scjh in 'scjh.pas' {Form17},
+  message_online in 'message_online.pas' {Form18};
 
 {$R *.res}
 
@@ -47,5 +48,6 @@ begin
   Application.CreateForm(TForm15, Form15);
   Application.CreateForm(TForm16, Form16);
   Application.CreateForm(TForm17, Form17);
+  Application.CreateForm(TForm18, Form18);
   Application.Run;
 end.

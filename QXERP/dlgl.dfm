@@ -31,13 +31,6 @@ object Form10: TForm10
     Height = 13
     Caption = #23494'    '#30721
   end
-  object Edit1: TEdit
-    Left = 167
-    Top = 29
-    Width = 153
-    Height = 21
-    TabOrder = 0
-  end
   object Edit2: TEdit
     Left = 167
     Top = 69
@@ -63,6 +56,14 @@ object Form10: TForm10
     Caption = #21462#28040
     TabOrder = 3
     OnClick = Button2Click
+  end
+  object ComboBox1: TComboBox
+    Left = 167
+    Top = 29
+    Width = 153
+    Height = 21
+    TabOrder = 0
+    OnDropDown = ComboBox1DropDown
   end
   object ZQuery1: TZQuery
     Connection = Form1.ZConnection1

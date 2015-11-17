@@ -9,17 +9,18 @@ uses
 
 type
   TForm10 = class(TForm)
-    Edit1: TEdit;
     Edit2: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Button1: TButton;
     Button2: TButton;
     ZQuery1: TZQuery;
+    ComboBox1: TComboBox;
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure ComboBox1DropDown(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,7 +37,7 @@ uses Main,dbconnecter;
 
 procedure TForm10.Button1Click(Sender: TObject);
 begin
-  if edit1.Text<>'' then
+  if combobox1.Text<>'' then
   begin
     
     try
@@ -44,7 +45,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fuser,fqx from User_info where fuser='''+edit1.Text+''' and fpwd='''+edit2.Text+'''');
+      sql.Add('select fuser,fqx from User_info where fuser='''+combobox1.Text+''' and fpwd='''+edit2.Text+'''');
       open;
       if not Eof then
       begin
@@ -76,6 +77,23 @@ begin
   dlgl.Form10.Height:=320;
 end;
 
+procedure TForm10.ComboBox1DropDown(Sender: TObject);
+begin
+  with ZQuery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select fuser from user_info');
+    open;
+    combobox1.Items.Clear;
+    while not eof do
+    begin
+       combobox1.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
 procedure TForm10.FormActivate(Sender: TObject);
 begin
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
@@ -95,7 +113,7 @@ begin
         main.Form1.ZConnection1.HostName:=strServerName;
         main.Form1.ZConnection1.Port:=strtoint(strPort);
         main.Form1.ZConnection1.Database:=strDBName;
-        main.Form1.ZConnection1.User:=edit2.Text;
+        main.Form1.ZConnection1.User:=strUserName;
         main.Form1.ZConnection1.Password:=strPwd;
         main.Form1.ZConnection1.ClientCodepage:=strPageCode;
         main.Form1.ZConnection1.Connect();

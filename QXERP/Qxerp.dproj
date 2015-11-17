@@ -100,6 +100,9 @@
 			<DCCReference Include="scjh.pas">
 				<Form>Form17</Form>
 			</DCCReference>
+			<DCCReference Include="message_online.pas">
+				<Form>Form18</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

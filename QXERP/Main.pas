@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math,
-  ZAbstractConnection, ZConnection;
+  ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
+  ZDataset;
 
 type
   TForm1 = class(TForm)
@@ -44,6 +45,13 @@ type
     Button17: TButton;
     Button18: TButton;
     ZConnection1: TZConnection;
+    TabSheet7: TTabSheet;
+    Button19: TButton;
+    Button20: TButton;
+    Timer1: TTimer;
+    ZQuery1: TZQuery;
+    Panel1: TPanel;
+    Label1: TLabel;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -64,6 +72,12 @@ type
     procedure Button14Click(Sender: TObject);
     procedure Button17Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure Button20Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Label1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure Label1MouseLeave(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -83,8 +97,10 @@ var
   filename:string;
   strPort:string;
   strPageCode:string;
+  intMessage:integer;
+  boolMesscandle:boolean;
 implementation
-uses dbconnecter,xsygl,zgdwgl,khgl,htgl,cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,scjh;
+uses dbconnecter,xsygl,zgdwgl,khgl,htgl,cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,scjh,message_online;
 
 {$R *.dfm}
 
@@ -143,6 +159,12 @@ begin
     xsygl.Form2.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button20Click(Sender: TObject);
+begin
+  boolmesscandle:=false;
+  message_online.Form18.Show;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -206,6 +228,18 @@ begin
       Main.Form1.StatusBar1.Panels.Items[0].Width:= floor(Main.Form1.Width/3);
       Main.Form1.StatusBar1.Panels.Items[1].Width:= floor(Main.Form1.Width/3);
       Main.Form1.StatusBar1.Panels.Items[2].Width:= floor(Main.Form1.Width/3);
+      if form1.WindowState=wsMaximized then
+      begin
+      panel1.Left:=form1.ClientWidth-panel1.Width-10;
+      panel1.Top:=form1.ClientHeight-statusbar1.Height-panel1.Height-10;
+      //label1.Caption:=inttostr(form1.Width)+inttostr(form1.Height);
+      end else
+      begin
+      panel1.Left:=form1.ClientWidth-panel1.Width-10;
+      panel1.Top:=form1.ClientHeight-statusbar1.Height-panel1.Height-10;
+      //label1.Caption:=inttostr(form1.Width)+inttostr(form1.Height);
+      end;
+  //    panel1.Repaint;
 end;
 
 procedure TForm1.FormShow(Sender: TObject);
@@ -215,6 +249,28 @@ begin
     begin
     main.Form1.Close;
     end;
+    boolmesscandle:=false;
+end;
+
+procedure TForm1.Label1Click(Sender: TObject);
+begin
+  boolmesscandle:=true;
+  form18.Show;
+end;
+
+procedure TForm1.Label1MouseLeave(Sender: TObject);
+begin
+   Label1.Font.Color:=clWindowText;       //恢复Label1的字体颜色
+   Label1.Font.Style:=[];                //恢复Label1的字体（去掉下划线）
+   Label1.Cursor:=crDefault;
+end;
+
+procedure TForm1.Label1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Label1.Font.Color:=clBlue;                //设置Label1的字体颜色为蓝色
+  Label1.Font.Style:=[fsUnderline];        //设置Label1的字体带下划线
+  Label1.Cursor:=crHandpoint;
 end;
 
 procedure TForm1.N3Click(Sender: TObject);
@@ -225,6 +281,31 @@ end;
 procedure TForm1.N4Click(Sender: TObject);
 begin
   xgmm.Form15.ShowModal;
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+if zconnection1.Connected then
+begin
+try
+  with zquery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select count(*) from message_online where freciid='''+strUser+''' and fisread=''N'' and fisdel=''N''');
+    open;
+    intMessage:=fields[0].AsInteger;
+    if intMessage>0 then
+    begin
+    label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+    panel1.Visible:=true;
+    end else
+    panel1.Visible:=false;
+  end;
+except
+  application.MessageBox('查询数据失败！','在线消息提示');
+end;
+end;
 end;
 
 procedure TForm1.X1Click(Sender: TObject);
