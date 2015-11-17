@@ -1,0 +1,77 @@
+unit uploadpatch;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
+  ZAbstractConnection, ZConnection, StdCtrls,inifiles, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    Label8: TLabel;
+    Edit6: TEdit;
+    Label9: TLabel;
+    Edit7: TEdit;
+    Label7: TLabel;
+    Button8: TButton;
+    ZConnection1: TZConnection;
+    ZQuery1: TZQuery;
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.FormActivate(Sender: TObject);
+var
+cfginifile:tinifile;
+filename:string;
+  strDBName:string;
+  strServerName:string;
+  strUserName:string;
+  strPwd:string;
+  isLogined:Boolean;
+  strUserQX:string;
+  strUser:string;
+  strPort:string;
+  strPageCode:string;
+  strVer:string;
+  strRemoteVer:string;
+begin
+    filename:=extractfilepath(paramstr(0))+'config.ini';
+    if FileExists(filename) = False then
+    begin
+      application.MessageBox('无法读取配置文件，请在运行主程序进行配置','UPPatch提示');
+    end else
+    begin
+        try
+        cfginifile:=tinifile.Create(filename);
+        strServerName:=cfginifile.ReadString('服务器设置','服务器名称','');
+        strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
+        strUserName:=cfginifile.ReadString('服务器设置','用户','');
+        strPwd:=cfginifile.ReadString('服务器设置','密码','');
+        strPort:=cfginifile.ReadString('服务器设置','端口','');
+        strPageCode:=cfginifile.ReadString('服务器设置','编码','');
+        strVer:=cfginifile.ReadString('服务器设置','版本号','');
+        ZConnection1.HostName:=strServerName;
+        ZConnection1.Port:=strtoint(strPort);
+        ZConnection1.Database:=strDBName;
+        ZConnection1.User:=strUserName;
+        ZConnection1.Password:=strPwd;
+        ZConnection1.ClientCodepage:=strPageCode;
+        ZConnection1.Connect();
+        finally
+
+        end;
+end;
+
+end.

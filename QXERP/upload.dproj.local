@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/11/17 16:28:30.339.pas,C:\Users\user\Documents\RAD Studio\Projects\Unit1.pas=E:\QxErp\QXERP\uploadpatch.pas</Transaction>
+    <Transaction>2015/11/17 16:28:30.339.dfm,C:\Users\user\Documents\RAD Studio\Projects\Unit1.dfm=E:\QxErp\QXERP\uploadpatch.dfm</Transaction>
+    <Transaction>2015/11/17 16:29:00.072.dproj,C:\Users\user\Documents\RAD Studio\Projects\Project1.dproj=E:\QxErp\QXERP\upload.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

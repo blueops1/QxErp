@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/11/17 16:00:15.534.dproj,E:\QxErp\QXERP\Uppatch\uppatch.dproj=E:\QxErp\QXERP\uppatch.dproj</Transaction>
+    <Transaction>2015/11/17 16:00:51.345.pas,E:\QxErp\QXERP\Uppatch\Unit1.pas=E:\QxErp\QXERP\patch.pas</Transaction>
+    <Transaction>2015/11/17 16:00:51.345.dfm,E:\QxErp\QXERP\Uppatch\Unit1.dfm=E:\QxErp\QXERP\patch.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

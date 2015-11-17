@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{EDD85EF2-3D6F-4C49-AB94-76040CB4102B}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Qxerp.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="uppatch.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="upload.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="Qxerp">
+			<MSBuild Projects="Qxerp.dproj"/>
+		</Target>
+		<Target Name="Qxerp:Clean">
+			<MSBuild Targets="Clean" Projects="Qxerp.dproj"/>
+		</Target>
+		<Target Name="Qxerp:Make">
+			<MSBuild Targets="Make" Projects="Qxerp.dproj"/>
+		</Target>
+		<Target Name="uppatch">
+			<MSBuild Projects="uppatch.dproj"/>
+		</Target>
+		<Target Name="uppatch:Clean">
+			<MSBuild Targets="Clean" Projects="uppatch.dproj"/>
+		</Target>
+		<Target Name="uppatch:Make">
+			<MSBuild Targets="Make" Projects="uppatch.dproj"/>
+		</Target>
+		<Target Name="upload">
+			<MSBuild Projects="upload.dproj"/>
+		</Target>
+		<Target Name="upload:Clean">
+			<MSBuild Targets="Clean" Projects="upload.dproj"/>
+		</Target>
+		<Target Name="upload:Make">
+			<MSBuild Targets="Make" Projects="upload.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="Qxerp;uppatch;upload"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="Qxerp:Clean;uppatch:Clean;upload:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="Qxerp:Make;uppatch:Make;upload:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
