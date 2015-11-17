@@ -4,6 +4,6 @@
     <Transaction>2015/11/17 15:59:18.748.groupproj,C:\Users\user\Documents\RAD Studio\Projects\ProjectGroup1.groupproj=E:\QxErp\QXERP\ERP.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="upload.exe"/>
+		<Projects ActiveProject="uppatch.exe"/>
 	</Default.Personality>
 </BorlandProject>

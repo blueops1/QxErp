@@ -75,9 +75,6 @@ filename:string;
   strServerName:string;
   strUserName:string;
   strPwd:string;
-  isLogined:Boolean;
-  strUserQX:string;
-  strUser:string;
   strPort:string;
   strPageCode:string;
   strVer:string;
@@ -119,12 +116,12 @@ begin
             label1.Caption:='新的软件版本:'+strRemoteVer;
             end else
                 application.MessageBox('未发现任何升级信息！','UPPatch提示');
-                form1.Close;
+                button1.Enabled:=false;
             end;
-            if strtoint(strVer)>=strtoint(strRemoteVer) then
+            if (strRemoteVer='') or (strtoint(strVer)>=strtoint(strRemoteVer)) then
             begin
               application.MessageBox('未发现任何升级信息！','UPPatch提示');
-              form1.Close;
+              button1.Enabled:=false;
             end;
           end else
           begin

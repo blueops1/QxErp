@@ -41,7 +41,7 @@ begin
   IF edit6.Text <>'' then
   begin
     cdir:=extractfilepath(application.ExeName);
-    //setcurrentdir(cdir+'update');
+    setcurrentdir(cdir+'update');
     zquery1.Active:=false;
     zquery1.SQL.Text:='select * from erpupdate_info';
     zquery1.Open;
@@ -57,7 +57,8 @@ begin
           zquery1.Edit;
         zquery1.FieldByName('fver').AsString:=edit6.Text;
         zquery1.FieldByName('fname').AsString :=filename;
-        BlobStream := zquery1.CreateBlobStream(zquery1.FieldByName('ffilestream'), bmWrite);
+        BlobStream := zquery1.CreateBlobStream(
+        zquery1.FieldByName('ffilestream'), bmWrite);
         try
           FileStream := TFileStream.Create(filename, fmOpenRead);
           try
@@ -69,6 +70,7 @@ begin
           BlobStream.Free;
         end;
         zquery1.Post;
+        label7.Visible:=false;
         showmessage('升级文件装入完毕!');
     end;
   end else

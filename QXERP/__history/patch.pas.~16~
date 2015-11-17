@@ -38,28 +38,29 @@ var
   BlobStream: TStream;
   FileStream: TStream;
 begin
-  newfile:='Qxerp.exe';
+  newfile:='pacth.exe';
+  FileStream:=tFileStream.Create(newfile,fmcreate);
   with zquery1 do
   begin
     close;
     sql.Clear;
     sql.Add('select ffilestream from erpupdate_info');
     open;
-    BlobStream:=zquery1.CreateBlobStream(zquery1.FieldByName('ffilestream'), bmRead);
+    BlobStream:=zquery1.CreateBlobStream(zquery1.FieldByName('ffilestream'), bmWrite);
     try
-      FileStream := TFileStream.Create(newfile, fmcreate);
+          FileStream := TFileStream.Create(newfile, fmOpenWrite);
           try
             FileStream.CopyFrom(BlobStream, BlobStream.Size);
           finally
-            BlobStream.Free;
+            FileStream.Free;
           end;
-    finally
-      FileStream.Free;
-    end;
+        finally
+          BlobStream.Free;
+        end;
   end;
   currenttime:=gettickcount div 1000;
   while((gettickcount div 1000) < (currenttime +3)) do;
-  winexec('Qxerp.exe',1);
+  winexec('patch.exe',1);
   application.Terminate;
 end;
 

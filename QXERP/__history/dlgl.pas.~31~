@@ -98,7 +98,6 @@ procedure TForm10.FormActivate(Sender: TObject);
 var
   oldver,newver:string;
 begin
-    oldver:='2015111701'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin
@@ -113,7 +112,6 @@ begin
           strPwd:=cfginifile.ReadString('服务器设置','密码','');
           strPort:=cfginifile.ReadString('服务器设置','端口','');
           strPageCode:=cfginifile.ReadString('服务器设置','编码','');
-          cfginifile.WriteString('服务器设置','版本号',oldver);
           main.Form1.ZConnection1.HostName:=strServerName;
           main.Form1.ZConnection1.Port:=strtoint(strPort);
           main.Form1.ZConnection1.Database:=strDBName;
@@ -133,12 +131,14 @@ begin
                 Open;
                 if (RecordCount >0) and (not Fields.Fields[0].IsNull ) then
                 begin
+                  oldver:='2015111701';
+                  cfginifile.WriteString('服务器设置','版本号',oldver);
                   newver:=Fields.Fields[0].AsString;
                   if trim(newver)>oldver then
                   begin
                     if messagedlg('系统发现新的软件版本，是否升级？',mtconfirmation,[mbok,mbcancel],0)=mrok then
                     begin
-                      winexec('uppatch.exe',1);
+                      winexec('patch.exe',1);
                       application.Terminate;
                     end;
                   end;

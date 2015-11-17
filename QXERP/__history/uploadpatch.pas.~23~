@@ -45,7 +45,7 @@ begin
     zquery1.Active:=false;
     zquery1.SQL.Text:='select * from erpupdate_info';
     zquery1.Open;
-    filename:='Qxerp.exe';
+    filename:='necho.bmp';
     if fileexists(filename)=false then
     begin
       showmessage('对不起，找不到升级文件!');
@@ -69,6 +69,7 @@ begin
           BlobStream.Free;
         end;
         zquery1.Post;
+        label7.Visible:=false;
         showmessage('升级文件装入完毕!');
     end;
   end else

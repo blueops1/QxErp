@@ -113,7 +113,6 @@ begin
           strPwd:=cfginifile.ReadString('服务器设置','密码','');
           strPort:=cfginifile.ReadString('服务器设置','端口','');
           strPageCode:=cfginifile.ReadString('服务器设置','编码','');
-          cfginifile.WriteString('服务器设置','版本号',oldver);
           main.Form1.ZConnection1.HostName:=strServerName;
           main.Form1.ZConnection1.Port:=strtoint(strPort);
           main.Form1.ZConnection1.Database:=strDBName;
@@ -133,6 +132,7 @@ begin
                 Open;
                 if (RecordCount >0) and (not Fields.Fields[0].IsNull ) then
                 begin
+                  cfginifile.WriteString('服务器设置','版本号',oldver);
                   newver:=Fields.Fields[0].AsString;
                   if trim(newver)>oldver then
                   begin

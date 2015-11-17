@@ -34,15 +34,19 @@ implementation
 
 procedure TForm1.Button8Click(Sender: TObject);
 var
-  BlobStream: TStream;
-  FileStream: TStream;
+  memsize:integer;
+  buffer:Pchar;
+  myfile:TFileStream;
+  stream:tadoblobstream;
   filename,cdir:string;
 begin
   IF edit6.Text <>'' then
   begin
     cdir:=extractfilepath(application.ExeName);
-    //setcurrentdir(cdir+'update');
+    setcurrentdir(cdir+'update');
     zquery1.Active:=false;
+    zquery1.SQL.Text:='delete from erpupdate_info';
+    zquery1.ExecSQL;
     zquery1.SQL.Text:='select * from erpupdate_info';
     zquery1.Open;
     filename:='Qxerp.exe';
@@ -52,25 +56,36 @@ begin
     //exit;
     end else
     begin
-      label7.Visible:=true;
-      if zquery1.State <> dsEdit then
-          zquery1.Edit;
-        zquery1.FieldByName('fver').AsString:=edit6.Text;
-        zquery1.FieldByName('fname').AsString :=filename;
-        BlobStream := zquery1.CreateBlobStream(zquery1.FieldByName('ffilestream'), bmWrite);
-        try
-          FileStream := TFileStream.Create(filename, fmOpenRead);
-          try
-            BlobStream.CopyFrom(FileStream, FileStream.Size);
-          finally
-            FileStream.Free;
-          end;
-        finally
-          BlobStream.Free;
-        end;
-        zquery1.Post;
-        showmessage('升级文件装入完毕!');
+    label7.Visible:=true;
+    myfile:=tfilestream.Create(filename,fmopenread);
+    with zquery1 do
+    begin
+      insertrecord([1,1,1,null]);
+      edit;
+      fieldbyname('fver').AsString:=edit6.Text;
+      fieldbyname('fname').AsString :=filename;
+      stream:=tadoblobstream.Create(fieldbyname('ffilestream') as tblobfield,bmwrite);
+      memsize:=myfile.Size;
+      inc(memsize);
+      buffer:=allocmem(memsize);
+      try
+        stream.Seek(0,sofrombeginning);
+        myfile.Read(buffer^,memsize);
+        stream.Write(buffer^,memsize);
+      finally
+        myfile.Free;
+        stream.Free;
+      end;
+      try
+        post;
+      except
+        raise;
+      end;
     end;
+    showmessage('升级文件装入完毕!');
+    self.close;
+    end;
+    label7.Visible:=false;
   end else
     showmessage('请填写最新版本号!');
 end;
@@ -100,7 +115,7 @@ begin
           strUserName:=cfginifile.ReadString('服务器设置','用户','');
           strPwd:=cfginifile.ReadString('服务器设置','密码','');
           strPort:=cfginifile.ReadString('服务器设置','端口','');
-          strPageCode:='GB2312';
+          strPageCode:=cfginifile.ReadString('服务器设置','编码','');
           strVer:=cfginifile.ReadString('服务器设置','版本号','');
           edit7.Text:= strVer;
           ZConnection1.HostName:=strServerName;

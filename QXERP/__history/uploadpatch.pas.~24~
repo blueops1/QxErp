@@ -69,6 +69,7 @@ begin
           BlobStream.Free;
         end;
         zquery1.Post;
+        label7.Visible:=false;
         showmessage('升级文件装入完毕!');
     end;
   end else

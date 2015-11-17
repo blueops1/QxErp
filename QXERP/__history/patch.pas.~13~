@@ -75,11 +75,10 @@ filename:string;
   strServerName:string;
   strUserName:string;
   strPwd:string;
-  isLogined:Boolean;
-  strUserQX:string;
-  strUser:string;
   strPort:string;
   strPageCode:string;
+  strVer:string;
+  strRemoteVer:string;
 begin
     filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
@@ -95,6 +94,7 @@ begin
         strPwd:=cfginifile.ReadString('服务器设置','密码','');
         strPort:=cfginifile.ReadString('服务器设置','端口','');
         strPageCode:=cfginifile.ReadString('服务器设置','编码','');
+        strVer:=cfginifile.ReadString('服务器设置','版本号','');
         ZConnection1.HostName:=strServerName;
         ZConnection1.Port:=strtoint(strPort);
         ZConnection1.Database:=strDBName;
@@ -103,22 +103,33 @@ begin
         ZConnection1.ClientCodepage:=strPageCode;
         ZConnection1.Connect();
         if ZConnection1.Connected then
-        begin
           with zquery1 do
           begin
             close;
             sql.Clear;
-            sql.Add('select fver from erpupdate_info');
+            sql.Add('select max(fver) from erpupdate_info');
             open;
-            label1.Caption:='新的软件版本:'+fields.Fields[0].AsString;
+            if not eof then
+            begin
+            strRemoteVer:=fields.Fields[0].AsString;
+            label1.Caption:='新的软件版本:'+strRemoteVer;
+            end else
+            begin
+                application.MessageBox('未发现任何升级信息！','UPPatch提示');
+                button1.Enabled:=false;
+            end;
+            if (strRemoteVer='') or (strtoint(strVer)>=strtoint(strRemoteVer)) then
+            begin
+              application.MessageBox('未发现任何升级信息！','UPPatch提示');
+              button1.Enabled:=false;
+            end else
+            begin
+                application.MessageBox('无法连接服务器！','UPPatch提示');
+            end;
           end;
-        end else
-        begin
-            application.MessageBox('无法连接服务器！','UPPatch提示');
-        end;
-        Except
-            application.MessageBox('无法连接服务器！','UPPatch提示');
-        end;
+          Except
+              application.MessageBox('无法连接服务器！','UPPatch提示');
+          end;
     end;
 
 end;

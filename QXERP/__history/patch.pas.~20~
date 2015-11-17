@@ -47,15 +47,15 @@ begin
     open;
     BlobStream:=zquery1.CreateBlobStream(zquery1.FieldByName('ffilestream'), bmRead);
     try
-      FileStream := TFileStream.Create(newfile, fmcreate);
+          FileStream := TFileStream.Create(newfile, fmcreate);
           try
             FileStream.CopyFrom(BlobStream, BlobStream.Size);
           finally
             BlobStream.Free;
           end;
-    finally
-      FileStream.Free;
-    end;
+        finally
+          FileStream.Free;
+        end;
   end;
   currenttime:=gettickcount div 1000;
   while((gettickcount div 1000) < (currenttime +3)) do;
