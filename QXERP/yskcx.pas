@@ -249,12 +249,12 @@ begin
       open;
       if not eof then
       begin
-        stringgrid5.Cells[0,y]:=fields[0].AsString;
-        stringgrid5.Cells[1,y]:=fields[1].AsString;
-        stringgrid5.Cells[2,y]:=fields[2].AsString;
-        stringgrid5.Cells[3,y]:=fields[3].AsString;
-        stringgrid5.Cells[4,y]:=fields[4].AsString;
-        stringgrid5.Cells[5,y]:=fields[5].AsString;
+        stringgrid6.Cells[0,y]:=fields[0].AsString;
+        stringgrid6.Cells[1,y]:=fields[1].AsString;
+        stringgrid6.Cells[2,y]:=fields[2].AsString;
+        stringgrid6.Cells[3,y]:=fields[3].AsString;
+        stringgrid6.Cells[4,y]:=fields[4].AsString;
+        stringgrid6.Cells[5,y]:=fields[5].AsString;
       end;
     end;
   Except
