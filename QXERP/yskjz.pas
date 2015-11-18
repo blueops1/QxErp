@@ -87,6 +87,8 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into yskmxz (fyskbh,fxzje,fhsje,fskdate,fmemo) values ('''+edit1.Text+''','+edit2.Text+','+'0'+','''+datetimetostr(datetimepicker1.Date)+''','''+main.strUser+edit4.Text+''')');
+        ExecSQL;
+        sql.Clear;
         if strtofloat(edit2.text)>=0 then
         sql.Add('update yskxx set fdqye=fdqye+'+edit2.Text+',flastdate='''+datetimetostr(datetimepicker1.Date)+''' where fyskbh='+edit1.Text)
         else
@@ -115,6 +117,8 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into yskmxz (fyskbh,fxzje,fhsje,fskdate,fmemo) values ('''+edit3.Text+''','''+'0'+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
+        ExecSQL;
+        sql.Clear;
         if strtofloat(edit5.text)>=0 then
         sql.Add('update yskxx set fdqye=fdqye-'+edit5.Text+',flastdate='''+datetimetostr(datetimepicker2.Date)+''' where fyskbh='+edit3.Text)
         else

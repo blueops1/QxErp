@@ -2,7 +2,7 @@ object from9: Tfrom9
   Left = 0
   Top = 0
   BorderStyle = bsToolWindow
-  Caption = #20179#24211#31649#29702
+  Caption = #25104#21697#31649#29702
   ClientHeight = 704
   ClientWidth = 1089
   Color = clBtnFace
@@ -21,7 +21,7 @@ object from9: Tfrom9
     Top = 0
     Width = 1089
     Height = 704
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -63,14 +63,13 @@ object from9: Tfrom9
         Caption = #22791#27880
       end
       object Label30: TLabel
-        Left = 75
+        Left = 64
         Top = 24
         Width = 72
         Height = 13
         Caption = #36755#20837#26597#35810#21517#31216
         ParentShowHint = False
         ShowHint = True
-        Visible = False
       end
       object Label5: TLabel
         Left = 273
@@ -103,8 +102,8 @@ object from9: Tfrom9
         ParentFont = False
       end
       object Button1: TButton
-        Left = 743
-        Top = 585
+        Left = 759
+        Top = 569
         Width = 75
         Height = 25
         Caption = #30830#23450
@@ -112,8 +111,8 @@ object from9: Tfrom9
         OnClick = Button1Click
       end
       object Button2: TButton
-        Left = 870
-        Top = 585
+        Left = 886
+        Top = 569
         Width = 75
         Height = 25
         Caption = #21462#28040
@@ -144,7 +143,7 @@ object from9: Tfrom9
         TabOrder = 4
       end
       object Edit16: TEdit
-        Left = 162
+        Left = 142
         Top = 21
         Width = 169
         Height = 21
@@ -152,26 +151,24 @@ object from9: Tfrom9
         ParentShowHint = False
         ShowHint = True
         TabOrder = 5
-        Visible = False
         OnChange = Edit16Change
       end
       object StringGrid4: TStringGrid
-        Left = 75
+        Left = 64
         Top = 64
-        Width = 942
+        Width = 953
         Height = 409
         ColCount = 4
         FixedCols = 0
         ParentShowHint = False
         ShowHint = True
         TabOrder = 6
-        Visible = False
         OnSelectCell = StringGrid4SelectCell
         ColWidths = (
-          73
-          74
-          74
-          68)
+          136
+          140
+          153
+          152)
       end
       object Button7: TButton
         Left = 422
@@ -198,8 +195,8 @@ object from9: Tfrom9
       Caption = #25104#21697#20986#24211
       ImageIndex = 1
       object Label8: TLabel
-        Left = 113
-        Top = 120
+        Left = 62
+        Top = 523
         Width = 81
         Height = 13
         Alignment = taRightJustify
@@ -207,11 +204,11 @@ object from9: Tfrom9
         Caption = #20135#21697#32534#21495
       end
       object Label9: TLabel
-        Left = 391
-        Top = 120
-        Width = 57
+        Left = 276
+        Top = 523
+        Width = 36
         Height = 13
-        Caption = '* '#20026#24517#22635#39033
+        Caption = #24517#22635#39033
         Color = clRed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
@@ -222,11 +219,11 @@ object from9: Tfrom9
         ParentFont = False
       end
       object Label10: TLabel
-        Left = 391
-        Top = 176
-        Width = 57
+        Left = 542
+        Top = 523
+        Width = 36
         Height = 13
-        Caption = '* '#20026#24517#22635#39033
+        Caption = #24517#22635#39033
         Color = clRed
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clRed
@@ -237,75 +234,59 @@ object from9: Tfrom9
         ParentFont = False
       end
       object Label11: TLabel
-        Left = 104
-        Top = 176
-        Width = 89
+        Left = 334
+        Top = 523
+        Width = 51
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #20986#24211#25968#37327
       end
       object Label13: TLabel
-        Left = 113
-        Top = 232
-        Width = 81
+        Left = 584
+        Top = 522
+        Width = 55
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #35760#24080#26085#26399
       end
       object Label14: TLabel
-        Left = 113
-        Top = 288
+        Left = 721
+        Top = 520
         Width = 81
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
         Caption = #22791#27880
       end
-      object Label15: TLabel
-        Left = 248
-        Top = 349
-        Width = 57
-        Height = 13
-        Caption = '* '#20026#24517#22635#39033
-        Color = clRed
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clRed
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentColor = False
-        ParentFont = False
-      end
       object Label16: TLabel
-        Left = 481
-        Top = 48
+        Left = 65
+        Top = 24
         Width = 72
         Height = 13
         Caption = #36755#20837#26597#35810#21517#31216
-        Visible = False
       end
       object Edit3: TEdit
-        Left = 208
-        Top = 117
-        Width = 177
+        Left = 149
+        Top = 520
+        Width = 121
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 0
       end
       object Edit5: TEdit
-        Left = 208
-        Top = 173
-        Width = 177
+        Left = 408
+        Top = 520
+        Width = 121
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 1
       end
       object DateTimePicker2: TDateTimePicker
-        Left = 208
-        Top = 227
-        Width = 177
+        Left = 648
+        Top = 520
+        Width = 105
         Height = 21
         Date = 42180.606373275460000000
         Time = 42180.606373275460000000
@@ -313,16 +294,16 @@ object from9: Tfrom9
         TabOrder = 2
       end
       object Edit6: TEdit
-        Left = 208
-        Top = 285
+        Left = 824
+        Top = 517
         Width = 177
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 3
       end
       object Button3: TButton
-        Left = 159
-        Top = 401
+        Left = 775
+        Top = 577
         Width = 75
         Height = 25
         Caption = #30830#23450
@@ -330,46 +311,45 @@ object from9: Tfrom9
         OnClick = Button3Click
       end
       object Button4: TButton
-        Left = 278
-        Top = 401
+        Left = 910
+        Top = 577
         Width = 75
         Height = 25
         Caption = #21462#28040
         TabOrder = 5
       end
       object Button5: TButton
-        Left = 398
-        Top = 401
+        Left = 478
+        Top = 19
         Width = 97
         Height = 25
         Caption = #32534#21495#36741#21161#26597#35810'>>'
         TabOrder = 6
+        Visible = False
         OnClick = Button5Click
       end
       object StringGrid3: TStringGrid
-        Left = 559
-        Top = 72
-        Width = 426
-        Height = 354
+        Left = 65
+        Top = 64
+        Width = 960
+        Height = 409
         ColCount = 4
         FixedCols = 0
         TabOrder = 7
-        Visible = False
         OnSelectCell = StringGrid3SelectCell
         ColWidths = (
-          82
-          72
-          73
-          70)
+          175
+          164
+          183
+          167)
       end
       object Edit7: TEdit
-        Left = 559
-        Top = 45
+        Left = 143
+        Top = 21
         Width = 169
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 8
-        Visible = False
         OnChange = Edit7Change
       end
     end
@@ -386,9 +366,9 @@ object from9: Tfrom9
       end
       object StringGrid1: TStringGrid
         Left = 0
-        Top = 48
-        Width = 1073
-        Height = 254
+        Top = 59
+        Width = 1078
+        Height = 255
         Align = alCustom
         ColCount = 9
         DefaultColWidth = 200
@@ -396,6 +376,16 @@ object from9: Tfrom9
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
         TabOrder = 0
         OnSelectCell = StringGrid1SelectCell
+        ColWidths = (
+          200
+          200
+          200
+          200
+          200
+          200
+          200
+          200
+          200)
       end
       object Edit9: TEdit
         Left = 116
@@ -423,12 +413,35 @@ object from9: Tfrom9
         ColCount = 7
         TabOrder = 3
       end
+      object Button8: TButton
+        Left = 688
+        Top = 17
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 4
+        OnClick = Button8Click
+      end
+      object RadioGroup1: TRadioGroup
+        Left = 816
+        Top = 1
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 5
+      end
     end
   end
-  object ADOQuery1: TADOQuery
-    Connection = Form1.ADOConnection1
-    Parameters = <>
-    Left = 840
-    Top = 40
+  object ZQuery1: TZQuery
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 576
+    Top = 232
   end
 end

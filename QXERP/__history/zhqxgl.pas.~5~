@@ -184,14 +184,12 @@ begin
       with ZQuery1 do
       begin
         close;
+        sql.Clear;
         if checkbox8.Checked then
         begin
-          sql.Clear;
           sql.Add('update user_info set fpwd = '''+edit3.Text+''' where fuser = '''+edit1.text+'''');
-          ExecSql;
         end;
-        sql.Clear;
-        sql.Add('update user_info set fqx = '''+strQx+''' where fuser = '''+edit1.text+'''');
+          sql.Add('update user_info set fqx = '''+strQx+''' where fuser = '''+edit1.text+'''');
         ExecSQL;
         checkbox1.Checked:=false;
         checkbox2.Checked:=false;

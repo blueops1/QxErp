@@ -95,8 +95,6 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into bcpcrkmxz (fbcpbh,frksl,fjzdate,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+datetimetostr(datetimepicker1.Date)+''','''+main.strUser+edit4.Text+''')');
-        ExecSQL;
-        sql.Clear;
         if strtoint(edit2.text)>=0 then
         sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+edit2.Text+' where fbcpbh='+edit1.Text)
         else
@@ -124,14 +122,13 @@ begin
       begin
         close;
         sql.Clear;
-        ExecSQL;
         sql.Add('insert into bcpcrkmxz (fbcpbh,fCksl,fjzdate,fmemo) values ('''+edit3.Text+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
-        sql.Clear;
         if strtoint(edit5.text)>=0 then
         sql.Add('update bcpkcb set fbcpkcs=fbcpkcs-'+edit5.Text+' where fbcpbh='+edit3.Text)
         else
         sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fbcpbh='+edit3.Text);
         ExecSQL;
+
         edit3.Text := '';
         edit5.Text := '';
         Application.MessageBox('半成品出库成功！','半成品管理提示');

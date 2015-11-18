@@ -123,8 +123,6 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into ht_info (fhtbh,fkhbh,fhtdate,fxsybh,fhtzje,flxr,flxrdh,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+edit4.Text+''','''+edit10.Text+''','''+edit11.Text+''','''+edit12.Text+''','''+edit13.Text+''','''+main.strUser+edit14.Text+''')');
-        ExecSQL;
-        sql.Clear;
         sql.Add('insert into yskxx (fyskbh,fhtbh,fkhid,fzgdwbh,fyskzje,fdqye,flastdate,fxsyid,fmemo) values ('''+edit1.Text+''','''+edit1.Text+''','''+edit2.Text+''','''+edit3.Text+''','''+'0'+''','''+'0'+''','''+edit4.Text+''','''+edit10.Text+''','''+main.strUser+edit14.Text+''')');
         ExecSQL;
         edit5.Text := edit1.Text;

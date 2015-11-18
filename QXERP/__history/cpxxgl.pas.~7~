@@ -84,8 +84,8 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into cplxk (fcpbh,fcpmc,fcpdw,fcpzl,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+combobox2.Text+''','''+combobox1.Text+''','''+main.strUser+edit10.Text+''')');
-        ExecSQL;
         sql.Clear;
+        ExecSQL;
         sql.Add('insert into cpkcb (fcpbh,fcpkcs) values ('''+edit1.Text+''','''+'0'+''')');
         ExecSQL;
         Application.MessageBox('新增记录成功！','产品信息管理提示');
@@ -95,7 +95,7 @@ begin
         edit10.Text := '';
       close;
       sql.Clear;
-      sql.Add('select max(cast(fcpbh as unsigned))+1 from cpkcb');
+      sql.Add('select top 1 fcpbh+1 from cplxk order by CONVERT(int,fcpbh) desc');
       open;
       if not eof then
         edit1.Text := fields[0].AsString;

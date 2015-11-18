@@ -160,6 +160,8 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into bcplxk_info (fbcpbh,fbcpgg,fbcplxmc,fsscpbh,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+combobox2.Text+''','''+edit7.Text+''','''+main.strUser+edit10.Text+''')');
+        ExecSQL;
+        sql.Clear;
         sql.Add('insert into bcpkcb (fbcpbh,fbcpkcs) values ('''+edit1.Text+''','''+'0'+''')');
         ExecSQL;
         edit1.Text := '';

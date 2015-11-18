@@ -241,6 +241,10 @@ object Form11: TForm11
     object TabSheet3: TTabSheet
       Caption = #21322#25104#21697#24211#23384#26597#35810
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label12: TLabel
         Left = 45
         Top = 24
@@ -292,6 +296,10 @@ object Form11: TForm11
     object TabSheet4: TTabSheet
       Caption = #26032#22686#21322#25104#21697#31181#31867
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label10: TLabel
         Left = 192
         Top = 128
@@ -405,6 +413,10 @@ object Form11: TForm11
       Caption = #21322#25104#21697#31181#31867#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label5: TLabel
         Left = 432
         Top = 78

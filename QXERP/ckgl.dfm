@@ -2,7 +2,7 @@ object from9: Tfrom9
   Left = 0
   Top = 0
   BorderStyle = bsToolWindow
-  Caption = #20179#24211#31649#29702
+  Caption = #25104#21697#31649#29702
   ClientHeight = 704
   ClientWidth = 1089
   Color = clBtnFace

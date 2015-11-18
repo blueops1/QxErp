@@ -95,6 +95,8 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into cpcrkmxz (fcpbh,frksl,fjzdate,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+datetimetostr(datetimepicker1.Date)+''','''+main.strUser+edit4.Text+''')');
+        ExecSQL;
+        sql.Clear;
         if strtoint(edit2.text)>=0 then
         sql.Add('update cpkcb set fcpkcs=fcpkcs+'+edit2.Text+' where fcpbh='+edit1.Text)
         else
@@ -113,9 +115,10 @@ begin
 end;
 
 procedure Tfrom9.Button3Click(Sender: TObject);
-var strBcpbh: Array Of String ;
-var x:integer;
-begin
+var
+  strBcpbh: Array Of String ;
+  x:integer;
+  sqltext:string;
 begin
   if (edit3.Text <> '') and (edit5.Text <> '')then
   begin
@@ -125,19 +128,21 @@ begin
         close;
         sql.Clear;
         sql.Add('insert into cpcrkmxz (fcpbh,fCksl,fjzdate,fmemo) values ('''+edit3.Text+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
+        ExecSQL;
+        sql.Clear;
         if strtoint(edit5.text)>=0 then
-        sql.Add('update cpkcb set fcpkcs=fcpkcs-'+edit5.Text+' where fcpbh='+edit3.Text)
+          sql.Add('update cpkcb set fcpkcs=fcpkcs-'+edit5.Text+' where fcpbh='+edit3.Text)
         else
-        sql.Add('update cpkcb set fcpkcs=fcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fcpbh='+edit3.Text);
+          sql.Add('update cpkcb set fcpkcs=fcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fcpbh='+edit3.Text);
+          sqltext:=sql.Text;
         ExecSQL;
         sql.Clear;
         sql.Add('select fbcpbh from bcplxk_info where fsscpbh='''+edit3.Text+'''');
         open;
         if not eof then
         begin
-        x:=0;
-        setLength(strBcpbh,RecordCount);
-
+          x:=0;
+          setLength(strBcpbh,RecordCount);
           while not eof do
           begin
             strBcpbh[x]:=fields[0].AsString;
@@ -149,25 +154,27 @@ begin
           while x<length(strBcpbh) do
           begin
             sql.Add('insert into bcpcrkmxz (fbcpbh,fCksl,fjzdate,fmemo) values ('''+StrBcpbh[x]+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
+            ExecSQL;
+            sql.Clear;
             if strtoint(edit5.text)>=0 then
-            sql.Add('update bcpkcb set fbcpkcs=fbcpkcs-'+edit5.Text+' where fbcpbh='+StrBcpbh[x])
+              sql.Add('update bcpkcb set fbcpkcs=fbcpkcs-'+edit5.Text+' where fbcpbh='+StrBcpbh[x])
             else
-            sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fbcpbh='+StrBcpbh[x]);
+              sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fbcpbh='+StrBcpbh[x]);
             x := x + 1;
+            ExecSQL;
           end;
-          ExecSQL;
+
         end;
         edit3.Text := '';
         edit5.Text := '';
         Application.MessageBox('成品出库成功！','仓库管理提示');
-        //PageControl1.ActivePageIndex:=1;
+          //PageControl1.ActivePageIndex:=1;
       end;
     Except
       Application.MessageBox('成品出库失败！','仓库管理提示');
     end;
   end else
     Application.MessageBox('请将必填项目填写完整！','仓库管理提示');
-end;
 end;
 
 procedure Tfrom9.Button5Click(Sender: TObject);
