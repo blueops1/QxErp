@@ -39,6 +39,9 @@ type
     Button7: TButton;
     Button8: TButton;
     Button9: TButton;
+    TabSheet6: TTabSheet;
+    StringGrid5: TStringGrid;
+    Memo6: TMemo;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -62,6 +65,7 @@ type
     procedure Button7Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure TabSheet6Show(Sender: TObject);
   private
     { Private declarations }
   public
@@ -139,10 +143,7 @@ begin
 end;
 
 procedure TForm18.Button3Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -159,10 +160,7 @@ begin
 end;
 
 procedure TForm18.Button4Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -196,10 +194,7 @@ begin
 end;
 
 procedure TForm18.Button6Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -217,10 +212,7 @@ end;
 
 
 procedure TForm18.Button7Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -237,10 +229,7 @@ begin
 end;
 
 procedure TForm18.Button8Click(Sender: TObject);
-var
-y:integer;
 begin
-  y:=1;
   try
     with zquery1 do
     begin
@@ -543,6 +532,39 @@ begin
           stringgrid4.Cells[1,y]:=fields[1].AsString;
           stringgrid4.Cells[2,y]:=fields[2].AsString;
           stringgrid4.Cells[3,y]:=fields[3].AsString;
+          y := y +1;
+          next;
+        end;
+      except
+          application.MessageBox('信息列表读取失败!','消息处理提示');
+      end;
+    end;
+end;
+
+procedure TForm18.TabSheet6Show(Sender: TObject);
+var
+y:integer;
+begin
+    y:=1;
+    stringgrid3.Cells[0,0]:='编号';
+    stringgrid3.Cells[1,0]:='发送人';
+    stringgrid3.Cells[2,0]:='发送时间';
+    stringgrid3.Cells[3,0]:='已读';
+    stringgrid3.Cells[4,0]:='标题';
+    with zquery1 do
+    begin
+      try
+        close;
+        sql.Clear;
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y'' and fisdel=''N''');
+        open;
+        stringgrid3.RowCount:=RecordCount+1;
+        while not eof do
+        begin
+          stringgrid3.Cells[0,y]:=fields[0].AsString;
+          stringgrid3.Cells[1,y]:=fields[1].AsString;
+          stringgrid3.Cells[2,y]:=fields[2].AsString;
+          stringgrid3.Cells[3,y]:=fields[3].AsString;
           y := y +1;
           next;
         end;

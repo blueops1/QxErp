@@ -39,6 +39,9 @@ type
     Button7: TButton;
     Button8: TButton;
     Button9: TButton;
+    TabSheet6: TTabSheet;
+    StringGrid5: TStringGrid;
+    Memo6: TMemo;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -62,6 +65,9 @@ type
     procedure Button7Click(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure TabSheet6Show(Sender: TObject);
+    procedure StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -74,10 +80,12 @@ var
   strFavMessid:string;
   strOldMessid:string;
   strDelMessid:string;
+  strMyMessid:string;
   selectRow:integer;
   selectFavRow:integer;
   selectOldRow:integer;
   selectDelRow:integer;
+  selectMyRow:integer;
   //function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
@@ -408,6 +416,37 @@ begin
   end;
 end;
 
+procedure TForm18.StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  selectMyRow:=ARow;
+  strMyMessid:=stringgrid5.Cells[0,ARow];
+  if strMyMessid<>'' then
+  begin
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('select fsendid,fsenddate,fmessagetitle,fcontent from message_online where fid='''+stringgrid5.Cells[0,ARow]+'''');
+        open;
+        if not eof then
+        begin
+          memo6.Lines.Clear;
+          memo6.Lines.Add('标题：'+fields[2].asstring);
+          memo6.Lines.Add('内容：'+fields[3].asstring);
+          memo6.Lines.Add('');
+          memo6.Lines.Add('');
+          memo6.Lines.Add('');
+          memo6.Lines.Add('来自：'+fields[0].asstring+'，于'+fields[1].asstring);
+        end;
+      end;
+    except
+      application.MessageBox('信息读取失败!','消息处理提示');
+    end;
+  end;
+end;
+
 procedure TForm18.TabSheet2Show(Sender: TObject);
 var
 y:integer;
@@ -528,6 +567,40 @@ begin
           stringgrid4.Cells[1,y]:=fields[1].AsString;
           stringgrid4.Cells[2,y]:=fields[2].AsString;
           stringgrid4.Cells[3,y]:=fields[3].AsString;
+          y := y +1;
+          next;
+        end;
+      except
+          application.MessageBox('信息列表读取失败!','消息处理提示');
+      end;
+    end;
+end;
+
+procedure TForm18.TabSheet6Show(Sender: TObject);
+var
+y:integer;
+begin
+    y:=1;
+    stringgrid5.Cells[0,0]:='编号';
+    stringgrid5.Cells[1,0]:='接收人';
+    stringgrid5.Cells[2,0]:='发送时间';
+    stringgrid5.Cells[3,0]:='已读';
+    stringgrid5.Cells[4,0]:='标题';
+    with zquery1 do
+    begin
+      try
+        close;
+        sql.Clear;
+        sql.Add('select fid,freciid,fsenddate,fisread,fmessagetitle from message_online where fsendid='''+main.strUser+'''');
+        open;
+        stringgrid5.RowCount:=RecordCount+1;
+        while not eof do
+        begin
+          stringgrid5.Cells[0,y]:=fields[0].AsString;
+          stringgrid5.Cells[1,y]:=fields[1].AsString;
+          stringgrid5.Cells[2,y]:=fields[2].AsString;
+          stringgrid5.Cells[3,y]:=fields[3].AsString;
+          stringgrid5.Cells[4,y]:=fields[4].AsString;
           y := y +1;
           next;
         end;

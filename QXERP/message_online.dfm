@@ -27,10 +27,6 @@ object Form18: TForm18
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = #28040#24687#21457#36865
-      ExplicitLeft = 8
-      ExplicitTop = 28
-      ExplicitWidth = 1001
-      ExplicitHeight = 432
       object Label1: TLabel
         Left = 52
         Top = 27
@@ -88,10 +84,6 @@ object Form18: TForm18
       Caption = #28040#24687#22788#29702
       ImageIndex = 1
       OnShow = TabSheet2Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object Memo1: TMemo
         Left = 0
         Top = 163
@@ -111,7 +103,6 @@ object Form18: TForm18
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
         TabOrder = 1
         OnSelectCell = StringGrid1SelectCell
-        ExplicitWidth = 1001
         ColWidths = (
           64
           130
@@ -150,10 +141,6 @@ object Form18: TForm18
       Caption = #25910#34255#30340#20449#24687
       ImageIndex = 2
       OnShow = TabSheet3Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object StringGrid2: TStringGrid
         Left = 0
         Top = 0
@@ -164,7 +151,6 @@ object Form18: TForm18
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
         TabOrder = 0
         OnSelectCell = StringGrid2SelectCell
-        ExplicitWidth = 1001
         ColWidths = (
           64
           130
@@ -194,10 +180,6 @@ object Form18: TForm18
       Caption = #26087#30340#20449#24687
       ImageIndex = 3
       OnShow = TabSheet4Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object StringGrid3: TStringGrid
         Left = 0
         Top = 0
@@ -208,7 +190,6 @@ object Form18: TForm18
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
         TabOrder = 0
         OnSelectCell = StringGrid3SelectCell
-        ExplicitWidth = 1001
         ColWidths = (
           64
           130
@@ -247,10 +228,6 @@ object Form18: TForm18
       Caption = #22238#25910#31665
       ImageIndex = 4
       OnShow = TabSheet5Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object StringGrid4: TStringGrid
         Left = 0
         Top = 0
@@ -261,7 +238,6 @@ object Form18: TForm18
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
         TabOrder = 0
         OnSelectCell = StringGrid4SelectCell
-        ExplicitWidth = 1001
         ColWidths = (
           64
           130
@@ -294,6 +270,36 @@ object Form18: TForm18
         Caption = #24443#24213#20840#37096#21024#38500
         TabOrder = 3
         OnClick = Button9Click
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = #21457#36865#30340#20449#24687
+      ImageIndex = 5
+      OnShow = TabSheet6Show
+      object StringGrid5: TStringGrid
+        Left = 0
+        Top = 0
+        Width = 972
+        Height = 157
+        Align = alTop
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+        TabOrder = 0
+        OnSelectCell = StringGrid5SelectCell
+        ColWidths = (
+          64
+          130
+          141
+          60
+          562)
+      end
+      object Memo6: TMemo
+        Left = 0
+        Top = 163
+        Width = 961
+        Height = 246
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 1
       end
     end
   end
