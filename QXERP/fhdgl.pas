@@ -277,7 +277,6 @@ var
 begin
   if key=13 then
   begin
-
     try
       with zquery1 do
       begin

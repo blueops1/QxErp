@@ -1,0 +1,68 @@
+unit fhdcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, StdCtrls, ExtCtrls, DB, ZAbstractRODataset, ZAbstractDataset,
+  ZDataset, ZStoredProcedure;
+
+type
+  TForm20 = class(TForm)
+    Edit1: TEdit;
+    RadioGroup1: TRadioGroup;
+    Label1: TLabel;
+    StringGrid1: TStringGrid;
+    ZQuery1: TZQuery;
+    ZStoredProc1: TZStoredProc;
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form20: TForm20;
+
+implementation
+
+{$R *.dfm}
+
+uses main;
+
+procedure TForm20.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  i:integer;
+begin
+  if key=13 then
+  begin
+    i:=1;
+    try
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_fhd_info';
+      zstoredproc1.ParamByName('xsyid').Value:=14;
+      open;
+      stringgrid1.RowCount:=zstoredproc1.RecordCount+1;
+      while not eof do
+      begin
+        stringgrid1.Cells[0,i]:=Fields[0].AsString;
+        stringgrid1.Cells[1,i]:=fields[1].AsString;
+        stringgrid1.Cells[2,i]:=fields[2].AsString;
+        stringgrid1.Cells[3,i]:=fields[3].AsString;
+        stringgrid1.Cells[4,i]:=fields[4].AsString;
+        stringgrid1.Cells[5,i]:=fields[5].AsString;
+        i:=i+1;
+        next
+      end;
+    end;
+    except
+      application.MessageBox('aaa','aaa');
+    end;
+  end;
+end;
+
+end.

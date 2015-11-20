@@ -42,7 +42,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet1
+    ActivePage = TabSheet8
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -52,6 +52,27 @@ object Form1: TForm1
     MultiLine = True
     ParentFont = False
     TabOrder = 1
+    object TabSheet7: TTabSheet
+      Caption = 'OA'#21150#20844
+      ImageIndex = 6
+      object Button19: TButton
+        Left = 160
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #25991#20214#31649#29702
+        TabOrder = 0
+      end
+      object Button20: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #22312#32447#28040#24687
+        TabOrder = 1
+        OnClick = Button20Click
+      end
+    end
     object TabSheet1: TTabSheet
       Caption = #38144#21806#31649#29702
       Font.Charset = DEFAULT_CHARSET
@@ -142,12 +163,12 @@ object Form1: TForm1
         Top = 104
         Width = 97
         Height = 65
-        Caption = #21457#36135#21333#31649#29702
+        Caption = #26032#22686#21457#36135#21333
         TabOrder = 0
         OnClick = Button21Click
       end
       object Button22: TButton
-        Left = 296
+        Left = 432
         Top = 104
         Width = 97
         Height = 65
@@ -155,12 +176,21 @@ object Form1: TForm1
         TabOrder = 1
       end
       object Button23: TButton
-        Left = 432
+        Left = 568
         Top = 104
         Width = 97
         Height = 65
         Caption = #25215#36816#20154#31649#29702
         TabOrder = 2
+      end
+      object Button24: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21457#36135#21333#25171#21360
+        TabOrder = 3
+        OnClick = Button24Click
       end
     end
     object TabSheet3: TTabSheet
@@ -278,27 +308,6 @@ object Form1: TForm1
         OnClick = Button12Click
       end
     end
-    object TabSheet7: TTabSheet
-      Caption = 'OA'#21150#20844
-      ImageIndex = 6
-      object Button19: TButton
-        Left = 160
-        Top = 104
-        Width = 97
-        Height = 65
-        Caption = #25991#20214#31649#29702
-        TabOrder = 0
-      end
-      object Button20: TButton
-        Left = 296
-        Top = 104
-        Width = 97
-        Height = 65
-        Caption = #22312#32447#28040#24687
-        TabOrder = 1
-        OnClick = Button20Click
-      end
-    end
   end
   object Panel1: TPanel
     Left = 892
@@ -321,7 +330,7 @@ object Form1: TForm1
     Left = 112
     Top = 448
     object N1: TMenuItem
-      Caption = '&S'#31995#32479
+      Caption = #31995#32479'(&S)'
       object N4: TMenuItem
         Caption = #23494#30721#20462#25913
         OnClick = N4Click
@@ -338,7 +347,7 @@ object Form1: TForm1
       end
     end
     object N2: TMenuItem
-      Caption = '&A'#20851#20110
+      Caption = #20851#20110'(&A)'
       object N3: TMenuItem
         Caption = #20851#20110#26412#36719#20214
         OnClick = N3Click

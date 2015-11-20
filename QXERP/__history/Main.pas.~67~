@@ -52,6 +52,11 @@ type
     ZQuery1: TZQuery;
     Panel1: TPanel;
     Label1: TLabel;
+    TabSheet8: TTabSheet;
+    Button21: TButton;
+    Button22: TButton;
+    Button23: TButton;
+    Button24: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -77,6 +82,8 @@ type
     procedure Label1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure Label1MouseLeave(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+    procedure Button21Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,8 +103,10 @@ var
   filename:string;
   strPort:string;
   strPageCode:string;
+  intMessage:integer;
+  boolMesscandle:boolean;
 implementation
-uses dbconnecter,xsygl,zgdwgl,khgl,htgl,cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,scjh,message_online;
+uses dbconnecter,xsygl,zgdwgl,khgl,htgl,cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,scjh,message_online,fhdgl;
 
 {$R *.dfm}
 
@@ -160,7 +169,13 @@ end;
 
 procedure TForm1.Button20Click(Sender: TObject);
 begin
+  boolmesscandle:=false;
   message_online.Form18.Show;
+end;
+
+procedure TForm1.Button21Click(Sender: TObject);
+begin
+  fhdgl.Form19.Show;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -245,6 +260,35 @@ begin
     begin
     main.Form1.Close;
     end;
+    boolmesscandle:=false;
+    if zconnection1.Connected then
+    begin
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('select count(*) from message_online where freciid='''+strUser+''' and fisread=''N'' and fisdel=''N''');
+        open;
+        intMessage:=fields[0].AsInteger;
+        if intMessage>0 then
+        begin
+        label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+        panel1.Visible:=true;
+        end else
+        panel1.Visible:=false;
+      end;
+    except
+      application.MessageBox('查询数据失败！','在线消息提示');
+    end;
+    end;
+end;
+
+procedure TForm1.Label1Click(Sender: TObject);
+begin
+  boolmesscandle:=true;
+  panel1.Visible:=false;
+  form18.Show;
 end;
 
 procedure TForm1.Label1MouseLeave(Sender: TObject);
@@ -283,9 +327,10 @@ try
     sql.Clear;
     sql.Add('select count(*) from message_online where freciid='''+strUser+''' and fisread=''N'' and fisdel=''N''');
     open;
-    if fields[0].AsInteger>0 then
+    intMessage:=fields[0].AsInteger;
+    if intMessage>0 then
     begin
-    label1.Caption:='您有'+inttostr(fields[0].AsInteger)+'条新的消息';
+    label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
     panel1.Visible:=true;
     end else
     panel1.Visible:=false;

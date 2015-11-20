@@ -89,7 +89,7 @@ object Form19: TForm19
   object Label16: TLabel
     Left = 288
     Top = 502
-    Width = 97
+    Width = 84
     Height = 13
     Caption = #32511#33394#26159#24517#22635#36873#39033
     Color = clBtnFace
@@ -141,7 +141,7 @@ object Form19: TForm19
     Left = 45
     Top = 33
     Width = 60
-    Height = 18
+    Height = 13
     Caption = #21457#36135#21333#32534#21495
     Color = clWindowText
     ParentColor = False
@@ -168,7 +168,7 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 2
+    TabOrder = 11
   end
   object StringGrid1: TStringGrid
     Left = 32
@@ -177,7 +177,7 @@ object Form19: TForm19
     Height = 193
     ColCount = 6
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
-    TabOrder = 3
+    TabOrder = 9
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       64
@@ -201,7 +201,7 @@ object Form19: TForm19
     ColCount = 7
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing]
-    TabOrder = 4
+    TabOrder = 10
     OnSelectCell = StringGrid2SelectCell
     OnSetEditText = StringGrid2SetEditText
     ColWidths = (
@@ -222,7 +222,7 @@ object Form19: TForm19
     Width = 35
     Height = 25
     Caption = '>'
-    TabOrder = 5
+    TabOrder = 17
     OnClick = Button1Click
   end
   object Button3: TButton
@@ -231,7 +231,7 @@ object Form19: TForm19
     Width = 35
     Height = 25
     Caption = '<'
-    TabOrder = 6
+    TabOrder = 19
     OnClick = Button3Click
   end
   object Edit4: TEdit
@@ -241,14 +241,14 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 7
+    TabOrder = 12
   end
   object Edit5: TEdit
     Left = 368
     Top = 71
     Width = 673
     Height = 21
-    TabOrder = 8
+    TabOrder = 2
   end
   object Edit6: TEdit
     Left = 952
@@ -257,7 +257,7 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 9
+    TabOrder = 13
   end
   object ComboBox1: TComboBox
     Left = 368
@@ -265,7 +265,7 @@ object Form19: TForm19
     Width = 481
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 10
+    TabOrder = 3
     OnDropDown = ComboBox1DropDown
     OnSelect = ComboBox1Select
   end
@@ -276,14 +276,14 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 11
+    TabOrder = 14
   end
   object Edit8: TEdit
     Left = 120
     Top = 376
     Width = 137
     Height = 21
-    TabOrder = 12
+    TabOrder = 4
   end
   object Edit9: TEdit
     Left = 368
@@ -292,7 +292,7 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 13
+    TabOrder = 15
   end
   object Edit10: TEdit
     Left = 579
@@ -300,7 +300,7 @@ object Form19: TForm19
     Width = 94
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 14
+    TabOrder = 7
     OnChange = Edit10Change
     OnKeyPress = Edit10KeyPress
   end
@@ -309,7 +309,7 @@ object Form19: TForm19
     Top = 416
     Width = 153
     Height = 21
-    TabOrder = 15
+    TabOrder = 6
   end
   object Edit12: TEdit
     Left = 120
@@ -317,14 +317,14 @@ object Form19: TForm19
     Width = 137
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 16
+    TabOrder = 5
   end
   object Edit13: TEdit
     Left = 120
     Top = 456
     Width = 921
     Height = 21
-    TabOrder = 17
+    TabOrder = 8
   end
   object Button2: TButton
     Left = 918
@@ -341,7 +341,7 @@ object Form19: TForm19
     Width = 313
     Height = 21
     ReadOnly = True
-    TabOrder = 19
+    TabOrder = 16
   end
   object Edit1: TEdit
     Left = 120

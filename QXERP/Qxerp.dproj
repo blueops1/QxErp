@@ -106,6 +106,9 @@
 			<DCCReference Include="fhdgl.pas">
 				<Form>Form19</Form>
 			</DCCReference>
+			<DCCReference Include="fhdcx.pas">
+				<Form>Form20</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
