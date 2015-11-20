@@ -134,7 +134,6 @@ begin
           sql.Add('update cpkcb set fcpkcs=fcpkcs-'+edit5.Text+' where fcpbh='+edit3.Text)
         else
           sql.Add('update cpkcb set fcpkcs=fcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fcpbh='+edit3.Text);
-          sqltext:=sql.Text;
         ExecSQL;
         sql.Clear;
         sql.Add('select fbcpbh from bcplxk_info where fsscpbh='''+edit3.Text+'''');
@@ -150,10 +149,12 @@ begin
             next;
           end;
           x := 0;
-          sql.Clear;
+
           while x<length(strBcpbh) do
           begin
+            sql.Clear;
             sql.Add('insert into bcpcrkmxz (fbcpbh,fCksl,fjzdate,fmemo) values ('''+StrBcpbh[x]+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
+            //sqltext:=sql.Text;
             ExecSQL;
             sql.Clear;
             if strtoint(edit5.text)>=0 then

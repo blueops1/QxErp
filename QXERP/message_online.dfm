@@ -14,6 +14,7 @@ object Form18: TForm18
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -22,7 +23,7 @@ object Form18: TForm18
     Top = 0
     Width = 980
     Height = 470
-    ActivePage = TabSheet1
+    ActivePage = TabSheet5
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet

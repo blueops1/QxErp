@@ -42,7 +42,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet7
+    ActivePage = TabSheet1
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -76,10 +76,10 @@ object Form1: TForm1
         Height = 65
         Caption = #20027#31649#21333#20301#31649#29702
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlue
+        Font.Color = clWindowText
         Font.Height = -11
         Font.Name = 'Tahoma'
-        Font.Style = [fsUnderline]
+        Font.Style = []
         ParentFont = False
         TabOrder = 1
         OnClick = Button2Click
@@ -259,7 +259,6 @@ object Form1: TForm1
         Height = 65
         Caption = #25991#20214#31649#29702
         TabOrder = 0
-        OnClick = Button4Click
       end
       object Button20: TButton
         Left = 296
@@ -274,15 +273,19 @@ object Form1: TForm1
   end
   object Panel1: TPanel
     Left = 892
-    Top = 24
+    Top = 635
     Width = 185
     Height = 97
     TabOrder = 2
+    Visible = False
     object Label1: TLabel
       Left = 24
       Top = 40
       Width = 3
       Height = 13
+      OnClick = Label1Click
+      OnMouseMove = Label1MouseMove
+      OnMouseLeave = Label1MouseLeave
     end
   end
   object MainMenu1: TMainMenu
@@ -321,7 +324,7 @@ object Form1: TForm1
     Top = 344
   end
   object Timer1: TTimer
-    Interval = 10000
+    Interval = 600000
     OnTimer = Timer1Timer
     Left = 560
     Top = 480

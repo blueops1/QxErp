@@ -74,6 +74,10 @@ type
     procedure FormResize(Sender: TObject);
     procedure Button20Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure Label1MouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure Label1MouseLeave(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -93,6 +97,8 @@ var
   filename:string;
   strPort:string;
   strPageCode:string;
+  intMessage:integer;
+  boolMesscandle:boolean;
 implementation
 uses dbconnecter,xsygl,zgdwgl,khgl,htgl,cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,scjh,message_online;
 
@@ -157,6 +163,7 @@ end;
 
 procedure TForm1.Button20Click(Sender: TObject);
 begin
+  boolmesscandle:=false;
   message_online.Form18.Show;
 end;
 
@@ -228,8 +235,8 @@ begin
       //label1.Caption:=inttostr(form1.Width)+inttostr(form1.Height);
       end else
       begin
-      panel1.Left:=form1.ClientWidth-panel1.Width-15;
-      panel1.Top:=form1.ClientHeight-panel1.Height-50;
+      panel1.Left:=form1.ClientWidth-panel1.Width-10;
+      panel1.Top:=form1.ClientHeight-statusbar1.Height-panel1.Height-10;
       //label1.Caption:=inttostr(form1.Width)+inttostr(form1.Height);
       end;
   //    panel1.Repaint;
@@ -242,6 +249,28 @@ begin
     begin
     main.Form1.Close;
     end;
+    boolmesscandle:=false;
+end;
+
+procedure TForm1.Label1Click(Sender: TObject);
+begin
+  boolmesscandle:=true;
+  form18.Show;
+end;
+
+procedure TForm1.Label1MouseLeave(Sender: TObject);
+begin
+   Label1.Font.Color:=clWindowText;       //恢复Label1的字体颜色
+   Label1.Font.Style:=[];                //恢复Label1的字体（去掉下划线）
+   Label1.Cursor:=crDefault;
+end;
+
+procedure TForm1.Label1MouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+  Label1.Font.Color:=clBlue;                //设置Label1的字体颜色为蓝色
+  Label1.Font.Style:=[fsUnderline];        //设置Label1的字体带下划线
+  Label1.Cursor:=crHandpoint;
 end;
 
 procedure TForm1.N3Click(Sender: TObject);
@@ -265,8 +294,13 @@ try
     sql.Clear;
     sql.Add('select count(*) from message_online where freciid='''+strUser+''' and fisread=''N'' and fisdel=''N''');
     open;
-    label1.Caption:='您有'+inttostr(fields[0].AsInteger)+'条新的消息';
+    intMessage:=fields[0].AsInteger;
+    if intMessage>0 then
+    begin
+    label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
     panel1.Visible:=true;
+    end else
+    panel1.Visible:=false;
   end;
 except
   application.MessageBox('查询数据失败！','在线消息提示');

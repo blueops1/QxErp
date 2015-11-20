@@ -4,13 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ADODB, StdCtrls, Grids, ComCtrls;
+  Dialogs, DB, ADODB, StdCtrls, Grids, ComCtrls, ExtCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset;
 
 type
   Tfrom9 = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    Label7: TLabel;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -31,7 +31,6 @@ type
     Edit9: TEdit;
     Button6: TButton;
     StringGrid2: TStringGrid;
-    ADOQuery1: TADOQuery;
     DateTimePicker1: TDateTimePicker;
     Label5: TLabel;
     Label6: TLabel;
@@ -45,13 +44,15 @@ type
     DateTimePicker2: TDateTimePicker;
     Label14: TLabel;
     Edit6: TEdit;
-    Label15: TLabel;
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
     StringGrid3: TStringGrid;
     Edit7: TEdit;
     Label16: TLabel;
+    Button8: TButton;
+    RadioGroup1: TRadioGroup;
+    ZQuery1: TZQuery;
     procedure Edit16Change(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -65,6 +66,8 @@ type
     procedure Button6Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure FormActivate(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,6 +76,7 @@ type
 
 var
   from9: Tfrom9;
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
 
@@ -86,11 +90,13 @@ begin
   if (edit1.Text <> '') and (edit2.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
         sql.Add('insert into cpcrkmxz (fcpbh,frksl,fjzdate,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+datetimetostr(datetimepicker1.Date)+''','''+main.strUser+edit4.Text+''')');
+        ExecSQL;
+        sql.Clear;
         if strtoint(edit2.text)>=0 then
         sql.Add('update cpkcb set fcpkcs=fcpkcs+'+edit2.Text+' where fcpbh='+edit1.Text)
         else
@@ -109,31 +115,34 @@ begin
 end;
 
 procedure Tfrom9.Button3Click(Sender: TObject);
-var strBcpbh: Array Of String ;
-var x:integer;
-begin
+var
+  strBcpbh: Array Of String ;
+  x:integer;
+  sqltext:string;
 begin
   if (edit3.Text <> '') and (edit5.Text <> '')then
   begin
     try
-      with ADOQuery1 do
+      with ZQuery1 do
       begin
         close;
         sql.Clear;
         sql.Add('insert into cpcrkmxz (fcpbh,fCksl,fjzdate,fmemo) values ('''+edit3.Text+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
+        ExecSQL;
+        sql.Clear;
         if strtoint(edit5.text)>=0 then
-        sql.Add('update cpkcb set fcpkcs=fcpkcs-'+edit5.Text+' where fcpbh='+edit3.Text)
+          sql.Add('update cpkcb set fcpkcs=fcpkcs-'+edit5.Text+' where fcpbh='+edit3.Text)
         else
-        sql.Add('update cpkcb set fcpkcs=fcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fcpbh='+edit3.Text);
+          sql.Add('update cpkcb set fcpkcs=fcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fcpbh='+edit3.Text);
+          sqltext:=sql.Text;
         ExecSQL;
         sql.Clear;
         sql.Add('select fbcpbh from bcplxk_info where fsscpbh='''+edit3.Text+'''');
         open;
         if not eof then
         begin
-        x:=0;
-        setLength(strBcpbh,RecordCount);
-
+          x:=0;
+          setLength(strBcpbh,RecordCount);
           while not eof do
           begin
             strBcpbh[x]:=fields[0].AsString;
@@ -145,25 +154,27 @@ begin
           while x<length(strBcpbh) do
           begin
             sql.Add('insert into bcpcrkmxz (fbcpbh,fCksl,fjzdate,fmemo) values ('''+StrBcpbh[x]+''','''+edit5.Text+''','''+datetimetostr(datetimepicker2.Date)+''','''+main.strUser+edit6.Text+''')');
+            ExecSQL;
+            sql.Clear;
             if strtoint(edit5.text)>=0 then
-            sql.Add('update bcpkcb set fbcpkcs=fbcpkcs-'+edit5.Text+' where fbcpbh='+StrBcpbh[x])
+              sql.Add('update bcpkcb set fbcpkcs=fbcpkcs-'+edit5.Text+' where fbcpbh='+StrBcpbh[x])
             else
-            sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fbcpbh='+StrBcpbh[x]);
+              sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+inttostr(strtoint(edit5.Text)*-1)+' where fbcpbh='+StrBcpbh[x]);
             x := x + 1;
+            ExecSQL;
           end;
-          ExecSQL;
+
         end;
         edit3.Text := '';
         edit5.Text := '';
         Application.MessageBox('成品出库成功！','仓库管理提示');
-        //PageControl1.ActivePageIndex:=1;
+          //PageControl1.ActivePageIndex:=1;
       end;
     Except
       Application.MessageBox('成品出库失败！','仓库管理提示');
     end;
   end else
     Application.MessageBox('请将必填项目填写完整！','仓库管理提示');
-end;
 end;
 
 procedure Tfrom9.Button5Click(Sender: TObject);
@@ -191,13 +202,13 @@ begin
   //stringgrid1.RowCount:=1;
   y:=1;
   try
-  with ADOQuery1 do
+  with ZQuery1 do
   begin
     close;
     sql.Clear;
     sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
     open;
-    stringgrid1.RowCount:=adoquery1.RecordCount+1;
+    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
 
     while not eof do
     begin
@@ -224,6 +235,16 @@ begin
   label30.Visible:= not label30.Visible;
 end;
 
+procedure Tfrom9.Button8Click(Sender: TObject);
+begin
+  case radiogroup1.ItemIndex of
+    0: ExportStrGridToExcel([StringGrid1]);
+    1: ExportStrGridToExcel([StringGrid2]);
+    2: ExportStrGridToExcel([StringGrid1,StringGrid2]);
+  end;
+  //ExportStrGridToExcel([StringGrid1,StringGrid2]);
+end;
+
 procedure Tfrom9.Edit16Change(Sender: TObject);
 var y:integer;
 begin
@@ -232,7 +253,7 @@ begin
       if edit16.Text<>'' then
       begin
         try
-        with ADOQuery1 do
+        with ZQuery1 do
         begin
           close;
           sql.Clear;
@@ -264,7 +285,7 @@ begin
       if edit7.Text<>'' then
       begin
         try
-        with ADOQuery1 do
+        with ZQuery1 do
         begin
           close;
           sql.Clear;
@@ -286,6 +307,12 @@ begin
         end;
       end;
     end;
+end;
+
+procedure Tfrom9.FormActivate(Sender: TObject);
+begin
+  datetimepicker1.DateTime := date();
+  datetimepicker2.DateTime := date();
 end;
 
 procedure Tfrom9.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -310,7 +337,7 @@ begin
   begin
     y:=1;
     try
-    with ADOQuery1 do
+    with ZQuery1 do
     begin
       close;
       sql.Clear;
@@ -318,7 +345,7 @@ begin
       open;
       if not eof then
       begin
-        stringgrid2.RowCount:=adoquery1.RecordCount+1;
+        stringgrid2.RowCount:=ZQuery1.RecordCount+1;
       end else
       begin
         stringgrid2.RowCount:=1;

@@ -51,6 +51,8 @@
     <Transaction>2015/11/17 10:36:47.818.dfm,E:\QxErp\QXERP\Unit18.dfm=E:\QxErp\QXERP\message.dfm</Transaction>
     <Transaction>2015/11/17 10:39:11.502.pas,E:\QxErp\QXERP\message.pas=E:\QxErp\QXERP\message_online.pas</Transaction>
     <Transaction>2015/11/17 10:39:11.502.dfm,E:\QxErp\QXERP\message.dfm=E:\QxErp\QXERP\message_online.dfm</Transaction>
+    <Transaction>2015/11/19 09:33:34.081.pas,E:\QxErp\QXERP\Unit19.pas=E:\QxErp\QXERP\fhdgl.pas</Transaction>
+    <Transaction>2015/11/19 09:33:34.082.dfm,E:\QxErp\QXERP\Unit19.dfm=E:\QxErp\QXERP\fhdgl.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -93,5 +95,7 @@
     <File Path="scjh.dfm"/>
     <File Path="message_online.pas"/>
     <File Path="message_online.dfm"/>
+    <File Path="fhdgl.pas"/>
+    <File Path="fhdgl.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

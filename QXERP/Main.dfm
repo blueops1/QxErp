@@ -134,6 +134,35 @@ object Form1: TForm1
         OnClick = Button11Click
       end
     end
+    object TabSheet8: TTabSheet
+      Caption = #21457#36135#31649#29702
+      ImageIndex = 7
+      object Button21: TButton
+        Left = 160
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21457#36135#21333#31649#29702
+        TabOrder = 0
+        OnClick = Button21Click
+      end
+      object Button22: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #36135#36816#21333#31649#29702
+        TabOrder = 1
+      end
+      object Button23: TButton
+        Left = 432
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #25215#36816#20154#31649#29702
+        TabOrder = 2
+      end
+    end
     object TabSheet3: TTabSheet
       Caption = #20179#24211#31649#29702
       ImageIndex = 2
@@ -142,7 +171,7 @@ object Form1: TForm1
         Top = 104
         Width = 97
         Height = 65
-        Caption = #20179#24211#31649#29702
+        Caption = #25104#21697#31649#29702
         TabOrder = 0
         OnClick = Button3Click
       end
@@ -277,6 +306,7 @@ object Form1: TForm1
     Width = 185
     Height = 97
     TabOrder = 2
+    Visible = False
     object Label1: TLabel
       Left = 24
       Top = 40
@@ -323,6 +353,7 @@ object Form1: TForm1
     Top = 344
   end
   object Timer1: TTimer
+    Interval = 600000
     OnTimer = Timer1Timer
     Left = 560
     Top = 480

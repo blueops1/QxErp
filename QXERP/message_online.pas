@@ -68,6 +68,7 @@ type
     procedure TabSheet6Show(Sender: TObject);
     procedure StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -281,6 +282,31 @@ begin
        next;
     end;
   end;
+end;
+
+procedure TForm18.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if form1.zconnection1.Connected then
+begin
+try
+  with zquery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select count(*) from message_online where freciid='''+strUser+''' and fisread=''N'' and fisdel=''N''');
+    open;
+    intMessage:=fields[0].AsInteger;
+    if intMessage>0 then
+    begin
+    label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+    form1.panel1.Visible:=true;
+    end else
+    form1.panel1.Visible:=false;
+  end;
+except
+  application.MessageBox('查询数据失败！','在线消息提示');
+end;
+end;
 end;
 
 procedure TForm18.FormShow(Sender: TObject);

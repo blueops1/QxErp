@@ -103,6 +103,9 @@
 			<DCCReference Include="message_online.pas">
 				<Form>Form18</Form>
 			</DCCReference>
+			<DCCReference Include="fhdgl.pas">
+				<Form>Form19</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
