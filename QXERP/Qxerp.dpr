@@ -23,7 +23,9 @@ uses
   scjh in 'scjh.pas' {Form17},
   message_online in 'message_online.pas' {Form18},
   fhdgl in 'fhdgl.pas' {Form19},
-  fhdcx in 'fhdcx.pas' {Form20};
+  fhdcx in 'fhdcx.pas' {Form20},
+  fhdxxzl in 'fhdxxzl.pas' {Form21},
+  ckitemrkgl in 'ckitemrkgl.pas' {Form22};
 
 {$R *.res}
 
@@ -53,5 +55,7 @@ begin
   Application.CreateForm(TForm18, Form18);
   Application.CreateForm(TForm19, Form19);
   Application.CreateForm(TForm20, Form20);
+  Application.CreateForm(TForm21, Form21);
+  Application.CreateForm(TForm22, Form22);
   Application.Run;
 end.

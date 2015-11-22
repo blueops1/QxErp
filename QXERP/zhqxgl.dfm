@@ -20,7 +20,7 @@ object Form14: TForm14
     Top = 0
     Width = 1040
     Height = 678
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -197,7 +197,7 @@ object Form14: TForm14
         Top = 303
         Width = 97
         Height = 17
-        Caption = #26242#26080
+        Caption = #21457#36135#31649#29702
         TabOrder = 5
       end
       object CheckBox3: TCheckBox

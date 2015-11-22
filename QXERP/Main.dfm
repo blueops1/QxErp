@@ -42,7 +42,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet8
+    ActivePage = TabSheet7
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -205,6 +205,15 @@ object Form1: TForm1
         TabOrder = 0
         OnClick = Button3Click
       end
+      object Button25: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #26448#26009#37197#20214#31649#29702
+        TabOrder = 1
+        OnClick = Button25Click
+      end
     end
     object TabSheet4: TTabSheet
       Caption = #25910#27454#31649#29702
@@ -356,6 +365,8 @@ object Form1: TForm1
   end
   object ZConnection1: TZConnection
     ControlsCodePage = cCP_UTF16
+    Properties.Strings = (
+      'controls_cp=CP_UTF16')
     Port = 0
     Protocol = 'mysql-5'
     Left = 496

@@ -57,6 +57,7 @@ type
     Button22: TButton;
     Button23: TButton;
     Button24: TButton;
+    Button25: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -85,6 +86,7 @@ type
     procedure Label1Click(Sender: TObject);
     procedure Button21Click(Sender: TObject);
     procedure Button24Click(Sender: TObject);
+    procedure Button25Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -110,7 +112,7 @@ implementation
 uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,
      bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,
-     scjh,message_online,fhdgl,fhdcx;
+     scjh,message_online,fhdgl,fhdcx,ckitemrkgl;
 
 {$R *.dfm}
 
@@ -179,12 +181,23 @@ end;
 
 procedure TForm1.Button21Click(Sender: TObject);
 begin
-  fhdgl.Form19.Show;
+  if(MidStr(main.strUserQX,1,1)='1') then
+    fhdgl.Form19.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
 procedure TForm1.Button24Click(Sender: TObject);
 begin
-  fhdcx.Form20.Show;
+  if(MidStr(main.strUserQX,1,1)='1') then
+    fhdcx.Form20.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button25Click(Sender: TObject);
+begin
+  ckitemrkgl.Form22.Show;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);

@@ -38,11 +38,11 @@ object Form19: TForm19
     Caption = #25215#36816#21830#32534#21495
   end
   object Label9: TLabel
-    Left = 45
+    Left = 21
     Top = 379
-    Width = 60
+    Width = 84
     Height = 13
-    Caption = #27773#36710#29260#29031#21495
+    Caption = #36710#29260#25110#24555#36882#21333#21495
   end
   object Label10: TLabel
     Left = 300
@@ -112,7 +112,7 @@ object Form19: TForm19
   end
   object Label5: TLabel
     Left = 324
-    Top = 74
+    Top = 70
     Width = 24
     Height = 13
     Caption = #22791#27880
@@ -121,7 +121,7 @@ object Form19: TForm19
   end
   object Label2: TLabel
     Left = 57
-    Top = 74
+    Top = 70
     Width = 48
     Height = 13
     Caption = #21512#21516#32534#21495
@@ -154,7 +154,7 @@ object Form19: TForm19
   end
   object Edit2: TEdit
     Left = 120
-    Top = 71
+    Top = 67
     Width = 137
     Height = 21
     Color = clMoneyGreen
@@ -245,7 +245,7 @@ object Form19: TForm19
   end
   object Edit5: TEdit
     Left = 368
-    Top = 71
+    Top = 67
     Width = 673
     Height = 21
     TabOrder = 2
@@ -291,7 +291,6 @@ object Form19: TForm19
     Width = 673
     Height = 21
     Color = clMoneyGreen
-    ReadOnly = True
     TabOrder = 15
   end
   object Edit10: TEdit
@@ -331,7 +330,7 @@ object Form19: TForm19
     Top = 497
     Width = 107
     Height = 25
-    Caption = #20986#21333
+    Caption = #20445#23384#21457#36135#21333
     TabOrder = 18
     OnClick = Button2Click
   end

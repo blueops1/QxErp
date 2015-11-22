@@ -55,6 +55,10 @@
     <Transaction>2015/11/19 09:33:34.082.dfm,E:\QxErp\QXERP\Unit19.dfm=E:\QxErp\QXERP\fhdgl.dfm</Transaction>
     <Transaction>2015/11/20 19:05:15.665.pas,F:\QxErp\QXERP\Unit20.pas=F:\QxErp\QXERP\fhdcx.pas</Transaction>
     <Transaction>2015/11/20 19:05:15.665.dfm,F:\QxErp\QXERP\Unit20.dfm=F:\QxErp\QXERP\fhdcx.dfm</Transaction>
+    <Transaction>2015/11/21 09:03:03.986.pas,E:\QxErp\QXERP\Unit21.pas=E:\QxErp\QXERP\fhdxxzl.pas</Transaction>
+    <Transaction>2015/11/21 09:03:03.986.dfm,E:\QxErp\QXERP\Unit21.dfm=E:\QxErp\QXERP\fhdxxzl.dfm</Transaction>
+    <Transaction>2015/11/21 14:19:38.337.pas,E:\QxErp\QXERP\Unit22.pas=E:\QxErp\QXERP\ckitemrkgl.pas</Transaction>
+    <Transaction>2015/11/21 14:19:38.337.dfm,E:\QxErp\QXERP\Unit22.dfm=E:\QxErp\QXERP\ckitemrkgl.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -101,5 +105,9 @@
     <File Path="fhdgl.dfm"/>
     <File Path="fhdcx.pas"/>
     <File Path="fhdcx.dfm"/>
+    <File Path="fhdxxzl.pas"/>
+    <File Path="fhdxxzl.dfm"/>
+    <File Path="ckitemrkgl.pas"/>
+    <File Path="ckitemrkgl.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

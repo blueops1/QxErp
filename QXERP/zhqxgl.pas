@@ -98,7 +98,7 @@ end;
 procedure TForm14.Button3Click(Sender: TObject);
 var strQx:String;
 begin
-  if checkbox4.Checked = True then    //暂无2 4 1
+  if checkbox4.Checked = True then    //发货管理 4 1
     strQx := '1'
   else
     strQx := '0';
