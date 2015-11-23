@@ -42,7 +42,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet7
+    ActivePage = TabSheet5
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -214,6 +214,15 @@ object Form1: TForm1
         TabOrder = 1
         OnClick = Button25Click
       end
+      object Button26: TButton
+        Left = 432
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21457#31080#26680#24080
+        TabOrder = 2
+        OnClick = Button26Click
+      end
     end
     object TabSheet4: TTabSheet
       Caption = #25910#27454#31649#29702
@@ -250,7 +259,7 @@ object Form1: TForm1
         OnClick = Button11Click
       end
       object Button14: TButton
-        Left = 288
+        Left = 296
         Top = 104
         Width = 97
         Height = 65
@@ -259,7 +268,7 @@ object Form1: TForm1
         OnClick = Button14Click
       end
       object Button15: TButton
-        Left = 416
+        Left = 432
         Top = 104
         Width = 97
         Height = 65
@@ -268,7 +277,7 @@ object Form1: TForm1
         OnClick = Button11Click
       end
       object Button16: TButton
-        Left = 544
+        Left = 568
         Top = 104
         Width = 97
         Height = 65
@@ -299,8 +308,8 @@ object Form1: TForm1
         OnClick = Button10Click
       end
       object Button9: TButton
-        Left = 432
-        Top = 104
+        Left = 160
+        Top = 200
         Width = 97
         Height = 65
         Caption = #32844#24037#20449#24687#31649#29702
@@ -308,13 +317,37 @@ object Form1: TForm1
         OnClick = Button9Click
       end
       object Button12: TButton
-        Left = 568
-        Top = 104
+        Left = 296
+        Top = 200
         Width = 97
         Height = 65
         Caption = #24080#25143#26435#38480#31649#29702
         TabOrder = 3
         OnClick = Button12Click
+      end
+      object Button27: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20379#24212#21830#20449#24687#31649#29702
+        TabOrder = 4
+        OnClick = Button27Click
+      end
+      object Button28: TButton
+        Left = 432
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20179#20648#20449#24687#31649#29702
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        OnClick = Button10Click
       end
     end
   end

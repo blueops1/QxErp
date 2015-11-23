@@ -58,6 +58,9 @@ type
     Button23: TButton;
     Button24: TButton;
     Button25: TButton;
+    Button26: TButton;
+    Button27: TButton;
+    Button28: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -87,6 +90,8 @@ type
     procedure Button21Click(Sender: TObject);
     procedure Button24Click(Sender: TObject);
     procedure Button25Click(Sender: TObject);
+    procedure Button26Click(Sender: TObject);
+    procedure Button27Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -112,7 +117,8 @@ implementation
 uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,
      bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,
-     scjh,message_online,fhdgl,fhdcx,ckitemrkgl;
+     scjh,message_online,fhdgl,fhdcx,
+     fapiaohezhang,ckitemrkgl,gysgl;
 
 {$R *.dfm}
 
@@ -198,6 +204,16 @@ end;
 procedure TForm1.Button25Click(Sender: TObject);
 begin
   ckitemrkgl.Form22.Show;
+end;
+
+procedure TForm1.Button26Click(Sender: TObject);
+begin
+  fapiaohezhang.Form23.Show;
+end;
+
+procedure TForm1.Button27Click(Sender: TObject);
+begin
+  gysgl.Form24.Show;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);

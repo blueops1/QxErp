@@ -209,7 +209,7 @@ object Form22: TForm22
     Height = 21
     Color = clMoneyGreen
     TabOrder = 9
-    OnDropDown = ComboBox1DropDown
+    OnKeyDown = ComboBox1KeyDown
   end
   object Button2: TButton
     Left = 715

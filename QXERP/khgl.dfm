@@ -21,7 +21,7 @@ object Form5: TForm5
     Top = 0
     Width = 1138
     Height = 547
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet

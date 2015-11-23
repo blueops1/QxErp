@@ -37,7 +37,6 @@ type
     N1: TMenuItem;
     procedure ComboBoxEx1Select(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
-    procedure ComboBox1DropDown(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -49,6 +48,8 @@ type
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure N1Click(Sender: TObject);
+    procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -109,6 +110,15 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
           execProc;
         end;
       end;
+      application.MessageBox('保存数据成功！','材料配件入库管理提示');
+      edit1.Text:='';
+      edit2.Text:='';
+      edit3.Text:='';
+      edit4.Text:='';
+      edit5.Text:='';
+      combobox1.Text:='';
+      memo1.Text:='';
+      stringgrid1.RowCount:=1;
   except
     application.MessageBox('保存数据失败！','材料配件入库管理提示');
   end else
@@ -137,9 +147,13 @@ begin
     application.MessageBox('请先将入库单信息填写完整！','材料配件入库管理提示');
 end;
 
-procedure TForm22.ComboBox1DropDown(Sender: TObject);
+
+procedure TForm22.ComboBox1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 begin
-  if combobox1.Items.Count>0 then
+ if key=13 then
+ begin
+    if combobox1.Items.Count>0 then
     ComboBox1.Items.Clear;
     try
       with zstoredproc1 do
@@ -153,10 +167,12 @@ begin
           ComboBox1.Items.Add(fields[0].asstring);
           next;
         end;
+        //combobox1.DroppedDown:=true;
       end;
   except
-    application.MessageBox('数据查询失败！','材料配件入库管理提示');
+    application.MessageBox('数据查询失败！','发票核帐提示');
   end;
+ end;
 end;
 
 procedure TForm22.ComboBoxEx1Select(Sender: TObject);
@@ -239,8 +255,6 @@ begin
   if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
    DeleteStringGridRow(selRowIndex,stringgrid1);
 end;
-
-
 
 procedure TForm22.StringGrid1MouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);

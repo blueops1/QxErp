@@ -445,10 +445,6 @@ object Form6: TForm6
     object TabSheet2: TTabSheet
       Caption = #26032#22686#21512#21516#26126#32454
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label8: TLabel
         Left = 168
         Top = 107
