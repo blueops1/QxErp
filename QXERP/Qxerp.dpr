@@ -28,7 +28,8 @@ uses
   ckitemrkgl in 'ckitemrkgl.pas' {Form22},
   fapiaohezhang in 'fapiaohezhang.pas' {Form23},
   gysgl in 'gysgl.pas' {Form24},
-  ccxxgl in 'ccxxgl.pas' {Form25};
+  ccxxgl in 'ccxxgl.pas' {Form25},
+  fpwhzcx in 'fpwhzcx.pas' {Form26};
 
 {$R *.res}
 
@@ -63,5 +64,6 @@ begin
   Application.CreateForm(TForm23, Form23);
   Application.CreateForm(TForm24, Form24);
   Application.CreateForm(TForm25, Form25);
+  Application.CreateForm(TForm26, Form26);
   Application.Run;
 end.

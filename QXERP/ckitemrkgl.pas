@@ -109,6 +109,14 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
           zstoredproc1.ParamByName('memo').Value:='*'+stringgrid1.Cells[4,y];
           execProc;
         end;
+        zstoredproc1.StoredProcName:='proc_update_ckitem_itemljslandljzje';
+        for y := 1 to stringgrid1.RowCount - 1 do
+        begin
+          zstoredproc1.ParamByName('itembh').Value:=splitstring(stringgrid1.Cells[1,y],'|');
+          zstoredproc1.ParamByName('rksl').Value:=stringgrid1.Cells[2,y];
+          zstoredproc1.ParamByName('itemprice').Value:=stringgrid1.Cells[3,y];
+          execProc;
+        end;
       end;
       application.MessageBox('保存数据成功！','材料配件入库管理提示');
       edit1.Text:='';
@@ -183,11 +191,10 @@ end;
 procedure TForm22.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
 if edit1.Text<>'' then
-  if comboboxex1.Items.Count>1 then
-    comboboxex1.Items.Clear;
     try
       with zstoredproc1 do
       begin
+        comboboxex1.Items.Clear;
         close;
         zstoredproc1.StoredProcName:='proc_cx_ckitemmc';
         zstoredproc1.ParamByName('itemname').Value:=edit1.Text;

@@ -124,7 +124,7 @@ begin
           if main.Form1.ZConnection1.Connected then
           begin
               main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
-              main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strServerName;
+              main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strDBName+'@'+strServerName;
               with zquery1 do
               begin
                 close;

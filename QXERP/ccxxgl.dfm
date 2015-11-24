@@ -31,7 +31,7 @@ object Form25: TForm25
         Top = 0
         Width = 1034
         Height = 584
-        ActivePage = TabSheet5
+        ActivePage = TabSheet4
         Align = alClient
         TabOrder = 0
         object TabSheet4: TTabSheet
@@ -250,6 +250,19 @@ object Form25: TForm25
             Font.Style = []
             ParentFont = False
           end
+          object Label46: TLabel
+            Left = 392
+            Top = 367
+            Width = 160
+            Height = 13
+            Caption = #20462#25913#39#22791#27880#39#20449#24687#65292#35831#20445#30041' * '#23383#31526
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object ListBox1: TListBox
             Left = 0
             Top = 0
@@ -277,6 +290,7 @@ object Form25: TForm25
             Height = 25
             Caption = #20445#23384#20462#25913
             TabOrder = 2
+            OnClick = Button3Click
           end
           object Button4: TButton
             Left = 561
@@ -348,7 +362,7 @@ object Form25: TForm25
         Top = 0
         Width = 1034
         Height = 584
-        ActivePage = TabSheet12
+        ActivePage = TabSheet11
         Align = alClient
         TabOrder = 0
         object TabSheet11: TTabSheet
@@ -469,6 +483,19 @@ object Form25: TForm25
             Height = 13
             Caption = #22791#27880
           end
+          object Label45: TLabel
+            Left = 392
+            Top = 207
+            Width = 160
+            Height = 13
+            Caption = #20462#25913#39#22791#27880#39#20449#24687#65292#35831#20445#30041' * '#23383#31526
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object ListBox4: TListBox
             Left = 0
             Top = 0
@@ -496,6 +523,7 @@ object Form25: TForm25
             Height = 25
             Caption = #20445#23384#20462#25913
             TabOrder = 2
+            OnClick = Button15Click
           end
           object Button16: TButton
             Left = 561
@@ -531,7 +559,7 @@ object Form25: TForm25
         Top = 0
         Width = 1034
         Height = 584
-        ActivePage = TabSheet15
+        ActivePage = TabSheet14
         Align = alClient
         TabOrder = 0
         object TabSheet14: TTabSheet
@@ -658,6 +686,19 @@ object Form25: TForm25
             Font.Style = []
             ParentFont = False
           end
+          object Label44: TLabel
+            Left = 392
+            Top = 207
+            Width = 160
+            Height = 13
+            Caption = #20462#25913#39#22791#27880#39#20449#24687#65292#35831#20445#30041' * '#23383#31526
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object ListBox5: TListBox
             Left = 0
             Top = 0
@@ -685,6 +726,7 @@ object Form25: TForm25
             Height = 25
             Caption = #20445#23384#20462#25913
             TabOrder = 2
+            OnClick = Button19Click
           end
           object Button20: TButton
             Left = 561
@@ -720,7 +762,7 @@ object Form25: TForm25
         Top = 0
         Width = 1034
         Height = 584
-        ActivePage = TabSheet7
+        ActivePage = TabSheet6
         Align = alClient
         TabOrder = 0
         object TabSheet6: TTabSheet
@@ -807,7 +849,6 @@ object Form25: TForm25
         object TabSheet7: TTabSheet
           Caption = #20179#24211#20449#24687#20462#25913
           ImageIndex = 1
-          ExplicitLeft = 0
           object Label25: TLabel
             Left = 325
             Top = 35
@@ -842,6 +883,19 @@ object Form25: TForm25
             Font.Style = []
             ParentFont = False
           end
+          object Label43: TLabel
+            Left = 392
+            Top = 207
+            Width = 160
+            Height = 13
+            Caption = #20462#25913#39#22791#27880#39#20449#24687#65292#35831#20445#30041' * '#23383#31526
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object ListBox2: TListBox
             Left = 0
             Top = 0
@@ -869,6 +923,7 @@ object Form25: TForm25
             Height = 25
             Caption = #20445#23384#20462#25913
             TabOrder = 2
+            OnClick = Button7Click
           end
           object Button8: TButton
             Left = 561
@@ -904,12 +959,11 @@ object Form25: TForm25
         Top = 0
         Width = 1034
         Height = 584
-        ActivePage = TabSheet9
+        ActivePage = TabSheet8
         Align = alClient
         TabOrder = 0
         object TabSheet8: TTabSheet
           Caption = #26032#22686#36135#26550#20449#24687
-          ExplicitLeft = 0
           object Label33: TLabel
             Left = 173
             Top = 27
@@ -1049,6 +1103,19 @@ object Form25: TForm25
             Font.Style = []
             ParentFont = False
           end
+          object Label42: TLabel
+            Left = 392
+            Top = 259
+            Width = 160
+            Height = 13
+            Caption = #20462#25913#39#22791#27880#39#20449#24687#65292#35831#20445#30041' * '#23383#31526
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+          end
           object ListBox3: TListBox
             Left = 0
             Top = 0
@@ -1076,6 +1143,7 @@ object Form25: TForm25
             Height = 25
             Caption = #20445#23384#20462#25913
             TabOrder = 2
+            OnClick = Button11Click
           end
           object Button12: TButton
             Left = 561
