@@ -11,6 +11,7 @@ object Form24: TForm24
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -18,14 +19,11 @@ object Form24: TForm24
     Top = 0
     Width = 887
     Height = 415
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 565
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20379#24212#21830
-      ExplicitWidth = 548
-      ExplicitHeight = 345
       object Label1: TLabel
         Left = 173
         Top = 27
@@ -75,6 +73,21 @@ object Form24: TForm24
         Height = 13
         Caption = #22791#27880
       end
+      object Label16: TLabel
+        Left = 240
+        Top = 341
+        Width = 84
+        Height = 13
+        Caption = #32511#33394#26159#24517#22635#36873#39033
+        Color = clBtnFace
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+      end
       object Edit1: TEdit
         Left = 240
         Top = 24
@@ -90,6 +103,7 @@ object Form24: TForm24
         Top = 64
         Width = 393
         Height = 21
+        Color = clMoneyGreen
         TabOrder = 1
       end
       object Edit3: TEdit
@@ -134,6 +148,7 @@ object Form24: TForm24
         Height = 25
         Caption = #20445#23384
         TabOrder = 7
+        OnClick = Button1Click
       end
       object Button2: TButton
         Left = 409
@@ -147,8 +162,6 @@ object Form24: TForm24
     object TabSheet2: TTabSheet
       Caption = #20379#24212#21830#20449#24687#20462#25913
       ImageIndex = 1
-      ExplicitWidth = 548
-      ExplicitHeight = 345
       object Label8: TLabel
         Left = 325
         Top = 35
@@ -213,6 +226,7 @@ object Form24: TForm24
         Align = alLeft
         ItemHeight = 13
         TabOrder = 0
+        OnClick = ListBox1Click
       end
       object Edit7: TEdit
         Left = 392
@@ -273,6 +287,7 @@ object Form24: TForm24
         Height = 25
         Caption = #20445#23384#20462#25913
         TabOrder = 8
+        OnClick = Button3Click
       end
       object Button4: TButton
         Left = 561

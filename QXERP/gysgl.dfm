@@ -19,14 +19,11 @@ object Form24: TForm24
     Top = 0
     Width = 887
     Height = 415
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 565
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20379#24212#21830
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label1: TLabel
         Left = 173
         Top = 27
@@ -165,8 +162,6 @@ object Form24: TForm24
     object TabSheet2: TTabSheet
       Caption = #20379#24212#21830#20449#24687#20462#25913
       ImageIndex = 1
-      ExplicitWidth = 548
-      ExplicitHeight = 345
       object Label8: TLabel
         Left = 325
         Top = 35

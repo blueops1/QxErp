@@ -121,6 +121,9 @@
 			<DCCReference Include="gysgl.pas">
 				<Form>Form24</Form>
 			</DCCReference>
+			<DCCReference Include="ccxxgl.pas">
+				<Form>Form25</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

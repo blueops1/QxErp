@@ -47,6 +47,7 @@ type
     Button4: TButton;
     ZStoredProc1: TZStoredProc;
     Label15: TLabel;
+    Label16: TLabel;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit7KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ListBox1Click(Sender: TObject);
@@ -70,27 +71,40 @@ uses main;
 
 procedure TForm24.Button1Click(Sender: TObject);
 begin
-    if (edit1.Text<>'') and (edit2.Text<>'') then
-  try
-    with zStoredProc1 do
-    begin
-      close;
-      StoredProcName:='proc_insert_gysinfo';
-      ParamByName('gysid').Value:=edit1.Text;
-      ParamByName('gysmc').Value:=edit2.Text;
-      ParamByName('gyszh').Value:=edit3.Text;
-      ParamByName('gyskhh').Value:=edit4.Text;
-      ParamByName('lxr').Value:=edit5.Text;
-      ParamByName('lxrphone').Value:=edit6.Text;
-      ParamByName('memo').Value:='*'+memo1.Text;
-      ExecProc;
+  if (edit1.Text<>'') and (edit2.Text<>'') then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_insert_gysinfo';
+        ParamByName('gysid').Value:=edit1.Text;
+        ParamByName('gysmc').Value:=edit2.Text;
+        ParamByName('gyszh').Value:=edit3.Text;
+        ParamByName('gyskhh').Value:=edit4.Text;
+        ParamByName('lxr').Value:=edit5.Text;
+        ParamByName('lxrphone').Value:=edit6.Text;
+        ParamByName('memo').Value:='*'+memo1.Text;
+        ExecProc;
+        if ParamByName('returncode').Value=1 then
+          application.MessageBox('该供应商已经存在！','供应商管理提示')
+        else begin
+          application.MessageBox('数据保存成功！','供应商管理提示');
+          edit1.Text:='';
+          edit2.Text:='';
+          edit3.Text:='';
+          edit4.Text:='';
+          edit5.Text:='';
+          edit6.Text:='';
+          memo1.Text:='';
+          edit1.SetFocus;
+        end;
 
-      //fgysmc=gysmc,fgyszh=gyszh,fgyskhh=gyskhh,flxr=lxr,flxrphone=lxrphone,fmemo=memo
-    end;
-      application.MessageBox('数据保存成功！','供应商管理提示');
+        //fgysmc=gysmc,fgyszh=gyszh,fgyskhh=gyskhh,flxr=lxr,flxrphone=lxrphone,fmemo=memo
+      end;
   except
     application.MessageBox('数据更新失败！','供应商管理提示');
-  end;
+  end else
+    application.MessageBox('请将必填项填写完整！','供应商管理提示');
 end;
 
 procedure TForm24.Button3Click(Sender: TObject);
@@ -129,7 +143,10 @@ begin
       zstoredproc1.StoredProcName:='proc_cx_newgysid';
       open;
       if fields[0].AsString<>'' then
-        edit1.Text:=fields[0].AsString
+      begin
+        edit1.Text:=fields[0].AsString;
+        edit2.SetFocus;
+      end;
     end;
   except
     application.MessageBox('数据查询失败！','供应商管理提示');
@@ -154,6 +171,7 @@ begin
         next;
       end;
       edit7.Text:='';
+      listbox1.ItemIndex:=0;
     end;
   except
     application.MessageBox('数据查询失败！','供应商管理提示');
@@ -162,6 +180,7 @@ end;
 
 procedure TForm24.ListBox1Click(Sender: TObject);
 begin
+try
   if ListBox1.Items.Strings[ListBox1.itemindex]<>'' then
   try
     with zStoredProc1 do
@@ -181,9 +200,12 @@ begin
         Memo2.Text := fields[7].AsString;
       end;
     end;
-  finally
-
+  except
+    application.MessageBox('数据查询失败！','供应商管理提示');
   end;
+except
+  application.MessageBox('数据查询失败111！','供应商管理提示');
+end;
 end;
 
 end.

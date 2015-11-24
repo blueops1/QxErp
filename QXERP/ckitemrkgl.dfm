@@ -203,7 +203,7 @@ object Form22: TForm22
     OnKeyDown = Edit4KeyDown
   end
   object ComboBox1: TComboBox
-    Left = 306
+    Left = 299
     Top = 22
     Width = 319
     Height = 21

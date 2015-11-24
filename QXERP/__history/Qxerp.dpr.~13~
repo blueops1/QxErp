@@ -19,7 +19,15 @@ uses
   zggl in 'zggl.pas' {Form13},
   zhqxgl in 'zhqxgl.pas' {Form14},
   xgmm in 'xgmm.pas' {Form15},
-  sctjcx in 'sctjcx.pas' {Form16};
+  sctjcx in 'sctjcx.pas' {Form16},
+  scjh in 'scjh.pas' {Form17},
+  message_online in 'message_online.pas' {Form18},
+  fhdgl in 'fhdgl.pas' {Form19},
+  fhdcx in 'fhdcx.pas' {Form20},
+  fhdxxzl in 'fhdxxzl.pas' {Form21},
+  ckitemrkgl in 'ckitemrkgl.pas' {Form22},
+  fapiaohezhang in 'fapiaohezhang.pas' {Form23},
+  gysgl in 'gysgl.pas' {Form24};
 
 {$R *.res}
 
@@ -45,5 +53,13 @@ begin
   Application.CreateForm(TForm14, Form14);
   Application.CreateForm(TForm15, Form15);
   Application.CreateForm(TForm16, Form16);
+  Application.CreateForm(TForm17, Form17);
+  Application.CreateForm(TForm18, Form18);
+  Application.CreateForm(TForm19, Form19);
+  Application.CreateForm(TForm20, Form20);
+  Application.CreateForm(TForm21, Form21);
+  Application.CreateForm(TForm22, Form22);
+  Application.CreateForm(TForm23, Form23);
+  Application.CreateForm(TForm24, Form24);
   Application.Run;
 end.

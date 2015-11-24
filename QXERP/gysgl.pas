@@ -146,6 +146,10 @@ begin
       begin
         edit1.Text:=fields[0].AsString;
         edit2.SetFocus;
+      end else
+      begin
+        edit1.Text:='1';
+        edit2.SetFocus;
       end;
     end;
   except
@@ -180,32 +184,32 @@ end;
 
 procedure TForm24.ListBox1Click(Sender: TObject);
 begin
-try
-  if ListBox1.Items.Strings[ListBox1.itemindex]<>'' then
   try
-    with zStoredProc1 do
-    begin
-      close;
-      StoredProcName:='proc_cx_gysinfo_by_gysbh';
-      ParamByName('gysbh').Value:=SplitString(ListBox1.Items.Strings[ListBox1.itemindex],'|');
-      open;
-      if not eof then
+    if ListBox1.Items.Strings[ListBox1.itemindex]<>'' then
+    try
+      with zStoredProc1 do
       begin
-        Edit7.Text := fields[1].AsString;
-        Edit8.Text := fields[2].AsString;
-        Edit9.Text := fields[3].AsString;
-        Edit10.Text := fields[4].AsString;
-        Edit11.Text := fields[5].AsString;
-        Edit12.Text := fields[6].AsString;
-        Memo2.Text := fields[7].AsString;
+        close;
+        StoredProcName:='proc_cx_gysinfo_by_gysbh';
+        ParamByName('gysbh').Value:=SplitString(ListBox1.Items.Strings[ListBox1.itemindex],'|');
+        open;
+        if not eof then
+        begin
+          Edit7.Text := fields[1].AsString;
+          Edit8.Text := fields[2].AsString;
+          Edit9.Text := fields[3].AsString;
+          Edit10.Text := fields[4].AsString;
+          Edit11.Text := fields[5].AsString;
+          Edit12.Text := fields[6].AsString;
+          Memo2.Text := fields[7].AsString;
+        end;
       end;
+    except
+      application.MessageBox('数据查询失败！','供应商管理提示');
     end;
   except
-    application.MessageBox('数据查询失败！','供应商管理提示');
+    application.MessageBox('数据查询失败111！','供应商管理提示');
   end;
-except
-  application.MessageBox('数据查询失败111！','供应商管理提示');
-end;
 end;
 
 end.

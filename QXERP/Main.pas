@@ -92,6 +92,7 @@ type
     procedure Button25Click(Sender: TObject);
     procedure Button26Click(Sender: TObject);
     procedure Button27Click(Sender: TObject);
+    procedure Button28Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -118,7 +119,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,
      bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,
      scjh,message_online,fhdgl,fhdcx,
-     fapiaohezhang,ckitemrkgl,gysgl;
+     fapiaohezhang,ckitemrkgl,gysgl,ccxxgl;
 
 {$R *.dfm}
 
@@ -214,6 +215,11 @@ end;
 procedure TForm1.Button27Click(Sender: TObject);
 begin
   gysgl.Form24.Show;
+end;
+
+procedure TForm1.Button28Click(Sender: TObject);
+begin
+  ccxxgl.Form25.Show;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);

@@ -183,6 +183,8 @@ object Form22: TForm22
     FixedRows = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     TabOrder = 7
+    OnMouseUp = StringGrid1MouseUp
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       88
       109
@@ -207,7 +209,7 @@ object Form22: TForm22
     Height = 21
     Color = clMoneyGreen
     TabOrder = 9
-    OnDropDown = ComboBox1DropDown
+    OnKeyDown = ComboBox1KeyDown
   end
   object Button2: TButton
     Left = 715
@@ -230,5 +232,13 @@ object Form22: TForm22
     Params = <>
     Left = 602
     Top = 231
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 592
+    Top = 480
+    object N1: TMenuItem
+      Caption = #21024#38500#24403#21069#35760#24405
+      OnClick = N1Click
+    end
   end
 end

@@ -347,7 +347,7 @@ object Form1: TForm1
         Font.Style = []
         ParentFont = False
         TabOrder = 5
-        OnClick = Button10Click
+        OnClick = Button28Click
       end
     end
   end
