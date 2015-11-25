@@ -127,7 +127,7 @@ object Form22: TForm22
     Color = clMoneyGreen
     TabOrder = 0
     TextHint = #36755#20837#37096#20998#25991#23383#36827#34892#26597#35810
-    OnKeyPress = Edit1KeyPress
+    OnKeyDown = Edit1KeyDown
   end
   object Edit2: TEdit
     Left = 364
@@ -175,7 +175,7 @@ object Form22: TForm22
   end
   object StringGrid1: TStringGrid
     Left = 32
-    Top = 208
+    Top = 207
     Width = 801
     Height = 241
     FixedCols = 0

@@ -85,6 +85,7 @@ begin
     sql.Clear;
     sql.Add('select fuser from user_info');
     open;
+    combobox1.Items.Clear;
     while not eof do
     begin
        combobox1.Items.Add(fields[0].asstring);
@@ -94,7 +95,10 @@ begin
 end;
 
 procedure TForm10.FormActivate(Sender: TObject);
+var
+  oldver,newver:string;
 begin
+    oldver:='2015111801'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin
@@ -102,29 +106,49 @@ begin
     end else
     begin
         try
-        cfginifile:=tinifile.Create(filename);
-        strServerName:=cfginifile.ReadString('服务器设置','服务器名称','');
-        strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
-        strUserName:=cfginifile.ReadString('服务器设置','用户','');
-        strPwd:=cfginifile.ReadString('服务器设置','密码','');
-        strPort:=cfginifile.ReadString('服务器设置','端口','');
-        strPageCode:=cfginifile.ReadString('服务器设置','编码','');
-        main.Form1.ZConnection1.HostName:=strServerName;
-        main.Form1.ZConnection1.Port:=strtoint(strPort);
-        main.Form1.ZConnection1.Database:=strDBName;
-        main.Form1.ZConnection1.User:=strUserName;
-        main.Form1.ZConnection1.Password:=strPwd;
-        main.Form1.ZConnection1.ClientCodepage:=strPageCode;
-        main.Form1.ZConnection1.Connect();
-        if main.Form1.ZConnection1.Connected then
-        begin
-            main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
-            main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strServerName;
-        end else
-        begin
-             dbconnecter.Form3.ShowModal;
-             main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接失败!';
-        end;
+          cfginifile:=tinifile.Create(filename);
+          strServerName:=cfginifile.ReadString('服务器设置','服务器名称','');
+          strDBName:=cfginifile.ReadString('服务器设置','数据库名称','');
+          strUserName:=cfginifile.ReadString('服务器设置','用户','');
+          strPwd:=cfginifile.ReadString('服务器设置','密码','');
+          strPort:=cfginifile.ReadString('服务器设置','端口','');
+          strPageCode:=cfginifile.ReadString('服务器设置','编码','');
+          cfginifile.WriteString('服务器设置','版本号',oldver);
+          main.Form1.ZConnection1.HostName:=strServerName;
+          main.Form1.ZConnection1.Port:=strtoint(strPort);
+          main.Form1.ZConnection1.Database:=strDBName;
+          main.Form1.ZConnection1.User:=strUserName;
+          main.Form1.ZConnection1.Password:=strPwd;
+          main.Form1.ZConnection1.ClientCodepage:=strPageCode;
+          main.Form1.ZConnection1.Connect();
+          if main.Form1.ZConnection1.Connected then
+          begin
+              main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
+              main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strDBName+'@'+strServerName;
+              with zquery1 do
+              begin
+                close;
+                sql.Clear;
+                SQL.Add('select fver from erpupdate_info');
+                Open;
+                if (RecordCount >0) and (not Fields.Fields[0].IsNull ) then
+                begin
+                  newver:=Fields.Fields[0].AsString;
+                  if trim(newver)>oldver then
+                  begin
+                    if messagedlg('系统发现新的软件版本，是否升级？',mtconfirmation,[mbok,mbcancel],0)=mrok then
+                    begin
+                      winexec('uppatch.exe',1);
+                      application.Terminate;
+                    end;
+                  end;
+                end;
+              end;
+          end else
+          begin
+               dbconnecter.Form3.ShowModal;
+               main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接失败!';
+          end;
         Except
          dbconnecter.Form3.ShowModal;
         end;

@@ -1,7 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = #29983#20135#31649#29702#31995#32479
+  Caption = #27993#27743#31206#23665#27233#33014#24037#31243#32929#20221#26377#38480#20844#21496#29983#20135#21150#20844#31649#29702#31995#32479
   ClientHeight = 757
   ClientWidth = 1085
   Color = clBtnFace
@@ -26,15 +26,19 @@ object Form1: TForm1
       item
         Alignment = taCenter
         Text = #24403#21069#26102#38388
-        Width = 367
+        Width = 225
       end
       item
         Alignment = taCenter
         Text = #27993#27743#31206#23665#27233#33014#24037#31243#32929#20221#20844#21496#26377#38480#20844#21496
-        Width = 367
+        Width = 225
       end
       item
-        Width = 367
+        Width = 225
+      end
+      item
+        Text = #27946#21355#24037#20316#23460'@Necho'#39's WorkShop'
+        Width = 225
       end>
   end
   object PageControl1: TPageControl
@@ -42,7 +46,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet5
+    ActivePage = TabSheet3
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -222,6 +226,24 @@ object Form1: TForm1
         Caption = #21457#31080#26680#24080
         TabOrder = 2
         OnClick = Button26Click
+      end
+      object Button29: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21457#31080#26410#26680#24080#26597#35810
+        TabOrder = 3
+        OnClick = Button29Click
+      end
+      object Button30: TButton
+        Left = 160
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #20986#24211#31649#29702
+        TabOrder = 4
+        OnClick = Button29Click
       end
     end
     object TabSheet4: TTabSheet

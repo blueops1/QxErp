@@ -26,15 +26,19 @@ object Form1: TForm1
       item
         Alignment = taCenter
         Text = #24403#21069#26102#38388
-        Width = 367
+        Width = 225
       end
       item
         Alignment = taCenter
         Text = #27993#27743#31206#23665#27233#33014#24037#31243#32929#20221#20844#21496#26377#38480#20844#21496
-        Width = 367
+        Width = 225
       end
       item
-        Width = 367
+        Width = 225
+      end
+      item
+        Text = #27946#21355#24037#20316#23460'@Necho'#39's WorkShop'
+        Width = 225
       end>
   end
   object PageControl1: TPageControl
@@ -42,7 +46,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet3
+    ActivePage = TabSheet7
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -55,10 +59,6 @@ object Form1: TForm1
     object TabSheet7: TTabSheet
       Caption = 'OA'#21150#20844
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button19: TButton
         Left = 160
         Top = 104
@@ -85,10 +85,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button1: TButton
         Left = 160
         Top = 104
@@ -135,10 +131,6 @@ object Form1: TForm1
     object TabSheet2: TTabSheet
       Caption = #29983#20135#31649#29702
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button11: TButton
         Left = 432
         Top = 104
@@ -170,10 +162,6 @@ object Form1: TForm1
     object TabSheet8: TTabSheet
       Caption = #21457#36135#31649#29702
       ImageIndex = 7
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button21: TButton
         Left = 160
         Top = 104
@@ -252,10 +240,6 @@ object Form1: TForm1
     object TabSheet4: TTabSheet
       Caption = #25910#27454#31649#29702
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button6: TButton
         Left = 160
         Top = 104
@@ -278,10 +262,6 @@ object Form1: TForm1
     object TabSheet6: TTabSheet
       Caption = #26597#35810#32479#35745
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button13: TButton
         Left = 160
         Top = 104
@@ -322,10 +302,6 @@ object Form1: TForm1
     object TabSheet5: TTabSheet
       Caption = #22522#26412#35774#32622
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button4: TButton
         Left = 160
         Top = 104

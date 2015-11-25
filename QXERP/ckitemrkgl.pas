@@ -36,7 +36,6 @@ type
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
     procedure ComboBoxEx1Select(Sender: TObject);
-    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -50,6 +49,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -188,9 +188,10 @@ begin
   edit1.Text:=comboboxex1.Text;
 end;
 
-procedure TForm22.Edit1KeyPress(Sender: TObject; var Key: Char);
+procedure TForm22.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 begin
-if edit1.Text<>'' then
+if (key=13) and (edit1.Text<>'') then
     try
       with zstoredproc1 do
       begin
