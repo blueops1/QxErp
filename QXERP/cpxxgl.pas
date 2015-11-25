@@ -154,6 +154,7 @@ end;
 
 procedure TForm8.ComboBox1DropDown(Sender: TObject);
 begin
+  combobox1.Items.Clear;
   with ZQuery1 do
   begin
     close;

@@ -2,7 +2,7 @@ object Form16: TForm16
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = #29983#20135#32479#35745#26597#35810
+  Caption = #25104#21697#32479#35745#26597#35810
   ClientHeight = 705
   ClientWidth = 1100
   Color = clBtnFace
@@ -127,6 +127,10 @@ object Form16: TForm16
     object TabSheet2: TTabSheet
       Caption = #25353#21608#32479#35745
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DateTimePicker3: TDateTimePicker
         Left = 136
         Top = 24
@@ -204,6 +208,10 @@ object Form16: TForm16
     object TabSheet3: TTabSheet
       Caption = #25353#26376#32479#35745
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DateTimePicker4: TDateTimePicker
         Left = 136
         Top = 24
@@ -281,6 +289,10 @@ object Form16: TForm16
     object TabSheet4: TTabSheet
       Caption = #25353#24180#32479#35745
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DateTimePicker5: TDateTimePicker
         Left = 136
         Top = 24

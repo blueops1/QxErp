@@ -30,7 +30,8 @@ uses
   gysgl in 'gysgl.pas' {Form24},
   ccxxgl in 'ccxxgl.pas' {Form25},
   fpwhzcx in 'fpwhzcx.pas' {Form26},
-  fcpckgl in 'fcpckgl.pas' {Form27};
+  fcpckgl in 'fcpckgl.pas' {Form27},
+  xzht in 'xzht.pas' {Form28};
 
 {$R *.res}
 
@@ -67,5 +68,6 @@ begin
   Application.CreateForm(TForm25, Form25);
   Application.CreateForm(TForm26, Form26);
   Application.CreateForm(TForm27, Form27);
+  Application.CreateForm(TForm28, Form28);
   Application.Run;
 end.

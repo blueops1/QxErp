@@ -132,87 +132,97 @@ end;
 
 procedure TForm18.Button2Click(Sender: TObject);
 begin
-  try
-    with zquery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('update message_online set fisread=''Y'' where fid='+strMessid);
-      execsql;
-      DeleteStringGridRow(selectRow,stringgrid2);
-      memo1.Lines.Clear;
-    end;
-  except
-    application.MessageBox('标记失败!','消息处理提示');
-  end;
+  if (selectRow>0) and (selectRow<stringgrid2.rowcount) then
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('update message_online set fisread=''Y'' where fid='+strMessid);
+        execsql;
+        DeleteStringGridRow(selectRow,stringgrid2);
+        memo1.Lines.Clear;
+      end;
+    except
+      application.MessageBox('标记失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
 end;
 
 procedure TForm18.Button3Click(Sender: TObject);
 begin
-  try
-    with zquery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('update message_online set fisfavorite=''Y'' where fid='+strFavMessid);
-      execsql;
-      DeleteStringGridRow(selectFavRow,stringgrid2);
-      memo3.Lines.Clear;
-    end;
-  except
-    application.MessageBox('标记失败!','消息处理提示');
-  end;
+  if (selectFavRow>0) and (selectRow<stringgrid2.rowcount) then
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('update message_online set fisfavorite=''Y'' where fid='+strFavMessid);
+        execsql;
+        DeleteStringGridRow(selectFavRow,stringgrid2);
+        memo3.Lines.Clear;
+      end;
+    except
+      application.MessageBox('标记失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
 end;
 
 procedure TForm18.Button4Click(Sender: TObject);
 begin
-  try
-    with zquery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('update message_online set fisfavorite=''Y'',fisread=''Y'' where fid='+strMessid);
-      execsql;
-      DeleteStringGridRow(selectRow,stringgrid1);
-      memo1.Lines.Clear;
-    end;
-  except
-    application.MessageBox('标记失败!','消息处理提示');
-  end;
+  if (selectRow>0) and (selectRow<stringgrid1.rowcount) then
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('update message_online set fisfavorite=''Y'',fisread=''Y'' where fid='+strMessid);
+        execsql;
+        DeleteStringGridRow(selectRow,stringgrid1);
+        memo1.Lines.Clear;
+      end;
+    except
+      application.MessageBox('标记失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
 end;
 
 procedure TForm18.Button5Click(Sender: TObject);
 begin
-  try
-    with zquery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('update message_online set fisdel=''Y'' where fid='+strMessid);
-      execsql;
-      DeleteStringGridRow(selectRow,stringgrid1);
-      memo1.Lines.Clear;
-    end;
-  except
-    application.MessageBox('标记失败!','消息处理提示');
-  end;
+  if (selectRow>0) and (selectRow<stringgrid1.rowcount) then
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('update message_online set fisdel=''Y'' where fid='+strMessid);
+        execsql;
+        DeleteStringGridRow(selectRow,stringgrid1);
+        memo1.Lines.Clear;
+      end;
+    except
+      application.MessageBox('标记失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
 end;
 
 procedure TForm18.Button6Click(Sender: TObject);
 begin
-  try
-    with zquery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('update message_online set fisdel=''Y'' where fid='+strOldmessid);
-      execsql;
-      DeleteStringGridRow(selectOldRow,stringgrid3);
-      memo4.Lines.Clear;
-    end;
-  except
-    application.MessageBox('删除失败!','消息处理提示');
-  end;
+  if (selectOldRow>0) and (selectRow<stringgrid3.rowcount) then
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('update message_online set fisdel=''Y'' where fid='+strOldmessid);
+        execsql;
+        DeleteStringGridRow(selectOldRow,stringgrid3);
+        memo4.Lines.Clear;
+      end;
+    except
+      application.MessageBox('删除失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
 end;
 
 
@@ -235,19 +245,21 @@ end;
 
 procedure TForm18.Button8Click(Sender: TObject);
 begin
-  try
-    with zquery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('delete from message_online where fid='+strDelmessid);
-      execsql;
-      DeleteStringGridRow(selectDelRow,stringgrid4);
-      memo5.Lines.Clear;
-    end;
-  except
-    application.MessageBox('彻底删除失败!','消息处理提示');
-  end;
+  if (selectDelRow>0) and (selectRow<stringgrid4.rowcount) then
+    try
+      with zquery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('delete from message_online where fid='+strDelmessid);
+        execsql;
+        DeleteStringGridRow(selectDelRow,stringgrid4);
+        memo5.Lines.Clear;
+      end;
+    except
+      application.MessageBox('彻底删除失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
 end;
 
 procedure TForm18.Button9Click(Sender: TObject);

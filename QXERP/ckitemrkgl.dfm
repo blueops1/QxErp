@@ -234,8 +234,8 @@ object Form22: TForm22
     Top = 231
   end
   object PopupMenu1: TPopupMenu
-    Left = 592
-    Top = 480
+    Left = 480
+    Top = 352
     object N1: TMenuItem
       Caption = #21024#38500#24403#21069#35760#24405
       OnClick = N1Click

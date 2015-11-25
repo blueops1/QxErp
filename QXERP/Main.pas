@@ -63,6 +63,7 @@ type
     Button28: TButton;
     Button29: TButton;
     Button30: TButton;
+    Button31: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -97,6 +98,7 @@ type
     procedure Button28Click(Sender: TObject);
     procedure Button29Click(Sender: TObject);
     procedure Button30Click(Sender: TObject);
+    procedure Button31Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -124,7 +126,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,
      scjh,message_online,fhdgl,fhdcx,
      fapiaohezhang,ckitemrkgl,gysgl,
-     ccxxgl,fpwhzcx,fcpckgl;
+     ccxxgl,fpwhzcx,fcpckgl,xzht;
 
 {$R *.dfm}
 
@@ -263,6 +265,14 @@ begin
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
+procedure TForm1.Button31Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,6,1)='1') then
+    htgl.Form6.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
 procedure TForm1.Button3Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,9,1)='1') then
@@ -298,7 +308,7 @@ end;
 procedure TForm1.Button8Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,6,1)='1') then
-    htgl.Form6.Show
+    xzht.Form28.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
