@@ -32,6 +32,8 @@ type
       var CanSelect: Boolean);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure N1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -104,6 +106,7 @@ begin
         stringgrid1.Cells[3,stringgrid1.RowCount-2]:=datetostr(datetimepicker1.Date);
         stringgrid1.Cells[4,stringgrid1.RowCount-2]:=edit4.Text;
         //stringgrid1.RowCount:=stringgrid1.RowCount-1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         combobox1.Text:='';
         edit2.Text:='';
         edit4.Text:='';
@@ -124,8 +127,8 @@ begin
       with zstoredproc1 do
       begin
         close;
-        zstoredproc1.StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
-        zstoredproc1.ParamByName('cpmc').Value:=ComboBox1.Text;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox1.Text;
         open;
         while not eof do
         begin
@@ -140,6 +143,14 @@ begin
  end;
 end;
 
+procedure TForm30.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
+end;
+
 procedure TForm30.FormShow(Sender: TObject);
 begin
   datetimepicker1.Date:=now();
@@ -147,7 +158,15 @@ begin
   stringgrid1.Cells[1,0]:='产品编号';
   stringgrid1.Cells[2,0]:='出库数量';
   stringgrid1.Cells[3,0]:='出库日期';
-  stringgrid1.Cells[3,0]:='备注';
+  stringgrid1.Cells[4,0]:='备注';
+end;
+
+procedure TForm30.N1Click(Sender: TObject);
+begin
+  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
+  begin
+    DeleteStringGridRow(selRowIndex,stringgrid1);
+  end;
 end;
 
 procedure TForm30.StringGrid1MouseUp(Sender: TObject; Button: TMouseButton;

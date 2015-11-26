@@ -57,6 +57,7 @@ object Form29: TForm29
     Height = 21
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 0
+    OnKeyPress = Edit2KeyPress
   end
   object DateTimePicker1: TDateTimePicker
     Left = 614
@@ -95,7 +96,7 @@ object Form29: TForm29
   end
   object Button1: TButton
     Left = 640
-    Top = 376
+    Top = 375
     Width = 89
     Height = 25
     Caption = #20445#23384#20837#24211#20449#24687

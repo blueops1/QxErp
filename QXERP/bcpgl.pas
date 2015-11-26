@@ -10,24 +10,6 @@ uses
 type
   TForm12 = class(TForm)
     PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
-    Label7: TLabel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label30: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Button1: TButton;
-    Button2: TButton;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit4: TEdit;
-    Edit16: TEdit;
-    StringGrid4: TStringGrid;
-    Button7: TButton;
-    DateTimePicker1: TDateTimePicker;
     TabSheet2: TTabSheet;
     Label8: TLabel;
     Label9: TLabel;
@@ -54,11 +36,6 @@ type
     StringGrid2: TStringGrid;
     StringGrid7: TStringGrid;
     ZQuery1: TZQuery;
-    procedure Edit16Change(Sender: TObject);
-    procedure Button7Click(Sender: TObject);
-    procedure StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
-      var CanSelect: Boolean);
-    procedure Button1Click(Sender: TObject);
     procedure Edit7Change(Sender: TObject);
     procedure StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
@@ -84,35 +61,6 @@ implementation
 uses main;
 
 {$R *.dfm}
-
-procedure TForm12.Button1Click(Sender: TObject);
-begin
-  if (edit1.Text <> '') and (edit2.Text <> '')then
-  begin
-    try
-      with ZQuery1 do
-      begin
-        close;
-        sql.Clear;
-        sql.Add('insert into bcpcrkmxz (fbcpbh,frksl,fjzdate,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+datetimetostr(datetimepicker1.Date)+''','''+main.strUser+edit4.Text+''')');
-        ExecSQL;
-        sql.Clear;
-        if strtoint(edit2.text)>=0 then
-        sql.Add('update bcpkcb set fbcpkcs=fbcpkcs+'+edit2.Text+' where fbcpbh='+edit1.Text)
-        else
-        sql.Add('update bcpkcb set fbcpkcs=fbcpkcs'+edit2.Text+' where fbcpbh='+edit1.Text);
-        ExecSQL;
-        edit1.Text := '';
-        edit2.Text := '';
-        Application.MessageBox('半成品入库成功！','半成品管理提示');
-        //PageControl1.ActivePageIndex:=1;
-      end;
-    Except
-      Application.MessageBox('半成品入库失败！','半成品管理提示');
-    end;
-  end else
-    Application.MessageBox('请将必填项目填写完整！','半成品管理提示');
-end;
 
 procedure TForm12.Button3Click(Sender: TObject);
 
@@ -196,46 +144,6 @@ begin
 
 end;
 
-procedure TForm12.Button7Click(Sender: TObject);
-begin
-  stringgrid4.Visible:=not stringgrid4.Visible;
-  edit16.Visible:= not edit16.Visible;
-  label30.Visible:= not label30.Visible;
-end;
-
-procedure TForm12.Edit16Change(Sender: TObject);
-var y:integer;
-begin
-  begin
-      y:=1;
-      if edit16.Text<>'' then
-      begin
-        try
-        with ZQuery1 do
-        begin
-          close;
-          sql.Clear;
-          sql.Add('select fbcpbh,fbcplxmc,fcpmc,fcpzl from (select fbcpbh,fbcpgg,fbcplxmc,fsscpbh from bcplxk_info where fbcpgg like ''%'+edit16.text+'%'') as a inner join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fsscpbh=b.fcpbh');
-          open;
-          stringgrid4.RowCount:=RecordCount+1;
-          while not eof do
-          begin
-            stringgrid4.Cells[0,y]:=fields[0].AsString;
-            stringgrid4.Cells[1,y]:=fields[1].AsString;
-            stringgrid4.Cells[2,y]:=fields[2].AsString;
-            stringgrid4.Cells[3,y]:=fields[3].AsString;
-            y:=y+1;
-            next;
-          end;
-        end;
-          Except
-              Application.MessageBox('查询失败！','仓库管理提示');
-        end;
-      end;
-    end;
-end;
-
-
 procedure TForm12.Edit7Change(Sender: TObject);
 var y:integer;
 begin
@@ -248,7 +156,7 @@ begin
         begin
           close;
           sql.Clear;
-          sql.Add('select fbcpbh,fbcplxmc,fcpmc,fcpzl from (select fbcpbh,fbcpgg,fbcplxmc,fsscpbh from bcplxk_info where fbcpgg like ''%'+edit16.text+'%'') as a inner join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fsscpbh=b.fcpbh');
+          sql.Add('select fbcpbh,fbcplxmc,fcpmc,fcpzl from (select fbcpbh,fbcpgg,fbcplxmc,fsscpbh from bcplxk_info where fbcpgg like ''%'+edit7.text+'%'') as a inner join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fsscpbh=b.fcpbh');
           open;
           stringgrid3.RowCount:=RecordCount+1;
           while not eof do
@@ -270,7 +178,6 @@ end;
 
 procedure TForm12.FormActivate(Sender: TObject);
 begin
-  datetimepicker1.DateTime := date();
   datetimepicker2.DateTime := date();
 end;
 
@@ -387,12 +294,6 @@ procedure TForm12.StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   edit3.Text:=stringgrid3.Cells[0,ARow];
-end;
-
-procedure TForm12.StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
-  var CanSelect: Boolean);
-begin
-  edit1.Text:=stringgrid4.Cells[0,ARow];
 end;
 
 end.

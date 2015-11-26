@@ -57,6 +57,7 @@ object Form30: TForm30
     Height = 21
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 0
+    OnKeyPress = Edit2KeyPress
   end
   object DateTimePicker1: TDateTimePicker
     Left = 614
@@ -130,6 +131,7 @@ object Form30: TForm30
     Top = 264
     object N1: TMenuItem
       Caption = #21024#38500#24403#21069#35760#24405
+      OnClick = N1Click
     end
   end
 end

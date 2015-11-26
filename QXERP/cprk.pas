@@ -33,6 +33,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -67,7 +68,9 @@ end;
 
 procedure TForm29.Button1Click(Sender: TObject);
 var
-  i:integer;
+  i,x:integer;
+  strCpbh:Tstringlist;
+  strBcpbh: Array Of String ;
 begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
   if stringgrid1.RowCount>2 then
   try
@@ -84,6 +87,36 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
         ParamByName('czry').Value:=main.strUser;
         ExecProc;
       end;
+      for i := 1 to stringgrid1.RowCount - 2 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcplxkinfo_bcpbh_by_cpbh';
+        ParamByName('cpbh').Value:=SplitString(stringgrid1.Cells[1,i],'|');
+        open;
+        if not eof then
+        begin
+          x:=0;
+          setLength(strBcpbh,RecordCount);
+            while not eof do
+            begin
+              strBcpbh[x]:=fields[0].AsString;
+              x := x+1;
+              next;
+            end;
+            close;
+            StoredProcName:='proc_insert_bcpcrkmxz_ck';//bcpbh,cksl,jzdate,fczry
+            x := 0;
+            while x<length(strBcpbh) do
+            begin
+              ParamByName('bcpbh').Value:=StrBcpbh[x];
+              ParamByName('cksl').Value:=stringgrid1.Cells[2,i];
+              ParamByName('jzdate').Value:=stringgrid1.Cells[3,i];
+              ParamByName('czry').Value:=main.strUser;
+              ExecProc;
+              x:=x+1;
+            end;
+          end;
+        end;
         stringgrid1.RowCount:=2;
         stringgrid1.Rows[1].Clear;
         combobox1.SetFocus;
@@ -105,6 +138,7 @@ begin
         stringgrid1.Cells[3,stringgrid1.RowCount-2]:=datetostr(datetimepicker1.Date);
         stringgrid1.Cells[4,stringgrid1.RowCount-2]:=edit4.Text;
         //stringgrid1.RowCount:=stringgrid1.RowCount-1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         combobox1.Text:='';
         edit2.Text:='';
         edit4.Text:='';
@@ -125,8 +159,8 @@ begin
       with zstoredproc1 do
       begin
         close;
-        zstoredproc1.StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
-        zstoredproc1.ParamByName('cpmc').Value:=ComboBox1.Text;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox1.Text;
         open;
         while not eof do
         begin
@@ -136,9 +170,17 @@ begin
         //combobox1.DroppedDown:=true;
       end;
   except
-    application.MessageBox('数据查询失败！','成品入库提示');
+    application.MessageBox('数据查询失败！','成品出库提示');
   end;
  end;
+end;
+
+procedure TForm29.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm29.FormShow(Sender: TObject);
@@ -148,7 +190,7 @@ begin
   stringgrid1.Cells[1,0]:='产品编号';
   stringgrid1.Cells[2,0]:='入库数量';
   stringgrid1.Cells[3,0]:='入库日期';
-  stringgrid1.Cells[3,0]:='备注';
+  stringgrid1.Cells[4,0]:='备注';
 end;
 
 procedure TForm29.N1Click(Sender: TObject);
