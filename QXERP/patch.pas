@@ -38,6 +38,7 @@ var
   BlobStream: TStream;
   FileStream: TStream;
 begin
+  button1.Enabled:=false;
   newfile:='Qxerp.exe';
   with zquery1 do
   begin

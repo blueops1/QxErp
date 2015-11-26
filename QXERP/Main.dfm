@@ -210,16 +210,16 @@ object Form1: TForm1
       Caption = #20179#24211#31649#29702
       ImageIndex = 2
       object Button3: TButton
-        Left = 160
-        Top = 104
+        Left = 432
+        Top = 200
         Width = 97
         Height = 65
-        Caption = #25104#21697#31649#29702
+        Caption = #25104#21697#24211#23384#26597#35810
         TabOrder = 0
         OnClick = Button3Click
       end
       object Button25: TButton
-        Left = 296
+        Left = 160
         Top = 104
         Width = 97
         Height = 65
@@ -246,13 +246,40 @@ object Form1: TForm1
         OnClick = Button29Click
       end
       object Button30: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #38750#20135#21697#20986#24211#31649#29702
+        TabOrder = 4
+        OnClick = Button30Click
+      end
+      object Button32: TButton
         Left = 160
         Top = 200
         Width = 97
         Height = 65
-        Caption = #20986#24211#31649#29702
-        TabOrder = 4
-        OnClick = Button30Click
+        Caption = #25104#21697#20837#24211
+        TabOrder = 5
+        OnClick = Button32Click
+      end
+      object Button33: TButton
+        Left = 296
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #25104#21697#20986#24211
+        TabOrder = 6
+        OnClick = Button33Click
+      end
+      object Button34: TButton
+        Left = 568
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #24120#35268#24211#23384#36319#36394
+        TabOrder = 7
+        OnClick = Button3Click
       end
     end
     object TabSheet4: TTabSheet
@@ -339,8 +366,8 @@ object Form1: TForm1
         OnClick = Button10Click
       end
       object Button9: TButton
-        Left = 160
-        Top = 200
+        Left = 296
+        Top = 192
         Width = 97
         Height = 65
         Caption = #32844#24037#20449#24687#31649#29702
@@ -348,8 +375,8 @@ object Form1: TForm1
         OnClick = Button9Click
       end
       object Button12: TButton
-        Left = 296
-        Top = 200
+        Left = 432
+        Top = 192
         Width = 97
         Height = 65
         Caption = #24080#25143#26435#38480#31649#29702
@@ -379,6 +406,15 @@ object Form1: TForm1
         ParentFont = False
         TabOrder = 5
         OnClick = Button28Click
+      end
+      object Button35: TButton
+        Left = 160
+        Top = 192
+        Width = 97
+        Height = 65
+        Caption = #24120#35268#24211#23384#35774#32622
+        TabOrder = 6
+        OnClick = Button12Click
       end
     end
   end
@@ -437,7 +473,7 @@ object Form1: TForm1
     Top = 344
   end
   object Timer1: TTimer
-    Interval = 600000
+    Interval = 60000
     OnTimer = Timer1Timer
     Left = 560
     Top = 480

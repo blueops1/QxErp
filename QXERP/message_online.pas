@@ -310,7 +310,7 @@ try
     intMessage:=fields[0].AsInteger;
     if intMessage>0 then
     begin
-    label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+    form1.label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
     form1.panel1.Visible:=true;
     end else
     form1.panel1.Visible:=false;

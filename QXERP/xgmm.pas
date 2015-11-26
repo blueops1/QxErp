@@ -46,14 +46,14 @@ begin
       begin
         close;
         sql.Clear;
-        sql.Add('select fpwd from user_info where fuser = ''' + edit1.Text + ''' and fpwd = ''' +edit2.Text + '''');
+        sql.Add('select fpwd from user_info where fuser = ''' + main.strUser + ''' and fpwd = ''' +edit2.Text + '''');
         open;
         if not eof then
         begin
           if (edit3.Text <> '') and (edit3.Text = edit4.Text)  then
           begin
             sql.Clear;
-            sql.Add('update user_info set fpwd = ''' + edit3.Text + '''');
+            sql.Add('update user_info set fpwd = ''' + edit3.Text + ''' where fuser ='''+main.strUser+'''');
             execSql;
             application.MessageBox('密码修改成功！','密码修改');
 

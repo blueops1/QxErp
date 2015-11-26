@@ -71,6 +71,10 @@
     <Transaction>2015/11/25 09:06:18.415.dfm,E:\QxErp\QXERP\Unit27.dfm=E:\QxErp\QXERP\fcpckgl.dfm</Transaction>
     <Transaction>2015/11/25 18:56:39.580.pas,F:\QxErp\QXERP\Unit28.pas=F:\QxErp\QXERP\xzht.pas</Transaction>
     <Transaction>2015/11/25 18:56:39.580.dfm,F:\QxErp\QXERP\Unit28.dfm=F:\QxErp\QXERP\xzht.dfm</Transaction>
+    <Transaction>2015/11/26 08:26:23.806.pas,E:\QxErp\QXERP\Unit29.pas=E:\QxErp\QXERP\cprk.pas</Transaction>
+    <Transaction>2015/11/26 08:26:23.806.dfm,E:\QxErp\QXERP\Unit29.dfm=E:\QxErp\QXERP\cprk.dfm</Transaction>
+    <Transaction>2015/11/26 13:18:20.108.pas,E:\QxErp\QXERP\Unit30.pas=E:\QxErp\QXERP\cpck.pas</Transaction>
+    <Transaction>2015/11/26 13:18:20.108.dfm,E:\QxErp\QXERP\Unit30.dfm=E:\QxErp\QXERP\cpck.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -133,5 +137,9 @@
     <File Path="fcpckgl.dfm"/>
     <File Path="xzht.pas"/>
     <File Path="xzht.dfm"/>
+    <File Path="cprk.pas"/>
+    <File Path="cprk.dfm"/>
+    <File Path="cpck.pas"/>
+    <File Path="cpck.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

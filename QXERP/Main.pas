@@ -64,6 +64,10 @@ type
     Button29: TButton;
     Button30: TButton;
     Button31: TButton;
+    Button32: TButton;
+    Button33: TButton;
+    Button34: TButton;
+    Button35: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -99,6 +103,8 @@ type
     procedure Button29Click(Sender: TObject);
     procedure Button30Click(Sender: TObject);
     procedure Button31Click(Sender: TObject);
+    procedure Button32Click(Sender: TObject);
+    procedure Button33Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -126,7 +132,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      bcpgl,yskcx,zggl,zhqxgl,xgmm,sctjcx,
      scjh,message_online,fhdgl,fhdcx,
      fapiaohezhang,ckitemrkgl,gysgl,
-     ccxxgl,fpwhzcx,fcpckgl,xzht;
+     ccxxgl,fpwhzcx,fcpckgl,xzht,cprk,cpck;
 
 {$R *.dfm}
 
@@ -273,9 +279,25 @@ begin
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
+procedure TForm1.Button32Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,16,1)='1') then
+    cprk.Form29.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button33Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,16,1)='1') then
+    cpck.Form30.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
 procedure TForm1.Button3Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,9,1)='1') then
+  if(MidStr(main.strUserQX,16,1)='1') then
     ckgl.from9.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
@@ -361,7 +383,7 @@ begin
         intMessage:=fields[0].AsInteger;
         if intMessage>0 then
         begin
-        label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+        form1.label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
         panel1.Visible:=true;
         end else
         panel1.Visible:=false;
@@ -418,7 +440,7 @@ try
     intMessage:=fields[0].AsInteger;
     if intMessage>0 then
     begin
-    label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+    form1.Label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
     panel1.Visible:=true;
     end else
     panel1.Visible:=false;

@@ -31,7 +31,9 @@ uses
   ccxxgl in 'ccxxgl.pas' {Form25},
   fpwhzcx in 'fpwhzcx.pas' {Form26},
   fcpckgl in 'fcpckgl.pas' {Form27},
-  xzht in 'xzht.pas' {Form28};
+  xzht in 'xzht.pas' {Form28},
+  cprk in 'cprk.pas' {Form29},
+  cpck in 'cpck.pas' {Form30};
 
 {$R *.res}
 
@@ -69,5 +71,7 @@ begin
   Application.CreateForm(TForm26, Form26);
   Application.CreateForm(TForm27, Form27);
   Application.CreateForm(TForm28, Form28);
+  Application.CreateForm(TForm29, Form29);
+  Application.CreateForm(TForm30, Form30);
   Application.Run;
 end.

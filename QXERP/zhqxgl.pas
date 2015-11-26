@@ -106,7 +106,7 @@ begin
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox16.Checked = True then     //暂无3 16 3
+  if checkbox16.Checked = True then     //成品管理 16 3
     strQx := strQx + '1'
   else
     strQx := strQx + '0';

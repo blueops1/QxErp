@@ -133,6 +133,12 @@
 			<DCCReference Include="xzht.pas">
 				<Form>Form28</Form>
 			</DCCReference>
+			<DCCReference Include="cprk.pas">
+				<Form>Form29</Form>
+			</DCCReference>
+			<DCCReference Include="cpck.pas">
+				<Form>Form30</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
