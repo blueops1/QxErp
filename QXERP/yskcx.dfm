@@ -146,10 +146,6 @@ object Form7: TForm7
     object TabSheet3: TTabSheet
       Caption = #26376#24212#25910#27454#26032#22686#22238#25910#32479#35745
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DateTimePicker4: TDateTimePicker
         Left = 136
         Top = 24
@@ -199,10 +195,6 @@ object Form7: TForm7
     object TabSheet4: TTabSheet
       Caption = #24180#24212#25910#27454#26032#22686#22238#25910#32479#35745
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DateTimePicker5: TDateTimePicker
         Left = 136
         Top = 24

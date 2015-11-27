@@ -145,6 +145,12 @@
 			<DCCReference Include="kczgxxgl.pas">
 				<Form>Form32</Form>
 			</DCCReference>
+			<DCCReference Include="cgkcgz.pas">
+				<Form>Form33</Form>
+			</DCCReference>
+			<DCCReference Include="ckcx.pas">
+				<Form>Form34</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

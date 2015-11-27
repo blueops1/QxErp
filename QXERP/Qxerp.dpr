@@ -35,7 +35,9 @@ uses
   cprk in 'cprk.pas' {Form29},
   cpck in 'cpck.pas' {Form30},
   bcprk in 'bcprk.pas' {Form31},
-  kczgxxgl in 'kczgxxgl.pas' {Form32};
+  kczgxxgl in 'kczgxxgl.pas' {Form32},
+  cgkcgz in 'cgkcgz.pas' {Form33},
+  ckcx in 'ckcx.pas' {Form34};
 
 {$R *.res}
 
@@ -77,5 +79,7 @@ begin
   Application.CreateForm(TForm30, Form30);
   Application.CreateForm(TForm31, Form31);
   Application.CreateForm(TForm32, Form32);
+  Application.CreateForm(TForm33, Form33);
+  Application.CreateForm(TForm34, Form34);
   Application.Run;
 end.

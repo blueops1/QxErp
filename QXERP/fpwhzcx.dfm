@@ -47,8 +47,9 @@ object Form26: TForm26
     ColCount = 9
     RowCount = 2
     TabOrder = 1
+    OnDrawCell = StringGrid1DrawCell
     ColWidths = (
-      55
+      44
       73
       228
       80

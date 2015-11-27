@@ -21,6 +21,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
   private
     { Private declarations }
   public
@@ -181,6 +183,25 @@ begin
   stringgrid1.Cells[6,0]:='物品名称';
   stringgrid1.Cells[7,0]:='入库数量';
   stringgrid1.Cells[8,0]:='物品单价';
+end;
+
+procedure TForm26.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+  Rect: TRect; State: TGridDrawState);
+begin
+  with TStringGrid(Sender) do
+  begin
+    if (ARow>0) and (ARow<TStringGrid(Sender).rowCount-1) then
+      if(Cells[1,ARow]<>'') then
+        Canvas.Brush.Color:=clSkyBlue
+        //Canvas.Font.Color:=clRed
+      else if(Cells[3,ARow]<>'') then
+        Canvas.Brush.Color:=clMoneyGreen
+        else
+          Canvas.Brush.Color:=clWindow;
+  //      Canvas.Font.Color:=clWindowText;
+    Canvas.FillRect(Rect);
+    Canvas.TextOut(Rect.Left+2,Rect.Top+2,Cells[ACol,ARow]);
+  end;
 end;
 
 end.

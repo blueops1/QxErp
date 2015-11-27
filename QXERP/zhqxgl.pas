@@ -154,7 +154,7 @@ begin
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox12.Checked = True then    //ÔÝÎÞ4 12 15
+  if checkbox12.Checked = True then    //³£¹æ¿â´æ¸ú×Ù 12 15
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
