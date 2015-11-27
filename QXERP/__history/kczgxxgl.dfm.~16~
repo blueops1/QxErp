@@ -1,0 +1,143 @@
+object Form32: TForm32
+  Left = 0
+  Top = 0
+  Caption = #24120#35268#24211#23384#36319#36394#35774#32622
+  ClientHeight = 522
+  ClientWidth = 806
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 32
+    Top = 27
+    Width = 96
+    Height = 13
+    Caption = #36873#25321#24211#23384#29289#21697#31867#22411
+  end
+  object Label2: TLabel
+    Left = 42
+    Top = 475
+    Width = 48
+    Height = 13
+    Caption = #29289#21697#21517#31216
+  end
+  object Label3: TLabel
+    Left = 245
+    Top = 475
+    Width = 48
+    Height = 13
+    Caption = #29289#21697#21517#31216
+  end
+  object Label4: TLabel
+    Left = 439
+    Top = 475
+    Width = 48
+    Height = 13
+    Caption = #24211#23384#19979#38480
+  end
+  object ComboBox1: TComboBox
+    Left = 136
+    Top = 24
+    Width = 177
+    Height = 21
+    TabOrder = 0
+    OnKeyDown = ComboBox1KeyDown
+    OnSelect = ComboBox1Select
+  end
+  object StringGrid1: TStringGrid
+    Left = 32
+    Top = 64
+    Width = 281
+    Height = 369
+    ColCount = 3
+    FixedCols = 0
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    TabOrder = 1
+    OnSelectCell = StringGrid1SelectCell
+    ColWidths = (
+      64
+      75
+      105)
+  end
+  object StringGrid2: TStringGrid
+    Left = 400
+    Top = 64
+    Width = 377
+    Height = 369
+    ColCount = 4
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    TabOrder = 2
+    OnSelectCell = StringGrid2SelectCell
+    ColWidths = (
+      64
+      121
+      102
+      70)
+  end
+  object Button1: TButton
+    Left = 335
+    Top = 160
+    Width = 43
+    Height = 41
+    Caption = '>'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 335
+    Top = 272
+    Width = 43
+    Height = 41
+    Caption = #21024#38500
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 640
+    Top = 470
+    Width = 137
+    Height = 25
+    Caption = #35774#32622#36319#36394#39033#30446#24211#23384#19979#38480
+    TabOrder = 5
+    WordWrap = True
+  end
+  object Edit1: TEdit
+    Left = 104
+    Top = 472
+    Width = 121
+    Height = 21
+    ReadOnly = True
+    TabOrder = 6
+  end
+  object Edit2: TEdit
+    Left = 299
+    Top = 472
+    Width = 121
+    Height = 21
+    ReadOnly = True
+    TabOrder = 7
+  end
+  object Edit3: TEdit
+    Left = 499
+    Top = 472
+    Width = 121
+    Height = 21
+    TabOrder = 8
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 512
+    Top = 216
+  end
+end

@@ -23,6 +23,8 @@ type
     ZStoredProc1: TZStoredProc;
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
+    Label5: TLabel;
+    Edit1: TEdit;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormShow(Sender: TObject);
@@ -34,6 +36,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure N1Click(Sender: TObject);
+    procedure ComboBox1Select(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,8 +99,21 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
 end;
 
 procedure TForm30.Button2Click(Sender: TObject);
+var
+  booldouble:boolean;
+  i:integer;
 begin
+  booldouble:=false;
+  for i := 1 to stringgrid1.RowCount - 1 do
+  begin
+    if combobox1.Text=stringgrid1.Cells[1,i] then
+       booldouble:=true;
+  end;
+  if booldouble=true then
+      application.MessageBox('该产品已在下面列表中，请确认！','成品出库提示')
+    else
     if (edit2.Text<>'') and (combobox1.Text<>'') then
+      if strtofloat(edit2.Text)<=strtofloat(edit1.Text)  then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
         stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
@@ -112,6 +128,8 @@ begin
         edit4.Text:='';
         combobox1.SetFocus;
       end else
+        application.MessageBox('出库数量大于库存数量！','成品出库提示')
+    else
       application.MessageBox('请将明细填写完整！','成品出库提示');
 end;
 
@@ -122,6 +140,7 @@ begin
  begin
     if combobox1.Items.Count>0 then
     ComboBox1.Items.Clear;
+    edit1.Text:='';
     //combobox1.Items.Add('*|全部供应商');
     try
       with zstoredproc1 do
@@ -141,6 +160,24 @@ begin
     application.MessageBox('数据查询失败！','成品出库提示');
   end;
  end;
+end;
+
+procedure TForm30.ComboBox1Select(Sender: TObject);
+begin
+  edit1.Text:='';
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_cpkcb_by_cbph';
+      ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
+      open;
+      if not eof then
+        edit1.Text:=fields[0].AsString;
+    end;
+  except
+    application.MessageBox('数据查询失败！','成品出库提示');
+  end;
 end;
 
 procedure TForm30.Edit2KeyPress(Sender: TObject; var Key: Char);

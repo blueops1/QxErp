@@ -23,6 +23,8 @@ type
     ZStoredProc1: TZStoredProc;
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
+    Label5: TLabel;
+    Edit1: TEdit;
     procedure FormShow(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -34,6 +36,7 @@ type
     procedure N1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure ComboBox1Select(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,7 +99,19 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
 end;
 
 procedure TForm31.Button2Click(Sender: TObject);
+var
+  booldouble:boolean;
+  i:integer;
 begin
+  booldouble:=false;
+  for i := 1 to stringgrid1.RowCount - 1 do
+  begin
+    if combobox1.Text=stringgrid1.Cells[1,i] then
+       booldouble:=true;
+  end;
+  if booldouble=true then
+      application.MessageBox('该半成品已在下面列表中，请确认！','半成品入库提示')
+    else
     if (edit2.Text<>'') and (combobox1.Text<>'') then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
@@ -120,6 +135,7 @@ procedure TForm31.ComboBox1KeyDown(Sender: TObject; var Key: Word;
 begin
  if key=13 then
  begin
+    edit1.Text:='';
     if combobox1.Items.Count>0 then
     ComboBox1.Items.Clear;
     //combobox1.Items.Add('*|全部供应商');
@@ -141,6 +157,24 @@ begin
     application.MessageBox('数据查询失败！','半成品入库提示');
   end;
  end;
+end;
+
+procedure TForm31.ComboBox1Select(Sender: TObject);
+begin
+  edit1.Text:='';
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcpkcb_bcpkcs_by_bcpbh';
+      ParamByName('bcpbh').Value:=SplitString(combobox1.Text,'|');
+      open;
+      if not eof then
+        edit1.Text:=fields[0].AsString;
+    end;
+  except
+    application.MessageBox('数据查询失败！','半成品入库提示');
+  end;
 end;
 
 procedure TForm31.Edit2KeyPress(Sender: TObject; var Key: Char);
