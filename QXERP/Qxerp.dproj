@@ -154,6 +154,9 @@
 			<DCCReference Include="ckitemgz.pas">
 				<Form>Form35</Form>
 			</DCCReference>
+			<DCCReference Include="xzscjh.pas">
+				<Form>Form36</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

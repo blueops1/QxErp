@@ -166,7 +166,7 @@ object Form23: TForm23
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 740
+    Left = 741
     Top = 192
     Width = 34
     Height = 33

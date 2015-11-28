@@ -46,7 +46,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet3
+    ActivePage = TabSheet7
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -259,7 +259,7 @@ object Form1: TForm1
         Top = 104
         Width = 97
         Height = 65
-        Caption = #25104#21697#20837#24211
+        Caption = #20135#25104#21697#20837#24211
         TabOrder = 4
         OnClick = Button32Click
       end
@@ -268,7 +268,7 @@ object Form1: TForm1
         Top = 104
         Width = 97
         Height = 65
-        Caption = #25104#21697#20986#24211
+        Caption = #20135#25104#21697#20986#24211
         TabOrder = 5
         OnClick = Button33Click
       end
@@ -280,6 +280,15 @@ object Form1: TForm1
         Caption = #24120#35268#24211#23384#36319#36394
         TabOrder = 6
         OnClick = Button34Click
+      end
+      object Button37: TButton
+        Left = 568
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #24211#23384#20272#20540
+        TabOrder = 7
+        OnClick = Button37Click
       end
     end
     object TabSheet4: TTabSheet
@@ -330,7 +339,7 @@ object Form1: TForm1
         Top = 208
         Width = 97
         Height = 65
-        Caption = #20179#24211#32479#35745#26597#35810
+        Caption = #24211#23384#29289#36164#26597#35810
         TabOrder = 2
         OnClick = Button15Click
       end

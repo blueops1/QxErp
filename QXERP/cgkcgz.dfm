@@ -24,6 +24,7 @@ object Form33: TForm33
     Height = 433
     ColCount = 7
     RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 0
     OnDrawCell = StringGrid1DrawCell
     ColWidths = (
