@@ -1,7 +1,7 @@
 object Form22: TForm22
   Left = 0
   Top = 0
-  Caption = #26448#26009#37197#20214#20837#24211#31649#29702
+  Caption = #26448#26009#29289#36164#20837#24211
   ClientHeight = 534
   ClientWidth = 859
   Color = clBtnFace

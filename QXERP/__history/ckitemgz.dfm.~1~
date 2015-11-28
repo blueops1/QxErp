@@ -1,0 +1,53 @@
+object Form35: TForm35
+  Left = 0
+  Top = 0
+  Caption = 'Form35'
+  ClientHeight = 529
+  ClientWidth = 925
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 55
+    Width = 925
+    Height = 474
+    Align = alBottom
+    ColCount = 9
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    TabOrder = 0
+    ExplicitTop = 48
+    ExplicitWidth = 861
+    ColWidths = (
+      55
+      64
+      144
+      80
+      137
+      94
+      105
+      72
+      71)
+  end
+  object Button2: TButton
+    Left = 744
+    Top = 12
+    Width = 89
+    Height = 25
+    Caption = #23548#20986#21040'Execl'
+    TabOrder = 1
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 520
+    Top = 328
+  end
+end

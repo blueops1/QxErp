@@ -3,7 +3,7 @@ object Form34: TForm34
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #20179#24211#24211#23384#26597#35810
+  Caption = #24211#23384#26448#26009#29289#36164#26597#35810
   ClientHeight = 522
   ClientWidth = 861
   Color = clBtnFace
@@ -42,7 +42,6 @@ object Form34: TForm34
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 0
     OnDrawCell = StringGrid1DrawCell
-    ExplicitTop = 49
     ColWidths = (
       55
       64

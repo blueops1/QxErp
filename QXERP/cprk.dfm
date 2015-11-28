@@ -3,7 +3,7 @@ object Form29: TForm29
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #25104#21697#20837#24211
+  Caption = #20135#25104#21697#20837#24211
   ClientHeight = 442
   ClientWidth = 774
   Color = clBtnFace

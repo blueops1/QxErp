@@ -37,7 +37,8 @@ uses
   bcprk in 'bcprk.pas' {Form31},
   kczgxxgl in 'kczgxxgl.pas' {Form32},
   cgkcgz in 'cgkcgz.pas' {Form33},
-  ckcx in 'ckcx.pas' {Form34};
+  ckcx in 'ckcx.pas' {Form34},
+  ckitemgz in 'ckitemgz.pas' {Form35};
 
 {$R *.res}
 
@@ -81,5 +82,6 @@ begin
   Application.CreateForm(TForm32, Form32);
   Application.CreateForm(TForm33, Form33);
   Application.CreateForm(TForm34, Form34);
+  Application.CreateForm(TForm35, Form35);
   Application.Run;
 end.

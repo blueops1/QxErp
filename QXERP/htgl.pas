@@ -133,12 +133,13 @@ end;
 
 procedure TForm6.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
-var strHtbh:string;
-var y:integer;
-var floatZje:real;
-var htcpsl:integer;
-var yfhcpsl:integer;
-var yfhcpzje:real;
+var
+  strHtbh:string;
+  y:integer;
+  floatZje:real;
+  htcpsl:integer;
+  yfhcpsl:integer;
+  yfhcpzje:real;
 begin
   strHtbh:= stringgrid1.Cells[0,ARow];
   if strHtbh<>'' then
