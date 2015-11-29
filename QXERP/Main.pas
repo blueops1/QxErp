@@ -42,7 +42,6 @@ type
     Button15: TButton;
     Button16: TButton;
     Button17: TButton;
-    Button18: TButton;
     ZConnection1: TZConnection;
     TabSheet7: TTabSheet;
     Button19: TButton;
@@ -71,6 +70,10 @@ type
     Button3: TButton;
     Button37: TButton;
     Button38: TButton;
+    Button39: TButton;
+    Button40: TButton;
+    Button41: TButton;
+    Button42: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -114,6 +117,9 @@ type
     procedure Button15Click(Sender: TObject);
     procedure Button37Click(Sender: TObject);
     procedure Button38Click(Sender: TObject);
+    procedure Button39Click(Sender: TObject);
+    procedure Button40Click(Sender: TObject);
+    procedure Button42Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -143,7 +149,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      fapiaohezhang,ckitemrkgl,gysgl,
      ccxxgl,fpwhzcx,fcpckgl,xzht,cprk,
      cpck,bcprk,kczgxxgl,cgkcgz,ckcx,
-     xzscjh,ckitemgz;
+     xzscjh,ckitemgz,qjgl,qjcx,rwdjs;
 
 {$R *.dfm}
 
@@ -166,7 +172,7 @@ end;
 
 procedure TForm1.Button11Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,12,1)='1') then
+  if(MidStr(main.strUserQX,17,1)='1') then
     bcpgl.Form12.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
@@ -358,10 +364,34 @@ begin
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
+procedure TForm1.Button39Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,19,1)='1') then
+    qjgl.Form37.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
 procedure TForm1.Button3Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,16,1)='1') then
     ckgl.from9.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button40Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,19,1)='1') then
+    qjcx.Form38.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button42Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,17,1)='1') then
+    rwdjs.Form39.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

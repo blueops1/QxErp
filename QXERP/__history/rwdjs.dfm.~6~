@@ -1,0 +1,50 @@
+object Form39: TForm39
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = #20219#21153#32467#26463#22788#29702
+  ClientHeight = 302
+  ClientWidth = 509
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 509
+    Height = 253
+    Align = alTop
+    RowCount = 2
+    TabOrder = 0
+    ExplicitWidth = 499
+    ColWidths = (
+      64
+      88
+      109
+      103
+      96)
+  end
+  object Button1: TButton
+    Left = 328
+    Top = 259
+    Width = 139
+    Height = 25
+    Caption = #25209#37327#22788#29702#24050#32467#26463#20219#21153#21333
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 144
+    Top = 104
+  end
+end

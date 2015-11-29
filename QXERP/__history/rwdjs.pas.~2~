@@ -1,0 +1,56 @@
+unit rwdjs;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
+  Grids;
+
+type
+  TForm39 = class(TForm)
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form39: TForm39;
+
+implementation
+
+{$R *.dfm}
+
+uses main;
+
+procedure TForm39.FormShow(Sender: TObject);
+var
+  i:integer;
+begin         //proc_cx_renwudan_isend
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_renwudan_isend';
+      open;
+      i:=1;
+      while not eof do
+      begin
+        stringgrid1.Cells[1,i]:=fields[0].AsString;
+        stringgrid1.Cells[2,i]:=fields[1].AsString;
+        stringgrid1.Cells[3,i]:=fields[2].AsString;
+      end;
+    end;
+  finally
+
+  end;
+
+
+end;
+
+end.

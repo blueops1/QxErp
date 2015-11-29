@@ -1,0 +1,67 @@
+unit rwdjs;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
+  Grids;
+
+type
+  TForm39 = class(TForm)
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form39: TForm39;
+
+implementation
+
+{$R *.dfm}
+
+uses main;
+
+procedure TForm39.FormShow(Sender: TObject);
+var
+  i:integer;
+begin         //proc_cx_renwudan_isend
+  stringgrid1.RowCount:=2;
+  stringgrid1.Rows[1].Clear;
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='任务单编号';
+  stringgrid1.Cells[2,0]:='总任务数量';
+  stringgrid1.Cells[3,0]:='计划总数量';
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_renwudan_isend';
+      open;
+      i:=1;
+      while not eof do
+      begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
+        stringgrid1.Cells[1,i]:=inttostr(i);
+        stringgrid1.Cells[1,i]:=fields[0].AsString;
+        stringgrid1.Cells[2,i]:=fields[1].AsString;
+        stringgrid1.Cells[3,i]:=fields[2].AsString;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;;
+        i:=i+1;
+        next;
+      end;
+    end;
+  finally
+
+  end;
+
+
+end;
+
+end.

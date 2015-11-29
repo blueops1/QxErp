@@ -170,7 +170,7 @@ begin
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox11.Checked = True then    //‘›Œﬁ8 11 19
+  if checkbox11.Checked = True then    //«ÎºŸπ‹¿Ì 11 19
     strQx := strQx + '1'
   else
     strQx := strQx + '0';

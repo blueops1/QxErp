@@ -143,7 +143,7 @@ begin
       with zstoredproc1 do
       begin
         close;
-        StoredProcName:='prco_cx_bcplxk_bcpbh';
+        StoredProcName:='proc_cx_bcplxk_bcpbh';
         ParamByName('bcpmc').Value:=ComboBox1.Text;
         open;
         while not eof do

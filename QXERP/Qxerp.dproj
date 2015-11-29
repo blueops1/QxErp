@@ -157,6 +157,15 @@
 			<DCCReference Include="xzscjh.pas">
 				<Form>Form36</Form>
 			</DCCReference>
+			<DCCReference Include="qjgl.pas">
+				<Form>Form37</Form>
+			</DCCReference>
+			<DCCReference Include="qjcx.pas">
+				<Form>Form38</Form>
+			</DCCReference>
+			<DCCReference Include="rwdjs.pas">
+				<Form>Form39</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -183,11 +192,11 @@
 					</Parameters>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
-						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">True</VersionInfo>
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Build">1</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -199,7 +208,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName">洪卫工作室</VersionInfoKeys>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.1</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright">版权所有</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks"/>

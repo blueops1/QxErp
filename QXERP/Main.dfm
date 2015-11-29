@@ -46,7 +46,7 @@ object Form1: TForm1
     Top = 0
     Width = 1085
     Height = 738
-    ActivePage = TabSheet2
+    ActivePage = TabSheet7
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -75,6 +75,24 @@ object Form1: TForm1
         Caption = #22312#32447#28040#24687
         TabOrder = 1
         OnClick = Button20Click
+      end
+      object Button39: TButton
+        Left = 432
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #35831#20551#31649#29702
+        TabOrder = 2
+        OnClick = Button39Click
+      end
+      object Button40: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #35831#20551#26597#35810
+        TabOrder = 3
+        OnClick = Button40Click
       end
     end
     object TabSheet1: TTabSheet
@@ -150,40 +168,48 @@ object Form1: TForm1
         OnClick = Button11Click
       end
       object Button17: TButton
-        Left = 160
-        Top = 104
-        Width = 97
-        Height = 65
-        Caption = #29983#20135#35745#21010
-        TabOrder = 1
-        OnClick = Button17Click
-      end
-      object Button18: TButton
-        Left = 296
-        Top = 104
-        Width = 97
-        Height = 65
-        Caption = #22806#21327#21152#24037
-        TabOrder = 2
-        OnClick = Button11Click
-      end
-      object Button36: TButton
         Left = 432
         Top = 104
         Width = 97
         Height = 65
+        Caption = #35745#21010#21333#26597#35810
+        TabOrder = 1
+        OnClick = Button17Click
+      end
+      object Button36: TButton
+        Left = 160
+        Top = 208
+        Width = 97
+        Height = 65
         Caption = #21322#25104#21697#20837#24211
-        TabOrder = 3
+        TabOrder = 2
         OnClick = Button36Click
       end
       object Button38: TButton
-        Left = 160
-        Top = 200
+        Left = 296
+        Top = 104
         Width = 97
         Height = 65
-        Caption = #29983#20135#35745#21010
-        TabOrder = 4
+        Caption = #26032#22686#29983#20135#35745#21010
+        TabOrder = 3
         OnClick = Button38Click
+      end
+      object Button41: TButton
+        Left = 160
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20219#21153#21333#26597#35810
+        TabOrder = 4
+      end
+      object Button42: TButton
+        Left = 296
+        Top = 208
+        Width = 97
+        Height = 65
+        Caption = #20219#21153#21333#32467#26463#22788#29702
+        TabOrder = 5
+        OnClick = Button42Click
       end
     end
     object TabSheet8: TTabSheet

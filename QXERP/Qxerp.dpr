@@ -39,7 +39,10 @@ uses
   cgkcgz in 'cgkcgz.pas' {Form33},
   ckcx in 'ckcx.pas' {Form34},
   ckitemgz in 'ckitemgz.pas' {Form35},
-  xzscjh in 'xzscjh.pas' {Form36};
+  xzscjh in 'xzscjh.pas' {Form36},
+  qjgl in 'qjgl.pas' {Form37},
+  qjcx in 'qjcx.pas' {Form38},
+  rwdjs in 'rwdjs.pas' {Form39};
 
 {$R *.res}
 
@@ -85,5 +88,8 @@ begin
   Application.CreateForm(TForm34, Form34);
   Application.CreateForm(TForm35, Form35);
   Application.CreateForm(TForm36, Form36);
+  Application.CreateForm(TForm37, Form37);
+  Application.CreateForm(TForm38, Form38);
+  Application.CreateForm(TForm39, Form39);
   Application.Run;
 end.
