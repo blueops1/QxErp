@@ -163,7 +163,7 @@ object Form2: TForm2
       object Edit4: TEdit
         Left = 528
         Top = 205
-        Width = 150
+        Width = 241
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 3
@@ -191,7 +191,7 @@ object Form2: TForm2
       ImageIndex = 1
       OnShow = TabSheet2Show
       object Label12: TLabel
-        Left = 136
+        Left = 192
         Top = 142
         Width = 65
         Height = 13
@@ -215,7 +215,7 @@ object Form2: TForm2
         Caption = #38144#21806#21592#37038#31665
       end
       object Label15: TLabel
-        Left = 136
+        Left = 192
         Top = 206
         Width = 65
         Height = 13
@@ -225,7 +225,7 @@ object Form2: TForm2
       object ListBox1: TListBox
         Left = 0
         Top = 0
-        Width = 97
+        Width = 161
         Height = 445
         Align = alLeft
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -234,7 +234,7 @@ object Form2: TForm2
         OnClick = ListBox1Click
       end
       object Edit5: TEdit
-        Left = 224
+        Left = 280
         Top = 139
         Width = 150
         Height = 21
@@ -243,7 +243,7 @@ object Form2: TForm2
         TabOrder = 1
       end
       object Edit6: TEdit
-        Left = 224
+        Left = 280
         Top = 203
         Width = 150
         Height = 21
@@ -305,10 +305,10 @@ object Form2: TForm2
         OnClick = CheckBox2Click
       end
       object CheckBox4: TCheckBox
-        Left = 380
-        Top = 205
-        Width = 97
-        Height = 17
+        Left = 436
+        Top = 203
+        Width = 54
+        Height = 19
         Caption = #20462#25913
         TabOrder = 9
         OnClick = CheckBox4Click
@@ -320,5 +320,11 @@ object Form2: TForm2
     Params = <>
     Left = 712
     Top = 304
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 416
+    Top = 376
   end
 end

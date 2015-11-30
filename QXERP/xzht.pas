@@ -147,7 +147,7 @@ if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
       application.MessageBox('保存数据成功！','新增合同提示');
       edit1.Text:='';
       edit2.Text:='';
-      edit11.Text:='';
+      edit11.Text:='0';
       edit12.Text:='';
       edit13.Text:='';
       combobox1.Text:='';

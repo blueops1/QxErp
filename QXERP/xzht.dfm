@@ -34,9 +34,9 @@ object Form28: TForm28
     Caption = #23458#25143#32534#21495
   end
   object Label3: TLabel
-    Left = 6
+    Left = 10
     Top = 90
-    Width = 76
+    Width = 72
     Height = 13
     Alignment = taRightJustify
     Caption = #20027#31649#21333#20301#32534#21495
@@ -58,9 +58,9 @@ object Form28: TForm28
     Caption = #38144#21806#32534#21495
   end
   object Label19: TLabel
-    Left = 636
+    Left = 642
     Top = 22
-    Width = 54
+    Width = 48
     Height = 13
     Alignment = taRightJustify
     Caption = #21512#21516#37329#39069
