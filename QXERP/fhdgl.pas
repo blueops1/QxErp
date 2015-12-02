@@ -123,7 +123,7 @@ begin
   boolnull:=true;
   for i:=0 to 35 do
   begin
-    if (i<>24) and (i<>33) and (form19.Components[i] is tedit)  then
+    if (i<>24) and (i<>33) and (i<>28) and (form19.Components[i] is tedit)  then
       if tedit(form19.Components[i]).Text='' then
       begin
         //application.MessageBox(pwidechar(form19.Components[i].Name+'|'+inttostr(i)),'aa');

@@ -119,16 +119,14 @@ var
   boolnull:boolean;
   errorID:string;
   gridcount:integer;
-  booljx:boolean;
 begin
   boolnull:=true;
-  booljx:=true;
   for i:=0 to 35 do
   begin
-    if (i<>24) and (i<>33) and (form19.Components[i] is tedit)  then
+    if (i<>24) and (i<>33) and (i<>28) and (form19.Components[i] is tedit)  then
       if tedit(form19.Components[i]).Text='' then
       begin
-        //application.MessageBox(pwidechar(form19.Components[i].Name+'|'+inttostr(i)),'aa');
+        application.MessageBox(pwidechar(form19.Components[i].Name+'|'+inttostr(i)),'aa');
         boolnull:=false;
       end;
     if (form19.Components[i] is tcombobox)  then
@@ -153,7 +151,7 @@ begin
       else begin
         errorID:='发货单明细保存错误！';
         gridcount:=stringgrid2.RowCount;
-        for i := 1 to gridcount - 1 do
+        for i := 1 to stringgrid2.rowcount-1 do
         begin
           if stringgrid2.Cells[6,i]<>'' then
             if (strtoint(stringgrid2.Cells[4,i])-strtoint(stringgrid2.Cells[5,i])-strtoint(stringgrid2.Cells[6,i])>=0) then
@@ -163,11 +161,13 @@ begin
               ExecSQL;
             end else
             begin
-              application.MessageBox('发货数量大于未发数量，请核实！','发货单明细提示');
+              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量大于未发数量，请核实！'),'发货单明细提示');
               exit;
-            end
-            else
-            application.MessageBox('发货数量为空，请填写完整','发货单明细提示');
+            end else
+            begin
+              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量为空，请填写完整'),'发货单明细提示');
+              exit;
+            end;
         end;
           errorID:='发货单信息保存错误！';
           sql.Clear;
@@ -175,15 +175,15 @@ begin
           ExecSQL;
           errorID:='货运单信息保存错误！';
           sql.Clear;
-          sql.Add('insert into huoyundan_info (fhydid,fcyrid,ffhdid,fcarno,fprice,fweight,fdistance,fmemo) VALUES ('''+edit3.text+''','''+edit7.Text+''','''+edit1.Text+''','''+edit8.Text+''','''+edit10.Text+''','''+edit12.Text+''','''+edit11.Text+''','''+edit13.Text+''')');
+          sql.Add('insert into huoyundan_info (fhydid,fcyrid,ffhdid,fsendwhere,fcarno,fprice,fweight,fdistance,fmemo) VALUES ('''+edit3.text+''','''+edit7.Text+''','''+edit1.Text+''','''+edit8.Text+''','''+edit9.Text+''','''+edit10.Text+''','''+edit12.Text+''','''+edit11.Text+''','''+edit13.Text+''')');
           ExecSQL;
+          application.MessageBox('新增发货单成功！','发货单管理提示');
       end;
     end;
   end;
   except
     application.MessageBox(pwidechar(errorID),'发货单管理提示');
   end;
-
 end;
 
 procedure TForm19.Button3Click(Sender: TObject);
@@ -277,7 +277,6 @@ var
 begin
   if key=13 then
   begin
-
     try
       with zquery1 do
       begin

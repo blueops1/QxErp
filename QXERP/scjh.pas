@@ -19,12 +19,14 @@ type
     RadioGroup1: TRadioGroup;
     ZStoredProc1: TZStoredProc;
     ComboBox1: TComboBox;
+    Button1: TButton;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,13 +35,32 @@ type
 
 var
   Form17: TForm17;
+  SelARow:integer;
+  tmpjhdbh:string;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
 
-uses main;
+uses main,jhdxzfhd;
 
 {$R *.dfm}
+
+procedure TForm17.Button1Click(Sender: TObject);
+var
+  i:integer;
+  boolenough:boolean;
+begin
+  boolenough:=true;
+  for i := 1 to stringgrid2.RowCount - 2 do
+    begin
+      if stringgrid2.Cells[8,i]='N' then
+        boolenough:=false;
+    end;
+    if boolenough then
+      jhdxzfhd.Form40.ShowModal
+    else
+      application.MessageBox('有项目库存数量不够，请核实','计划单转发货单管理提示');
+end;
 
 procedure TForm17.Button6Click(Sender: TObject);
 var
@@ -69,6 +90,7 @@ begin
           stringgrid1.Cells[5,i]:=fields[4].AsString;
           stringgrid1.Cells[6,i]:=fields[5].AsString;
           stringgrid1.Cells[7,i]:=fields[6].AsString;
+          stringgrid2.Cells[8,i]:=fields[7].AsString;
           i:=i+1;
           stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
           next;
@@ -113,15 +135,16 @@ begin
   stringgrid1.Cells[0,0]:='序号';
   stringgrid1.Cells[1,0]:='合同编号';
   stringgrid1.Cells[2,0]:='项目客户名称';
-  stringgrid1.Cells[3,0]:='任务单号';
-  stringgrid1.Cells[4,0]:='计划单号';
-  stringgrid1.Cells[5,0]:='计划开始时间';
-  stringgrid1.Cells[6,0]:='预计发货时间';
-  stringgrid1.Cells[7,0]:='备注';
+  stringgrid1.Cells[3,0]:='客户编号';
+  stringgrid1.Cells[4,0]:='任务单号';
+  stringgrid1.Cells[5,0]:='计划单号';
+  stringgrid1.Cells[6,0]:='计划开始时间';
+  stringgrid1.Cells[7,0]:='预计发货时间';
+  stringgrid1.Cells[8,0]:='备注';
   stringgrid2.Cells[0,0]:='序号';
-  stringgrid2.Cells[1,0]:='计划单号';
-  stringgrid2.Cells[2,0]:='产品编号';
-  stringgrid2.Cells[3,0]:='产品名称';
+  stringgrid2.Cells[1,0]:='产品编号';
+  stringgrid2.Cells[2,0]:='产品名称';
+  stringgrid2.Cells[3,0]:='产品类型';
   stringgrid2.Cells[4,0]:='产品单价';
   stringgrid2.Cells[5,0]:='计划数量';
   stringgrid2.Cells[6,0]:='发货单已开数量';
@@ -136,14 +159,16 @@ var
 begin
   stringgrid2.RowCount:=2;
   stringgrid2.Rows[1].Clear;
-  if stringgrid1.Cells[4,ARow]<>'' then
+  SelARow:=ARow;
+  tmpjhdbh:=stringgrid1.Cells[5,ARow];
+  if stringgrid1.Cells[5,ARow]<>'' then
   try
     with zStoredProc1 do
     begin
       close;
       StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
-      ParamByName('jhdbh').Value:=stringgrid1.Cells[4,ARow];
-      ParamByName('htbh').Value:=SplitString(combobox1.Text,'|');
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,ARow];
+      ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
       open;
       i:=1;
       while not eof do

@@ -166,6 +166,9 @@
 			<DCCReference Include="rwdjs.pas">
 				<Form>Form39</Form>
 			</DCCReference>
+			<DCCReference Include="jhdxzfhd.pas">
+				<Form>Form40</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

@@ -4,7 +4,7 @@ object Form17: TForm17
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #29983#20135#35745#21010#21333#26597#35810
   ClientHeight = 639
-  ClientWidth = 926
+  ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,16 +19,16 @@ object Form17: TForm17
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 926
+    Width = 1005
     Height = 639
     ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1059
+    ExplicitWidth = 926
     object TabSheet3: TTabSheet
       Caption = #29983#20135#35745#21010#26597#35810
       ImageIndex = 2
-      ExplicitWidth = 1051
+      ExplicitWidth = 918
       object Label12: TLabel
         Left = 21
         Top = 22
@@ -40,10 +40,10 @@ object Form17: TForm17
       object StringGrid1: TStringGrid
         Left = 0
         Top = 56
-        Width = 921
+        Width = 1049
         Height = 193
         Align = alCustom
-        ColCount = 8
+        ColCount = 9
         DefaultColWidth = 200
         FixedCols = 0
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
@@ -57,12 +57,13 @@ object Form17: TForm17
           70
           73
           72
-          146)
+          64
+          165)
       end
       object Button6: TButton
         Left = 521
         Top = 17
-        Width = 75
+        Width = 72
         Height = 25
         Caption = #26597#35810
         TabOrder = 1
@@ -71,12 +72,12 @@ object Form17: TForm17
       object StringGrid2: TStringGrid
         Left = 0
         Top = 255
-        Width = 918
+        Width = 997
         Height = 356
         Align = alBottom
         ColCount = 9
         TabOrder = 2
-        ExplicitWidth = 945
+        ExplicitWidth = 918
         ColWidths = (
           64
           88
@@ -89,17 +90,17 @@ object Form17: TForm17
           83)
       end
       object Button8: TButton
-        Left = 624
+        Left = 737
         Top = 17
-        Width = 91
+        Width = 75
         Height = 25
         Caption = #23548#20986#21040'EXECL'
         TabOrder = 3
       end
       object RadioGroup1: TRadioGroup
-        Left = 732
+        Left = 818
         Top = 13
-        Width = 165
+        Width = 149
         Height = 37
         Caption = #23548#20986#34920#36873#25321
         Columns = 3
@@ -117,6 +118,15 @@ object Form17: TForm17
         Height = 21
         TabOrder = 5
         OnKeyDown = ComboBox1KeyDown
+      end
+      object Button1: TButton
+        Left = 624
+        Top = 17
+        Width = 75
+        Height = 25
+        Caption = #29983#25104#21457#36135#21333
+        TabOrder = 6
+        OnClick = Button1Click
       end
     end
   end
