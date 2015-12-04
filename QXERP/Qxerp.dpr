@@ -43,7 +43,9 @@ uses
   qjgl in 'qjgl.pas' {Form37},
   qjcx in 'qjcx.pas' {Form38},
   rwdjs in 'rwdjs.pas' {Form39},
-  jhdxzfhd in 'jhdxzfhd.pas' {Form40};
+  jhdxzfhd in 'jhdxzfhd.pas' {Form40},
+  yskjs in 'yskjs.pas' {Form41},
+  yskkhmxz in 'yskkhmxz.pas' {Form42};
 
 {$R *.res}
 
@@ -93,5 +95,7 @@ begin
   Application.CreateForm(TForm38, Form38);
   Application.CreateForm(TForm39, Form39);
   Application.CreateForm(TForm40, Form40);
+  Application.CreateForm(TForm41, Form41);
+  Application.CreateForm(TForm42, Form42);
   Application.Run;
 end.

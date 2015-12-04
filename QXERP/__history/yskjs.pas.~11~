@@ -1,0 +1,95 @@
+unit yskjs;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Grids,
+  StdCtrls, ComCtrls, Menus;
+
+type
+  TForm41 = class(TForm)
+    DateTimePicker1: TDateTimePicker;
+    Button1: TButton;
+    DateTimePicker2: TDateTimePicker;
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+    Label1: TLabel;
+    Label2: TLabel;
+    Edit1: TEdit;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    procedure Button1Click(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form41: TForm41;
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm41.Button1Click(Sender: TObject);
+var
+  i:integer;
+begin
+  stringgrid1.RowCount:=2;
+  stringgrid1.Rows[1].Clear;
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_ysktips';
+      ParamByName('warndate').Value:=datetimetostr(datetimepicker1.Date);
+      ParamByName('twoyeardate').Value:=datetimetostr(datetimepicker2.Date);
+      open;
+      i:=1;
+      while not eof do
+      begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
+        stringgrid1.Cells[0,i]:=inttostr(i);
+        stringgrid1.Cells[1,i]:=fields[0].AsString;
+        stringgrid1.Cells[2,i]:=fields[1].AsString;
+        stringgrid1.Cells[3,i]:=fields[2].AsString;
+        stringgrid1.Cells[4,i]:=fields[3].AsString;
+        stringgrid1.Cells[5,i]:=fields[4].AsString;
+        i:=i+1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+        next;
+      end;
+    end;
+  except
+    application.MessageBox('查询数据失败！','应收款警示管理提示');
+  end;
+end;
+
+procedure TForm41.Execl1Click(Sender: TObject);
+begin
+  if stringgrid1.RowCount>2 then
+    ExportStrGridToExcel([stringgrid1])
+  else
+    application.MessageBox('列表中没有任何数据！','应收款警示管理提示');
+end;
+
+procedure TForm41.FormShow(Sender: TObject);
+begin
+  datetimepicker1.Date:=now();
+  datetimepicker2.Date:=now();
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='主管单位名称';
+  stringgrid1.Cells[2,0]:='客户名称';
+  stringgrid1.Cells[3,0]:='当前应收款';
+  stringgrid1.Cells[4,0]:='末笔收款日期';
+  stringgrid1.Cells[5,0]:='销售员';
+end;
+
+end.

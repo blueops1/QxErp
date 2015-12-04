@@ -1,0 +1,106 @@
+object Form41: TForm41
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = #24212#25910#27454#35686#31034#31649#29702
+  ClientHeight = 584
+  ClientWidth = 1020
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 28
+    Top = 15
+    Width = 48
+    Height = 13
+    Caption = #36861#28335#26085#26399
+  end
+  object Label2: TLabel
+    Left = 196
+    Top = 15
+    Width = 48
+    Height = 13
+    Caption = #35686#31034#26085#26399
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 257
+    Top = 11
+    Width = 96
+    Height = 22
+    Date = 42342.398644178240000000
+    Time = 42342.398644178240000000
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 376
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = #26597#35810
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object DateTimePicker2: TDateTimePicker
+    Left = 82
+    Top = 12
+    Width = 95
+    Height = 21
+    Date = 42342.398644178240000000
+    Time = 42342.398644178240000000
+    TabOrder = 2
+  end
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 47
+    Width = 1020
+    Height = 537
+    Align = alBottom
+    ColCount = 7
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
+    PopupMenu = PopupMenu1
+    TabOrder = 3
+    ExplicitLeft = -2
+    ExplicitTop = 39
+    ColWidths = (
+      64
+      89
+      257
+      305
+      85
+      87
+      79)
+  end
+  object Edit1: TEdit
+    Left = 473
+    Top = 12
+    Width = 517
+    Height = 21
+    ReadOnly = True
+    TabOrder = 4
+    Text = #39044#35686#26085#26399':'#19968#33324#20026#24403#21069#26085#26399#20943#20004#24180#20877#24448#21518#19968#20010#26376#65292#36861#28335#26085#26399#19968#33324#20026#24403#21069#26085#26399#20943#20004#24180#20877#24448#21069#19968#20010#26376#12290
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 464
+    Top = 240
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 616
+    Top = 336
+    object Execl1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = Execl1Click
+    end
+  end
+end

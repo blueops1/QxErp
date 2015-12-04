@@ -85,7 +85,7 @@ begin
         edit4.Text := '';
       close;
       sql.Clear;
-      sql.Add('select top 1 fzgdwid+1 from zgdw_info order by CONVERT(int,fzgdwid) desc');
+      sql.Add('select max(cast(fzgdwid as unsigned))+1 from zgdw_info');
       open;
       if not eof then
         edit1.Text := fields[0].AsString;

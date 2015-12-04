@@ -169,6 +169,12 @@
 			<DCCReference Include="jhdxzfhd.pas">
 				<Form>Form40</Form>
 			</DCCReference>
+			<DCCReference Include="yskjs.pas">
+				<Form>Form41</Form>
+			</DCCReference>
+			<DCCReference Include="yskkhmxz.pas">
+				<Form>Form42</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
