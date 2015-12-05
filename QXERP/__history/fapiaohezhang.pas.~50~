@@ -78,7 +78,7 @@ var
   i:integer;
   booldouble:boolean;
 begin
-  if selARow>0 then
+  if (selARow>0) and (selARow<stringgrid1.RowCount-1) then
   begin
   booldouble:=true;
   for i := 0 to listbox1.Items.Count - 1 do
@@ -173,6 +173,10 @@ end;
 
 procedure TForm23.ComboBox1Select(Sender: TObject);
 begin
+    stringgrid1.RowCount:=2;
+    stringgrid1.Rows[1].Clear;
+    stringgrid2.RowCount:=2;
+    stringgrid2.Rows[1].Clear;
   try
     with zstoredproc1 do
     begin
@@ -180,12 +184,10 @@ begin
       StoredProcName:='proc_cx_notcheckedformla';
       ParamByName('gysbh').Value:=SplitString(combobox1.Text,'|');
       open;
-      if recordcount=0 then
-        stringgrid1.RowCount:=2;
       while not eof do
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-1);
+        stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
         stringgrid1.Cells[1,stringgrid1.RowCount-2]:=fields[0].AsString;
         stringgrid1.Cells[2,stringgrid1.RowCount-2]:=fields[1].AsString;
         stringgrid1.Cells[3,stringgrid1.RowCount-2]:=fields[2].AsString;
@@ -223,7 +225,7 @@ var
 begin
   if stringgrid2.RowCount>0 then
   begin
-    stringgrid2.RowCount:=1;
+    stringgrid2.RowCount:=2;
     selARow:=ARow;
   end else
     selARow:=0;
@@ -246,6 +248,7 @@ begin
           stringgrid2.Cells[4,y]:=fields[4].AsString;
           stringgrid2.Cells[5,y]:=fields[5].AsString;
           y:=y+1;
+          stringgrid2.Rows[y].Clear;
           next;
         end;
       end;

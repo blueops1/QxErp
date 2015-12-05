@@ -25,6 +25,7 @@ type
     Edit4: TEdit;
     Edit16: TEdit;
     StringGrid4: TStringGrid;
+    Button7: TButton;
     DateTimePicker1: TDateTimePicker;
     TabSheet2: TTabSheet;
     RadioGroup1: TRadioGroup;
@@ -98,7 +99,7 @@ end;
 
 procedure TForm9.Button3Click(Sender: TObject);
 begin
-  if (edit6.Text <> '') and (edit5.Text <> '')then
+  if (edit3.Text <> '') and (edit5.Text <> '')then
   begin
     try
       with zStoredProc1 do          //proc_insert_yskmxz  cxitem,yskbh,jzje,skdate,memo
@@ -106,13 +107,13 @@ begin
         close;
         StoredProcName:='proc_insert_yskmxz';
         ParamByName('cxitem').Value:='hs';
-        ParamByName('yskbh').Value:=edit5.Text;
-        ParamByName('jzje').Value:=edit6.Text;
+        ParamByName('yskbh').Value:=edit3.Text;
+        ParamByName('jzje').Value:=edit5.Text;
         ParamByName('skdate').Value:=datetimepicker2.Date;
-        ParamByName('memo').Value:=main.strUser+edit7.Text;
+        ParamByName('memo').Value:=main.strUser+edit6.Text;
         ExecSQL;
-        edit5.Text := '';
-        edit6.Text := '';
+        edit1.Text := '';
+        edit2.Text := '';
         Application.MessageBox('新增回收款成功！','应收款管理提示');
         //PageControl1.ActivePageIndex:=1;
       end;
@@ -163,14 +164,14 @@ var y:integer;
 begin
     stringgrid1.RowCount:=2;
     stringgrid1.Rows[1].Clear;
-    if edit3.Text<>'' then
+    if edit7.Text<>'' then
     begin
       try
       with zStoredProc1 do
       begin
         close;
         StoredProcName:='proc_cx_yskxx_yskbhandkhmc_by_cxitem';
-        ParamByName('cxnr').Value:=edit3.Text;
+        ParamByName('cxnr').Value:=edit7.Text;
         if radiogroup1.ItemIndex=1 then
           ParamByName('cxitem').Value:='xs'
         else

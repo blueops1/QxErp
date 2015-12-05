@@ -966,13 +966,13 @@ begin
         open;
         if not eof then
         begin
-          Edit7.Text := fields[1].AsString;
-          Edit5.Text := fields[2].AsString;
-          combobox6.Text := fields[3].AsString+'|*';
-          combobox7.Text := fields[4].AsString+'|*';
-          combobox8.Text := fields[5].AsString+'|*';
-          combobox9.Text := fields[6].AsString+'|*';
-          Memo2.Text := fields[7].AsString;
+          Edit7.Text := fields[0].AsString;
+          Edit5.Text := fields[1].AsString;
+          combobox6.Text := fields[2].AsString+'|*';
+          combobox7.Text := fields[3].AsString+'|*';
+          combobox8.Text := fields[4].AsString+'|*';
+          combobox9.Text := fields[5].AsString+'|*';
+          Memo2.Text := fields[6].AsString;
         end;
       end;
     except

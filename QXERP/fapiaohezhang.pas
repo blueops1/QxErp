@@ -31,6 +31,9 @@ type
     Label7: TLabel;
     Edit1: TEdit;
     Button4: TButton;
+    Label8: TLabel;
+    Edit2: TEdit;
+    Label9: TLabel;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ComboBox1Select(Sender: TObject);
@@ -41,6 +44,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -102,7 +106,7 @@ procedure TForm23.Button3Click(Sender: TObject);
 var
   i:integer;
 begin
-  if (listbox1.Count>0) and (edit1.Text<>'') then
+  if (listbox1.Count>0) and (edit1.Text<>'') and (edit2.Text<>'')then
   try
     with zstoredproc1 do
     begin
@@ -113,6 +117,7 @@ begin
       begin
         ParamByName('rkdbh').Value:=ListBox1.Items.Strings[i];
         ParamByName('fpbh').Value:=edit1.Text;
+        ParamByName('fpsl').Value:=edit2.Text;
         ParamByName('fpdate').Value:=datetimepicker1.Date;
         ParamByName('fpczry').Value:=main.strUser;
         ParamByName('fpmemo').Value:='*'+memo1.Text;
@@ -200,6 +205,14 @@ begin
   except
     application.MessageBox('数据查询失败！','发票核帐提示');
   end;
+end;
+
+procedure TForm23.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['-','0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm23.FormShow(Sender: TObject);

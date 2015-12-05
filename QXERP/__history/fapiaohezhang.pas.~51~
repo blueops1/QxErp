@@ -31,6 +31,8 @@ type
     Label7: TLabel;
     Edit1: TEdit;
     Button4: TButton;
+    Label8: TLabel;
+    Edit2: TEdit;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ComboBox1Select(Sender: TObject);
@@ -41,6 +43,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -78,7 +81,7 @@ var
   i:integer;
   booldouble:boolean;
 begin
-  if selARow>0 then
+  if (selARow>0) and (selARow<stringgrid1.RowCount-1) then
   begin
   booldouble:=true;
   for i := 0 to listbox1.Items.Count - 1 do
@@ -173,6 +176,10 @@ end;
 
 procedure TForm23.ComboBox1Select(Sender: TObject);
 begin
+    stringgrid1.RowCount:=2;
+    stringgrid1.Rows[1].Clear;
+    stringgrid2.RowCount:=2;
+    stringgrid2.Rows[1].Clear;
   try
     with zstoredproc1 do
     begin
@@ -180,22 +187,30 @@ begin
       StoredProcName:='proc_cx_notcheckedformla';
       ParamByName('gysbh').Value:=SplitString(combobox1.Text,'|');
       open;
-      if recordcount=0 then
-        stringgrid1.RowCount:=1;
       while not eof do
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
-        stringgrid1.Cells[1,stringgrid1.RowCount-1]:=fields[0].AsString;
-        stringgrid1.Cells[2,stringgrid1.RowCount-1]:=fields[1].AsString;
-        stringgrid1.Cells[3,stringgrid1.RowCount-1]:=fields[2].AsString;
-        stringgrid1.Cells[4,stringgrid1.RowCount-1]:=fields[3].AsString;
+        stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
+        stringgrid1.Cells[1,stringgrid1.RowCount-2]:=fields[0].AsString;
+        stringgrid1.Cells[2,stringgrid1.RowCount-2]:=fields[1].AsString;
+        stringgrid1.Cells[3,stringgrid1.RowCount-2]:=fields[2].AsString;
+        stringgrid1.Cells[4,stringgrid1.RowCount-2]:=fields[3].AsString;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
       end;
+
     end;
   except
     application.MessageBox('数据查询失败！','发票核帐提示');
   end;
+end;
+
+procedure TForm23.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['-','0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm23.FormShow(Sender: TObject);
@@ -221,7 +236,7 @@ var
 begin
   if stringgrid2.RowCount>0 then
   begin
-    stringgrid2.RowCount:=1;
+    stringgrid2.RowCount:=2;
     selARow:=ARow;
   end else
     selARow:=0;
@@ -244,6 +259,7 @@ begin
           stringgrid2.Cells[4,y]:=fields[4].AsString;
           stringgrid2.Cells[5,y]:=fields[5].AsString;
           y:=y+1;
+          stringgrid2.Rows[y].Clear;
           next;
         end;
       end;

@@ -25,6 +25,7 @@ type
     Edit4: TEdit;
     Edit16: TEdit;
     StringGrid4: TStringGrid;
+    Button7: TButton;
     DateTimePicker1: TDateTimePicker;
     TabSheet2: TTabSheet;
     RadioGroup1: TRadioGroup;

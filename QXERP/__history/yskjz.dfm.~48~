@@ -13,7 +13,7 @@ object Form9: TForm9
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
-  OnActivate = FormActivate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
@@ -371,60 +371,11 @@ object Form9: TForm9
         TabOrder = 9
       end
     end
-    object TabSheet3: TTabSheet
-      Caption = #21512#21516#26597#35810
-      ImageIndex = 2
-      object Label12: TLabel
-        Left = 45
-        Top = 24
-        Width = 65
-        Height = 18
-        AutoSize = False
-        Caption = #20135#21697#35268#26684
-      end
-      object StringGrid1: TStringGrid
-        Left = 0
-        Top = 48
-        Width = 1073
-        Height = 254
-        Align = alCustom
-        ColCount = 9
-        DefaultColWidth = 200
-        FixedCols = 0
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
-        TabOrder = 0
-      end
-      object Edit9: TEdit
-        Left = 116
-        Top = 19
-        Width = 365
-        Height = 21
-        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
-        TabOrder = 1
-      end
-      object Button6: TButton
-        Left = 497
-        Top = 17
-        Width = 75
-        Height = 25
-        Caption = #26597#35810
-        TabOrder = 2
-      end
-      object StringGrid2: TStringGrid
-        Left = 0
-        Top = 268
-        Width = 1077
-        Height = 356
-        Align = alBottom
-        ColCount = 7
-        TabOrder = 3
-      end
-    end
   end
-  object ZQuery1: TZQuery
+  object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 1000
-    Top = 24
+    Left = 712
+    Top = 288
   end
 end

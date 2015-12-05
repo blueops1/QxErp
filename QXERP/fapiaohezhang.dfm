@@ -30,22 +30,22 @@ object Form23: TForm23
     Caption = #36873#25321#20379#24212#21830
   end
   object Label2: TLabel
-    Left = 740
-    Top = 334
+    Left = 738
+    Top = 332
     Width = 48
     Height = 13
     Caption = #21457#31080#32534#21495
   end
   object Label3: TLabel
-    Left = 740
-    Top = 372
+    Left = 738
+    Top = 407
     Width = 48
     Height = 13
     Caption = #21457#31080#26085#26399
   end
   object Label4: TLabel
-    Left = 740
-    Top = 411
+    Left = 738
+    Top = 438
     Width = 48
     Height = 13
     Caption = #21457#31080#22791#27880
@@ -105,6 +105,20 @@ object Form23: TForm23
     Font.Style = []
     ParentFont = False
     Transparent = False
+  end
+  object Label8: TLabel
+    Left = 738
+    Top = 370
+    Width = 48
+    Height = 13
+    Caption = #21457#31080#31246#29575
+  end
+  object Label9: TLabel
+    Left = 939
+    Top = 368
+    Width = 11
+    Height = 13
+    Caption = '%'
   end
   object ComboBox1: TComboBox
     Left = 126
@@ -183,7 +197,7 @@ object Form23: TForm23
   end
   object DateTimePicker1: TDateTimePicker
     Left = 792
-    Top = 368
+    Top = 403
     Width = 161
     Height = 21
     Date = 42331.352315057870000000
@@ -192,14 +206,14 @@ object Form23: TForm23
   end
   object Memo1: TMemo
     Left = 792
-    Top = 408
+    Top = 438
     Width = 161
-    Height = 89
+    Height = 83
     TabOrder = 8
   end
   object Button3: TButton
     Left = 864
-    Top = 520
+    Top = 541
     Width = 89
     Height = 25
     Caption = #20445#23384
@@ -208,12 +222,21 @@ object Form23: TForm23
   end
   object Button4: TButton
     Left = 760
-    Top = 520
+    Top = 541
     Width = 75
     Height = 25
     Caption = #28165#38500#34920#21333
     TabOrder = 10
     OnClick = Button4Click
+  end
+  object Edit2: TEdit
+    Left = 792
+    Top = 365
+    Width = 141
+    Height = 21
+    TabOrder = 11
+    TextHint = #36755#20837#30334#20998#27604#30340#25968#23383#37096#20998
+    OnKeyPress = Edit2KeyPress
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

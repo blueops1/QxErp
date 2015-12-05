@@ -24,7 +24,6 @@ object Form9: TForm9
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 1
     object TabSheet1: TTabSheet
       Caption = #26032#22686#24212#25910#27454#35760#24080
       object Label1: TLabel
@@ -200,8 +199,6 @@ object Form9: TForm9
     object TabSheet2: TTabSheet
       Caption = #24212#25910#27454#22238#25910#35760#24080
       ImageIndex = 1
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label8: TLabel
         Left = 73
         Top = 469
@@ -424,10 +421,16 @@ object Form9: TForm9
       end
     end
   end
-  object ADOQuery1: TADOQuery
-    Connection = Form1.ADOConnection1
-    Parameters = <>
-    Left = 960
-    Top = 32
+  object ZQuery1: TZQuery
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 1000
+    Top = 24
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 712
+    Top = 288
   end
 end

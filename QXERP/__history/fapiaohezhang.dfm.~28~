@@ -30,22 +30,22 @@ object Form23: TForm23
     Caption = #36873#25321#20379#24212#21830
   end
   object Label2: TLabel
-    Left = 740
-    Top = 334
+    Left = 738
+    Top = 332
     Width = 48
     Height = 13
     Caption = #21457#31080#32534#21495
   end
   object Label3: TLabel
-    Left = 740
-    Top = 372
+    Left = 738
+    Top = 407
     Width = 48
     Height = 13
     Caption = #21457#31080#26085#26399
   end
   object Label4: TLabel
-    Left = 740
-    Top = 411
+    Left = 738
+    Top = 438
     Width = 48
     Height = 13
     Caption = #21457#31080#22791#27880
@@ -106,8 +106,15 @@ object Form23: TForm23
     ParentFont = False
     Transparent = False
   end
+  object Label8: TLabel
+    Left = 738
+    Top = 370
+    Width = 48
+    Height = 13
+    Caption = #21457#31080#31246#29575
+  end
   object ComboBox1: TComboBox
-    Left = 128
+    Left = 126
     Top = 24
     Width = 601
     Height = 21
@@ -121,9 +128,7 @@ object Form23: TForm23
     Top = 80
     Width = 702
     Height = 217
-    FixedCols = 0
-    RowCount = 1
-    FixedRows = 0
+    RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 1
     OnSelectCell = StringGrid1SelectCell
@@ -140,8 +145,7 @@ object Form23: TForm23
     Width = 702
     Height = 217
     ColCount = 6
-    RowCount = 1
-    FixedRows = 0
+    RowCount = 2
     TabOrder = 2
     ColWidths = (
       64
@@ -169,12 +173,13 @@ object Form23: TForm23
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 740
+    Left = 741
     Top = 192
     Width = 34
     Height = 33
     Caption = '--'
     TabOrder = 5
+    OnClick = Button2Click
   end
   object Edit1: TEdit
     Left = 792
@@ -185,7 +190,7 @@ object Form23: TForm23
   end
   object DateTimePicker1: TDateTimePicker
     Left = 792
-    Top = 368
+    Top = 403
     Width = 161
     Height = 21
     Date = 42331.352315057870000000
@@ -194,18 +199,36 @@ object Form23: TForm23
   end
   object Memo1: TMemo
     Left = 792
-    Top = 408
+    Top = 438
     Width = 161
-    Height = 89
+    Height = 83
     TabOrder = 8
   end
   object Button3: TButton
-    Left = 848
-    Top = 520
+    Left = 864
+    Top = 541
     Width = 89
     Height = 25
     Caption = #20445#23384
     TabOrder = 9
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 760
+    Top = 541
+    Width = 75
+    Height = 25
+    Caption = #28165#38500#34920#21333
+    TabOrder = 10
+    OnClick = Button4Click
+  end
+  object Edit2: TEdit
+    Left = 792
+    Top = 365
+    Width = 161
+    Height = 21
+    TabOrder = 11
+    OnKeyPress = Edit2KeyPress
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
