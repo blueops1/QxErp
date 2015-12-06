@@ -38,6 +38,14 @@ type
     Button7: TButton;
     Button8: TButton;
     ZQuery1: TZQuery;
+    TabSheet5: TTabSheet;
+    DateTimePicker6: TDateTimePicker;
+    Label4: TLabel;
+    ComboBox2: TComboBox;
+    Button9: TButton;
+    Button10: TButton;
+    RadioGroup2: TRadioGroup;
+    StringGrid4: TStringGrid;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;

@@ -50,7 +50,7 @@ begin
   stringgrid1.Cells[2,0]:='应收款收回';
   stringgrid1.Cells[3,0]:='收回日期';
   stringgrid1.Cells[4,0]:='备注';
-  form42.Caption:=form42.Caption+'【'+strKhmc+'】应收款编号：'+strYskbh;
+  form42.Caption:='应收款客户明细查询【'+strKhmc+'】应收款编号：'+strYskbh;
   try
     with yskjs.Form41.ZStoredProc1 do
     begin

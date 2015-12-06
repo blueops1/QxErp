@@ -1,0 +1,34 @@
+unit yskcscx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Grids,
+  StdCtrls, ComCtrls;
+
+type
+  TForm43 = class(TForm)
+    DateTimePicker1: TDateTimePicker;
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    Button1: TButton;
+    StringGrid1: TStringGrid;
+    Label2: TLabel;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form43: TForm43;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+end.

@@ -45,7 +45,8 @@ uses
   rwdjs in 'rwdjs.pas' {Form39},
   jhdxzfhd in 'jhdxzfhd.pas' {Form40},
   yskjs in 'yskjs.pas' {Form41},
-  yskkhmxz in 'yskkhmxz.pas' {Form42};
+  yskkhmxz in 'yskkhmxz.pas' {Form42},
+  yskcscx in 'yskcscx.pas' {Form43};
 
 {$R *.res}
 
@@ -97,5 +98,6 @@ begin
   Application.CreateForm(TForm40, Form40);
   Application.CreateForm(TForm41, Form41);
   Application.CreateForm(TForm42, Form42);
+  Application.CreateForm(TForm43, Form43);
   Application.Run;
 end.

@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ComCtrls, DB, ADODB, Grids, ExtCtrls, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset;
+  ZAbstractDataset, ZDataset, ZStoredProcedure;
 
 type
   TForm6 = class(TForm)
@@ -25,13 +25,14 @@ type
     StringGrid2: TStringGrid;
     Button8: TButton;
     RadioGroup1: TRadioGroup;
-    ZQuery1: TZQuery;
+    ZStoredProc1: TZStoredProc;
     procedure Button2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure Button8Click(Sender: TObject);
+    procedure Edit9Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,6 +41,7 @@ type
 
 var
   Form6: TForm6;
+  boolhtinfoloaded:boolean;
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
@@ -56,34 +58,38 @@ end;
 procedure TForm6.Button6Click(Sender: TObject);
 var y:integer;
 begin
-  y:=1;
-  try
-  with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select fhtbh,fhtdate,fkhmc,fxsyxm,flxr,flxrdh,fhtzje,ffhjsbz,fmemo from (select * from (select fhtbh,fkhbh,fhtdate,fxsybh,flxr,flxrdh,fhtzje,ffhjsbz,fmemo from ht_info where fkhbh in (select fkdhid from Kh_info where fkhmc like ''%'+edit9.Text+'%'') and fisdel=''N'') as a inner join (select fkdhid,fkhmc from Kh_info) as b on a.fkhbh=b.fkdhid) as c inner join (select fxsyid,fxsyxm from Xsy_info) as d on c.fxsybh=d.fxsyid');
-    open;
-    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
-    while not eof do
-    begin
-      stringgrid2.Rows[y].Clear;
-      stringgrid1.Cells[0,y]:=fields[0].AsString;
-      stringgrid1.Cells[1,y]:=fields[1].AsString;
-      stringgrid1.Cells[2,y]:=fields[2].AsString;
-      stringgrid1.Cells[3,y]:=fields[3].AsString;
-      stringgrid1.Cells[4,y]:=fields[4].AsString;
-      stringgrid1.Cells[5,y]:=fields[5].AsString;
-      stringgrid1.Cells[6,y]:=fields[6].AsString;
-      stringgrid1.Cells[7,y]:=fields[7].AsString;
-      stringgrid1.Cells[8,y]:=fields[8].AsString;
-      y:=y+1;
-      next;
+    y:=1;
+    boolhtinfoloaded:=false;
+    stringgrid1.RowCount:=2;
+    stringgrid1.Rows[1].Clear;
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_htinfo_by_khmc';
+        ParamByName('khmc').Value:='';
+        open;
+        while not eof do
+        begin
+          stringgrid1.RowCount:=stringgrid1.RowCount+1;
+          stringgrid1.Cells[0,y]:=fields[0].AsString;
+          stringgrid1.Cells[1,y]:=fields[1].AsString;
+          stringgrid1.Cells[2,y]:=fields[2].AsString;
+          stringgrid1.Cells[3,y]:=fields[3].AsString;
+          stringgrid1.Cells[4,y]:=fields[4].AsString;
+          stringgrid1.Cells[5,y]:=fields[5].AsString;
+          stringgrid1.Cells[6,y]:=fields[6].AsString;
+          stringgrid1.Cells[7,y]:=fields[7].AsString;
+          stringgrid1.Cells[8,y]:=fields[8].AsString;
+          y:=y+1;
+          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          next;
+        end;
+        boolhtinfoloaded:=true;
+      end;
+    Except
+        Application.MessageBox('查询失败！','合同管理提示');
     end;
-  end;
-  Except
-      Application.MessageBox('查询失败！','合同管理提示');
-  end;
 end;
 
 procedure TForm6.Button8Click(Sender: TObject);
@@ -93,6 +99,44 @@ begin
     1: ExportStrGridToExcel([StringGrid2]);
     2: ExportStrGridToExcel([StringGrid1,StringGrid2]);
   end;
+end;
+
+procedure TForm6.Edit9Change(Sender: TObject);
+var y:integer;
+begin
+  if edit9.Text<>'' then
+    y:=1;
+    boolhtinfoloaded:=false;
+    stringgrid1.RowCount:=2;
+    stringgrid1.Rows[1].Clear;
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_htinfo_by_khmc';
+        ParamByName('khmc').Value:=edit9.Text;
+        open;
+        while not eof do
+        begin
+          stringgrid1.RowCount:=stringgrid1.RowCount+1;
+          stringgrid1.Cells[0,y]:=fields[0].AsString;
+          stringgrid1.Cells[1,y]:=fields[1].AsString;
+          stringgrid1.Cells[2,y]:=fields[2].AsString;
+          stringgrid1.Cells[3,y]:=fields[3].AsString;
+          stringgrid1.Cells[4,y]:=fields[4].AsString;
+          stringgrid1.Cells[5,y]:=fields[5].AsString;
+          stringgrid1.Cells[6,y]:=fields[6].AsString;
+          stringgrid1.Cells[7,y]:=fields[7].AsString;
+          stringgrid1.Cells[8,y]:=fields[8].AsString;
+          y:=y+1;
+          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          next;
+        end;
+        boolhtinfoloaded:=true;
+      end;
+    Except
+        Application.MessageBox('查询失败！','合同管理提示');
+    end;
 end;
 
 procedure TForm6.FormShow(Sender: TObject);
@@ -134,35 +178,24 @@ end;
 procedure TForm6.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 var
-  strHtbh:string;
   y:integer;
-  floatZje:real;
-  htcpsl:integer;
-  yfhcpsl:integer;
-  yfhcpzje:real;
 begin
-  strHtbh:= stringgrid1.Cells[0,ARow];
-  if strHtbh<>'' then
+  stringgrid2.RowCount:=2;
+  stringgrid2.Rows[1].Clear;
+  if (boolhtinfoloaded=true) and (stringgrid1.Cells[0,ARow]<>'') then
   begin
     y:=1;
-    floatZje:=0;
     try
-    with ZQuery1 do
+    with zStoredProc1 do      //proc_cx_htcpmzx_by_htbh
     begin
       close;
-      sql.Clear;
-      sql.Add('select fcpzl,fcpmc,fcpdj,fcpsl,fcpdj*fcpsl as fcpzje,fyfhsl,fyfhsl*fcpdj as fyfhzje from (select fcpbh,fcpdj,fcpsl,fyfhsl from htcpmxb where fcpbh in (select fcpbh from htcpmxb where fhtbh='''+strHtbh+''')) as a inner join(select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh');
+      StoredProcName:='proc_cx_htcpmzx_by_htbh';
+      ParamByName('htbh').Value:=stringgrid1.Cells[0,ARow];
       open;
-      if not eof then
-      begin
-        stringgrid2.RowCount:=ZQuery1.RecordCount+2;
-      end else
-      begin
-        stringgrid2.RowCount:=1;
-      end;
+      FirstResultSet;
       while not eof do
       begin
-        stringgrid2.Rows[y].Clear;
+        stringgrid2.RowCount:=stringgrid2.RowCount+1;
         stringgrid2.Cells[0,y]:=fields[0].AsString;
         stringgrid2.Cells[1,y]:=fields[1].AsString;
         stringgrid2.Cells[2,y]:=fields[2].AsString;
@@ -170,19 +203,23 @@ begin
         stringgrid2.Cells[4,y]:=fields[4].AsString;
         stringgrid2.Cells[5,y]:=fields[5].AsString;
         stringgrid2.Cells[6,y]:=fields[6].AsString;
-        htcpsl:=htcpsl+fields[3].AsInteger;
-        floatzje:=floatzje+fields[4].AsFloat;
-        yfhcpsl:=yfhcpsl+fields[5].AsInteger;
-        yfhcpzje:=yfhcpzje+fields[6].AsFloat;
+        stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
         y:=y+1;
         next;
       end;
-      stringgrid2.Rows[y].Clear;
-      stringgrid2.Cells[0,y]:='总计';
-      stringgrid2.Cells[3,y]:=inttostr(htcpsl);
-      stringgrid2.Cells[4,y]:=floattostr(floatzje);
-      stringgrid2.Cells[5,y]:=inttostr(yfhcpsl);
-      stringgrid2.Cells[6,y]:=floattostr(yfhcpzje);
+      nextresultset;
+      if not eof then
+      begin
+        stringgrid2.RowCount:=stringgrid2.RowCount+1;
+        stringgrid2.Cells[0,y]:=fields[0].AsString;
+        stringgrid2.Cells[1,y]:=fields[1].AsString;
+        stringgrid2.Cells[2,y]:=fields[2].AsString;
+        stringgrid2.Cells[3,y]:=fields[3].AsString;
+        stringgrid2.Cells[4,y]:=fields[4].AsString;
+        stringgrid2.Cells[5,y]:=fields[5].AsString;
+        stringgrid2.Cells[6,y]:=fields[6].AsString;
+        stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
+      end;
     end;
     Except
         Application.MessageBox('查询失败！','合同管理提示');

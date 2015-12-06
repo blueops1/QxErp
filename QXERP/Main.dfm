@@ -356,6 +356,15 @@ object Form1: TForm1
         TabOrder = 2
         OnClick = Button18Click
       end
+      object Button16: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #24212#25910#27454#20652#25910#26597#35810
+        TabOrder = 3
+        OnClick = Button16Click
+      end
     end
     object TabSheet6: TTabSheet
       Caption = #26597#35810#32479#35745

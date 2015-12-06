@@ -175,6 +175,9 @@
 			<DCCReference Include="yskkhmxz.pas">
 				<Form>Form42</Form>
 			</DCCReference>
+			<DCCReference Include="yskcscx.pas">
+				<Form>Form43</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -197,7 +200,7 @@
 						<Parameters Name="UseLauncher">False</Parameters>
 						<Parameters Name="LoadAllSymbols">True</Parameters>
 						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
-						<Parameters Name="DebugSourceDirs">D:\Mysql\ZEOSDBO-7.1.4-stable\src\component\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\component\;D:\Mysql\ZEOSDBO-7.1.4-stable\src\dbc\</Parameters>
+						<Parameters Name="DebugSourceDirs">D:\Mysql\ZEOSDBO-7.1.4-stable\src\component\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\component\;D:\Mysql\ZEOSDBO-7.1.4-stable\src\dbc\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\dbc\</Parameters>
 					</Parameters>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>

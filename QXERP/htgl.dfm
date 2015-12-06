@@ -93,12 +93,12 @@ object Form6: TForm6
       Caption = #21512#21516#26597#35810
       ImageIndex = 2
       object Label12: TLabel
-        Left = 45
+        Left = 16
         Top = 24
-        Width = 65
+        Width = 108
         Height = 18
         AutoSize = False
-        Caption = #21333#20301#21517#31216
+        Caption = #21333#20301#21517#31216#25110#21512#21516#32534#21495
       end
       object StringGrid1: TStringGrid
         Left = 0
@@ -114,19 +114,20 @@ object Form6: TForm6
         OnSelectCell = StringGrid1SelectCell
       end
       object Edit9: TEdit
-        Left = 116
-        Top = 19
+        Left = 138
+        Top = 21
         Width = 365
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 1
+        OnChange = Edit9Change
       end
       object Button6: TButton
-        Left = 497
+        Left = 537
         Top = 17
         Width = 75
         Height = 25
-        Caption = #26597#35810
+        Caption = #20840#37096#26597#35810
         TabOrder = 2
         OnClick = Button6Click
       end
@@ -140,7 +141,7 @@ object Form6: TForm6
         TabOrder = 3
       end
       object Button8: TButton
-        Left = 664
+        Left = 648
         Top = 17
         Width = 91
         Height = 25
@@ -164,10 +165,10 @@ object Form6: TForm6
       end
     end
   end
-  object ZQuery1: TZQuery
+  object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 768
-    Top = 536
+    Left = 760
+    Top = 416
   end
 end

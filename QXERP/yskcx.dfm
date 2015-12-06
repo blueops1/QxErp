@@ -288,6 +288,85 @@ object Form7: TForm7
         OnClick = Button8Click
       end
     end
+    object TabSheet5: TTabSheet
+      Caption = #24212#25910#27454#20652#25910#26597#35810
+      ImageIndex = 4
+      object Label4: TLabel
+        Left = 400
+        Top = 27
+        Width = 36
+        Height = 13
+        Caption = #38144#21806#21592
+      end
+      object DateTimePicker6: TDateTimePicker
+        Left = 136
+        Top = 24
+        Width = 105
+        Height = 21
+        Date = 42187.350045567130000000
+        Time = 42187.350045567130000000
+        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+        TabOrder = 0
+      end
+      object ComboBox2: TComboBox
+        Left = 456
+        Top = 24
+        Width = 161
+        Height = 21
+        TabOrder = 1
+        Text = '*|'#20840#37096
+        OnDropDown = ComboBox1DropDown
+      end
+      object Button9: TButton
+        Left = 640
+        Top = 22
+        Width = 75
+        Height = 25
+        Caption = #26597#35810
+        TabOrder = 2
+        OnClick = Button1Click
+      end
+      object Button10: TButton
+        Left = 736
+        Top = 22
+        Width = 91
+        Height = 25
+        Caption = #23548#20986#21040'EXECL'
+        TabOrder = 3
+        OnClick = Button5Click
+      end
+      object RadioGroup2: TRadioGroup
+        Left = 848
+        Top = 3
+        Width = 225
+        Height = 55
+        Caption = #23548#20986#34920#36873#25321
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #34920#19968
+          #34920#20108
+          #20840#37096)
+        TabOrder = 4
+      end
+      object StringGrid4: TStringGrid
+        Left = 3
+        Top = 64
+        Width = 1077
+        Height = 298
+        Align = alCustom
+        FixedCols = 0
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        TabOrder = 5
+        OnSelectCell = StringGrid1SelectCell
+        ColWidths = (
+          74
+          450
+          323
+          104
+          115)
+      end
+    end
   end
   object ZQuery1: TZQuery
     Connection = Form1.ZConnection1
