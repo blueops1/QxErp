@@ -90,6 +90,11 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
       end;
         stringgrid1.RowCount:=2;
         stringgrid1.Rows[1].Clear;
+        edit1.Text:='';
+        edit2.Text:='';
+        edit4.Text:='';
+        combobox1.Text:='';
+        combobox1.SetFocus;
         combobox1.SetFocus;
         application.MessageBox('保存数据成功！','成品出库提示');
     end;

@@ -121,7 +121,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
+    sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpbh in (select fsscpbh from bcplxk_info) or fcpbh in (select fsscpbh1 from bcplxk_info) and fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
     open;
     stringgrid1.RowCount:=ZQuery1.RecordCount+1;
 
@@ -205,7 +205,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select a.fbcpbh,fbcpgg,fbcplxmc,fbcpkcs,fmemo,fsscpbh from (select fbcpbh,fbcpkcs,fmemo from bcpkcb where fisdel=''N'') as a inner join(select fbcpbh,fbcpgg,fbcplxmc,fsscpbh from bcplxk_info) as b on a.fbcpbh=b.fbcpbh where fsscpbh='''+strCpbh+'''');
+      sql.Add('select a.fbcpbh,fbcpmc,fbcplxbh,fbcpkcs,fmemo,fsscpbh from (select fbcpbh,fbcpkcs,fmemo from bcpkcb where fisdel=''N'') as a inner join(select fbcpbh,fbcpmc,fbcplxbh,fsscpbh,fsscpbh1 from bcplxk_info  where fsscpbh='''+strCpbh+''' or fsscpbh1='''+strCpbh+''') as b on a.fbcpbh=b.fbcpbh');
       open;
       if not eof then
       begin

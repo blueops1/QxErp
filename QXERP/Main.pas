@@ -176,7 +176,7 @@ end;
 
 procedure TForm1.Button11Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,17,1)='1') then
+  if(MidStr(main.strUserQX,12,1)='1') then
     bcpgl.Form12.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
