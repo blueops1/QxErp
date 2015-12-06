@@ -93,6 +93,7 @@ object Form31: TForm31
     Height = 249
     FixedCols = 0
     RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 3
     OnMouseUp = StringGrid1MouseUp
     OnSelectCell = StringGrid1SelectCell

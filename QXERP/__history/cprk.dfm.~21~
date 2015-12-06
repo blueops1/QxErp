@@ -1,9 +1,11 @@
-object Form30: TForm30
+object Form29: TForm29
   Left = 0
   Top = 0
-  Caption = #25104#21697#20986#24211
-  ClientHeight = 419
-  ClientWidth = 755
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = #20135#25104#21697#20837#24211
+  ClientHeight = 442
+  ClientWidth = 774
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +13,7 @@ object Form30: TForm30
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -29,7 +32,7 @@ object Form30: TForm30
     Height = 13
     Alignment = taRightJustify
     AutoSize = False
-    Caption = #20986#24211#25968#37327
+    Caption = #20837#24211#25968#37327
   end
   object Label3: TLabel
     Left = 546
@@ -47,6 +50,15 @@ object Form30: TForm30
     Alignment = taRightJustify
     Caption = #22791#27880
   end
+  object Label5: TLabel
+    Left = 52
+    Top = 380
+    Width = 77
+    Height = 13
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = #24403#21069#24211#23384#25968#37327
+  end
   object Edit2: TEdit
     Left = 418
     Top = 29
@@ -54,6 +66,7 @@ object Form30: TForm30
     Height = 21
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 0
+    OnKeyPress = Edit2KeyPress
   end
   object DateTimePicker1: TDateTimePicker
     Left = 614
@@ -82,6 +95,7 @@ object Form30: TForm30
     RowCount = 2
     TabOrder = 3
     OnMouseUp = StringGrid1MouseUp
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       64
       171
@@ -91,11 +105,12 @@ object Form30: TForm30
   end
   object Button1: TButton
     Left = 640
-    Top = 376
+    Top = 375
     Width = 89
     Height = 25
     Caption = #20445#23384#20837#24211#20449#24687
     TabOrder = 4
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 640
@@ -104,6 +119,7 @@ object Form30: TForm30
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 5
+    OnClick = Button2Click
   end
   object ComboBox1: TComboBox
     Left = 122
@@ -112,6 +128,17 @@ object Form30: TForm30
     Height = 21
     TabOrder = 6
     OnKeyDown = ComboBox1KeyDown
+    OnSelect = ComboBox1Select
+  end
+  object Edit1: TEdit
+    Left = 147
+    Top = 377
+    Width = 97
+    Height = 21
+    ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+    ReadOnly = True
+    TabOrder = 7
+    OnKeyPress = Edit2KeyPress
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
@@ -120,10 +147,11 @@ object Form30: TForm30
     Top = 224
   end
   object PopupMenu1: TPopupMenu
-    Left = 528
-    Top = 264
+    Left = 496
+    Top = 392
     object N1: TMenuItem
       Caption = #21024#38500#24403#21069#35760#24405
+      OnClick = N1Click
     end
   end
 end
