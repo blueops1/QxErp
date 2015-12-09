@@ -114,20 +114,11 @@ object Form22: TForm22
     Width = 140
     Height = 22
     ItemsEx = <>
-    DragMode = dmAutomatic
-    TabOrder = 1
-    TabStop = False
-    OnSelect = ComboBoxEx1Select
-  end
-  object Edit1: TEdit
-    Left = 117
-    Top = 145
-    Width = 140
-    Height = 21
     Color = clMoneyGreen
+    DragMode = dmAutomatic
     TabOrder = 0
-    TextHint = #36755#20837#37096#20998#25991#23383#36827#34892#26597#35810
-    OnKeyDown = Edit1KeyDown
+    TabStop = False
+    OnKeyDown = ComboBoxEx1KeyDown
   end
   object Edit2: TEdit
     Left = 364
@@ -135,7 +126,7 @@ object Form22: TForm22
     Width = 111
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 2
+    TabOrder = 1
     OnKeyPress = Edit2KeyPress
   end
   object Edit3: TEdit
@@ -144,7 +135,7 @@ object Form22: TForm22
     Width = 111
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 3
+    TabOrder = 2
     OnKeyPress = Edit3KeyPress
   end
   object DateTimePicker1: TDateTimePicker
@@ -155,7 +146,7 @@ object Form22: TForm22
     Date = 42329.660776898150000000
     Time = 42329.660776898150000000
     Color = clMoneyGreen
-    TabOrder = 4
+    TabOrder = 3
   end
   object Button1: TButton
     Left = 731
@@ -163,7 +154,7 @@ object Form22: TForm22
     Width = 97
     Height = 25
     Caption = #20445#23384#20837#24211#20449#24687
-    TabOrder = 5
+    TabOrder = 4
     OnClick = Button1Click
   end
   object Memo1: TMemo
@@ -171,7 +162,7 @@ object Form22: TForm22
     Top = 60
     Width = 735
     Height = 53
-    TabOrder = 6
+    TabOrder = 5
   end
   object StringGrid1: TStringGrid
     Left = 32
@@ -182,7 +173,7 @@ object Form22: TForm22
     RowCount = 1
     FixedRows = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
-    TabOrder = 7
+    TabOrder = 6
     OnMouseUp = StringGrid1MouseUp
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
@@ -198,7 +189,7 @@ object Form22: TForm22
     Width = 111
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 8
+    TabOrder = 7
     TextHint = #22238#36710#33719#21462#32534#21495
     OnKeyDown = Edit4KeyDown
   end
@@ -208,7 +199,7 @@ object Form22: TForm22
     Width = 319
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 9
+    TabOrder = 8
     OnKeyDown = ComboBox1KeyDown
   end
   object Button2: TButton
@@ -217,7 +208,7 @@ object Form22: TForm22
     Width = 86
     Height = 25
     Caption = #28155#21152#26126#32454
-    TabOrder = 10
+    TabOrder = 9
     OnClick = Button2Click
   end
   object Edit5: TEdit
@@ -225,7 +216,7 @@ object Form22: TForm22
     Top = 178
     Width = 567
     Height = 21
-    TabOrder = 11
+    TabOrder = 10
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

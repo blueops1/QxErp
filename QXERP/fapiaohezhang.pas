@@ -130,6 +130,7 @@ begin
       stringgrid2.RowCount:=1;
       listbox1.Items.Clear;
       edit1.Text:='';
+      edit2.Text:='';
       memo1.Text:='';
     end;
   except

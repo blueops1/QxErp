@@ -23,12 +23,9 @@ object Form11: TForm11
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 681
     object TabSheet1: TTabSheet
       Caption = #26032#22686#21322#25104#21697#20449#24687
       OnShow = TabSheet1Show
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label1: TLabel
         Left = 96
         Top = 53
@@ -66,8 +63,8 @@ object Form11: TForm11
         Caption = #25152#23646#20135#21697#32534#21495'1'
       end
       object Label13: TLabel
-        Left = 96
-        Top = 296
+        Left = 94
+        Top = 337
         Width = 81
         Height = 13
         Alignment = taRightJustify
@@ -81,7 +78,7 @@ object Form11: TForm11
         Height = 13
         Alignment = taRightJustify
         AutoSize = False
-        Caption = #25152#23646#20135#21697#32534#21495'2'
+        Caption = #25152#23646#20135#21697#32534#21495'3'
       end
       object Label6: TLabel
         Left = 96
@@ -94,7 +91,7 @@ object Form11: TForm11
       end
       object Label7: TLabel
         Left = 192
-        Top = 336
+        Top = 376
         Width = 288
         Height = 13
         Caption = #21322#25104#21697#21516#26102#23646#20110#20004#20010#25104#21697#26102#65292#38656#35774#32622#20004#20010#25152#23646#25104#21697#32534#21495
@@ -107,9 +104,45 @@ object Form11: TForm11
         ParentColor = False
         ParentFont = False
       end
+      object Label12: TLabel
+        Left = 352
+        Top = 217
+        Width = 90
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #25152#23646#20135#21697#32534#21495'2'
+      end
+      object Label19: TLabel
+        Left = 360
+        Top = 257
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #25152#23646#20135#21697#32534#21495'4'
+      end
+      object Label20: TLabel
+        Left = 96
+        Top = 296
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #25152#23646#20135#21697#32534#21495'5'
+      end
+      object Label21: TLabel
+        Left = 360
+        Top = 296
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #25152#23646#20135#21697#32534#21495'6'
+      end
       object Button1: TButton
         Left = 248
-        Top = 385
+        Top = 409
         Width = 75
         Height = 25
         Caption = #20445#23384
@@ -118,7 +151,7 @@ object Form11: TForm11
       end
       object Button2: TButton
         Left = 390
-        Top = 385
+        Top = 409
         Width = 75
         Height = 25
         Caption = #21462#28040
@@ -143,8 +176,8 @@ object Form11: TForm11
         TabOrder = 3
       end
       object Edit10: TEdit
-        Left = 192
-        Top = 292
+        Left = 190
+        Top = 335
         Width = 321
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -168,8 +201,8 @@ object Form11: TForm11
         OnKeyDown = ComboBox1KeyDown
       end
       object ComboBox3: TComboBox
-        Left = 192
-        Top = 252
+        Left = 456
+        Top = 212
         Width = 145
         Height = 21
         TabOrder = 7
@@ -186,7 +219,7 @@ object Form11: TForm11
       end
       object Memo1: TMemo
         Left = 359
-        Top = 91
+        Top = 50
         Width = 320
         Height = 127
         Lines.Strings = (
@@ -200,12 +233,43 @@ object Form11: TForm11
           #20854#20182#37197#20214#21017#25353#19978#36848#35268#24459#21629#21517#12290)
         TabOrder = 9
       end
+      object ComboBox5: TComboBox
+        Left = 192
+        Top = 253
+        Width = 145
+        Height = 21
+        TabOrder = 10
+        OnKeyDown = ComboBox1KeyDown
+      end
+      object ComboBox6: TComboBox
+        Left = 456
+        Top = 253
+        Width = 145
+        Height = 21
+        TabOrder = 11
+        OnKeyDown = ComboBox3KeyDown
+      end
+      object ComboBox7: TComboBox
+        Left = 192
+        Top = 293
+        Width = 145
+        Height = 21
+        TabOrder = 12
+        OnKeyDown = ComboBox3KeyDown
+      end
+      object ComboBox8: TComboBox
+        Left = 456
+        Top = 293
+        Width = 145
+        Height = 21
+        TabOrder = 13
+        OnKeyDown = ComboBox3KeyDown
+      end
     end
     object TabSheet4: TTabSheet
       Caption = #26032#22686#21322#25104#21697#31181#31867
       ImageIndex = 3
       OnShow = TabSheet4Show
-      ExplicitWidth = 673
       object Label10: TLabel
         Left = 136
         Top = 112
@@ -319,7 +383,6 @@ object Form11: TForm11
       Caption = #21322#25104#21697#31181#31867#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
-      ExplicitWidth = 673
       object Label5: TLabel
         Left = 288
         Top = 62
@@ -431,7 +494,7 @@ object Form11: TForm11
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 472
-    Top = 248
+    Left = 576
+    Top = 400
   end
 end

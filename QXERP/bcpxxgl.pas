@@ -55,6 +55,14 @@ type
     ComboBox4: TComboBox;
     Label7: TLabel;
     Memo1: TMemo;
+    Label12: TLabel;
+    ComboBox5: TComboBox;
+    Label19: TLabel;
+    ComboBox6: TComboBox;
+    Label20: TLabel;
+    ComboBox7: TComboBox;
+    Label21: TLabel;
+    ComboBox8: TComboBox;
     procedure Button10Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
@@ -119,7 +127,27 @@ begin
         ParamByName('bcplxbh').Value:=SplitString(combobox2.Text,'|');
         ParamByName('cpzl').Value:=combobox4.Text;
         ParamByName('sscpbh').Value:=SplitString(combobox1.Text,'|');
+        if combobox3.Text='' then
+        ParamByName('sscpbh1').Value:=''
+        else
         ParamByName('sscpbh1').Value:=SplitString(combobox3.Text,'|');
+        if combobox5.Text='' then
+        ParamByName('sscpbh2').Value:=''
+        else
+        ParamByName('sscpbh2').Value:=SplitString(combobox5.Text,'|');
+        if combobox6.Text='' then
+        ParamByName('sscpbh3').Value:=''
+        else
+        ParamByName('sscpbh3').Value:=SplitString(combobox6.Text,'|');
+        if combobox7.Text='' then
+        ParamByName('sscpbh4').Value:=''
+        else
+        ParamByName('sscpbh4').Value:=SplitString(combobox7.Text,'|');
+        if combobox8.Text='' then
+        ParamByName('sscpbh5').Value:=''
+        else
+        ParamByName('sscpbh5').Value:=SplitString(combobox8.Text,'|');
+
         ParamByName('memo').Value:=edit10.Text;
         ParamByName('czry').Value:=main.strUser;
         ExecProc;
@@ -130,6 +158,10 @@ begin
         combobox2.Text := '';
         combobox3.Text := '';
         combobox4.Text := '';
+        combobox5.Text := '';
+        combobox6.Text := '';
+        combobox7.Text := '';
+        combobox8.Text := '';
         Application.MessageBox('新增半成品信息成功！','半成品管理提示');
         close;
         StoredProcName:='proc_cx_newbcplxbh';

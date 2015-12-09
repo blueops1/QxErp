@@ -191,7 +191,7 @@ begin
         //combobox1.DroppedDown:=true;
       end;
   except
-    application.MessageBox('数据查询失败！','成品出库提示');
+    application.MessageBox('数据查询失败！','成品入库提示');
   end;
  end;
 end;

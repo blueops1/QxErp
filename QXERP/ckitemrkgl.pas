@@ -11,7 +11,6 @@ type
   TForm22 = class(TForm)
     ZStoredProc1: TZStoredProc;
     ComboBoxEx1: TComboBoxEx;
-    Edit1: TEdit;
     Label2: TLabel;
     Edit2: TEdit;
     Label3: TLabel;
@@ -35,7 +34,6 @@ type
     Label16: TLabel;
     PopupMenu1: TPopupMenu;
     N1: TMenuItem;
-    procedure ComboBoxEx1Select(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -49,7 +47,8 @@ type
     procedure N1Click(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ComboBoxEx1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -119,11 +118,11 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
         end;
       end;
       application.MessageBox('保存数据成功！','材料配件入库管理提示');
-      edit1.Text:='';
       edit2.Text:='';
       edit3.Text:='';
       edit4.Text:='';
       edit5.Text:='';
+      comboboxex1.Text:='';
       combobox1.Text:='';
       memo1.Text:='';
       stringgrid1.RowCount:=1;
@@ -136,19 +135,19 @@ end;
 procedure TForm22.Button2Click(Sender: TObject);
 begin
   if (edit4.Text<>'') and (combobox1.Text<>'') then
-    if (edit1.Text<>'') and (edit2.Text<>'') and (edit3.Text<>'') then
+    if (comboboxex1.Text<>'') and (edit2.Text<>'') and (edit3.Text<>'') then
     begin
       stringgrid1.RowCount:=stringgrid1.RowCount+1;
       stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
-      stringgrid1.Cells[1,stringgrid1.RowCount-1]:=edit1.Text;
+      stringgrid1.Cells[1,stringgrid1.RowCount-1]:=comboboxex1.Text;
       stringgrid1.Cells[2,stringgrid1.RowCount-1]:=edit2.Text;
       stringgrid1.Cells[3,stringgrid1.RowCount-1]:=edit3.Text;
       stringgrid1.Cells[4,stringgrid1.RowCount-1]:=edit5.Text;
-      edit1.Text:='';
+      comboboxex1.Text:='';
       edit2.Text:='';
       edit3.Text:='';
       edit5.Text:='';
-      edit1.SetFocus;
+      comboboxex1.SetFocus;
     end else
     application.MessageBox('请将明细填写！','材料配件入库管理提示')
     else
@@ -183,34 +182,27 @@ begin
  end;
 end;
 
-procedure TForm22.ComboBoxEx1Select(Sender: TObject);
-begin
-  edit1.Text:=comboboxex1.Text;
-end;
-
-procedure TForm22.Edit1KeyDown(Sender: TObject; var Key: Word;
+procedure TForm22.ComboBoxEx1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-if (key=13) and (edit1.Text<>'') then
-    try
-      with zstoredproc1 do
-      begin
-        comboboxex1.Items.Clear;
-        close;
-        zstoredproc1.StoredProcName:='proc_cx_ckitemmc';
-        zstoredproc1.ParamByName('itemname').Value:=edit1.Text;
-        open;
-        while not eof do
+  if (key=13) and (ComboBoxEx1.Text<>'') then
+      try
+        with zstoredproc1 do
         begin
-          comboboxex1.Items.Add(fields[0].asstring);
-          next;
+          comboboxex1.Items.Clear;
+          close;
+          zstoredproc1.StoredProcName:='proc_cx_ckitemmc';
+          zstoredproc1.ParamByName('itemname').Value:=comboboxex1.Text;
+          open;
+          while not eof do
+          begin
+            comboboxex1.Items.Add(fields[0].asstring);
+            next;
+          end;
         end;
-          comboboxex1.DroppedDown:=true;
-          comboboxex1.SelStart:= Length(comboboxex1.Text);
-      end;
-  except
-    application.MessageBox('数据查询失败！','材料配件入库管理提示');
-  end;
+    except
+      application.MessageBox('数据查询失败！','材料配件入库管理提示');
+    end;
 end;
 
 procedure TForm22.Edit2KeyPress(Sender: TObject; var Key: Char);

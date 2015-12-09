@@ -131,8 +131,8 @@ object Form23: TForm23
     OnSelect = ComboBox1Select
   end
   object StringGrid1: TStringGrid
-    Left = 25
-    Top = 80
+    Left = 32
+    Top = 73
     Width = 702
     Height = 217
     RowCount = 2
