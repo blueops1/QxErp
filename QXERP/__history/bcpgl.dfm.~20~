@@ -62,7 +62,7 @@ object Form12: TForm12
         Top = 17
         Width = 75
         Height = 25
-        Caption = #26597#35810#20840#37096
+        Caption = #26597#35810
         TabOrder = 2
         OnClick = Button6Click
       end
@@ -77,9 +77,9 @@ object Form12: TForm12
         ColWidths = (
           64
           82
-          103
-          117
-          126)
+          88
+          64
+          64)
       end
       object StringGrid7: TStringGrid
         Left = 519

@@ -25,7 +25,6 @@ type
     procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure TabSheet3Show(Sender: TObject);
-    procedure Edit9Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,41 +56,6 @@ begin
     begin
       close;
       StoredProcName:='proc_cx_bcpcx_by_cpmc';
-      ParamByName('cpmc').Value:='';
-      open;
-      y:=1;
-      while not eof do
-      begin
-        stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,y]:=fields[0].AsString;
-        stringgrid1.Cells[1,y]:=fields[1].AsString;
-        stringgrid1.Cells[2,y]:=fields[2].AsString;
-        stringgrid1.Cells[3,y]:=fields[3].AsString;
-        stringgrid1.Cells[4,y]:=fields[4].AsString;
-        stringgrid1.Cells[5,y]:=fields[5].AsString;
-        y:=y+1;
-        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
-        next;
-      end;
-      boolhtinfoloaded:=true;
-    end;
-  Except
-      Application.MessageBox('查询失败！','成品管理提示');
-  end;
-
-end;
-
-procedure TForm12.Edit9Change(Sender: TObject);
-var y:integer;
-begin
-  stringgrid1.RowCount:=2;   //proc_cx_bcpcx_by_cpmc
-  stringgrid1.Rows[1].Clear;
-  boolhtinfoloaded:=false;
-  try
-    with zStoredProc1 do
-    begin
-      close;
-      StoredProcName:='proc_cx_bcpcx_by_cpmc';
       ParamByName('cpmc').Value:=edit9.Text;
       open;
       y:=1;
@@ -113,6 +77,7 @@ begin
   Except
       Application.MessageBox('查询失败！','成品管理提示');
   end;
+
 end;
 
 procedure TForm12.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -138,7 +103,6 @@ begin
           stringgrid2.Cells[1,y]:=fields[1].AsString;
           stringgrid2.Cells[2,y]:=fields[2].AsString;
           stringgrid2.Cells[3,y]:=fields[3].AsString;
-          stringgrid2.Cells[4,y]:=fields[4].AsString;
           y:=y+1;
           stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
           next;
@@ -189,17 +153,31 @@ end;
 
 procedure TForm12.TabSheet3Show(Sender: TObject);
 begin
+  stringgrid1.ColWidths[0]:=100;
+  stringgrid1.ColWidths[1]:=100;
+  stringgrid1.ColWidths[2]:=100;
+  stringgrid1.ColWidths[3]:=100;
+  stringgrid1.ColWidths[4]:=100;
+  stringgrid1.ColWidths[5]:=100;
   stringgrid1.Cells[0,0]:='产品编号';
   stringgrid1.Cells[1,0]:='产品规格';
   stringgrid1.Cells[2,0]:='计量单位';
   stringgrid1.Cells[3,0]:='产品类型';
   stringgrid1.Cells[4,0]:='库存数量';
   stringgrid1.Cells[5,0]:='备注';
+  stringgrid2.ColWidths[0]:=100;
+  stringgrid2.ColWidths[1]:=100;
+  stringgrid2.ColWidths[2]:=100;
+  stringgrid2.ColWidths[2]:=100;
   stringgrid2.Cells[0,0]:='半成品编号';
   stringgrid2.Cells[1,0]:='半成品规格';
-  stringgrid2.Cells[2,0]:='半成品类型';
+  stringgrid2.Cells[2,0]:='半成品名称';
   stringgrid2.Cells[3,0]:='半成品库存量';
-  stringgrid2.Cells[4,0]:='成品类型';
+  stringgrid7.ColWidths[0]:=100;
+  stringgrid7.ColWidths[1]:=100;
+  stringgrid7.ColWidths[2]:=100;
+  stringgrid7.ColWidths[3]:=100;
+  stringgrid7.ColWidths[4]:=200;
   stringgrid7.Cells[0,0]:='半成品编号';
   stringgrid7.Cells[1,0]:='入库数量';
   stringgrid7.Cells[2,0]:='出库数量';

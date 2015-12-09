@@ -57,7 +57,7 @@ begin
     begin
       close;
       StoredProcName:='proc_cx_bcpcx_by_cpmc';
-      ParamByName('cpmc').Value:='';
+      ParamByName('cpmc').Value:=edit9.Text;
       open;
       y:=1;
       while not eof do
@@ -189,17 +189,32 @@ end;
 
 procedure TForm12.TabSheet3Show(Sender: TObject);
 begin
+  stringgrid1.ColWidths[0]:=100;
+  stringgrid1.ColWidths[1]:=100;
+  stringgrid1.ColWidths[2]:=100;
+  stringgrid1.ColWidths[3]:=100;
+  stringgrid1.ColWidths[4]:=100;
+  stringgrid1.ColWidths[5]:=100;
   stringgrid1.Cells[0,0]:='产品编号';
   stringgrid1.Cells[1,0]:='产品规格';
   stringgrid1.Cells[2,0]:='计量单位';
   stringgrid1.Cells[3,0]:='产品类型';
   stringgrid1.Cells[4,0]:='库存数量';
   stringgrid1.Cells[5,0]:='备注';
+  stringgrid2.ColWidths[0]:=100;
+  stringgrid2.ColWidths[1]:=100;
+  stringgrid2.ColWidths[2]:=100;
+  stringgrid2.ColWidths[2]:=100;
   stringgrid2.Cells[0,0]:='半成品编号';
   stringgrid2.Cells[1,0]:='半成品规格';
   stringgrid2.Cells[2,0]:='半成品类型';
   stringgrid2.Cells[3,0]:='半成品库存量';
   stringgrid2.Cells[4,0]:='成品类型';
+  stringgrid7.ColWidths[0]:=100;
+  stringgrid7.ColWidths[1]:=100;
+  stringgrid7.ColWidths[2]:=100;
+  stringgrid7.ColWidths[3]:=100;
+  stringgrid7.ColWidths[4]:=200;
   stringgrid7.Cells[0,0]:='半成品编号';
   stringgrid7.Cells[1,0]:='入库数量';
   stringgrid7.Cells[2,0]:='出库数量';
