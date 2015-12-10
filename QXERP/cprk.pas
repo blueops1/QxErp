@@ -25,6 +25,9 @@ type
     N1: TMenuItem;
     Label5: TLabel;
     Edit1: TEdit;
+    Edit3: TEdit;
+    Label6: TLabel;
+    Button3: TButton;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button2Click(Sender: TObject);
@@ -148,7 +151,8 @@ begin
   if booldouble=true then
       application.MessageBox('该产品已在下面列表中，请确认！','成品入库提示')
     else
-    if (edit2.Text<>'') and (combobox1.Text<>'') then
+    begin
+      if (edit2.Text<>'') and (combobox1.Text<>'') then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
         stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
@@ -161,10 +165,12 @@ begin
         combobox1.Text:='';
         edit1.Text:='';
         edit2.Text:='';
+        edit3.Text:='';
         edit4.Text:='';
         combobox1.SetFocus;
       end else
       application.MessageBox('请将明细填写完整！','成品入库提示');
+    end;
 end;
 
 procedure TForm29.ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -199,6 +205,7 @@ end;
 procedure TForm29.ComboBox1Select(Sender: TObject);
 begin
   edit1.Text:='';
+  edit3.Text:='';
   try
     with zStoredProc1 do
     begin
@@ -208,6 +215,11 @@ begin
       open;
       if not eof then
         edit1.Text:=fields[0].AsString;
+      close;
+      StoredProcName:='proc_cprk_bcpxxhd_by_cpbh';
+      ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
+      open;
+      edit3.Text:=fields[0].AsString;
     end;
   except
     application.MessageBox('数据查询失败！','成品入库提示');

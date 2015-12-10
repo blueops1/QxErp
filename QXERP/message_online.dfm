@@ -58,8 +58,8 @@ object Form18: TForm18
         OnDropDown = ComboBox1DropDown
       end
       object Button1: TButton
-        Left = 814
-        Top = 288
+        Left = 734
+        Top = 392
         Width = 75
         Height = 25
         Caption = #21457#36865
@@ -70,7 +70,7 @@ object Form18: TForm18
         Left = 112
         Top = 106
         Width = 833
-        Height = 170
+        Height = 263
         TabOrder = 2
       end
       object Edit1: TEdit
@@ -79,6 +79,15 @@ object Form18: TForm18
         Width = 833
         Height = 21
         TabOrder = 3
+      end
+      object Button11: TButton
+        Left = 840
+        Top = 392
+        Width = 83
+        Height = 25
+        Caption = #32534#36753#26032#28040#24687
+        TabOrder = 4
+        OnClick = Button11Click
       end
     end
     object TabSheet2: TTabSheet
@@ -136,6 +145,15 @@ object Form18: TForm18
         Caption = #20002#20837#22238#25910#31665
         TabOrder = 4
         OnClick = Button5Click
+      end
+      object Button10: TButton
+        Left = 400
+        Top = 397
+        Width = 97
+        Height = 25
+        Caption = #22238#22797
+        TabOrder = 5
+        OnClick = Button10Click
       end
     end
     object TabSheet3: TTabSheet
@@ -307,7 +325,7 @@ object Form18: TForm18
   object ZQuery1: TZQuery
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 832
-    Top = 360
+    Left = 592
+    Top = 424
   end
 end

@@ -5,7 +5,7 @@ object Form29: TForm29
   BorderStyle = bsSingle
   Caption = #20135#25104#21697#20837#24211
   ClientHeight = 442
-  ClientWidth = 774
+  ClientWidth = 765
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -59,6 +59,14 @@ object Form29: TForm29
     AutoSize = False
     Caption = #24403#21069#24211#23384#25968#37327
   end
+  object Label6: TLabel
+    Left = 40
+    Top = 111
+    Width = 60
+    Height = 13
+    Alignment = taRightJustify
+    Caption = #21322#25104#21697#20449#24687
+  end
   object Edit2: TEdit
     Left = 418
     Top = 29
@@ -88,9 +96,9 @@ object Form29: TForm29
   end
   object StringGrid1: TStringGrid
     Left = 32
-    Top = 112
+    Top = 144
     Width = 697
-    Height = 249
+    Height = 217
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
@@ -114,9 +122,9 @@ object Form29: TForm29
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 640
+    Left = 623
     Top = 67
-    Width = 89
+    Width = 106
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 5
@@ -141,6 +149,29 @@ object Form29: TForm29
     TabOrder = 7
     OnKeyPress = Edit2KeyPress
   end
+  object Edit3: TEdit
+    Left = 122
+    Top = 108
+    Width = 495
+    Height = 21
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 8
+  end
+  object Button3: TButton
+    Left = 623
+    Top = 106
+    Width = 106
+    Height = 25
+    Caption = #32534#36753#21322#25104#21697#20449#24687
+    TabOrder = 9
+    Visible = False
+  end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
@@ -148,8 +179,8 @@ object Form29: TForm29
     Top = 224
   end
   object PopupMenu1: TPopupMenu
-    Left = 496
-    Top = 392
+    Left = 576
+    Top = 272
     object N1: TMenuItem
       Caption = #21024#38500#24403#21069#35760#24405
       OnClick = N1Click

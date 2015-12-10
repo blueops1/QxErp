@@ -21,6 +21,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure ComboBox1DropDown(Sender: TObject);
+    procedure Edit2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -94,11 +95,42 @@ begin
   end;
 end;
 
+procedure TForm10.Edit2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key=13) and (combobox1.Text<>'') then
+  begin
+    try
+    with  ZQuery1 do
+    begin
+      close;
+      sql.Clear;
+      sql.Add('select fuser,fqx from User_info where fuser='''+combobox1.Text+''' and fpwd='''+edit2.Text+'''');
+      open;
+      if not Eof then
+      begin
+      main.strUser:=fields[0].AsString;
+      main.strUserQX:=fields[1].AsString;
+      main.isLogined:=true;
+      Main.Form1.StatusBar1.Panels.Items[2].Text := '操作员:'+main.strUser ;
+      form10.Close;
+      end else
+      begin
+        main.isLogined:=false;
+        application.MessageBox('用户名或者密码错误!','系统提示');
+      end;
+  end;
+    Except
+        Application.MessageBox('数据库查询失败！','系统提示');
+    end;
+  end;
+end;
+
 procedure TForm10.FormActivate(Sender: TObject);
 var
   oldver,newver:string;
 begin
-    oldver:='2015120902'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
+    oldver:='2015121005'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin

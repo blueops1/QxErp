@@ -42,6 +42,8 @@ type
     TabSheet6: TTabSheet;
     StringGrid5: TStringGrid;
     Memo6: TMemo;
+    Button10: TButton;
+    Button11: TButton;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -69,6 +71,8 @@ type
     procedure StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -107,6 +111,48 @@ begin
   end;
 end;
 
+procedure TForm18.Button10Click(Sender: TObject);
+begin
+  if (selectRow>0) and (selectRow<stringgrid1.rowcount) then
+    try
+      with zquery1 do
+      begin
+        combobox1.Text:=stringgrid1.Cells[1,selectRow];
+        edit1.Text:='回复:'+stringgrid1.Cells[3,selectRow];
+        memo2.Lines.Add('');
+        memo2.Lines.Add('');
+        memo2.Lines.Add('');
+        memo2.Lines.Add('');
+        memo2.Lines.Add('');
+        memo2.Lines.Add('');
+        memo2.Lines.Add('');
+        memo2.Lines.Add('---------------------------------------------------------------------');
+        memo2.Lines.Add('以下为引用的内容：');
+        memo2.Lines.LineBreak;
+        memo2.Lines.add(memo1.Lines.Text);
+        memo2.Lines.Add('---------------------------------------------------------------------');
+{        close;
+        sql.Clear;
+        sql.Add('update message_online set fisread=''Y'' where fid='+strMessid);
+        execsql;
+       DeleteStringGridRow(selectRow,stringgrid1);
+        memo1.Lines.Clear;
+}        tabsheet1.Show;
+      end;
+    except
+      application.MessageBox('标记失败!','消息处理提示');
+    end else
+      application.MessageBox('您没选中任何消息!','消息处理提示');
+end;
+
+procedure TForm18.Button11Click(Sender: TObject);
+begin
+  combobox1.Text:='';
+  edit1.Text:='';
+  memo2.Lines.Clear;
+  combobox1.SetFocus;
+end;
+
 procedure TForm18.Button1Click(Sender: TObject);
 begin
 if (combobox1.Text <> '') and (edit1.Text<>'') and (memo2.Lines.Count>0) then
@@ -132,7 +178,7 @@ end;
 
 procedure TForm18.Button2Click(Sender: TObject);
 begin
-  if (selectRow>0) and (selectRow<stringgrid2.rowcount) then
+  if (selectRow>0) and (selectRow<stringgrid1.rowcount) then
     try
       with zquery1 do
       begin
