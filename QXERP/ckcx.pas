@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZStoredProcedure;
+  ZStoredProcedure, Menus;
 
 type
   TForm34 = class(TForm)
@@ -16,15 +16,19 @@ type
     ZStoredProc1: TZStoredProc;
     Label1: TLabel;
     Label2: TLabel;
-    Button2: TButton;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ComboBox1Select(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,7 +44,7 @@ implementation
 
 {$R *.dfm}
 
-uses main;
+uses main,kcmxzcx;
 
 procedure TForm34.Button1Click(Sender: TObject);
 var
@@ -92,11 +96,6 @@ begin
     application.MessageBox('数据查询失败！','仓库库存查询');
   end else
     application.MessageBox('请选择需要查询的类型和名称！','仓库库存查询');
-end;
-
-procedure TForm34.Button2Click(Sender: TObject);
-begin
-  ExportStrGridToExcel([stringgrid1]);
 end;
 
 procedure TForm34.ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -156,6 +155,14 @@ begin
   end;
 end;
 
+procedure TForm34.Execl1Click(Sender: TObject);
+begin
+  if stringgrid1.RowCount>2 then
+    ExportStrGridToExcel([stringgrid1])
+  else
+    application.MessageBox('列表中没有任何数据！','仓库查询提示');
+end;
+
 procedure TForm34.FormShow(Sender: TObject);
 begin      //ckitem_info.fitemid,ckitem_info.fitemmc,itemdw_info.fitemdwmc,itemlx_info.fitemlxmc,
 //ckitem_info.fitemkcsl,ckitem_info.fitemljje,ckitem_info.fitemljsl
@@ -169,6 +176,12 @@ begin      //ckitem_info.fitemid,ckitem_info.fitemmc,itemdw_info.fitemdwmc,iteml
  stringgrid1.Cells[7,0]:='累计采购数';
  stringgrid1.Cells[8,0]:='平均单价';
  //stringgrid1.Cells[0,0]:='库存估值';
+end;
+
+procedure TForm34.StringGrid1DblClick(Sender: TObject);
+begin
+  if strCkitemBh<>'NULL' then
+    kcmxzcx.Form45.ShowModal;
 end;
 
 procedure TForm34.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -187,6 +200,18 @@ begin
     Canvas.TextOut(Rect.Left+2,Rect.Top+2,Cells[ACol,ARow]);
   end;
 
+end;
+
+procedure TForm34.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if stringgrid1.RowCount>2 then
+  begin
+    strCkitemBh:=stringgrid1.Cells[1,ARow];
+    strCkItemmc:=stringgrid1.Cells[2,ARow];
+  end
+  else
+    strCkitemBh:='NULL';
 end;
 
 end.

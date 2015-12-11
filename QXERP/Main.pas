@@ -39,7 +39,6 @@ type
     TabSheet6: TTabSheet;
     Button13: TButton;
     Button14: TButton;
-    Button15: TButton;
     Button17: TButton;
     ZConnection1: TZConnection;
     TabSheet7: TTabSheet;
@@ -76,6 +75,7 @@ type
     Button18: TButton;
     Button16: TButton;
     Button43: TButton;
+    Button15: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);

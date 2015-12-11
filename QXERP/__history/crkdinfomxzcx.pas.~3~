@@ -1,0 +1,33 @@
+unit crkdinfomxzcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Grids, DB, ZAbstractRODataset, ZAbstractDataset,
+  ZStoredProcedure;
+
+type
+  TForm46 = class(TForm)
+    ZStoredProc1: TZStoredProc;
+    StringGrid1: TStringGrid;
+    Memo1: TMemo;
+    Memo2: TMemo;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form46: TForm46;
+  strCrkdBh:string;
+  strIsCrk:string;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+end.

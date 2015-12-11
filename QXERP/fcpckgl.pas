@@ -87,7 +87,7 @@ procedure TForm27.Button2Click(Sender: TObject);
 var
   y:integer;
 begin
-if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
+if application.MessageBox('确定要保存数据吗？','出库单管理提示',1)=1 then
   if stringgrid1.RowCount>1 then
     try
       with zstoredproc1 do
@@ -103,7 +103,7 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
         zstoredproc1.StoredProcName:='proc_insert_ckdmxz';
         for y := 1 to stringgrid1.RowCount - 1 do
         begin
-          zstoredproc1.ParamByName('ckdbh').Value:=edit4.Text;
+          zstoredproc1.ParamByName('ckdbh').Value:=edit1.Text;
           zstoredproc1.ParamByName('itembh').Value:=splitstring(stringgrid1.Cells[1,y],'|');
           zstoredproc1.ParamByName('cksl').Value:=stringgrid1.Cells[2,y];
           zstoredproc1.ParamByName('memo').Value:='*'+stringgrid1.Cells[3,y];
@@ -117,7 +117,7 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
           execProc;
         end;
       end;
-      application.MessageBox('保存数据成功！','材料配件入库管理提示');
+      application.MessageBox('保存数据成功！','材料配件出库管理提示');
       edit1.Text:='';
       ComboBoxEx1.Text:='';
       edit3.Text:='';
@@ -126,9 +126,9 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
       memo1.Text:='';
       stringgrid1.RowCount:=1;
   except
-    application.MessageBox('保存数据失败！','材料配件入库管理提示');
+    application.MessageBox('保存数据失败！','材料配件出库管理提示');
   end else
-    application.MessageBox('请添加入库单内的明细！','材料配件入库管理提示');
+    application.MessageBox('请添加入库单内的明细！','材料配件出库管理提示');
 end;
 
 procedure TForm27.ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -179,7 +179,7 @@ if (key=13) and (ComboBoxEx1.Text<>'') then
         end;
       end;
   except
-    application.MessageBox('数据查询失败！','材料配件入库管理提示');
+    application.MessageBox('数据查询失败！','材料配件出库管理提示');
   end;
 end;
 
@@ -244,7 +244,7 @@ if (key=13) and (ComboBoxEx1.Text<>'') then
           ComboBoxEx1.SetFocus;
       end;
   except
-    application.MessageBox('数据查询失败！','材料配件入库管理提示');
+    application.MessageBox('数据查询失败！','材料配件出库管理提示');
   end;
 end;
 
@@ -261,7 +261,7 @@ begin
   if edit4.text<>'' then
     if strtofloat(edit4.Text)<=0 then
     begin
-      application.MessageBox('当前库存为零！','材料配件入库管理提示');
+      application.MessageBox('当前库存为零！','材料配件出库管理提示');
       edit4.Text:='';
       ComboBoxEx1.text:='';
     end;

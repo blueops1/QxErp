@@ -1,0 +1,52 @@
+object Form46: TForm46
+  Left = 0
+  Top = 0
+  Caption = #20986#20837#24211#21333#21450#26126#32454#26597#35810
+  ClientHeight = 414
+  ClientWidth = 760
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 49
+    Width = 760
+    Height = 365
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 200
+    ExplicitTop = 176
+    ExplicitWidth = 320
+    ExplicitHeight = 120
+  end
+  object Memo1: TMemo
+    Left = 696
+    Top = 408
+    Width = 185
+    Height = 89
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 1
+  end
+  object Memo2: TMemo
+    Left = 0
+    Top = 0
+    Width = 760
+    Height = 49
+    Align = alTop
+    TabOrder = 2
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 424
+    Top = 288
+  end
+end

@@ -4,8 +4,8 @@ object Form42: TForm42
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #24212#25910#27454#23458#25143#26126#32454#26597#35810
-  ClientHeight = 544
-  ClientWidth = 875
+  ClientHeight = 583
+  ClientWidth = 916
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,18 +20,19 @@ object Form42: TForm42
   object StringGrid1: TStringGrid
     Left = 0
     Top = 0
-    Width = 875
-    Height = 544
+    Width = 916
+    Height = 583
     Align = alClient
     PopupMenu = PopupMenu1
     TabOrder = 0
-    ExplicitWidth = 686
+    ExplicitWidth = 875
+    ExplicitHeight = 544
     ColWidths = (
       64
-      132
-      125
-      122
-      364)
+      145
+      135
+      134
+      395)
   end
   object PopupMenu1: TPopupMenu
     Left = 520

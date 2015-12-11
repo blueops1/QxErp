@@ -103,6 +103,10 @@
     <Transaction>2015/12/06 11:55:43.245.dfm,E:\QxErp\QXERP\Unit43.dfm=E:\QxErp\QXERP\yskcscx.dfm</Transaction>
     <Transaction>2015/12/07 08:17:08.954.pas,E:\QxErp\QXERP\Unit44.pas=E:\QxErp\QXERP\bcptsck.pas</Transaction>
     <Transaction>2015/12/07 08:17:08.954.dfm,E:\QxErp\QXERP\Unit44.dfm=E:\QxErp\QXERP\bcptsck.dfm</Transaction>
+    <Transaction>2015/12/11 09:48:00.318.pas,E:\QxErp\QXERP\Unit45.pas=E:\QxErp\QXERP\kcmxzcx.pas</Transaction>
+    <Transaction>2015/12/11 09:48:00.318.dfm,E:\QxErp\QXERP\Unit45.dfm=E:\QxErp\QXERP\kcmxzcx.dfm</Transaction>
+    <Transaction>2015/12/11 12:27:22.958.pas,E:\QxErp\QXERP\Unit46.pas=E:\QxErp\QXERP\crkdinfomxzcx.pas</Transaction>
+    <Transaction>2015/12/11 12:27:22.958.dfm,E:\QxErp\QXERP\Unit46.dfm=E:\QxErp\QXERP\crkdinfomxzcx.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -197,5 +201,9 @@
     <File Path="yskcscx.dfm"/>
     <File Path="bcptsck.pas"/>
     <File Path="bcptsck.dfm"/>
+    <File Path="kcmxzcx.pas"/>
+    <File Path="kcmxzcx.dfm"/>
+    <File Path="crkdinfomxzcx.pas"/>
+    <File Path="crkdinfomxzcx.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

@@ -47,7 +47,9 @@ uses
   yskjs in 'yskjs.pas' {Form41},
   yskkhmxz in 'yskkhmxz.pas' {Form42},
   yskcscx in 'yskcscx.pas' {Form43},
-  bcptsck in 'bcptsck.pas' {Form44};
+  bcptsck in 'bcptsck.pas' {Form44},
+  kcmxzcx in 'kcmxzcx.pas' {Form45},
+  crkdinfomxzcx in 'crkdinfomxzcx.pas' {Form46};
 
 {$R *.res}
 
@@ -101,5 +103,7 @@ begin
   Application.CreateForm(TForm42, Form42);
   Application.CreateForm(TForm43, Form43);
   Application.CreateForm(TForm44, Form44);
+  Application.CreateForm(TForm45, Form45);
+  Application.CreateForm(TForm46, Form46);
   Application.Run;
 end.
