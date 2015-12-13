@@ -187,6 +187,15 @@
 			<DCCReference Include="crkdinfomxzcx.pas">
 				<Form>Form46</Form>
 			</DCCReference>
+			<DCCReference Include="bcpsctjcx.pas">
+				<Form>Form47</Form>
+			</DCCReference>
+			<DCCReference Include="blzjjldj.pas">
+				<Form>Form48</Form>
+			</DCCReference>
+			<DCCReference Include="zjbljlcx.pas">
+				<Form>Form49</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

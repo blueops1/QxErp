@@ -106,7 +106,7 @@ begin
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox16.Checked = True then     //成品管理 16 3
+  if checkbox16.Checked = True then     //暂无 16 3
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
@@ -158,15 +158,15 @@ begin
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox21.Checked = True then    //暂无5 21 16
+  if checkbox21.Checked = True then    //成品管理 21 16
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox3.Checked = True then    //暂无6 3 17
+  if checkbox3.Checked = True then    //质量管理 3 17
     strQx := strQx + '1'
   else
     strQx := strQx + '0';
-  if checkbox17.Checked = True then    //暂无7 17 18
+  if checkbox17.Checked = True then    //生产管理 17 18
     strQx := strQx + '1'
   else
     strQx := strQx + '0';

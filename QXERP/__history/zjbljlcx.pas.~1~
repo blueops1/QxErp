@@ -1,0 +1,63 @@
+unit zjbljlcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TForm49 = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    ComboBox2: TComboBox;
+    Button1: TButton;
+    RadioGroup1: TRadioGroup;
+    DateTimePicker1: TDateTimePicker;
+    ZStoredProc1: TZStoredProc;
+    StringGrid1: TStringGrid;
+    procedure ComboBox2KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form49: TForm49;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm49.ComboBox2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox2.Items.Count>0 then
+    ComboBox2.Items.Clear;
+    combobox2.Items.Add('*|全部');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_zgbhandxm_by_zgxm';
+        zstoredproc1.ParamByName('zgxm').Value:=ComboBox2.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox2.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','请假查询');
+  end;
+ end;
+end;
+
+end.

@@ -107,6 +107,12 @@
     <Transaction>2015/12/11 09:48:00.318.dfm,E:\QxErp\QXERP\Unit45.dfm=E:\QxErp\QXERP\kcmxzcx.dfm</Transaction>
     <Transaction>2015/12/11 12:27:22.958.pas,E:\QxErp\QXERP\Unit46.pas=E:\QxErp\QXERP\crkdinfomxzcx.pas</Transaction>
     <Transaction>2015/12/11 12:27:22.958.dfm,E:\QxErp\QXERP\Unit46.dfm=E:\QxErp\QXERP\crkdinfomxzcx.dfm</Transaction>
+    <Transaction>2015/12/13 09:03:06.204.pas,E:\QxErp\QXERP\Unit47.pas=E:\QxErp\QXERP\bcpsctjcx.pas</Transaction>
+    <Transaction>2015/12/13 09:03:06.204.dfm,E:\QxErp\QXERP\Unit47.dfm=E:\QxErp\QXERP\bcpsctjcx.dfm</Transaction>
+    <Transaction>2015/12/13 12:11:00.873.pas,E:\QxErp\QXERP\Unit48.pas=E:\QxErp\QXERP\blzjjldj.pas</Transaction>
+    <Transaction>2015/12/13 12:11:00.873.dfm,E:\QxErp\QXERP\Unit48.dfm=E:\QxErp\QXERP\blzjjldj.dfm</Transaction>
+    <Transaction>2015/12/13 12:36:09.029.pas,E:\QxErp\QXERP\Unit49.pas=E:\QxErp\QXERP\zjbljlcx.pas</Transaction>
+    <Transaction>2015/12/13 12:36:09.029.dfm,E:\QxErp\QXERP\Unit49.dfm=E:\QxErp\QXERP\zjbljlcx.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -205,5 +211,11 @@
     <File Path="kcmxzcx.dfm"/>
     <File Path="crkdinfomxzcx.pas"/>
     <File Path="crkdinfomxzcx.dfm"/>
+    <File Path="bcpsctjcx.pas"/>
+    <File Path="bcpsctjcx.dfm"/>
+    <File Path="blzjjldj.pas"/>
+    <File Path="blzjjldj.dfm"/>
+    <File Path="zjbljlcx.pas"/>
+    <File Path="zjbljlcx.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

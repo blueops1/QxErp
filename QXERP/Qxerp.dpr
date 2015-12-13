@@ -49,7 +49,10 @@ uses
   yskcscx in 'yskcscx.pas' {Form43},
   bcptsck in 'bcptsck.pas' {Form44},
   kcmxzcx in 'kcmxzcx.pas' {Form45},
-  crkdinfomxzcx in 'crkdinfomxzcx.pas' {Form46};
+  crkdinfomxzcx in 'crkdinfomxzcx.pas' {Form46},
+  bcpsctjcx in 'bcpsctjcx.pas' {Form47},
+  blzjjldj in 'blzjjldj.pas' {Form48},
+  zjbljlcx in 'zjbljlcx.pas' {Form49};
 
 {$R *.res}
 
@@ -105,5 +108,8 @@ begin
   Application.CreateForm(TForm44, Form44);
   Application.CreateForm(TForm45, Form45);
   Application.CreateForm(TForm46, Form46);
+  Application.CreateForm(TForm47, Form47);
+  Application.CreateForm(TForm48, Form48);
+  Application.CreateForm(TForm49, Form49);
   Application.Run;
 end.

@@ -41,7 +41,6 @@ object Form38: TForm38
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 0
-    ExplicitWidth = 967
     ColWidths = (
       55
       80

@@ -76,6 +76,10 @@ type
     Button16: TButton;
     Button43: TButton;
     Button15: TButton;
+    Button44: TButton;
+    TabSheet9: TTabSheet;
+    Button45: TButton;
+    Button46: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -125,6 +129,9 @@ type
     procedure Button18Click(Sender: TObject);
     procedure Button16Click(Sender: TObject);
     procedure Button43Click(Sender: TObject);
+    procedure Button44Click(Sender: TObject);
+    procedure Button45Click(Sender: TObject);
+    procedure Button46Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -155,7 +162,8 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      ccxxgl,fpwhzcx,fcpckgl,xzht,cprk,
      cpck,bcprk,kczgxxgl,cgkcgz,ckcx,
      xzscjh,ckitemgz,qjgl,qjcx,rwdjs,
-     yskjs,yskcscx,bcptsck;
+     yskjs,yskcscx,bcptsck,bcpsctjcx,
+     blzjjldj,zjbljlcx;
 
 {$R *.dfm}
 
@@ -218,7 +226,7 @@ end;
 
 procedure TForm1.Button17Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,17,1)='1') then
+  if(MidStr(main.strUserQX,18,1)='1') then
     scjh.Form17.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
@@ -380,7 +388,7 @@ end;
 
 procedure TForm1.Button38Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,17,1)='1') then
+  if(MidStr(main.strUserQX,18,1)='1') then
     xzscjh.Form36.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
@@ -412,7 +420,7 @@ end;
 
 procedure TForm1.Button42Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,17,1)='1') then
+  if(MidStr(main.strUserQX,18,1)='1') then
     rwdjs.Form39.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
@@ -422,6 +430,30 @@ procedure TForm1.Button43Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,12,1)='1') then
     bcptsck.Form44.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button44Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    bcpsctjcx.Form47.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button45Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,17,1)='1') then
+    blzjjldj.Form48.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button46Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,17,1)='1') then
+    zjbljlcx.Form49.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
