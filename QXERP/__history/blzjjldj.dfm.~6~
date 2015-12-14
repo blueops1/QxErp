@@ -24,7 +24,7 @@ object Form48: TForm48
     Caption = #21592#24037#22995#21517
   end
   object Label2: TLabel
-    Left = 458
+    Left = 304
     Top = 27
     Width = 48
     Height = 13
@@ -37,17 +37,10 @@ object Form48: TForm48
     Height = 13
     Caption = #19981#33391#36136#26816#24773#20917
   end
-  object Label4: TLabel
-    Left = 266
-    Top = 27
-    Width = 48
-    Height = 13
-    Caption = #20135#21697#31867#22411
-  end
   object DateTimePicker1: TDateTimePicker
-    Left = 512
+    Left = 368
     Top = 24
-    Width = 97
+    Width = 121
     Height = 21
     Date = 42351.504665428240000000
     Time = 42351.504665428240000000
@@ -85,17 +78,6 @@ object Form48: TForm48
     Caption = #21462#28040
     TabOrder = 4
     OnClick = Button2Click
-  end
-  object ComboBox2: TComboBox
-    Left = 328
-    Top = 24
-    Width = 113
-    Height = 21
-    TabOrder = 5
-    Items.Strings = (
-      #30406#24335#25903#24231
-      #26495#24335#25903#24231
-      #20280#32553#32541)
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

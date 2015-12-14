@@ -68,7 +68,6 @@ begin
         stringgrid1.Cells[2,i]:=fields[1].AsString;
         stringgrid1.Cells[3,i]:=fields[2].AsString;
         stringgrid1.Cells[4,i]:=fields[3].AsString;
-        stringgrid1.Cells[5,i]:=fields[4].AsString;
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         i:=i+1;
         next;

@@ -77,18 +77,16 @@ object Form49: TForm49
     Width = 990
     Height = 474
     Align = alBottom
-    ColCount = 6
+    ColCount = 4
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 4
     ColWidths = (
       55
-      93
-      88
-      92
-      99
-      523)
+      98
+      127
+      673)
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

@@ -18,8 +18,6 @@ type
     Button1: TButton;
     ZStoredProc1: TZStoredProc;
     Button2: TButton;
-    Label4: TLabel;
-    ComboBox2: TComboBox;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
@@ -42,21 +40,19 @@ uses main;
 
 procedure TForm48.Button1Click(Sender: TObject);
 begin
-  if (combobox2.Text<>'') and(combobox1.Text<>'') and (memo1.Text<>'') then
+  if (combobox1.Text<>'') and (memo1.Text<>'') then
     try
       with zStoredProc1 do
       begin
         close;
         StoredProcName:='proc_insert_zjbljl_zgbh_zjdate_memo';
         ParamByName('zgbh').Value:=SplitString(combobox1.Text,'|');
-        ParamByName('cplx').Value:=combobox2.Text;
         ParamByName('zjdate').Value:=datetimepicker1.Date;
         ParamByName('memo').Value:='*'+memo1.Text;
         ParamByName('czry').Value:=main.strUser;
         ExecProc;
         application.MessageBox('保存数据成功！','质量管理提示');
         combobox1.Text:='';
-        combobox2.Text:='';
         memo1.Lines.Clear;
         combobox1.SetFocus;
       end;

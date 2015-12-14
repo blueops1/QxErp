@@ -56,7 +56,6 @@ begin
         ExecProc;
         application.MessageBox('保存数据成功！','质量管理提示');
         combobox1.Text:='';
-        combobox2.Text:='';
         memo1.Lines.Clear;
         combobox1.SetFocus;
       end;

@@ -67,8 +67,6 @@ begin
         stringgrid1.Cells[1,i]:=fields[0].AsString;
         stringgrid1.Cells[2,i]:=fields[1].AsString;
         stringgrid1.Cells[3,i]:=fields[2].AsString;
-        stringgrid1.Cells[4,i]:=fields[3].AsString;
-        stringgrid1.Cells[5,i]:=fields[4].AsString;
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         i:=i+1;
         next;
@@ -121,10 +119,8 @@ begin
   datetimepicker1.DateTime:=now();
   stringgrid1.Cells[0,0]:='序号';
   stringgrid1.Cells[1,0]:='职工姓名';
-  stringgrid1.Cells[2,0]:='产品类型';
-  stringgrid1.Cells[3,0]:='质检日期';
-  stringgrid1.Cells[4,0]:='记录人';
-  stringgrid1.Cells[5,0]:='不良质检情况';
+  stringgrid1.Cells[2,0]:='质检日期';
+  stringgrid1.Cells[3,0]:='不良质检情况';
 end;
 
 end.
