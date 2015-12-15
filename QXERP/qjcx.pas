@@ -132,7 +132,7 @@ begin
   stringgrid1.Cells[5,0]:='假期结束日期';
   stringgrid1.Cells[6,0]:='假期类型';
   stringgrid1.Cells[7,0]:='请假理由';
-  stringgrid1.Cells[7,0]:='操作人';
+  stringgrid1.Cells[8,0]:='操作人';
 end;
 
 end.

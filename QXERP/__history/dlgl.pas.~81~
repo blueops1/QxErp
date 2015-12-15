@@ -40,7 +40,6 @@ procedure TForm10.Button1Click(Sender: TObject);
 begin
   if combobox1.Text<>'' then
   begin
-    
     try
     with  ZQuery1 do
     begin
@@ -130,7 +129,7 @@ procedure TForm10.FormActivate(Sender: TObject);
 var
   oldver,newver:string;
 begin
-    oldver:='2015121401'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
+    oldver:='2015121509'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin

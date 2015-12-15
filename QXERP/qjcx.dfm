@@ -4,8 +4,8 @@ object Form38: TForm38
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #35831#20551#26597#35810
-  ClientHeight = 537
-  ClientWidth = 977
+  ClientHeight = 631
+  ClientWidth = 1119
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -33,9 +33,9 @@ object Form38: TForm38
   end
   object StringGrid1: TStringGrid
     Left = 0
-    Top = 63
-    Width = 977
-    Height = 474
+    Top = 53
+    Width = 1119
+    Height = 578
     Align = alBottom
     ColCount = 9
     RowCount = 2
@@ -50,7 +50,7 @@ object Form38: TForm38
       125
       128
       81
-      254
+      382
       57)
   end
   object ComboBox2: TComboBox
