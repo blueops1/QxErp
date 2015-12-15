@@ -24,11 +24,9 @@ object from9: Tfrom9
     ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1089
     object TabSheet3: TTabSheet
       Caption = #24211#23384#26597#35810
       ImageIndex = 2
-      ExplicitWidth = 1081
       object Label12: TLabel
         Left = 45
         Top = 24
@@ -43,19 +41,21 @@ object from9: Tfrom9
         Width = 969
         Height = 255
         Align = alCustom
-        ColCount = 6
+        ColCount = 7
         DefaultColWidth = 200
         FixedCols = 0
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+        PopupMenu = PopupMenu1
         TabOrder = 0
         OnSelectCell = StringGrid1SelectCell
         ColWidths = (
-          80
-          136
-          135
-          142
-          125
-          294)
+          62
+          114
+          114
+          100
+          109
+          104
+          317)
       end
       object Edit9: TEdit
         Left = 116
@@ -82,6 +82,7 @@ object from9: Tfrom9
         Width = 969
         Height = 356
         Align = alBottom
+        PopupMenu = PopupMenu2
         TabOrder = 3
         ColWidths = (
           64
@@ -90,35 +91,28 @@ object from9: Tfrom9
           122
           487)
       end
-      object Button8: TButton
-        Left = 624
-        Top = 17
-        Width = 91
-        Height = 25
-        Caption = #23548#20986#21040'EXECL'
-        TabOrder = 4
-        OnClick = Button8Click
-      end
-      object RadioGroup1: TRadioGroup
-        Left = 744
-        Top = -2
-        Width = 225
-        Height = 55
-        Caption = #23548#20986#34920#36873#25321
-        Columns = 3
-        ItemIndex = 0
-        Items.Strings = (
-          #34920#19968
-          #34920#20108
-          #20840#37096)
-        TabOrder = 5
-      end
     end
   end
-  object ZQuery1: TZQuery
+  object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 576
-    Top = 232
+    Left = 440
+    Top = 352
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 312
+    Top = 224
+    object Execl1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = Execl1Click
+    end
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 344
+    Top = 480
+    object MenuItem1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = MenuItem1Click
+    end
   end
 end

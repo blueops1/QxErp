@@ -44,7 +44,9 @@ object Form12: TForm12
         ColCount = 9
         DefaultColWidth = 200
         FixedCols = 0
+        RowCount = 2
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+        PopupMenu = PopupMenu1
         TabOrder = 0
         OnSelectCell = StringGrid1SelectCell
       end
@@ -72,6 +74,8 @@ object Form12: TForm12
         Width = 513
         Height = 340
         Align = alCustom
+        RowCount = 2
+        PopupMenu = PopupMenu2
         TabOrder = 3
         OnSelectCell = StringGrid2SelectCell
         ColWidths = (
@@ -87,6 +91,8 @@ object Form12: TForm12
         Width = 546
         Height = 340
         Align = alCustom
+        RowCount = 2
+        PopupMenu = PopupMenu3
         TabOrder = 4
         ColWidths = (
           64
@@ -102,5 +108,29 @@ object Form12: TForm12
     Params = <>
     Left = 808
     Top = 192
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 312
+    Top = 224
+    object Execl1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = Execl1Click
+    end
+  end
+  object PopupMenu2: TPopupMenu
+    Left = 320
+    Top = 440
+    object MenuItem1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = MenuItem1Click
+    end
+  end
+  object PopupMenu3: TPopupMenu
+    Left = 672
+    Top = 456
+    object MenuItem2: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = MenuItem2Click
+    end
   end
 end

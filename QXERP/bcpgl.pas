@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ADODB, ComCtrls, Grids, StdCtrls, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset, ZStoredProcedure;
+  ZAbstractDataset, ZDataset, ZStoredProcedure, Menus;
 
 type
   TForm12 = class(TForm)
@@ -18,6 +18,12 @@ type
     StringGrid2: TStringGrid;
     StringGrid7: TStringGrid;
     ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    PopupMenu2: TPopupMenu;
+    MenuItem1: TMenuItem;
+    PopupMenu3: TPopupMenu;
+    MenuItem2: TMenuItem;
     procedure Button3Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -26,6 +32,9 @@ type
       var CanSelect: Boolean);
     procedure TabSheet3Show(Sender: TObject);
     procedure Edit9Change(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
+    procedure MenuItem2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +44,7 @@ type
 var
   Form12: TForm12;
   boolhtinfoloaded:boolean;
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
 
@@ -111,8 +121,32 @@ begin
       boolhtinfoloaded:=true;
     end;
   Except
-      Application.MessageBox('查询失败！','成品管理提示');
+      Application.MessageBox('查询失败！','半成品管理提示');
   end;
+end;
+
+procedure TForm12.Execl1Click(Sender: TObject);
+begin
+  if stringgrid1.RowCount>2 then
+    ExportStrGridToExcel([stringgrid1])
+  else
+    application.MessageBox('列表中没有任何数据！','半成品统计查询提示');
+end;
+
+procedure TForm12.MenuItem1Click(Sender: TObject);
+begin
+  if stringgrid2.RowCount>2 then
+    ExportStrGridToExcel([stringgrid2])
+  else
+    application.MessageBox('列表中没有任何数据！','半成品统计查询提示');
+end;
+
+procedure TForm12.MenuItem2Click(Sender: TObject);
+begin
+  if stringgrid7.RowCount>2 then
+    ExportStrGridToExcel([stringgrid7])
+  else
+    application.MessageBox('列表中没有任何数据！','半成品统计查询提示');
 end;
 
 procedure TForm12.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;

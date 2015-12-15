@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZStoredProcedure, Grids, ComCtrls;
+  ZStoredProcedure, Grids, ComCtrls, Menus;
 
 type
   TForm38 = class(TForm)
@@ -14,15 +14,16 @@ type
     StringGrid1: TStringGrid;
     ComboBox2: TComboBox;
     Button1: TButton;
-    Button2: TButton;
     ZStoredProc1: TZStoredProc;
     RadioGroup1: TRadioGroup;
     DateTimePicker1: TDateTimePicker;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
     procedure ComboBox2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,11 +85,6 @@ begin
     application.MessageBox('请选择需要查询的职工名称！','请假查询');
 end;
 
-procedure TForm38.Button2Click(Sender: TObject);
-begin
-  ExportStrGridToExcel([stringgrid1]);
-end;
-
 procedure TForm38.ComboBox2KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -115,6 +111,14 @@ begin
     application.MessageBox('数据查询失败！','请假查询');
   end;
  end;
+end;
+
+procedure TForm38.Execl1Click(Sender: TObject);
+begin
+  if stringgrid1.RowCount>2 then
+    ExportStrGridToExcel([stringgrid1])
+  else
+    application.MessageBox('列表中没有任何数据！','请假查询提示');
 end;
 
 procedure TForm38.FormShow(Sender: TObject);

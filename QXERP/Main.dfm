@@ -229,12 +229,19 @@ object Form1: TForm1
         TabOrder = 7
         OnClick = Button44Click
       end
+      object Button47: TButton
+        Left = 160
+        Top = 312
+        Width = 97
+        Height = 65
+        Caption = #26032#22686#21152#24037#21333
+        TabOrder = 8
+        OnClick = Button47Click
+      end
     end
     object TabSheet9: TTabSheet
       Caption = #36136#37327#31649#29702
       ImageIndex = 8
-      ExplicitLeft = 8
-      ExplicitTop = 22
       object Button45: TButton
         Left = 160
         Top = 104
@@ -519,6 +526,15 @@ object Form1: TForm1
         Caption = #24211#23384#36319#36394#35774#32622
         TabOrder = 6
         OnClick = Button35Click
+      end
+      object Button48: TButton
+        Left = 568
+        Top = 192
+        Width = 97
+        Height = 65
+        Caption = #21152#24037#21830#20449#24687#31649#29702
+        TabOrder = 7
+        OnClick = Button48Click
       end
     end
   end

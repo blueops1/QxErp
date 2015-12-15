@@ -196,6 +196,12 @@
 			<DCCReference Include="zjbljlcx.pas">
 				<Form>Form49</Form>
 			</DCCReference>
+			<DCCReference Include="zxjgd.pas">
+				<Form>Form50</Form>
+			</DCCReference>
+			<DCCReference Include="jgsgl.pas">
+				<Form>Form51</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -218,7 +224,7 @@
 						<Parameters Name="UseLauncher">False</Parameters>
 						<Parameters Name="LoadAllSymbols">True</Parameters>
 						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
-						<Parameters Name="DebugSourceDirs">D:\Mysql\ZEOSDBO-7.1.4-stable\src\component\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\component\;D:\Mysql\ZEOSDBO-7.1.4-stable\src\dbc\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\dbc\</Parameters>
+						<Parameters Name="DebugSourceDirs">D:\Mysql\ZEOSDBO-7.1.4-stable\src\component\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\component\;D:\Mysql\ZEOSDBO-7.1.4-stable\src\dbc\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\dbc\;F:\CPLG研究\MYSQL研究\ZEOSDBO-7.1.4-stable\src\core\</Parameters>
 					</Parameters>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>

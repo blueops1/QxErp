@@ -1,0 +1,138 @@
+unit qjgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
+  ComCtrls;
+
+type
+  TForm37 = class(TForm)
+    ComboBox1: TComboBox;
+    Memo1: TMemo;
+    Label1: TLabel;
+    Label2: TLabel;
+    ComboBox2: TComboBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker3: TDateTimePicker;
+    DateTimePicker5: TDateTimePicker;
+    Label3: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Edit1: TEdit;
+    Label6: TLabel;
+    Label9: TLabel;
+    procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form37: TForm37;
+  function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+
+implementation
+
+{$R *.dfm}
+
+uses main;
+
+procedure TForm37.Button1Click(Sender: TObject);
+begin
+  if (edit1.Text<>'') and (combobox1.Text<>'') and (combobox2.Text<>'') and (memo1.Text<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_insert_qingjia_info';   //qjdbh,zgbh,qjlx,qjsqdate,qjksdate,qjjsdate,qjly，czry
+      ParamByName('qjdbh').Value:=edit1.Text;
+      ParamByName('zgbh').Value:=SplitString(combobox1.Text,'|');
+      ParamByName('qjlx').Value:=combobox2.Text;
+      ParamByName('qjsqdate').Value:=datetimepicker5.Date;
+      ParamByName('qjksdate').Value:=datetimepicker1.DateTime;
+      ParamByName('qjjsdate').Value:=datetimepicker3.DateTime;
+      ParamByName('qjly').Value:='*'+memo1.Text;
+      ParamByName('czry').Value:=main.strUser;
+      ExecProc;
+    end;
+    edit1.text:='';
+    combobox1.text:='';
+    combobox2.text:='';
+    memo1.text:='';
+    edit1.setfocus;
+    application.MessageBox('保存数据成功！','请假管理提示');
+  except
+    application.MessageBox('保存数据失败！','请假管理提示');
+  end else
+    application.MessageBox('请把必填项目填写完整以及请假理由！','请假管理提示');
+
+end;
+
+procedure TForm37.ComboBox1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+//proc_cx_zgbhandxm_by_zgxm
+ if key=13 then
+ begin
+    if combobox1.Items.Count>0 then
+    ComboBox1.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_zgbhandxm_by_zgxm';
+        zstoredproc1.ParamByName('zgxm').Value:=ComboBox1.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox1.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','请假管理提示');
+  end;
+ end;
+end;
+
+procedure TForm37.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key=13 then
+  try
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_qingjia_info_newqjdbh';
+      open;
+      if fields[0].AsString<>'' then
+        edit1.Text:=fields[0].AsString
+      else
+        edit1.Text:=formatDateTime('yyyy',date)+'0001';
+    end;
+  except
+    application.MessageBox('数据查询失败！','新增加工单管理提示');
+  end;
+end;
+
+procedure TForm37.FormShow(Sender: TObject);
+begin
+  datetimepicker1.DateTime:=now();
+  datetimepicker5.DateTime:=now();
+  datetimepicker3.DateTime:=now();
+end;
+
+end.

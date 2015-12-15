@@ -379,10 +379,10 @@ end;
 procedure TForm18.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
-  selectRow:=ARow;
-  strMessid:=stringgrid1.Cells[0,ARow];
-  if strMessid<>'' then
+  if (ARow>0) and (ARow<stringgrid1.RowCount) and (stringgrid1.Cells[0,ARow]<>'') then
   begin
+    selectRow:=ARow;
+    strMessId:= stringgrid1.Cells[0,ARow];
     try
       with zquery1 do
       begin
@@ -399,6 +399,9 @@ begin
           memo1.Lines.Add('');
           memo1.Lines.Add('');
           memo1.Lines.Add('来自：'+fields[0].asstring+'，于'+fields[1].asstring);
+          Memo1.Perform(WM_VSCROLL, SB_TOP, 0);
+          Memo1.Perform(EM_SETSEL, 0, 0);
+          Memo1.SetFocus;
         end;
       end;
     except
@@ -410,10 +413,10 @@ end;
 procedure TForm18.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
-  selectFavRow:=ARow;
-  strFavMessid:=stringgrid2.Cells[0,ARow];
-  if strFavMessid<>'' then
+  if (ARow>0) and (ARow<stringgrid2.RowCount) and (stringgrid2.Cells[0,ARow]<>'') then
   begin
+    selectFavRow:=ARow;
+    strFavMessid:= stringgrid2.Cells[0,ARow];
     try
       with zquery1 do
       begin
@@ -430,6 +433,9 @@ begin
           memo3.Lines.Add('');
           memo3.Lines.Add('');
           memo3.Lines.Add('来自：'+fields[0].asstring+'，于'+fields[1].asstring);
+          Memo3.Perform(WM_VSCROLL, SB_TOP, 0);
+          Memo3.Perform(EM_SETSEL, 0, 0);
+          Memo3.SetFocus;
         end;
       end;
     except
@@ -441,10 +447,10 @@ end;
 procedure TForm18.StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
-  selectOldRow:=ARow;
-  strOldMessid:=stringgrid3.Cells[0,ARow];
-  if strOldMessid<>'' then
+  if (ARow>0) and (ARow<stringgrid3.RowCount) and (stringgrid3.Cells[0,ARow]<>'') then
   begin
+    selectOldRow:=ARow;
+    strOldMessid:= stringgrid3.Cells[0,ARow];
     try
       with zquery1 do
       begin
@@ -461,6 +467,9 @@ begin
           memo4.Lines.Add('');
           memo4.Lines.Add('');
           memo4.Lines.Add('来自：'+fields[0].asstring+'，于'+fields[1].asstring);
+          Memo4.Perform(WM_VSCROLL, SB_TOP, 0);
+          Memo4.Perform(EM_SETSEL, 0, 0);
+          Memo4.SetFocus;
         end;
       end;
     except
@@ -472,10 +481,10 @@ end;
 procedure TForm18.StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
-  selectDelRow:=ARow;
-  strDelMessid:=stringgrid4.Cells[0,ARow];
-  if strDelMessid<>'' then
+  if (ARow>0) and (ARow<stringgrid4.RowCount) and (stringgrid4.Cells[0,ARow]<>'') then
   begin
+    selectDelRow:=ARow;
+    strDelMessid:= stringgrid4.Cells[0,ARow];
     try
       with zquery1 do
       begin
@@ -492,6 +501,9 @@ begin
           memo5.Lines.Add('');
           memo5.Lines.Add('');
           memo5.Lines.Add('来自：'+fields[0].asstring+'，于'+fields[1].asstring);
+          Memo5.Perform(WM_VSCROLL, SB_TOP, 0);
+          Memo5.Perform(EM_SETSEL, 0, 0);
+          Memo5.SetFocus;
         end;
       end;
     except
@@ -503,10 +515,10 @@ end;
 procedure TForm18.StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
-  selectMyRow:=ARow;
-  strMyMessid:=stringgrid5.Cells[0,ARow];
-  if strMyMessid<>'' then
+  if (ARow>0) and (ARow<stringgrid5.RowCount) and (stringgrid5.Cells[0,ARow]<>'') then
   begin
+    selectMyRow:=ARow;
+    strMyMessid:= stringgrid5.Cells[0,ARow];
     try
       with zquery1 do
       begin
@@ -523,6 +535,9 @@ begin
           memo6.Lines.Add('');
           memo6.Lines.Add('');
           memo6.Lines.Add('来自：'+fields[0].asstring+'，于'+fields[1].asstring);
+          Memo6.Perform(WM_VSCROLL, SB_TOP, 0);
+          Memo6.Perform(EM_SETSEL, 0, 0);
+          Memo6.SetFocus;
         end;
       end;
     except

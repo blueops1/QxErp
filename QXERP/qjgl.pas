@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
-  ComCtrls;
+  ComCtrls, Menus;
 
 type
   TForm37 = class(TForm)
@@ -26,10 +26,12 @@ type
     Label8: TLabel;
     Edit1: TEdit;
     Label6: TLabel;
+    Label9: TLabel;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -104,6 +106,26 @@ begin
     application.MessageBox('数据查询失败！','请假管理提示');
   end;
  end;
+end;
+
+procedure TForm37.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key=13 then
+  try
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_qingjia_info_newqjdbh';
+      open;
+      if fields[0].AsString<>'' then
+        edit1.Text:=fields[0].AsString
+      else
+        edit1.Text:=formatDateTime('yyyy',date)+'0001';
+    end;
+  except
+    application.MessageBox('数据查询失败！','新增加工单管理提示');
+  end;
 end;
 
 procedure TForm37.FormShow(Sender: TObject);

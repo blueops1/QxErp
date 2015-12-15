@@ -40,6 +40,7 @@ object Form38: TForm38
     ColCount = 9
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    PopupMenu = PopupMenu1
     TabOrder = 0
     ColWidths = (
       55
@@ -69,15 +70,6 @@ object Form38: TForm38
     TabOrder = 2
     OnClick = Button1Click
   end
-  object Button2: TButton
-    Left = 840
-    Top = 12
-    Width = 89
-    Height = 25
-    Caption = #23548#20986#21040'Execl'
-    TabOrder = 3
-    OnClick = Button2Click
-  end
   object RadioGroup1: TRadioGroup
     Left = 559
     Top = 8
@@ -89,7 +81,7 @@ object Form38: TForm38
     Items.Strings = (
       #25353#24180
       #25353#26376)
-    TabOrder = 4
+    TabOrder = 3
   end
   object DateTimePicker1: TDateTimePicker
     Left = 384
@@ -98,12 +90,20 @@ object Form38: TForm38
     Height = 21
     Date = 42337.398820648150000000
     Time = 42337.398820648150000000
-    TabOrder = 5
+    TabOrder = 4
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
     Left = 520
     Top = 328
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 448
+    Top = 152
+    object Execl1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = Execl1Click
+    end
   end
 end

@@ -73,6 +73,21 @@ object Form37: TForm37
     Height = 13
     Caption = #32511#33394#20026#24517#22635#39033#30446
   end
+  object Label9: TLabel
+    Left = 105
+    Top = 8
+    Width = 304
+    Height = 13
+    Caption = #27599#24180#31532#19968#20010#35831#20551#21333#32534#21495#25163#24037#36755#20837#65306#24180#20221'+'#39'0001'#39','#22914'20150001'
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
   object ComboBox1: TComboBox
     Left = 309
     Top = 27
@@ -120,6 +135,7 @@ object Form37: TForm37
     Date = 42337.358579687500000000
     Format = 'yyyy-MM-dd HH:mm'
     Time = 42337.358579687500000000
+    Kind = dtkTime
     TabOrder = 5
   end
   object DateTimePicker3: TDateTimePicker
@@ -130,6 +146,7 @@ object Form37: TForm37
     Date = 42337.358579687500000000
     Format = 'yyyy-MM-dd HH:mm'
     Time = 42337.358579687500000000
+    Kind = dtkTime
     TabOrder = 6
   end
   object DateTimePicker5: TDateTimePicker
@@ -148,6 +165,7 @@ object Form37: TForm37
     Height = 21
     Color = clMoneyGreen
     TabOrder = 0
+    OnKeyDown = Edit1KeyDown
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

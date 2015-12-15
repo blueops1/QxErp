@@ -48,6 +48,9 @@ type
     ZStoredProc1: TZStoredProc;
     Label15: TLabel;
     Label16: TLabel;
+    Edit13: TEdit;
+    Label17: TLabel;
+    Label18: TLabel;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit7KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ListBox1Click(Sender: TObject);
@@ -110,19 +113,19 @@ end;
 procedure TForm24.Button3Click(Sender: TObject);
 begin
   //proc_update_gysinfo_by_gysid
-  if (edit7.Text<>'') and (edit8.Text<>'') then
+  if (edit13.Text<>'') and (edit8.Text<>'') then
   try
     with zStoredProc1 do
     begin
       close;
       StoredProcName:='proc_update_gysinfo_by_gysid';
-      ParamByName('gysid').Value:=edit7.Text;
+      ParamByName('gysid').Value:=edit13.Text;
       ParamByName('gysmc').Value:=edit8.Text;
       ParamByName('gyszh').Value:=edit9.Text;
       ParamByName('gyskhh').Value:=edit10.Text;
       ParamByName('lxr').Value:=edit11.Text;
       ParamByName('lxrphone').Value:=edit12.Text;
-      ParamByName('memo').Value:='*'+memo2.Text;
+      ParamByName('memo').Value:=memo2.Text;
       ExecProc;
       //fgysmc=gysmc,fgyszh=gyszh,fgyskhh=gyskhh,flxr=lxr,flxrphone=lxrphone,fmemo=memo
     end;
@@ -136,6 +139,7 @@ end;
 procedure TForm24.Edit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+if key=13 then
   try
     with zstoredproc1 do
     begin
@@ -195,7 +199,7 @@ begin
         open;
         if not eof then
         begin
-          Edit7.Text := fields[1].AsString;
+          Edit13.Text := fields[1].AsString;
           Edit8.Text := fields[2].AsString;
           Edit9.Text := fields[3].AsString;
           Edit10.Text := fields[4].AsString;

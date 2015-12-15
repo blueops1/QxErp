@@ -52,7 +52,9 @@ uses
   crkdinfomxzcx in 'crkdinfomxzcx.pas' {Form46},
   bcpsctjcx in 'bcpsctjcx.pas' {Form47},
   blzjjldj in 'blzjjldj.pas' {Form48},
-  zjbljlcx in 'zjbljlcx.pas' {Form49};
+  zjbljlcx in 'zjbljlcx.pas' {Form49},
+  zxjgd in 'zxjgd.pas' {Form50},
+  jgsgl in 'jgsgl.pas' {Form51};
 
 {$R *.res}
 
@@ -111,5 +113,7 @@ begin
   Application.CreateForm(TForm47, Form47);
   Application.CreateForm(TForm48, Form48);
   Application.CreateForm(TForm49, Form49);
+  Application.CreateForm(TForm50, Form50);
+  Application.CreateForm(TForm51, Form51);
   Application.Run;
 end.

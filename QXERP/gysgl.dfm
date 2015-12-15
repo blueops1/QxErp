@@ -2,7 +2,7 @@ object Form24: TForm24
   Left = 0
   Top = 0
   Caption = #20379#24212#21830#20449#24687#31649#29702
-  ClientHeight = 415
+  ClientHeight = 455
   ClientWidth = 887
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,12 +18,14 @@ object Form24: TForm24
     Left = 0
     Top = 0
     Width = 887
-    Height = 415
+    Height = 455
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 415
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20379#24212#21830
+      ExplicitHeight = 387
       object Label1: TLabel
         Left = 173
         Top = 27
@@ -162,75 +164,91 @@ object Form24: TForm24
     object TabSheet2: TTabSheet
       Caption = #20379#24212#21830#20449#24687#20462#25913
       ImageIndex = 1
+      ExplicitHeight = 387
       object Label8: TLabel
         Left = 325
-        Top = 35
+        Top = 67
         Width = 60
         Height = 13
         Caption = #20379#24212#21830#32534#21495
       end
       object Label9: TLabel
         Left = 326
-        Top = 75
+        Top = 107
         Width = 60
         Height = 13
         Caption = #20379#24212#21830#21517#31216
       end
       object Label10: TLabel
         Left = 326
-        Top = 115
+        Top = 147
         Width = 60
         Height = 13
         Caption = #20379#24212#21830#24080#21495
       end
       object Label11: TLabel
         Left = 314
-        Top = 155
+        Top = 187
         Width = 72
         Height = 13
         Caption = #20379#24212#21830#24320#25143#34892
       end
       object Label12: TLabel
         Left = 349
-        Top = 195
+        Top = 227
         Width = 36
         Height = 13
         Caption = #32852#31995#20154
       end
       object Label13: TLabel
         Left = 561
-        Top = 195
+        Top = 227
         Width = 48
         Height = 13
         Caption = #32852#31995#30005#35805
       end
       object Label14: TLabel
         Left = 361
-        Top = 235
+        Top = 267
         Width = 24
         Height = 13
         Caption = #22791#27880
       end
       object Label15: TLabel
         Left = 528
-        Top = 35
+        Top = 27
         Width = 276
         Height = 13
         Caption = #27169#31946#26597#35810#20379#24212#21830#20449#24687#65292#26597#35810#20840#37096#36755#20837#19968#20010#31354#26684#21518#22238#36710
+      end
+      object Label17: TLabel
+        Left = 301
+        Top = 27
+        Width = 84
+        Height = 13
+        Caption = #20379#24212#21830#20449#24687#26597#35810
+      end
+      object Label18: TLabel
+        Left = 392
+        Top = 380
+        Width = 150
+        Height = 13
+        Caption = #26356#25913#22791#27880#65292#35831#20445#30041#24320#22836#30340'*'#21495
       end
       object ListBox1: TListBox
         Left = 0
         Top = 0
         Width = 241
-        Height = 387
+        Height = 427
         Align = alLeft
         ItemHeight = 13
         TabOrder = 0
         OnClick = ListBox1Click
+        ExplicitHeight = 387
       end
       object Edit7: TEdit
         Left = 392
-        Top = 32
+        Top = 24
         Width = 121
         Height = 21
         Color = clMoneyGreen
@@ -240,49 +258,49 @@ object Form24: TForm24
       end
       object Edit8: TEdit
         Left = 392
-        Top = 72
+        Top = 104
         Width = 393
         Height = 21
         TabOrder = 2
       end
       object Edit9: TEdit
         Left = 392
-        Top = 112
+        Top = 144
         Width = 393
         Height = 21
         TabOrder = 3
       end
       object Edit10: TEdit
         Left = 392
-        Top = 152
+        Top = 184
         Width = 393
         Height = 21
         TabOrder = 4
       end
       object Edit11: TEdit
         Left = 392
-        Top = 192
+        Top = 224
         Width = 121
         Height = 21
         TabOrder = 5
       end
       object Edit12: TEdit
         Left = 616
-        Top = 192
+        Top = 224
         Width = 169
         Height = 21
         TabOrder = 6
       end
       object Memo2: TMemo
         Left = 392
-        Top = 232
+        Top = 264
         Width = 393
         Height = 89
         TabOrder = 7
       end
       object Button3: TButton
         Left = 688
-        Top = 343
+        Top = 375
         Width = 97
         Height = 25
         Caption = #20445#23384#20462#25913
@@ -291,11 +309,19 @@ object Form24: TForm24
       end
       object Button4: TButton
         Left = 561
-        Top = 343
+        Top = 375
         Width = 104
         Height = 25
         Caption = #21462#28040
         TabOrder = 9
+      end
+      object Edit13: TEdit
+        Left = 392
+        Top = 64
+        Width = 121
+        Height = 21
+        ReadOnly = True
+        TabOrder = 10
       end
     end
   end
