@@ -219,6 +219,7 @@ object Form40: TForm40
     Width = 393
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 6
     OnDropDown = ComboBox1DropDown
     OnSelect = ComboBox1Select

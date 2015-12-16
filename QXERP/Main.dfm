@@ -160,7 +160,7 @@ object Form1: TForm1
       ImageIndex = 1
       object Button11: TButton
         Left = 432
-        Top = 208
+        Top = 200
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#26597#35810
@@ -178,7 +178,7 @@ object Form1: TForm1
       end
       object Button36: TButton
         Left = 160
-        Top = 208
+        Top = 200
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#20837#24211
@@ -213,7 +213,7 @@ object Form1: TForm1
       end
       object Button43: TButton
         Left = 296
-        Top = 208
+        Top = 200
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#29305#27530#20986#24211
@@ -222,7 +222,7 @@ object Form1: TForm1
       end
       object Button44: TButton
         Left = 568
-        Top = 208
+        Top = 200
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#32479#35745#26597#35810
@@ -231,7 +231,7 @@ object Form1: TForm1
       end
       object Button47: TButton
         Left = 160
-        Top = 312
+        Top = 296
         Width = 97
         Height = 65
         Caption = #26032#22686#21152#24037#21333
@@ -382,6 +382,16 @@ object Form1: TForm1
         Caption = #24211#23384#29289#36164#26597#35810
         TabOrder = 8
         OnClick = Button15Click
+      end
+      object Button49: TButton
+        Left = 296
+        Top = 296
+        Width = 97
+        Height = 65
+        Cancel = True
+        Caption = #22806#21152#24037#25104#21697#20837#24211
+        TabOrder = 9
+        OnClick = Button49Click
       end
     end
     object TabSheet4: TTabSheet
@@ -590,7 +600,7 @@ object Form1: TForm1
     Port = 0
     Protocol = 'mysql-5'
     Left = 496
-    Top = 344
+    Top = 528
   end
   object Timer1: TTimer
     Interval = 60000

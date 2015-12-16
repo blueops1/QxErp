@@ -202,6 +202,9 @@
 			<DCCReference Include="jgsgl.pas">
 				<Form>Form51</Form>
 			</DCCReference>
+			<DCCReference Include="wxdwcprk.pas">
+				<Form>Form52</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

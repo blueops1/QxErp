@@ -94,6 +94,7 @@ object Form37: TForm37
     Width = 129
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 1
     OnKeyDown = ComboBox1KeyDown
   end

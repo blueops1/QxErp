@@ -36,6 +36,7 @@ object Form49: TForm49
     Top = 14
     Width = 129
     Height = 21
+    DropDownCount = 16
     TabOrder = 0
     OnKeyDown = ComboBox2KeyDown
   end

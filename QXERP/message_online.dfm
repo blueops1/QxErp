@@ -54,6 +54,7 @@ object Form18: TForm18
         Top = 24
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 0
         OnDropDown = ComboBox1DropDown
       end

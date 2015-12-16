@@ -348,10 +348,10 @@ begin
         StoredProcName:='proc_insert_ckiteminfo';    //itemid,itemc,itemdwid,itemlxid,ckid,hjid,memo
         ParamByName('itemid').Value:=edit1.Text;
         ParamByName('itemmc').Value:=edit2.Text;
-        ParamByName('itemdwid').Value:=SplitString(combobox1.Text,'|');
-        ParamByName('itemlxid').Value:=SplitString(combobox2.Text,'|');
-        ParamByName('ckid').Value:=SplitString(combobox3.Text,'|');
-        ParamByName('hjid').Value:=SplitString(combobox4.Text,'|');
+        ParamByName('itemdwid').Value:=SplitString(combobox4.Text,'|');
+        ParamByName('itemlxid').Value:=SplitString(combobox3.Text,'|');
+        ParamByName('ckid').Value:=SplitString(combobox1.Text,'|');
+        ParamByName('hjid').Value:=SplitString(combobox2.Text,'|');
         ParamByName('memo').Value:='*'+memo1.Text;
         ExecProc;
         if ParamByName('returncode').Value=1 then

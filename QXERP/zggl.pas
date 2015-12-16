@@ -307,7 +307,7 @@ begin
         //PageControl1.ActivePageIndex:=1;
         close;
         sql.Clear;
-        sql.Add('select top 1 fbmbh+1 from bm_info order by CONVERT(int,fbmbh) desc');
+        sql.Add('select IFNULL(MAX(cast(fbmbh as UNSIGNED))+1,1)from bm_info');
         open;
         if not eof then
            edit16.Text := fields[0].AsString;
@@ -326,8 +326,8 @@ begin
   with ZQuery1 do
   begin
     close;
-    sql.Clear;
-    sql.Add('select top 1 fbmbh+1 from bm_info order by CONVERT(int,fbmbh) desc');
+    sql.Clear;      //select IFNULL(max(cast(fckid as UNSIGNED))+1,1) from ck_info;
+    sql.Add('select IFNULL(MAX(cast(fbmbh as UNSIGNED))+1,1)from bm_info');
     open;
     if not eof then
        strBMBH := fields[0].AsString
@@ -505,7 +505,7 @@ with ZQuery1 do
   begin
     close;
     sql.Clear;
-    sql.Add('select fzgxm from zg_info');
+    sql.Add('select fzgxm,cast(fzgbh as UNSIGNED) as zgbh from zg_info order by zgbh');
     open;
     while not eof  do
     begin
@@ -528,14 +528,13 @@ begin
   stringgrid1.Cells[6,0]:='²¿ÃÅ';
   stringgrid1.Cells[7,0]:='±¸×¢';
 
-
   y:=1;
   try
   with ZQuery1 do
   begin
     close;
     sql.Clear;
-    sql.Add('select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,fmemo from (select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info) as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh');
+    sql.Add('select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info) as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh');
     open;
     stringgrid1.RowCount:=ZQuery1.RecordCount+1;
     while not eof do

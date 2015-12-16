@@ -177,6 +177,7 @@ object Form8: TForm8
         Top = 184
         Width = 177
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 5
         OnDropDown = ComboBox1DropDown
@@ -186,6 +187,7 @@ object Form8: TForm8
         Top = 149
         Width = 176
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 4
         OnDropDown = ComboBox1DropDown

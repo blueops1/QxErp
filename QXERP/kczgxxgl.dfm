@@ -99,6 +99,7 @@ object Form32: TForm32
     Top = 23
     Width = 177
     Height = 21
+    DropDownCount = 16
     TabOrder = 0
     OnKeyDown = ComboBox1KeyDown
     OnSelect = ComboBox1Select

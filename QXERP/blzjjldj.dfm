@@ -58,6 +58,7 @@ object Form48: TForm48
     Top = 24
     Width = 129
     Height = 21
+    DropDownCount = 16
     TabOrder = 1
     OnKeyDown = ComboBox1KeyDown
   end

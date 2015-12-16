@@ -24,11 +24,9 @@ object Form17: TForm17
     ActivePage = TabSheet3
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 926
     object TabSheet3: TTabSheet
       Caption = #29983#20135#35745#21010#26597#35810
       ImageIndex = 2
-      ExplicitWidth = 918
       object Label12: TLabel
         Left = 21
         Top = 22
@@ -77,7 +75,6 @@ object Form17: TForm17
         Align = alBottom
         ColCount = 9
         TabOrder = 2
-        ExplicitWidth = 918
         ColWidths = (
           64
           88
@@ -116,6 +113,7 @@ object Form17: TForm17
         Top = 19
         Width = 405
         Height = 21
+        DropDownCount = 16
         TabOrder = 5
         OnKeyDown = ComboBox1KeyDown
       end

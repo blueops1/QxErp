@@ -28,7 +28,7 @@ object Form50: TForm50
   object Label2: TLabel
     Left = 242
     Top = 148
-    Width = 51
+    Width = 48
     Height = 13
     Caption = #21152#24037#25968#37327
   end
@@ -129,6 +129,7 @@ object Form50: TForm50
     TabStop = False
     OnKeyDown = ComboBoxEx1KeyDown
     OnSelect = ComboBoxEx1Select
+    DropDownCount = 16
   end
   object Edit2: TEdit
     Left = 299
@@ -206,6 +207,7 @@ object Form50: TForm50
     Width = 319
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 8
     OnKeyDown = ComboBox1KeyDown
   end

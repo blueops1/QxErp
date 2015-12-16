@@ -23,11 +23,9 @@ object Form11: TForm11
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 485
     object TabSheet1: TTabSheet
       Caption = #26032#22686#21322#25104#21697#20449#24687
       OnShow = TabSheet1Show
-      ExplicitHeight = 457
       object Label1: TLabel
         Left = 96
         Top = 53
@@ -208,6 +206,7 @@ object Form11: TForm11
         Top = 132
         Width = 145
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 4
         OnDropDown = ComboBox2DropDown
@@ -217,6 +216,7 @@ object Form11: TForm11
         Top = 212
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 6
         OnKeyDown = ComboBox1KeyDown
       end
@@ -225,6 +225,7 @@ object Form11: TForm11
         Top = 212
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 7
         OnKeyDown = ComboBox3KeyDown
       end
@@ -233,6 +234,7 @@ object Form11: TForm11
         Top = 172
         Width = 145
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 8
         OnDropDown = ComboBox4DropDown
@@ -258,6 +260,7 @@ object Form11: TForm11
         Top = 253
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 10
         OnKeyDown = ComboBox5KeyDown
       end
@@ -266,6 +269,7 @@ object Form11: TForm11
         Top = 253
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 11
         OnKeyDown = ComboBox6KeyDown
       end
@@ -274,6 +278,7 @@ object Form11: TForm11
         Top = 293
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 12
         OnKeyDown = ComboBox7KeyDown
       end
@@ -282,6 +287,7 @@ object Form11: TForm11
         Top = 293
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 13
         OnKeyDown = ComboBox8KeyDown
       end
@@ -290,6 +296,7 @@ object Form11: TForm11
         Top = 333
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 14
         OnKeyDown = ComboBox17KeyDown
       end
@@ -298,6 +305,7 @@ object Form11: TForm11
         Top = 333
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 15
         OnKeyDown = ComboBox18KeyDown
       end
@@ -305,8 +313,6 @@ object Form11: TForm11
     object TabSheet3: TTabSheet
       Caption = #21322#25104#21697#20449#24687#20462#25913
       ImageIndex = 3
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label22: TLabel
         Left = 96
         Top = 53
@@ -447,6 +453,7 @@ object Form11: TForm11
         Top = 132
         Width = 145
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 2
         OnDropDown = ComboBox9DropDown
@@ -456,6 +463,7 @@ object Form11: TForm11
         Top = 172
         Width = 145
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 3
         OnDropDown = ComboBox10DropDown
@@ -465,6 +473,7 @@ object Form11: TForm11
         Top = 212
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 4
         OnKeyDown = ComboBox11KeyDown
       end
@@ -473,6 +482,7 @@ object Form11: TForm11
         Top = 212
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 5
         OnKeyDown = ComboBox12KeyDown
       end
@@ -481,6 +491,7 @@ object Form11: TForm11
         Top = 253
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 6
         OnKeyDown = ComboBox13KeyDown
       end
@@ -489,6 +500,7 @@ object Form11: TForm11
         Top = 253
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 7
         OnKeyDown = ComboBox14KeyDown
       end
@@ -497,6 +509,7 @@ object Form11: TForm11
         Top = 293
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 8
         OnKeyDown = ComboBox15KeyDown
       end
@@ -505,6 +518,7 @@ object Form11: TForm11
         Top = 293
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 9
         OnKeyDown = ComboBox16KeyDown
       end
@@ -556,6 +570,7 @@ object Form11: TForm11
         Top = 333
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 15
         OnKeyDown = ComboBox19KeyDown
       end
@@ -564,6 +579,7 @@ object Form11: TForm11
         Top = 333
         Width = 145
         Height = 21
+        DropDownCount = 16
         TabOrder = 16
         OnKeyDown = ComboBox20KeyDown
       end

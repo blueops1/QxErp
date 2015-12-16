@@ -58,6 +58,7 @@ object Form38: TForm38
     Top = 14
     Width = 129
     Height = 21
+    DropDownCount = 16
     TabOrder = 1
     OnKeyDown = ComboBox2KeyDown
   end

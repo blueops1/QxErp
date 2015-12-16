@@ -126,6 +126,7 @@ object Form23: TForm23
     Width = 601
     Height = 21
     DragMode = dmAutomatic
+    DropDownCount = 16
     TabOrder = 0
     OnKeyDown = ComboBox1KeyDown
     OnSelect = ComboBox1Select

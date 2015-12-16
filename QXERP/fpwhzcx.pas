@@ -88,6 +88,7 @@ begin
             stringgrid1.Cells[1,y]:=tmpgysid;
             stringgrid1.Cells[2,y]:=fields[1].AsString;
             y:=y+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
             stringgrid1.Cells[0,y]:=inttostr(y);
             stringgrid1.RowCount:=stringgrid1.RowCount+1;
             zstoredproc1.NextResultSet;
@@ -95,6 +96,7 @@ begin
             stringgrid1.Cells[4,y]:=fields[1].AsString;
             stringgrid1.Cells[5,y]:=fields[2].AsString;
             y:=y+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
             zstoredproc1.LastResultSet;
             while not eof do
             begin
@@ -104,6 +106,7 @@ begin
               stringgrid1.Cells[7,y]:=fields[1].AsString;
               stringgrid1.Cells[8,y]:=fields[2].AsString;
               y:=y+1;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
               stringgrid1.Rows[y].Clear;
               next;
             end;
@@ -116,6 +119,7 @@ begin
             stringgrid1.Cells[4,y]:=fields[1].AsString;
             stringgrid1.Cells[5,y]:=fields[2].AsString;
             y:=y+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
             zstoredproc1.LastResultSet;
             while not eof do
             begin
@@ -125,7 +129,7 @@ begin
               stringgrid1.Cells[7,y]:=fields[1].AsString;
               stringgrid1.Cells[8,y]:=fields[2].AsString;
               y:=y+1;
-              stringgrid1.Rows[y].Clear;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
               next;
             end;
           end;

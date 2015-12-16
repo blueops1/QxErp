@@ -135,6 +135,7 @@ object Form29: TForm29
     Top = 29
     Width = 183
     Height = 21
+    DropDownCount = 16
     TabOrder = 6
     OnKeyDown = ComboBox1KeyDown
     OnSelect = ComboBox1Select

@@ -119,6 +119,7 @@ object Form22: TForm22
     TabOrder = 0
     TabStop = False
     OnKeyDown = ComboBoxEx1KeyDown
+    DropDownCount = 16
   end
   object Edit2: TEdit
     Left = 364
@@ -199,6 +200,7 @@ object Form22: TForm22
     Width = 319
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 8
     OnKeyDown = ComboBox1KeyDown
   end

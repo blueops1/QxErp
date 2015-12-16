@@ -36,6 +36,7 @@ object Form26: TForm26
     Top = 21
     Width = 545
     Height = 21
+    DropDownCount = 16
     TabOrder = 0
     OnKeyDown = ComboBox1KeyDown
   end

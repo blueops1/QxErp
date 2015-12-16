@@ -265,6 +265,7 @@ object Form19: TForm19
     Width = 481
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 3
     OnDropDown = ComboBox1DropDown
     OnSelect = ComboBox1Select

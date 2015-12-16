@@ -266,6 +266,7 @@ object Form13: TForm13
         Top = 293
         Width = 145
         Height = 21
+        DropDownCount = 16
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
         TabOrder = 9
         OnDropDown = ComboBox1DropDown

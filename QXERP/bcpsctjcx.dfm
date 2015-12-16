@@ -24,12 +24,9 @@ object Form47: TForm47
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 703
     object TabSheet1: TTabSheet
       Caption = #25353#26102#38388#32479#35745
       OnShow = TabSheet1Show
-      ExplicitWidth = 1092
-      ExplicitHeight = 677
       object Label2: TLabel
         Left = 72
         Top = 26
@@ -113,8 +110,6 @@ object Form47: TForm47
       Caption = #25353#21608#26376#24180#32479#35745
       ImageIndex = 1
       OnShow = TabSheet2Show
-      ExplicitWidth = 1084
-      ExplicitHeight = 665
       object DateTimePicker3: TDateTimePicker
         Left = 330
         Top = 24
@@ -188,7 +183,6 @@ object Form47: TForm47
       Caption = #26597#35810#25152#26377#21322#25104#21697#24211#23384
       ImageIndex = 2
       OnShow = TabSheet3Show
-      ExplicitHeight = 675
       object StringGrid5: TStringGrid
         Left = 3
         Top = 41

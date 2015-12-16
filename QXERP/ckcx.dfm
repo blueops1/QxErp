@@ -45,7 +45,6 @@ object Form34: TForm34
     OnDblClick = StringGrid1DblClick
     OnDrawCell = StringGrid1DrawCell
     OnSelectCell = StringGrid1SelectCell
-    ExplicitTop = 50
     ColWidths = (
       55
       64
@@ -62,15 +61,17 @@ object Form34: TForm34
     Top = 14
     Width = 171
     Height = 21
+    DropDownCount = 16
     TabOrder = 1
     OnKeyDown = ComboBox1KeyDown
     OnSelect = ComboBox1Select
   end
   object ComboBox2: TComboBox
-    Left = 469
+    Left = 468
     Top = 14
     Width = 177
     Height = 21
+    DropDownCount = 16
     TabOrder = 2
   end
   object Button1: TButton

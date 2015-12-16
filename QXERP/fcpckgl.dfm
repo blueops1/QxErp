@@ -120,6 +120,7 @@ object Form27: TForm27
     TabStop = False
     OnKeyDown = ComboBoxEx1KeyDown
     OnSelect = ComboBoxEx1Select
+    DropDownCount = 16
   end
   object Edit1: TEdit
     Left = 103
@@ -138,6 +139,7 @@ object Form27: TForm27
     Width = 131
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 1
     OnKeyDown = ComboBox1KeyDown
   end

@@ -154,6 +154,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 5
             OnDropDown = ComboBox1DropDown
           end
@@ -163,6 +164,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 6
             OnDropDown = ComboBox2DropDown
           end
@@ -172,6 +174,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 7
             OnDropDown = ComboBox3DropDown
           end
@@ -181,6 +184,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 8
             OnDropDown = ComboBox4DropDown
           end
@@ -314,6 +318,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 5
             OnDropDown = ComboBox6DropDown
           end
@@ -323,6 +328,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 6
             OnDropDown = ComboBox7DropDown
           end
@@ -332,6 +338,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 7
             OnDropDown = ComboBox8DropDown
           end
@@ -341,6 +348,7 @@ object Form25: TForm25
             Width = 201
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 8
             OnDropDown = ComboBox9DropDown
           end
@@ -1055,6 +1063,7 @@ object Form25: TForm25
             Width = 177
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 5
             OnDropDown = ComboBox5DropDown
           end
@@ -1167,6 +1176,7 @@ object Form25: TForm25
             Width = 177
             Height = 21
             Color = clMoneyGreen
+            DropDownCount = 16
             TabOrder = 5
             OnDropDown = ComboBox10DropDown
           end

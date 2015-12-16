@@ -22,7 +22,7 @@ object Form7: TForm7
     Top = 0
     Width = 1091
     Height = 695
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -115,6 +115,7 @@ object Form7: TForm7
         Top = 24
         Width = 161
         Height = 21
+        DropDownCount = 16
         TabOrder = 5
         Text = '*|'#20840#37096
         OnDropDown = ComboBox1DropDown
@@ -313,6 +314,7 @@ object Form7: TForm7
         Top = 24
         Width = 161
         Height = 21
+        DropDownCount = 16
         TabOrder = 1
         Text = '*|'#20840#37096
         OnDropDown = ComboBox1DropDown

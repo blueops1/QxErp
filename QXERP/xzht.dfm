@@ -169,6 +169,7 @@ object Form28: TForm28
     Width = 530
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 4
     OnKeyDown = ComboBox1KeyDown
     OnSelect = ComboBox1Select
@@ -243,6 +244,7 @@ object Form28: TForm28
     Width = 125
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 11
     OnKeyDown = ComboBox3KeyDown
   end
@@ -259,6 +261,7 @@ object Form28: TForm28
     Width = 164
     Height = 21
     Color = clMoneyGreen
+    DropDownCount = 16
     TabOrder = 13
     OnKeyDown = ComboBox4KeyDown
   end

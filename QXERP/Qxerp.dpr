@@ -54,7 +54,8 @@ uses
   blzjjldj in 'blzjjldj.pas' {Form48},
   zjbljlcx in 'zjbljlcx.pas' {Form49},
   zxjgd in 'zxjgd.pas' {Form50},
-  jgsgl in 'jgsgl.pas' {Form51};
+  jgsgl in 'jgsgl.pas' {Form51},
+  wxdwcprk in 'wxdwcprk.pas' {Form52};
 
 {$R *.res}
 
@@ -115,5 +116,6 @@ begin
   Application.CreateForm(TForm49, Form49);
   Application.CreateForm(TForm50, Form50);
   Application.CreateForm(TForm51, Form51);
+  Application.CreateForm(TForm52, Form52);
   Application.Run;
 end.

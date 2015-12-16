@@ -126,6 +126,7 @@ object Form44: TForm44
     Top = 21
     Width = 183
     Height = 21
+    DropDownCount = 16
     TabOrder = 6
     OnKeyDown = ComboBox1KeyDown
     OnSelect = ComboBox1Select

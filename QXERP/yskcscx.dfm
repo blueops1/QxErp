@@ -45,6 +45,7 @@ object Form43: TForm43
     Top = 24
     Width = 161
     Height = 21
+    DropDownCount = 16
     TabOrder = 1
     Text = '*|'#20840#37096
     OnDropDown = ComboBox1DropDown
@@ -71,7 +72,6 @@ object Form43: TForm43
     TabOrder = 3
     OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
-    ExplicitWidth = 1106
     ColWidths = (
       63
       77
