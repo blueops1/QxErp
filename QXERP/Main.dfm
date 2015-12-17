@@ -393,6 +393,15 @@ object Form1: TForm1
         TabOrder = 9
         OnClick = Button49Click
       end
+      object Button50: TButton
+        Left = 432
+        Top = 296
+        Width = 97
+        Height = 65
+        Caption = #20837#24211#21333#31649#29702
+        TabOrder = 10
+        OnClick = Button50Click
+      end
     end
     object TabSheet4: TTabSheet
       Caption = #25910#27454#31649#29702
@@ -488,7 +497,7 @@ object Form1: TForm1
       end
       object Button9: TButton
         Left = 296
-        Top = 192
+        Top = 200
         Width = 97
         Height = 65
         Caption = #32844#24037#20449#24687#31649#29702
@@ -497,7 +506,7 @@ object Form1: TForm1
       end
       object Button12: TButton
         Left = 432
-        Top = 192
+        Top = 200
         Width = 97
         Height = 65
         Caption = #24080#25143#26435#38480#31649#29702
@@ -530,7 +539,7 @@ object Form1: TForm1
       end
       object Button35: TButton
         Left = 160
-        Top = 192
+        Top = 200
         Width = 97
         Height = 65
         Caption = #24211#23384#36319#36394#35774#32622
@@ -539,7 +548,7 @@ object Form1: TForm1
       end
       object Button48: TButton
         Left = 568
-        Top = 192
+        Top = 200
         Width = 97
         Height = 65
         Caption = #21152#24037#21830#20449#24687#31649#29702

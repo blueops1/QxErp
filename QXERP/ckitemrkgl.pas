@@ -98,6 +98,7 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
         zstoredproc1.ParamByName('czry').Value:=main.strUser;
         zstoredproc1.ParamByName('memo').Value:='*'+memo1.Text;
         execProc;
+        close;
         zstoredproc1.StoredProcName:='proc_insert_rkdmxz';
         for y := 1 to stringgrid1.RowCount - 1 do
         begin
@@ -108,6 +109,7 @@ if application.MessageBox('确定要保存数据吗？','入库单管理提示',1)=1 then
           zstoredproc1.ParamByName('memo').Value:='*'+stringgrid1.Cells[4,y];
           execProc;
         end;
+        close;
         zstoredproc1.StoredProcName:='proc_update_ckitem_itemljslandljzje';
         for y := 1 to stringgrid1.RowCount - 1 do
         begin

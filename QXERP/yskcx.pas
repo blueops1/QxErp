@@ -38,14 +38,6 @@ type
     Button7: TButton;
     Button8: TButton;
     ZQuery1: TZQuery;
-    TabSheet5: TTabSheet;
-    DateTimePicker6: TDateTimePicker;
-    Label4: TLabel;
-    ComboBox2: TComboBox;
-    Button9: TButton;
-    Button10: TButton;
-    RadioGroup2: TRadioGroup;
-    StringGrid4: TStringGrid;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -93,9 +85,9 @@ begin
       close;
       sql.Clear;
       if tmpxsyid='*' then
-      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc')
+      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fisdel=''N'' )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc')
       else
-      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.fyskbh,b.fkhmc,a.fzgdwbh,a.fdqye,a.flastdate from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fxsyid='+tmpxsyid+' ) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc');
+      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.fyskbh,b.fkhmc,a.fzgdwbh,a.fdqye,a.flastdate from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fxsyid='+tmpxsyid+' and fisdel=''N'' ) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc');
       open;
       stringgrid1.RowCount:=RecordCount+2;
       while not eof do
@@ -110,9 +102,9 @@ begin
       end;
       sql.Clear;
       if tmpxsyid='*' then
-      sql.Add('select ''合计'',count(*),'''',SUM(c.fdqye),'''' from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx )'+''+'  as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid')
+      sql.Add('select ''合计'',count(*),'''',SUM(c.fdqye),'''' from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fisdel=''N'')'+''+'  as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid')
       else
-      sql.Add('select ''合计'',count(*),'''',SUM(c.fdqye),'''' from (select a.fyskbh,b.fkhmc,a.fzgdwbh,a.fdqye,a.flastdate from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fxsyid='+tmpxsyid+' ) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid');
+      sql.Add('select ''合计'',count(*),'''',SUM(c.fdqye),'''' from (select a.fyskbh,b.fkhmc,a.fzgdwbh,a.fdqye,a.flastdate from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fxsyid='+tmpxsyid+' and fisdel=''N'') as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid');
       open;
       if not eof then
       begin

@@ -96,6 +96,7 @@ object Form44: TForm44
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 3
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       64
       171

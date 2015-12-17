@@ -33,6 +33,8 @@ type
     procedure Button1Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -73,13 +75,13 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
     with zStoredProc1 do
     begin
       close;
-      StoredProcName:='proc_insert_bcpcrkmxz_ck'; //bcpbh,rksl,jzdate,czry
+      StoredProcName:='proc_insert_bcptsck'; //bcpbh,rksl,jzdate,czry
       for i := 1 to stringgrid1.RowCount - 2 do
       begin
         ParamByName('bcpbh').Value:=SplitString(stringgrid1.Cells[1,i],'|');
-        ParamByName('rksl').Value:=stringgrid1.Cells[2,i];
+        ParamByName('cksl').Value:=stringgrid1.Cells[2,i];
         ParamByName('jzdate').Value:=stringgrid1.Cells[3,i];
-        ParamByName('memo').Value:='*'+stringgrid1.Cells[4,i];
+        ParamByName('memo').Value:=stringgrid1.Cells[4,i];
         ParamByName('czry').Value:=main.strUser;
         ExecProc;
       end;
@@ -203,6 +205,12 @@ begin
   begin
     DeleteStringGridRow(selRowIndex,stringgrid1);
   end;
+end;
+
+procedure TForm44.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  selRowIndex:=ARow;
 end;
 
 end.

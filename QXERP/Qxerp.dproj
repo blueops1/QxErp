@@ -205,6 +205,9 @@
 			<DCCReference Include="wxdwcprk.pas">
 				<Form>Form52</Form>
 			</DCCReference>
+			<DCCReference Include="rkddelgl.pas">
+				<Form>Form53</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
