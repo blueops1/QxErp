@@ -1039,16 +1039,43 @@ begin
         begin
           edit14.Text := fields[0].AsString;
           edit9.Text := fields[1].AsString;
-          combobox9.Text :=fields[2].AsString+'|*';
+          if fields[2].AsString<>'' then
+            combobox9.Text :=fields[2].AsString
+          else
+            combobox9.Text :=fields[2].AsString+'|*';
           combobox10.Text :=fields[3].AsString;
-          combobox11.Text :=fields[4].AsString+'|*';
-          combobox12.Text :=fields[5].AsString+'|*';
-          combobox13.Text :=fields[6].AsString+'|*';
-          combobox14.Text :=fields[7].AsString+'|*';
-          combobox16.Text :=fields[8].AsString+'|*';
-          combobox15.Text :=fields[9].AsString+'|*';
-          combobox19.Text :=fields[10].AsString+'|*';
-          combobox20.Text :=fields[11].AsString+'|*';
+          if fields[4].AsString<>'' then
+            combobox11.Text :=fields[4].AsString
+          else
+            combobox11.Text :=fields[4].AsString+'|*';
+          if fields[5].AsString<>'' then
+            combobox12.Text :=fields[5].AsString
+          else
+            combobox12.Text :=fields[5].AsString+'|*';
+          if fields[6].AsString<>'' then
+            combobox13.Text :=fields[6].AsString
+          else
+            combobox13.Text :=fields[6].AsString+'|*';
+          if fields[7].AsString<>'' then
+            combobox14.Text :=fields[7].AsString
+          else
+            combobox14.Text :=fields[7].AsString+'|*';
+          if fields[8].AsString<>'' then
+            combobox16.Text :=fields[8].AsString
+          else
+            combobox16.Text :=fields[8].AsString+'|*';
+          if fields[9].AsString<>'' then
+            combobox15.Text :=fields[9].AsString
+          else
+            combobox15.Text :=fields[9].AsString+'|*';
+          if fields[10].AsString<>'' then
+            combobox19.Text :=fields[10].AsString
+          else
+            combobox19.Text :=fields[10].AsString+'|*';
+          if fields[11].AsString<>'' then
+            combobox20.Text :=fields[11].AsString
+          else
+            combobox20.Text :=fields[11].AsString+'|*';
           edit13.Text := fields[12].AsString;
         end;
       end;

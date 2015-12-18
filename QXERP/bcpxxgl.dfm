@@ -240,7 +240,7 @@ object Form11: TForm11
         OnDropDown = ComboBox4DropDown
       end
       object Memo1: TMemo
-        Left = 359
+        Left = 360
         Top = 50
         Width = 320
         Height = 127

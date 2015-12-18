@@ -90,6 +90,14 @@ type
     Button9: TButton;
     ListBox2: TListBox;
     Edit14: TEdit;
+    Label33: TLabel;
+    ComboBox17: TComboBox;
+    Label34: TLabel;
+    ComboBox18: TComboBox;
+    Label35: TLabel;
+    ComboBox19: TComboBox;
+    Label36: TLabel;
+    ComboBox20: TComboBox;
     procedure Button10Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
@@ -132,6 +140,14 @@ type
       Shift: TShiftState);
     procedure Button9Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure ComboBox17KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox18KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox19KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox20KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -200,6 +216,14 @@ begin
         ParamByName('sscpbh5').Value:=''
         else
         ParamByName('sscpbh5').Value:=SplitString(combobox8.Text,'|');
+        if combobox17.Text='' then
+        ParamByName('sscpbh6').Value:=''
+        else
+        ParamByName('sscpbh6').Value:=SplitString(combobox17.Text,'|');
+        if combobox18.Text='' then
+        ParamByName('sscpbh7').Value:=''
+        else
+        ParamByName('sscpbh7').Value:=SplitString(combobox18.Text,'|');
 
         ParamByName('memo').Value:=edit10.Text;
         ParamByName('czry').Value:=main.strUser;
@@ -215,6 +239,8 @@ begin
         combobox6.Text := '';
         combobox7.Text := '';
         combobox8.Text := '';
+        combobox17.Text := '';
+        combobox18.Text := '';
         Application.MessageBox('新增半成品信息成功！','半成品管理提示');
         close;
         StoredProcName:='proc_cx_newbcplxbh';
@@ -317,7 +343,14 @@ begin
         ParamByName('sscpbh5').Value:=''
         else
         ParamByName('sscpbh5').Value:=SplitString(combobox15.Text,'|');
-
+        if combobox19.Text='' then
+        ParamByName('sscpbh6').Value:=''
+        else
+        ParamByName('sscpbh6').Value:=SplitString(combobox19.Text,'|');
+        if combobox20.Text='' then
+        ParamByName('sscpbh7').Value:=''
+        else
+        ParamByName('sscpbh7').Value:=SplitString(combobox20.Text,'|');
         ParamByName('memo').Value:=edit13.Text;
         ParamByName('czry').Value:=main.strUser;
         ExecProc;
@@ -331,6 +364,8 @@ begin
         combobox14.Text :='';
         combobox16.Text :='';
         combobox15.Text :='';
+        combobox19.Text :='';
+        combobox20.Text :='';
         edit13.Text := '';
         Application.MessageBox('新增半成品信息修改成功！','半成品管理提示');
       end;
@@ -385,6 +420,8 @@ begin
   combobox14.Text :='';
   combobox16.Text :='';
   combobox15.Text :='';
+  combobox19.Text :='';
+  combobox20.Text :='';
   edit13.Text := '';
 end;
 
@@ -554,21 +591,105 @@ end;
 procedure TForm11.ComboBox16KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+  if Key = 13 then
+  begin
+    if ComboBox16.Items.Count > 0 then
+      ComboBox16.Items.Clear;
+    // combobox1.Items.Add('*|全部供应商');
+    try
+      with ZStoredProc1 do
+      begin
+        close;
+        StoredProcName := 'proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value := ComboBox16.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox16.Items.Add(fields[0].AsString);
+          next;
+        end;
+        // combobox1.DroppedDown:=true;
+      end;
+    except
+      application.MessageBox('数据查询失败！','成品出库提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ComboBox17KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
  if key=13 then
  begin
-    if combobox16.Items.Count>0 then
-    ComboBox16.Items.Clear;
+    if combobox17.Items.Count>0 then
+    ComboBox17.Items.Clear;
     //combobox1.Items.Add('*|全部供应商');
     try
       with zstoredproc1 do
       begin
         close;
         StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
-        ParamByName('cpmc').Value:=ComboBox16.Text;
+        ParamByName('cpmc').Value:=ComboBox17.Text;
         open;
         while not eof do
         begin
-          ComboBox16.Items.Add(fields[0].asstring);
+          ComboBox17.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','成品出库提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ComboBox18KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox18.Items.Count>0 then
+    ComboBox18.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox18.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox18.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','成品出库提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ComboBox19KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox19.Items.Count>0 then
+    ComboBox19.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox19.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox19.Items.Add(fields[0].asstring);
           next;
         end;
         //combobox1.DroppedDown:=true;
@@ -597,6 +718,34 @@ begin
         while not eof do
         begin
           ComboBox1.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','成品出库提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ComboBox20KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox20.Items.Count>0 then
+    ComboBox20.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox20.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox20.Items.Add(fields[0].asstring);
           next;
         end;
         //combobox1.DroppedDown:=true;
@@ -890,7 +1039,10 @@ begin
         begin
           edit14.Text := fields[0].AsString;
           edit9.Text := fields[1].AsString;
-          combobox9.Text :=fields[2].AsString+'|*';
+          if fields[2].AsString<>'' then
+            combobox9.Text :=fields[2].AsString
+          else
+            combobox9.Text :=fields[2].AsString+'|*';
           combobox10.Text :=fields[3].AsString;
           combobox11.Text :=fields[4].AsString+'|*';
           combobox12.Text :=fields[5].AsString+'|*';
@@ -898,7 +1050,9 @@ begin
           combobox14.Text :=fields[7].AsString+'|*';
           combobox16.Text :=fields[8].AsString+'|*';
           combobox15.Text :=fields[9].AsString+'|*';
-          edit13.Text := fields[10].AsString;
+          combobox19.Text :=fields[10].AsString+'|*';
+          combobox20.Text :=fields[11].AsString+'|*';
+          edit13.Text := fields[12].AsString;
         end;
       end;
     except
