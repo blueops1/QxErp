@@ -60,7 +60,8 @@ uses
   jgdcx in 'jgdcx.pas' {Form54},
   bcpjgdcx in 'bcpjgdcx.pas' {Form55},
   bcpjgrk in 'bcpjgrk.pas' {Form56},
-  jgdjs in 'jgdjs.pas' {Form57};
+  jgdjs in 'jgdjs.pas' {Form57},
+  wjgjggl in 'wjgjggl.pas' {Form58};
 
 {$R *.res}
 
@@ -127,5 +128,6 @@ begin
   Application.CreateForm(TForm55, Form55);
   Application.CreateForm(TForm56, Form56);
   Application.CreateForm(TForm57, Form57);
+  Application.CreateForm(TForm58, Form58);
   Application.Run;
 end.

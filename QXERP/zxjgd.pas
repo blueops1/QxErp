@@ -179,8 +179,9 @@ begin
         with zstoredproc1 do
         begin
           close;
-          StoredProcName:='proc_cx_bcplxk_bcpbh';
+          StoredProcName:='proc_cx_zxbcpjgd_by_bcpmc';
           ParamByName('bcpmc').Value:=ComboBoxEx1.Text;
+          ParamByName('jgzlbh').Value:='1';
           open;
           while not eof do
           begin
@@ -203,11 +204,12 @@ begin
       close;
       StoredProcName:='proc_cx_waixiepeijian_jgprice_by_pjbh';
       ParamByName('gjbh').Value:=SplitString(ComboBoxEx1.Text,'|');
+      ParamByName('jgzlbh').Value:='1';
       open;
       if not eof then
         edit3.Text:=fields[0].AsString
       else
-        application.MessageBox('该物品不存在！','新增加工单管理提示');
+        application.MessageBox('该物品价格信息不存在！','新增加工单管理提示');
     end;
   except
     application.MessageBox('数据查询失败！','新增加工单管理提示');

@@ -75,7 +75,6 @@ object Form54: TForm54
     Height = 21
     Color = clMoneyGreen
     TabOrder = 0
-    TextHint = #22238#36710#33719#21462#32534#21495
   end
   object Memo1: TMemo
     Left = 90
@@ -112,7 +111,6 @@ object Form54: TForm54
     Height = 21
     Color = clMoneyGreen
     TabOrder = 3
-    TextHint = #22238#36710#33719#21462#32534#21495
   end
   object Edit2: TEdit
     Left = 808
@@ -121,7 +119,6 @@ object Form54: TForm54
     Height = 21
     Color = clMoneyGreen
     TabOrder = 4
-    TextHint = #22238#36710#33719#21462#32534#21495
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

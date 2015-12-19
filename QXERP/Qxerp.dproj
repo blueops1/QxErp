@@ -220,6 +220,9 @@
 			<DCCReference Include="jgdjs.pas">
 				<Form>Form57</Form>
 			</DCCReference>
+			<DCCReference Include="wjgjggl.pas">
+				<Form>Form58</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

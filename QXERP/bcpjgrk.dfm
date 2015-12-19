@@ -101,9 +101,7 @@ object Form56: TForm56
     Top = 23
     Width = 124
     Height = 21
-    Color = clMoneyGreen
     TabOrder = 0
-    TextHint = #22238#36710#33719#21462#32534#21495
     OnKeyDown = Edit4KeyDown
   end
   object Memo1: TMemo
@@ -111,6 +109,7 @@ object Form56: TForm56
     Top = 57
     Width = 629
     Height = 45
+    ReadOnly = True
     TabOrder = 1
   end
   object StringGrid1: TStringGrid
@@ -136,18 +135,16 @@ object Form56: TForm56
     Top = 23
     Width = 405
     Height = 21
-    Color = clMoneyGreen
+    ReadOnly = True
     TabOrder = 3
-    TextHint = #22238#36710#33719#21462#32534#21495
   end
   object Edit2: TEdit
     Left = 801
     Top = 23
     Width = 167
     Height = 21
-    Color = clMoneyGreen
+    ReadOnly = True
     TabOrder = 4
-    TextHint = #22238#36710#33719#21462#32534#21495
   end
   object StringGrid2: TStringGrid
     Left = 577
