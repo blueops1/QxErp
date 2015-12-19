@@ -1,0 +1,128 @@
+object Form54: TForm54
+  Left = 0
+  Top = 0
+  Caption = #21152#24037#21333#26597#35810
+  ClientHeight = 625
+  ClientWidth = 999
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label6: TLabel
+    Left = 24
+    Top = 25
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#21333#32534#21495
+  end
+  object Label7: TLabel
+    Left = 230
+    Top = 25
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#21830#21517#31216
+  end
+  object Label4: TLabel
+    Left = 738
+    Top = 25
+    Width = 48
+    Height = 13
+    Caption = #20986#21333#26085#26399
+  end
+  object Label5: TLabel
+    Left = 60
+    Top = 81
+    Width = 24
+    Height = 13
+    Caption = #22791#27880
+  end
+  object Bevel1: TBevel
+    Left = 25
+    Top = 129
+    Width = 950
+    Height = 480
+    Shape = bsFrame
+    Style = bsRaised
+  end
+  object Label8: TLabel
+    Left = 460
+    Top = 122
+    Width = 80
+    Height = 16
+    Caption = #21152#24037#21333#26126#32454
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = False
+  end
+  object Edit4: TEdit
+    Left = 90
+    Top = 22
+    Width = 124
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 0
+    TextHint = #22238#36710#33719#21462#32534#21495
+  end
+  object Memo1: TMemo
+    Left = 90
+    Top = 63
+    Width = 885
+    Height = 53
+    TabOrder = 1
+  end
+  object StringGrid1: TStringGrid
+    Left = 45
+    Top = 155
+    Width = 914
+    Height = 446
+    ColCount = 8
+    FixedCols = 0
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
+    TabOrder = 2
+    ColWidths = (
+      68
+      92
+      161
+      73
+      87
+      79
+      78
+      235)
+  end
+  object Edit1: TEdit
+    Left = 314
+    Top = 22
+    Width = 405
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 3
+    TextHint = #22238#36710#33719#21462#32534#21495
+  end
+  object Edit2: TEdit
+    Left = 808
+    Top = 22
+    Width = 167
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 4
+    TextHint = #22238#36710#33719#21462#32534#21495
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 382
+    Top = 288
+  end
+end

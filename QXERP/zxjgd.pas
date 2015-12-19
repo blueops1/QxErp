@@ -45,6 +45,8 @@ type
     procedure ComboBoxEx1Select(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -107,16 +109,22 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
 end;
 
 procedure TForm50.Button2Click(Sender: TObject);
+var
+  gjprice:string;
 begin
+  if (edit1.Text<>'') then
+    gjprice:=edit1.Text
+  else
+    gjprice:=edit3.Text;
   if (edit4.Text<>'') and (combobox1.Text<>'') then
     if (comboboxex1.Text<>'') and (edit2.Text<>'') and (edit3.Text<>'') then
-      if (strtofloat(edit3.Text)>=strtofloat(edit1.Text)) then
+      if (strtofloat(edit3.Text)>=strtofloat(gjprice)) then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
         stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
         stringgrid1.Cells[1,stringgrid1.RowCount-1]:=comboboxex1.Text;
         stringgrid1.Cells[2,stringgrid1.RowCount-1]:=edit2.Text;
-        stringgrid1.Cells[3,stringgrid1.RowCount-1]:=edit1.Text;
+        stringgrid1.Cells[3,stringgrid1.RowCount-1]:=gjprice;
         stringgrid1.Cells[4,stringgrid1.RowCount-1]:=edit5.Text;
         ComboBoxEx1.Text:='';
         edit3.Text:='';
@@ -153,7 +161,7 @@ begin
         //combobox1.DroppedDown:=true;
       end;
   except
-    application.MessageBox('数据查询失败！','发票核帐提示');
+    application.MessageBox('数据查询失败！','新增加工单管理提示');
   end;
  end;
 end;
@@ -162,23 +170,29 @@ procedure TForm50.ComboBoxEx1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (key=13) and (ComboBoxEx1.Text<>'') then
+   begin
+      edit1.Text:='';
+      if ComboBoxEx1.Items.Count>0 then
+      ComboBoxEx1.Items.Clear;
+      //combobox1.Items.Add('*|全部供应商');
       try
         with zstoredproc1 do
         begin
-          comboboxex1.Items.Clear;
           close;
-          zstoredproc1.StoredProcName:='proc_cx_waixiepeijianmc';
-          zstoredproc1.ParamByName('itemname').Value:=comboboxex1.Text;
+          StoredProcName:='proc_cx_bcplxk_bcpbh';
+          ParamByName('bcpmc').Value:=ComboBoxEx1.Text;
           open;
           while not eof do
           begin
-            comboboxex1.Items.Add(fields[0].asstring);
+            ComboBoxEx1.Items.Add(fields[0].asstring);
             next;
           end;
+          //combobox1.DroppedDown:=true;
         end;
-    except
-      application.MessageBox('数据查询失败！','新增加工单管理提示');
-    end;
+      except
+        application.MessageBox('数据查询失败！','新增加工单管理提示');
+      end;
+  end;
 end;
 
 procedure TForm50.ComboBoxEx1Select(Sender: TObject);
@@ -188,7 +202,7 @@ begin
     begin
       close;
       StoredProcName:='proc_cx_waixiepeijian_jgprice_by_pjbh';
-      ParamByName('pjbh').Value:=SplitString(ComboBoxEx1.Text,'|');
+      ParamByName('gjbh').Value:=SplitString(ComboBoxEx1.Text,'|');
       open;
       if not eof then
         edit3.Text:=fields[0].AsString
@@ -198,6 +212,26 @@ begin
   except
     application.MessageBox('数据查询失败！','新增加工单管理提示');
   end;
+end;
+
+procedure TForm50.Edit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['-','0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
+      if (key='-') and (Pos('-',Edit2.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm50.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['-','0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
+      if (key='-') and (Pos('-',Edit2.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm50.Edit4KeyDown(Sender: TObject; var Key: Word;

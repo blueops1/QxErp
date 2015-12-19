@@ -3,7 +3,7 @@ object Form50: TForm50
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #26032#22686#21152#24037#21333
+  Caption = #26032#22686#21322#25104#21697#21152#24037#21333
   ClientHeight = 542
   ClientWidth = 872
   Color = clBtnFace
@@ -26,18 +26,18 @@ object Form50: TForm50
     Style = bsRaised
   end
   object Label2: TLabel
-    Left = 242
-    Top = 148
+    Left = 330
+    Top = 150
     Width = 48
     Height = 13
     Caption = #21152#24037#25968#37327
   end
   object Label3: TLabel
-    Left = 452
-    Top = 148
+    Left = 505
+    Top = 150
     Width = 48
     Height = 13
-    Caption = #21442#32771#21333#20215
+    Caption = #40664#35748#21333#20215
   end
   object Label1: TLabel
     Left = 39
@@ -47,8 +47,8 @@ object Form50: TForm50
     Caption = #37197#20214#21517#31216
   end
   object Label4: TLabel
-    Left = 639
-    Top = 25
+    Left = 649
+    Top = 28
     Width = 48
     Height = 13
     Caption = #20986#21333#26085#26399
@@ -111,16 +111,16 @@ object Form50: TForm50
     ParentFont = False
   end
   object Label10: TLabel
-    Left = 649
-    Top = 148
+    Left = 669
+    Top = 150
     Width = 48
     Height = 13
-    Caption = #23454#38469#21333#20215
+    Caption = #35843#25972#21333#20215
   end
   object ComboBoxEx1: TComboBoxEx
     Left = 93
     Top = 145
-    Width = 140
+    Width = 200
     Height = 22
     ItemsEx = <>
     Color = clMoneyGreen
@@ -132,25 +132,26 @@ object Form50: TForm50
     DropDownCount = 16
   end
   object Edit2: TEdit
-    Left = 299
-    Top = 145
-    Width = 126
+    Left = 400
+    Top = 147
+    Width = 81
     Height = 21
     Color = clMoneyGreen
     TabOrder = 1
+    OnKeyPress = Edit2KeyPress
   end
   object Edit3: TEdit
-    Left = 511
-    Top = 145
-    Width = 111
+    Left = 572
+    Top = 147
+    Width = 86
     Height = 21
     Color = clBtnFace
     ReadOnly = True
     TabOrder = 2
   end
   object DateTimePicker1: TDateTimePicker
-    Left = 698
-    Top = 22
+    Left = 708
+    Top = 25
     Width = 135
     Height = 21
     Date = 42329.660776898150000000
@@ -169,8 +170,8 @@ object Form50: TForm50
   end
   object Memo1: TMemo
     Left = 93
-    Top = 60
-    Width = 735
+    Top = 57
+    Width = 750
     Height = 53
     TabOrder = 5
   end
@@ -185,11 +186,11 @@ object Form50: TForm50
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     TabOrder = 6
     ColWidths = (
-      88
-      109
-      104
-      123
-      356)
+      68
+      194
+      96
+      97
+      309)
   end
   object Edit4: TEdit
     Left = 93
@@ -212,9 +213,9 @@ object Form50: TForm50
     OnKeyDown = ComboBox1KeyDown
   end
   object Button2: TButton
-    Left = 708
+    Left = 731
     Top = 176
-    Width = 111
+    Width = 88
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 9
@@ -228,12 +229,13 @@ object Form50: TForm50
     TabOrder = 10
   end
   object Edit1: TEdit
-    Left = 708
-    Top = 145
-    Width = 111
+    Left = 730
+    Top = 147
+    Width = 88
     Height = 21
     Color = clMoneyGreen
     TabOrder = 11
+    OnKeyPress = Edit1KeyPress
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

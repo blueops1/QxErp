@@ -84,6 +84,9 @@ type
     Button48: TButton;
     Button49: TButton;
     Button50: TButton;
+    Button51: TButton;
+    Button52: TButton;
+    Button53: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -140,6 +143,9 @@ type
     procedure Button48Click(Sender: TObject);
     procedure Button49Click(Sender: TObject);
     procedure Button50Click(Sender: TObject);
+    procedure Button51Click(Sender: TObject);
+    procedure Button52Click(Sender: TObject);
+    procedure Button53Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -161,6 +167,7 @@ var
   strPageCode:string;
   intMessage:integer;
   boolMesscandle:boolean;
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 implementation
 uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      cpxxgl,ckgl,about,yskjz,dlgl,bcpxxgl,
@@ -172,7 +179,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      xzscjh,ckitemgz,qjgl,qjcx,rwdjs,
      yskjs,yskcscx,bcptsck,bcpsctjcx,
      blzjjldj,zjbljlcx,zxjgd,jgsgl,
-     wxdwcprk,rkddelgl;
+     wxdwcprk,rkddelgl,bcpjgdcx,bcpjgrk,jgdjs;
 
 {$R *.dfm}
 
@@ -503,6 +510,30 @@ procedure TForm1.Button50Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,9,1)='1') then
     rkddelgl.Form53.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button51Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,12,1)='1') then
+    bcpjgdcx.Form55.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button52Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,12,1)='1') then
+    bcpjgrk.Form56.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button53Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    jgdjs.Form57.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

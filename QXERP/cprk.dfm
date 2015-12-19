@@ -4,7 +4,7 @@ object Form29: TForm29
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20135#25104#21697#20837#24211
-  ClientHeight = 442
+  ClientHeight = 464
   ClientWidth = 765
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -52,7 +52,7 @@ object Form29: TForm29
   end
   object Label5: TLabel
     Left = 52
-    Top = 380
+    Top = 420
     Width = 77
     Height = 13
     Alignment = taRightJustify
@@ -96,9 +96,9 @@ object Form29: TForm29
   end
   object StringGrid1: TStringGrid
     Left = 32
-    Top = 144
+    Top = 152
     Width = 697
-    Height = 217
+    Height = 241
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
@@ -114,7 +114,7 @@ object Form29: TForm29
   end
   object Button1: TButton
     Left = 640
-    Top = 375
+    Top = 415
     Width = 89
     Height = 25
     Caption = #20445#23384#20837#24211#20449#24687
@@ -142,7 +142,7 @@ object Form29: TForm29
   end
   object Edit1: TEdit
     Left = 147
-    Top = 377
+    Top = 417
     Width = 97
     Height = 21
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -153,7 +153,7 @@ object Form29: TForm29
   object Edit3: TEdit
     Left = 122
     Top = 108
-    Width = 495
+    Width = 607
     Height = 21
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
@@ -165,8 +165,8 @@ object Form29: TForm29
     TabOrder = 8
   end
   object Button3: TButton
-    Left = 623
-    Top = 106
+    Left = 431
+    Top = 415
     Width = 106
     Height = 25
     Caption = #32534#36753#21322#25104#21697#20449#24687

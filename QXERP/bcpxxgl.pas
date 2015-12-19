@@ -184,7 +184,7 @@ end;
 
 procedure TForm11.Button1Click(Sender: TObject);
 begin
-  if (edit1.Text <> '') and (edit2.Text <> '') and (combobox1.Text  <> '') and (combobox2.Text <> '') and (combobox4.Text <> '')  then
+  if (edit1.Text <> '') and (edit2.Text <> '') and (combobox2.Text <> '') and (combobox4.Text <> '')  then
   begin
     try
       with zStoredProc1 do   //proc_insert_bcplxk_bcpkcb   bcpbh,bcpmc,bcplxbh,sscpbh,sscpbh1,memo,czry
@@ -195,6 +195,9 @@ begin
         ParamByName('bcpmc').Value:=edit2.Text;
         ParamByName('bcplxbh').Value:=SplitString(combobox2.Text,'|');
         ParamByName('cpzl').Value:=combobox4.Text;
+        if combobox1.Text='' then
+        ParamByName('sscpbh').Value:=''
+        else
         ParamByName('sscpbh').Value:=SplitString(combobox1.Text,'|');
         if combobox3.Text='' then
         ParamByName('sscpbh1').Value:=''

@@ -208,6 +208,18 @@
 			<DCCReference Include="rkddelgl.pas">
 				<Form>Form53</Form>
 			</DCCReference>
+			<DCCReference Include="jgdcx.pas">
+				<Form>Form54</Form>
+			</DCCReference>
+			<DCCReference Include="bcpjgdcx.pas">
+				<Form>Form55</Form>
+			</DCCReference>
+			<DCCReference Include="bcpjgrk.pas">
+				<Form>Form56</Form>
+			</DCCReference>
+			<DCCReference Include="jgdjs.pas">
+				<Form>Form57</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

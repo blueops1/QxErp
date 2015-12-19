@@ -56,7 +56,11 @@ uses
   zxjgd in 'zxjgd.pas' {Form50},
   jgsgl in 'jgsgl.pas' {Form51},
   wxdwcprk in 'wxdwcprk.pas' {Form52},
-  rkddelgl in 'rkddelgl.pas' {Form53};
+  rkddelgl in 'rkddelgl.pas' {Form53},
+  jgdcx in 'jgdcx.pas' {Form54},
+  bcpjgdcx in 'bcpjgdcx.pas' {Form55},
+  bcpjgrk in 'bcpjgrk.pas' {Form56},
+  jgdjs in 'jgdjs.pas' {Form57};
 
 {$R *.res}
 
@@ -119,5 +123,9 @@ begin
   Application.CreateForm(TForm51, Form51);
   Application.CreateForm(TForm52, Form52);
   Application.CreateForm(TForm53, Form53);
+  Application.CreateForm(TForm54, Form54);
+  Application.CreateForm(TForm55, Form55);
+  Application.CreateForm(TForm56, Form56);
+  Application.CreateForm(TForm57, Form57);
   Application.Run;
 end.
