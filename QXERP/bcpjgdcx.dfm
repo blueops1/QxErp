@@ -19,14 +19,14 @@ object Form55: TForm55
   TextHeight = 13
   object Label1: TLabel
     Left = 64
-    Top = 21
+    Top = 29
     Width = 60
     Height = 13
     Caption = #21152#24037#21830#21517#31216
   end
   object ComboBox1: TComboBox
     Left = 144
-    Top = 18
+    Top = 26
     Width = 393
     Height = 21
     TabOrder = 0
@@ -34,7 +34,7 @@ object Form55: TForm55
   end
   object Button1: TButton
     Left = 560
-    Top = 16
+    Top = 24
     Width = 75
     Height = 25
     Caption = #26597#35810
@@ -68,8 +68,6 @@ object Form55: TForm55
     TabOrder = 3
     OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
-    ExplicitTop = 55
-    ExplicitWidth = 965
     ColWidths = (
       49
       82

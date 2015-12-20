@@ -62,7 +62,7 @@ end;
 
 procedure TForm54.FormShow(Sender: TObject);
 var
-  i:integer;
+  i,y:integer;
 begin
   stringgrid1.Cells[0,0]:='序号';
   stringgrid1.Cells[1,0]:='加工单编号';
@@ -70,8 +70,9 @@ begin
   stringgrid1.Cells[3,0]:='工件类型';
   stringgrid1.Cells[4,0]:='加工总数';
   stringgrid1.Cells[5,0]:='已交货总数';
-  stringgrid1.Cells[6,0]:='加工单价';
-  stringgrid1.Cells[7,0]:='备注';
+  stringgrid1.Cells[6,0]:='加工类型';
+  stringgrid1.Cells[7,0]:='加工单价';
+  stringgrid1.Cells[8,0]:='备注';
   try
     with zStoredProc1 do
     begin
@@ -87,24 +88,32 @@ begin
       edit2.Text:=fields[2].AsString;
       memo1.Text:=fields[3].AsString;
       end;
-      nextresultset;
+
       stringgrid1.RowCount:=2;
       stringgrid1.Rows[1].Clear;
       i:=1;
-      while not eof do
+      for y := 0 to 2 do
       begin
-        stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,i]:=inttostr(i);
-        stringgrid1.Cells[1,i]:=fields[0].AsString;
-        stringgrid1.Cells[2,i]:=fields[1].AsString;
-        stringgrid1.Cells[3,i]:=fields[2].AsString;
-        stringgrid1.Cells[4,i]:=fields[3].AsString;
-        stringgrid1.Cells[5,i]:=fields[4].AsString;
-        stringgrid1.Cells[6,i]:=fields[5].AsString;
-        stringgrid1.Cells[7,i]:=fields[6].AsString;
-        i:=i+1;
-        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
-        next;
+      nextresultset;
+        while not eof do
+        begin
+          if fields[1].AsString<>'' then
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i);
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[2].AsString;
+            stringgrid1.Cells[4,i]:=fields[3].AsString;
+            stringgrid1.Cells[5,i]:=fields[4].AsString;
+            stringgrid1.Cells[6,i]:=fields[5].AsString;
+            stringgrid1.Cells[7,i]:=fields[6].AsString;
+            stringgrid1.Cells[8,i]:=fields[7].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          end;
+          next;
+        end;
       end;
     end;
   except

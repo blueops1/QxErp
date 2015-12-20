@@ -24,6 +24,11 @@ type
     MenuItem1: TMenuItem;
     PopupMenu3: TPopupMenu;
     MenuItem2: TMenuItem;
+    TabSheet1: TTabSheet;
+    StringGrid5: TStringGrid;
+    StringGrid6: TStringGrid;
+    Button3: TButton;
+    Edit1: TEdit;
     procedure Button3Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -35,6 +40,10 @@ type
     procedure Execl1Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure TabSheet1Show(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,6 +98,40 @@ begin
       Application.MessageBox('查询失败！','成品管理提示');
   end;
 
+end;
+
+procedure TForm12.Edit1Change(Sender: TObject);
+var y:integer;
+begin
+  stringgrid5.RowCount:=2;   //     //proc_cx_bcpckinfo_by_bcpmc
+  stringgrid5.Rows[1].Clear;
+  boolhtinfoloaded:=false;
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcpckinfo_by_bcpmc';
+      ParamByName('bcpmc').Value:=edit1.Text;
+      open;
+      y:=1;
+      while not eof do
+      begin
+        stringgrid5.RowCount:=stringgrid5.RowCount+1;
+        stringgrid5.Cells[0,y]:=inttostr(y);
+        stringgrid5.Cells[1,y]:=fields[0].AsString;
+        stringgrid5.Cells[2,y]:=fields[1].AsString;
+        stringgrid5.Cells[3,y]:=fields[2].AsString;
+        stringgrid5.Cells[4,y]:=fields[3].AsString;
+        stringgrid5.Cells[5,y]:=fields[4].AsString;
+        y:=y+1;
+        stringgrid5.Rows[stringgrid5.RowCount-1].Clear;
+        next;
+      end;
+      boolhtinfoloaded:=true;
+    end;
+  Except
+      Application.MessageBox('查询失败！','半成品管理提示');
+  end;
 end;
 
 procedure TForm12.Edit9Change(Sender: TObject);
@@ -219,6 +262,66 @@ begin
     end;
   end;
   end;
+end;
+
+procedure TForm12.StringGrid5SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+var y:integer;
+begin
+  y:=1;
+  stringgrid6.RowCount:=2;
+  stringgrid6.Rows[1].Clear;
+  if (stringgrid5.Cells[1,ARow]<>'') and (ARow>0) and (boolhtinfoloaded=true) then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_bcpcrkmxz_all';
+      ParamByName('bcpbh').Value:= stringgrid5.Cells[1,ARow];
+      open;
+      FirstResultSet;
+      while not eof do
+      begin
+        stringgrid6.RowCount:=stringgrid6.RowCount+1;
+        stringgrid6.Cells[0,y]:=fields[0].AsString;
+        stringgrid6.Cells[1,y]:=fields[1].AsString;
+        stringgrid6.Cells[2,y]:=fields[2].AsString;
+        stringgrid6.Cells[3,y]:=fields[3].AsString;
+        stringgrid6.Cells[4,y]:=fields[4].AsString;
+        y := y +1;
+        stringgrid6.Rows[stringgrid6.RowCount-1].Clear;
+        next;
+      end;
+      NextResultSet;
+      if not eof then
+      begin
+        stringgrid6.RowCount:=stringgrid6.RowCount+1;
+        stringgrid6.Cells[0,y]:=fields[0].AsString;
+        stringgrid6.Cells[1,y]:=fields[1].AsString;
+        stringgrid6.Cells[2,y]:=fields[2].AsString;
+        stringgrid6.Cells[3,y]:=fields[3].AsString;
+        stringgrid6.Cells[4,y]:=fields[4].AsString;
+        stringgrid6.Rows[stringgrid6.RowCount-1].Clear;
+      end;
+    end;
+  Except
+    Application.MessageBox('查询失败！','半成品统计查询提示');
+  end;
+end;
+
+procedure TForm12.TabSheet1Show(Sender: TObject);
+begin
+  stringgrid5.Cells[0,0]:='序号';
+  stringgrid5.Cells[1,0]:='半成品编号';
+  stringgrid5.Cells[2,0]:='半成品名称';
+  stringgrid5.Cells[3,0]:='半成品类型';
+  stringgrid5.Cells[4,0]:='成品种类';
+  stringgrid5.Cells[5,0]:='库存数量';
+  stringgrid6.Cells[0,0]:='半成品编号';
+  stringgrid6.Cells[1,0]:='入库数量';
+  stringgrid6.Cells[2,0]:='出库数量';
+  stringgrid6.Cells[3,0]:='记帐日期';
+  stringgrid6.Cells[4,0]:='备注';
 end;
 
 procedure TForm12.TabSheet3Show(Sender: TObject);

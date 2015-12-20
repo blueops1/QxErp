@@ -5,7 +5,7 @@ object Form54: TForm54
   BorderStyle = bsSingle
   Caption = #21152#24037#21333#26597#35810
   ClientHeight = 635
-  ClientWidth = 1009
+  ClientWidth = 1000
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -73,7 +73,6 @@ object Form54: TForm54
     Top = 22
     Width = 124
     Height = 21
-    Color = clMoneyGreen
     TabOrder = 0
   end
   object Memo1: TMemo
@@ -84,32 +83,32 @@ object Form54: TForm54
     TabOrder = 1
   end
   object StringGrid1: TStringGrid
-    Left = 45
-    Top = 155
-    Width = 914
+    Left = 37
+    Top = 163
+    Width = 929
     Height = 446
-    ColCount = 8
+    ColCount = 9
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 2
     ColWidths = (
-      68
-      92
+      47
+      70
       161
       73
-      87
-      79
-      78
-      235)
+      76
+      77
+      72
+      72
+      241)
   end
   object Edit1: TEdit
     Left = 314
     Top = 22
     Width = 405
     Height = 21
-    Color = clMoneyGreen
     TabOrder = 3
   end
   object Edit2: TEdit
@@ -117,7 +116,6 @@ object Form54: TForm54
     Top = 22
     Width = 167
     Height = 21
-    Color = clMoneyGreen
     TabOrder = 4
   end
   object ZStoredProc1: TZStoredProc
@@ -127,8 +125,8 @@ object Form54: TForm54
     Top = 288
   end
   object PopupMenu1: TPopupMenu
-    Left = 312
-    Top = 224
+    Left = 656
+    Top = 304
     object Execl1: TMenuItem
       Caption = #23548#20986#21040'Execl'
       OnClick = Execl1Click

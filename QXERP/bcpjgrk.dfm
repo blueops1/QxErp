@@ -3,9 +3,9 @@ object Form56: TForm56
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = #21322#25104#21697#22806#24037#21152#20837#24211
+  Caption = #22806#24037#21152#20837#24211
   ClientHeight = 621
-  ClientWidth = 1040
+  ClientWidth = 1043
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -46,7 +46,7 @@ object Form56: TForm56
     Caption = #22791#27880
   end
   object Bevel1: TBevel
-    Left = 22
+    Left = 9
     Top = 116
     Width = 510
     Height = 469
@@ -54,7 +54,7 @@ object Form56: TForm56
     Style = bsRaised
   end
   object Label8: TLabel
-    Left = 223
+    Left = 210
     Top = 108
     Width = 80
     Height = 16
@@ -68,15 +68,15 @@ object Form56: TForm56
     Transparent = False
   end
   object Bevel2: TBevel
-    Left = 569
+    Left = 556
     Top = 116
-    Width = 440
+    Width = 476
     Height = 469
     Shape = bsFrame
     Style = bsRaised
   end
   object Label1: TLabel
-    Left = 759
+    Left = 746
     Top = 108
     Width = 80
     Height = 16
@@ -96,6 +96,21 @@ object Form56: TForm56
     Height = 13
     Caption = #20837#24211#26085#26399
   end
+  object Label3: TLabel
+    Left = 72
+    Top = 598
+    Width = 804
+    Height = 13
+    Caption = 
+      #27880#65306#22240#20179#20648#29289#21697#28041#21450#20837#24211#21333#20449#24687#21644#20837#24211#20215#26684#65292#25152#20197#25152#26377#23646#20110#20179#20648#29289#21697#30340#20837#24211#24080#38500#20102#36825#37324#20445#23384#20837#24211#20449#24687#20043#22806#65292#36824#38656#35201#22312#20179#24211#31649#29702#20013#25163#24037#36827#34892#26448#26009#29289#36164 +
+      #20837#24211#12290
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object Edit4: TEdit
     Left = 83
     Top = 23
@@ -113,10 +128,11 @@ object Form56: TForm56
     TabOrder = 1
   end
   object StringGrid1: TStringGrid
-    Left = 30
+    Left = 17
     Top = 126
     Width = 495
     Height = 446
+    ColCount = 6
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
@@ -124,10 +140,11 @@ object Form56: TForm56
     TabOrder = 2
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
-      68
-      92
-      161
+      47
       73
+      122
+      73
+      64
       64)
   end
   object Edit1: TEdit
@@ -147,10 +164,11 @@ object Form56: TForm56
     TabOrder = 4
   end
   object StringGrid2: TStringGrid
-    Left = 577
+    Left = 564
     Top = 126
-    Width = 425
+    Width = 461
     Height = 446
+    ColCount = 6
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing]
@@ -159,14 +177,15 @@ object Form56: TForm56
     OnSetEditText = StringGrid2SetEditText
     ColWidths = (
       49
-      127
-      73
-      72
-      65)
+      120
+      69
+      68
+      60
+      64)
   end
   object Button1: TButton
-    Left = 538
-    Top = 240
+    Left = 524
+    Top = 248
     Width = 26
     Height = 25
     Caption = '+'
@@ -174,12 +193,13 @@ object Form56: TForm56
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 538
-    Top = 304
+    Left = 525
+    Top = 344
     Width = 26
     Height = 25
     Caption = '-'
     TabOrder = 7
+    OnClick = Button2Click
   end
   object Button3: TButton
     Left = 905

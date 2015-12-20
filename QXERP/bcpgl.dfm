@@ -20,11 +20,67 @@ object Form12: TForm12
     Top = 0
     Width = 1084
     Height = 681
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = #25353#21322#25104#21697#26597#35810#24211#23384
+      ImageIndex = 1
+      OnShow = TabSheet1Show
+      object StringGrid5: TStringGrid
+        Left = 3
+        Top = 41
+        Width = 575
+        Height = 555
+        Align = alCustom
+        ColCount = 6
+        RowCount = 2
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        TabOrder = 0
+        OnSelectCell = StringGrid5SelectCell
+        ColWidths = (
+          64
+          99
+          106
+          88
+          83
+          93)
+      end
+      object StringGrid6: TStringGrid
+        Left = 581
+        Top = 40
+        Width = 495
+        Height = 555
+        Align = alCustom
+        RowCount = 2
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        TabOrder = 1
+        ColWidths = (
+          64
+          84
+          83
+          104
+          115)
+      end
+      object Button3: TButton
+        Left = 597
+        Top = 5
+        Width = 119
+        Height = 25
+        Caption = #26597#35810#20840#37096#21322#25104#21697#24211#23384
+        TabOrder = 2
+      end
+      object Edit1: TEdit
+        Left = 144
+        Top = 7
+        Width = 434
+        Height = 21
+        TabOrder = 3
+        OnChange = Edit1Change
+      end
+    end
     object TabSheet3: TTabSheet
-      Caption = #21322#25104#21697#24211#23384#26597#35810
+      Caption = #25353#25104#21697#26597#35810#21322#25104#21697#24211#23384
       ImageIndex = 2
       OnShow = TabSheet3Show
       object Label12: TLabel
