@@ -124,6 +124,13 @@ object Form50: TForm50
     Height = 13
     Caption = #21152#24037#31867#22411
   end
+  object Label12: TLabel
+    Left = 641
+    Top = 81
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#24635#36153#29992
+  end
   object ComboBoxEx1: TComboBoxEx
     Left = 299
     Top = 142
@@ -177,7 +184,7 @@ object Form50: TForm50
   object Memo1: TMemo
     Left = 93
     Top = 57
-    Width = 750
+    Width = 525
     Height = 53
     TabOrder = 5
   end
@@ -191,6 +198,7 @@ object Form50: TForm50
     RowCount = 1
     FixedRows = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
+    PopupMenu = PopupMenu1
     TabOrder = 6
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
@@ -253,6 +261,15 @@ object Form50: TForm50
     Height = 21
     TabOrder = 12
     OnDropDown = ComboBox2DropDown
+  end
+  object Edit6: TEdit
+    Left = 708
+    Top = 78
+    Width = 135
+    Height = 21
+    ReadOnly = True
+    TabOrder = 13
+    Text = '0'
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

@@ -4,7 +4,7 @@ object Form17: TForm17
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #29983#20135#35745#21010#21333#26597#35810
   ClientHeight = 639
-  ClientWidth = 1059
+  ClientWidth = 1005
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object Form17: TForm17
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 1059
+    Width = 1005
     Height = 639
     ActivePage = TabSheet3
     Align = alClient
@@ -28,8 +28,8 @@ object Form17: TForm17
       Caption = #29983#20135#35745#21010#26597#35810
       ImageIndex = 2
       object Label12: TLabel
-        Left = 45
-        Top = 24
+        Left = 21
+        Top = 22
         Width = 65
         Height = 18
         AutoSize = False
@@ -38,10 +38,10 @@ object Form17: TForm17
       object StringGrid1: TStringGrid
         Left = 0
         Top = 56
-        Width = 1033
+        Width = 1049
         Height = 193
         Align = alCustom
-        ColCount = 8
+        ColCount = 9
         DefaultColWidth = 200
         FixedCols = 0
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
@@ -50,60 +50,55 @@ object Form17: TForm17
         ColWidths = (
           57
           85
-          406
-          84
-          88
-          93
-          87
-          88)
-      end
-      object Edit9: TEdit
-        Left = 116
-        Top = 19
-        Width = 85
-        Height = 21
-        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
-        TabOrder = 1
+          301
+          72
+          70
+          73
+          72
+          64
+          165)
       end
       object Button6: TButton
-        Left = 497
+        Left = 521
         Top = 17
-        Width = 75
+        Width = 72
         Height = 25
         Caption = #26597#35810
-        TabOrder = 2
+        TabOrder = 1
         OnClick = Button6Click
       end
       object StringGrid2: TStringGrid
         Left = 0
         Top = 255
-        Width = 1051
+        Width = 997
         Height = 356
         Align = alBottom
-        ColCount = 7
-        TabOrder = 3
+        ColCount = 9
+        TabOrder = 2
         ColWidths = (
           64
-          122
-          131
-          137
-          153
-          151
-          103)
+          88
+          93
+          135
+          105
+          103
+          108
+          93
+          83)
       end
       object Button8: TButton
-        Left = 664
+        Left = 737
         Top = 17
-        Width = 91
+        Width = 75
         Height = 25
         Caption = #23548#20986#21040'EXECL'
-        TabOrder = 4
+        TabOrder = 3
       end
       object RadioGroup1: TRadioGroup
-        Left = 780
-        Top = 1
-        Width = 225
-        Height = 52
+        Left = 818
+        Top = 13
+        Width = 149
+        Height = 37
         Caption = #23548#20986#34920#36873#25321
         Columns = 3
         ItemIndex = 0
@@ -111,15 +106,25 @@ object Form17: TForm17
           #34920#19968
           #34920#20108
           #20840#37096)
-        TabOrder = 5
+        TabOrder = 4
       end
       object ComboBox1: TComboBox
-        Left = 207
+        Left = 92
         Top = 19
-        Width = 266
+        Width = 405
         Height = 21
-        TabOrder = 6
+        DropDownCount = 16
+        TabOrder = 5
         OnKeyDown = ComboBox1KeyDown
+      end
+      object Button1: TButton
+        Left = 624
+        Top = 17
+        Width = 75
+        Height = 25
+        Caption = #29983#25104#21457#36135#21333
+        TabOrder = 6
+        OnClick = Button1Click
       end
     end
   end

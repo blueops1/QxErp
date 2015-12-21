@@ -38,6 +38,8 @@ type
     Edit1: TEdit;
     Label11: TLabel;
     ComboBox2: TComboBox;
+    Label12: TLabel;
+    Edit6: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure Edit4KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -94,8 +96,9 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
       with zstoredproc1 do
       begin
         close;
-        zstoredproc1.StoredProcName:='proc_insert_jiagongdan_info';  //jgdbh,jgddate,jgsbh,czry,memo
+        zstoredproc1.StoredProcName:='proc_insert_jiagongdan_info';  //jgdbh,jgje,jgddate,jgsbh,czry,memo
         zstoredproc1.ParamByName('jgdbh').Value:=edit4.Text;
+        zstoredproc1.ParamByName('jgje').Value:=edit6.Text;
         zstoredproc1.ParamByName('jgsbh').Value:=splitstring(ComboBox1.Text,'|');
         zstoredproc1.ParamByName('jgddate').Value:=datetimepicker1.Date;
         zstoredproc1.ParamByName('czry').Value:=main.strUser;
@@ -148,6 +151,7 @@ begin
         stringgrid1.Cells[3,stringgrid1.RowCount-1]:=gjprice;
         stringgrid1.Cells[4,stringgrid1.RowCount-1]:=combobox2.Text;
         stringgrid1.Cells[5,stringgrid1.RowCount-1]:=edit5.Text;
+        edit6.Text:=floattostr(strtofloat(edit6.Text)+strtofloat(gjprice)*strtofloat(edit2.Text));
         ComboBoxEx1.Text:='';
         edit3.Text:='';
         edit5.Text:='';
@@ -316,6 +320,7 @@ begin
   if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
   begin
     DeleteStringGridRow(selRowIndex,stringgrid1);
+    edit6.Text:=floattostr(strtofloat(edit6.Text)-strtofloat(stringgrid1.Cells[2,selRowIndex])*strtofloat(stringgrid1.Cells[3,selRowIndex]));
   end;
 end;
 

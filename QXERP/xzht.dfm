@@ -208,6 +208,7 @@ object Form28: TForm28
     Color = clMoneyGreen
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 7
+    OnKeyDown = Edit7KeyDown
     OnKeyPress = Edit7KeyPress
   end
   object Edit8: TEdit
@@ -218,6 +219,7 @@ object Form28: TForm28
     Color = clMoneyGreen
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 8
+    OnKeyDown = Edit8KeyDown
     OnKeyPress = Edit8KeyPress
   end
   object Button1: TButton
@@ -264,6 +266,7 @@ object Form28: TForm28
     DropDownCount = 16
     TabOrder = 13
     OnKeyDown = ComboBox4KeyDown
+    OnSelect = ComboBox4Select
   end
   object Edit2: TEdit
     Left = 96

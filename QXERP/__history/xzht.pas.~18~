@@ -58,9 +58,6 @@ type
       var CanSelect: Boolean);
     procedure StringGrid1MouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure ComboBox4Select(Sender: TObject);
-    procedure Edit7KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure Edit8KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -271,11 +268,6 @@ begin                //proc_cx_cmlxk_cpbhandmcandzl_by_cpmc
  end;
 end;
 
-procedure TForm28.ComboBox4Select(Sender: TObject);
-begin
-  edit7.SetFocus;
-end;
-
 procedure TForm28.Edit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -296,26 +288,12 @@ begin
   end;
 end;
 
-procedure TForm28.Edit7KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if key=13 then
-    edit8.SetFocus;
-end;
-
 procedure TForm28.Edit7KeyPress(Sender: TObject; var Key: Char);
 begin
   if not charinset(key,['0'..'9','.',#8]) then
     key:=#0;
   if (key='.') and (Pos('.',Edit7.Text)>0)   then
     key:=#0;
-end;
-
-procedure TForm28.Edit8KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if key=13 then
-    button1.SetFocus;
 end;
 
 procedure TForm28.Edit8KeyPress(Sender: TObject; var Key: Char);

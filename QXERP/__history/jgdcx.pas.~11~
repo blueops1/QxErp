@@ -23,8 +23,6 @@ type
     Edit2: TEdit;
     PopupMenu1: TPopupMenu;
     Execl1: TMenuItem;
-    Label12: TLabel;
-    Edit6: TEdit;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Execl1Click(Sender: TObject);
@@ -89,7 +87,6 @@ begin
       edit1.Text:=fields[1].AsString;
       edit2.Text:=fields[2].AsString;
       memo1.Text:=fields[3].AsString;
-      edit6.Text:=fields[4].AsString;
       end;
 
       stringgrid1.RowCount:=2;

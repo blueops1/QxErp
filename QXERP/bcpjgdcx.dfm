@@ -61,7 +61,7 @@ object Form55: TForm55
     Width = 998
     Height = 482
     Align = alBottom
-    ColCount = 9
+    ColCount = 10
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     PopupMenu = PopupMenu1
@@ -70,14 +70,15 @@ object Form55: TForm55
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       49
-      82
+      77
+      74
+      81
+      79
       80
-      82
-      87
-      92
-      178
+      180
       71
-      218)
+      66
+      195)
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

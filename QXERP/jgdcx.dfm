@@ -68,6 +68,13 @@ object Form54: TForm54
     ParentFont = False
     Transparent = False
   end
+  object Label12: TLabel
+    Left = 741
+    Top = 81
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#24635#36153#29992
+  end
   object Edit4: TEdit
     Left = 90
     Top = 22
@@ -78,7 +85,7 @@ object Form54: TForm54
   object Memo1: TMemo
     Left = 90
     Top = 63
-    Width = 885
+    Width = 629
     Height = 53
     TabOrder = 1
   end
@@ -117,6 +124,15 @@ object Form54: TForm54
     Width = 167
     Height = 21
     TabOrder = 4
+  end
+  object Edit6: TEdit
+    Left = 808
+    Top = 78
+    Width = 167
+    Height = 21
+    ReadOnly = True
+    TabOrder = 5
+    Text = '0'
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

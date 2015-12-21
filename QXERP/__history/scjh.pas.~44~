@@ -36,6 +36,7 @@ type
 var
   Form17: TForm17;
   SelARow:integer;
+  tmpjhdbh:string;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
@@ -45,8 +46,20 @@ uses main,jhdxzfhd;
 {$R *.dfm}
 
 procedure TForm17.Button1Click(Sender: TObject);
+var
+  i:integer;
+  boolenough:boolean;
 begin
-  jhdxzfhd.Form40.ShowModal;
+  boolenough:=true;
+  for i := 1 to stringgrid2.RowCount - 2 do
+    begin
+      if stringgrid2.Cells[8,i]='N' then
+        boolenough:=false;
+    end;
+    if boolenough then
+      jhdxzfhd.Form40.ShowModal
+    else
+      application.MessageBox('有项目库存数量不够，请核实','计划单转发货单管理提示');
 end;
 
 procedure TForm17.Button6Click(Sender: TObject);
@@ -129,9 +142,9 @@ begin
   stringgrid1.Cells[7,0]:='预计发货时间';
   stringgrid1.Cells[8,0]:='备注';
   stringgrid2.Cells[0,0]:='序号';
-  stringgrid2.Cells[1,0]:='计划单号';
-  stringgrid2.Cells[2,0]:='产品编号';
-  stringgrid2.Cells[3,0]:='产品名称';
+  stringgrid2.Cells[1,0]:='产品编号';
+  stringgrid2.Cells[2,0]:='产品名称';
+  stringgrid2.Cells[3,0]:='产品类型';
   stringgrid2.Cells[4,0]:='产品单价';
   stringgrid2.Cells[5,0]:='计划数量';
   stringgrid2.Cells[6,0]:='发货单已开数量';
@@ -147,6 +160,7 @@ begin
   stringgrid2.RowCount:=2;
   stringgrid2.Rows[1].Clear;
   SelARow:=ARow;
+  tmpjhdbh:=stringgrid1.Cells[5,ARow];
   if stringgrid1.Cells[5,ARow]<>'' then
   try
     with zStoredProc1 do

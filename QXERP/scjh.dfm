@@ -44,18 +44,18 @@ object Form17: TForm17
         ColCount = 9
         DefaultColWidth = 200
         FixedCols = 0
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowSelect]
         TabOrder = 0
         OnSelectCell = StringGrid1SelectCell
         ColWidths = (
-          57
+          52
           85
           301
           72
           70
           73
           72
-          64
+          73
           165)
       end
       object Button6: TButton

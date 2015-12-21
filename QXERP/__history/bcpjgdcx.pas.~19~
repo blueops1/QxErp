@@ -130,8 +130,7 @@ begin
   stringgrid1.Cells[5,0]:='发票日期';
   stringgrid1.Cells[6,0]:='加工商名称';
   stringgrid1.Cells[7,0]:='操作员';
-  stringgrid1.Cells[8,0]:='加工费';
-  stringgrid1.Cells[9,0]:='备注';
+  stringgrid1.Cells[8,0]:='备注';
 end;
 
 procedure TForm55.StringGrid1DblClick(Sender: TObject);
