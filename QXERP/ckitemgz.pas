@@ -15,6 +15,9 @@ type
     Execl1: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure Execl1Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -26,6 +29,8 @@ var
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
+
+uses main,kcmxzcx;
 
 {$R *.dfm}
 
@@ -84,6 +89,24 @@ begin
   except
     application.MessageBox('Êý¾Ý²éÑ¯Ê§°Ü£¡','²Ö¿â¿â´æ²éÑ¯');
   end;
+end;
+
+procedure TForm35.StringGrid1DblClick(Sender: TObject);
+begin
+  if strCkitemBh<>'NULL' then
+    kcmxzcx.Form45.ShowModal;
+end;
+
+procedure TForm35.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if stringgrid1.RowCount>2 then
+  begin
+    strCkitemBh:=stringgrid1.Cells[1,ARow];
+    strCkItemmc:=stringgrid1.Cells[2,ARow];
+  end
+  else
+    strCkitemBh:='NULL';
 end;
 
 end.

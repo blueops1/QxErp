@@ -28,10 +28,8 @@ object Form35: TForm35
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 861
-    ExplicitHeight = 474
+    OnDblClick = StringGrid1DblClick
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       55
       64

@@ -12,6 +12,7 @@ object Form1: TForm1
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poScreenCenter
   WindowState = wsMaximized
   OnResize = FormResize
   OnShow = FormShow
@@ -40,23 +41,6 @@ object Form1: TForm1
         Text = #27946#21355#24037#20316#23460'@Necho'#39's WorkShop'
         Width = 225
       end>
-  end
-  object Panel1: TPanel
-    Left = 892
-    Top = 635
-    Width = 185
-    Height = 97
-    TabOrder = 1
-    Visible = False
-    object Label1: TLabel
-      Left = 24
-      Top = 40
-      Width = 3
-      Height = 13
-      OnClick = Label1Click
-      OnMouseMove = Label1MouseMove
-      OnMouseLeave = Label1MouseLeave
-    end
   end
   object PageControl1: TPageControl
     Left = 0
@@ -154,22 +138,31 @@ object Form1: TForm1
         OnClick = Button5Click
       end
       object Button8: TButton
-        Left = 568
-        Top = 104
+        Left = 160
+        Top = 200
         Width = 97
         Height = 65
-        Caption = #21512#21516#31649#29702
+        Caption = #26032#22686#21512#21516
         TabOrder = 3
         OnClick = Button8Click
       end
       object Button31: TButton
-        Left = 160
+        Left = 296
         Top = 200
         Width = 97
         Height = 65
         Caption = #21512#21516#26597#35810
         TabOrder = 4
         OnClick = Button31Click
+      end
+      object Button13: TButton
+        Left = 432
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #38144#21806#32479#35745#26597#35810
+        TabOrder = 5
+        OnClick = Button11Click
       end
     end
     object TabSheet2: TTabSheet
@@ -494,32 +487,59 @@ object Form1: TForm1
     object TabSheet6: TTabSheet
       Caption = #26597#35810#32479#35745
       ImageIndex = 5
-      object Button13: TButton
+      object Button14: TButton
+        Left = 297
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #25104#21697#20986#20837#24211
+        TabOrder = 0
+        OnClick = Button14Click
+      end
+      object Button3: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #25104#21697#24211#23384
+        TabOrder = 1
+        OnClick = Button3Click
+      end
+      object Button55: TButton
+        Left = 160
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #36136#26816#19981#33391#35760#24405
+        TabOrder = 2
+        OnClick = Button55Click
+      end
+      object Button56: TButton
+        Left = 433
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21322#25104#21697#24211#23384
+        TabOrder = 3
+        OnClick = Button56Click
+      end
+      object Button57: TButton
         Left = 160
         Top = 104
         Width = 97
         Height = 65
-        Caption = #38144#21806#32479#35745#26597#35810
-        TabOrder = 0
-        OnClick = Button11Click
+        Caption = #21322#25104#21697#20986#20837#24211
+        TabOrder = 4
+        OnClick = Button57Click
       end
-      object Button14: TButton
-        Left = 296
-        Top = 104
+      object Button58: TButton
+        Left = 297
+        Top = 200
         Width = 97
         Height = 65
-        Caption = #25104#21697#20986#20837#24211#26597#35810
-        TabOrder = 1
-        OnClick = Button14Click
-      end
-      object Button3: TButton
-        Left = 432
-        Top = 104
-        Width = 97
-        Height = 65
-        Caption = #25104#21697#24211#23384#26597#35810
-        TabOrder = 2
-        OnClick = Button3Click
+        Caption = #35831#20551#26597#35810
+        TabOrder = 5
+        OnClick = Button58Click
       end
     end
     object TabSheet5: TTabSheet
@@ -612,6 +632,23 @@ object Form1: TForm1
         TabOrder = 8
         OnClick = Button54Click
       end
+    end
+  end
+  object Panel1: TPanel
+    Left = 804
+    Top = 507
+    Width = 185
+    Height = 97
+    TabOrder = 1
+    Visible = False
+    object Label1: TLabel
+      Left = 24
+      Top = 40
+      Width = 3
+      Height = 13
+      OnClick = Label1Click
+      OnMouseMove = Label1MouseMove
+      OnMouseLeave = Label1MouseLeave
     end
   end
   object MainMenu1: TMainMenu

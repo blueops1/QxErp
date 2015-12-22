@@ -29,9 +29,9 @@ type
     Label9: TLabel;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,6 +70,9 @@ begin
     combobox1.text:='';
     combobox2.text:='';
     memo1.text:='';
+    datetimepicker1.DateTime:=now();
+    datetimepicker5.DateTime:=now();
+    datetimepicker3.DateTime:=now();
     edit1.setfocus;
     application.MessageBox('保存数据成功！','请假管理提示');
   except

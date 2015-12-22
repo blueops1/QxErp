@@ -355,7 +355,7 @@ begin
         ParamByName('memo').Value:='*'+memo1.Text;
         ExecProc;
         if ParamByName('returncode').Value=1 then
-          application.MessageBox('该物品信息已经存在！','仓储信息管理提示')
+          application.MessageBox('该物品信息或者编号已经存在！','仓储信息管理提示')
         else begin
           application.MessageBox('数据保存成功！','仓储信息管理提示');
           edit1.Text:='';
@@ -759,25 +759,26 @@ end;
 procedure TForm25.Edit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  try
-    with zstoredproc1 do
-    begin
-      close;
-      zstoredproc1.StoredProcName:='proc_cx_newitemid';
-      open;
-      if fields[0].AsString<>'' then
+  if key=13 then
+    try
+      with zstoredproc1 do
       begin
-        edit1.Text:=fields[0].AsString;
-        edit2.SetFocus;
-      end else
-      begin
-        edit1.Text:='1';
-        edit2.SetFocus;
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_newitemid';
+        open;
+        if fields[0].AsString<>'' then
+        begin
+          edit1.Text:=fields[0].AsString;
+          edit2.SetFocus;
+        end else
+        begin
+          edit1.Text:='1';
+          edit2.SetFocus;
+        end;
       end;
+    except
+      application.MessageBox('数据查询失败！','仓储信息管理提示');
     end;
-  except
-    application.MessageBox('数据查询失败！','仓储信息管理提示');
-  end;
 end;
 
 procedure TForm25.Edit25KeyDown(Sender: TObject; var Key: Word;
@@ -968,10 +969,10 @@ begin
         begin
           Edit7.Text := fields[0].AsString;
           Edit5.Text := fields[1].AsString;
-          combobox6.Text := fields[2].AsString+'|*';
-          combobox7.Text := fields[3].AsString+'|*';
-          combobox8.Text := fields[4].AsString+'|*';
-          combobox9.Text := fields[5].AsString+'|*';
+          combobox6.Text := fields[2].AsString;
+          combobox7.Text := fields[3].AsString;
+          combobox8.Text := fields[4].AsString;
+          combobox9.Text := fields[5].AsString;
           Memo2.Text := fields[6].AsString;
         end;
       end;
@@ -1034,7 +1035,7 @@ begin
       application.MessageBox('数据查询失败！','仓储信息管理提示');
     end;
   except
-    application.MessageBox('数据查询失败111！','仓储信息管理提示');
+    application.MessageBox('数据查询失败！','仓储信息管理提示');
   end;
 end;
 

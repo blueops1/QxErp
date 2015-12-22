@@ -22,10 +22,8 @@ object Form24: TForm24
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 415
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20379#24212#21830
-      ExplicitHeight = 387
       object Label1: TLabel
         Left = 173
         Top = 27
@@ -91,7 +89,7 @@ object Form24: TForm24
         ParentFont = False
       end
       object Edit1: TEdit
-        Left = 240
+        Left = 239
         Top = 24
         Width = 121
         Height = 21
@@ -164,7 +162,6 @@ object Form24: TForm24
     object TabSheet2: TTabSheet
       Caption = #20379#24212#21830#20449#24687#20462#25913
       ImageIndex = 1
-      ExplicitHeight = 387
       object Label8: TLabel
         Left = 325
         Top = 67
@@ -244,7 +241,6 @@ object Form24: TForm24
         ItemHeight = 13
         TabOrder = 0
         OnClick = ListBox1Click
-        ExplicitHeight = 387
       end
       object Edit7: TEdit
         Left = 392
