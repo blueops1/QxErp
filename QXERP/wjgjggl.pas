@@ -34,6 +34,10 @@ type
     ListBox1: TListBox;
     Edit3: TEdit;
     Edit4: TEdit;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Label9: TLabel;
+    Edit6: TEdit;
     procedure ComboBox2DropDown(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -70,6 +74,7 @@ begin
         ParamByName('gjbh').Value:=SplitString(combobox1.Text,'|');
         ParamByName('gjzlbh').Value:=SplitString(combobox2.Text,'|');
         ParamByName('jgprice').Value:=edit1.Text;
+        ParamByName('jgprice1').Value:=edit5.Text;
         ParamByName('memo').Value:='*'+memo1.Text;
         ExecProc;
         if ParamByName('returncode').Value=1 then
@@ -106,6 +111,7 @@ begin   //proc_update_wxjggj_info
         StoredProcName:='proc_update_wxjggj_info';    //IN `id` char(10),IN `jgprice` double,IN `memo` text,gjzlbh,jgprice,memo
         ParamByName('id').Value:=SplitString(edit4.Text,'|');
         ParamByName('jgprice').Value:=edit2.Text;
+        ParamByName('jgprice1').Value:=edit6.Text;
         ParamByName('memo').Value:=memo2.Text;
         ExecProc;
         application.MessageBox('数据更新成功！','加工价格管理提示');
@@ -263,7 +269,8 @@ begin
         if not eof then
         begin
           edit2.Text:=fields[0].AsString;
-          memo2.Text:=fields[1].AsString;
+          edit6.Text:=fields[1].AsString;
+          memo2.Text:=fields[2].AsString;
         end;
       end;
     except

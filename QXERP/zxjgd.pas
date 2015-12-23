@@ -40,6 +40,9 @@ type
     ComboBox2: TComboBox;
     Label12: TLabel;
     Edit6: TEdit;
+    Label13: TLabel;
+    Edit7: TEdit;
+    RadioGroup1: TRadioGroup;
     procedure Button1Click(Sender: TObject);
     procedure Edit4KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -255,8 +258,13 @@ begin
       ParamByName('jgzlbh').Value:=SplitString(combobox2.Text,'|');
       open;
       if not eof then
-        edit3.Text:=fields[0].AsString
-      else
+      begin
+        if radiogroup1.ItemIndex=0 then
+          edit3.Text:=fields[0].AsString
+        else
+          edit3.Text:=fields[1].AsString;
+        edit7.Text:=fields[2].AsString;
+      end else
         application.MessageBox('该物品价格信息不存在！','新增加工单管理提示');
     end;
   except

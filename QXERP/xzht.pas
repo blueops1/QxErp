@@ -56,8 +56,6 @@ type
     procedure N1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
-    procedure StringGrid1MouseUp(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; X, Y: Integer);
     procedure ComboBox4Select(Sender: TObject);
     procedure Edit7KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit8KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -342,17 +340,6 @@ begin
     edit11.Text:=floattostr(strtofloat(edit11.Text)-strtofloat(stringgrid1.Cells[2,selRowIndex])*strtofloat(stringgrid1.Cells[3,selRowIndex]));
     DeleteStringGridRow(selRowIndex,stringgrid1);
   end;
-end;
-
-procedure TForm28.StringGrid1MouseUp(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Integer);
-  var
-  tmppoint:tpoint;
-begin
-  tmppoint.X:=x;
-  tmppoint.Y:=y;
-  if button=tmousebutton.mbRight then
-  popupmenu1.Popup(stringgrid1.ClientToScreen(tmppoint).X,stringgrid1.ClientToScreen(tmppoint).y);
 end;
 
 procedure TForm28.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;

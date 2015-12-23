@@ -29,6 +29,7 @@ object Form55: TForm55
     Top = 26
     Width = 393
     Height = 21
+    DropDownCount = 16
     TabOrder = 0
     OnKeyDown = ComboBox1KeyDown
   end

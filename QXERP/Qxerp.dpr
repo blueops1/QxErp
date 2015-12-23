@@ -61,7 +61,9 @@ uses
   bcpjgdcx in 'bcpjgdcx.pas' {Form55},
   bcpjgrk in 'bcpjgrk.pas' {Form56},
   jgdjs in 'jgdjs.pas' {Form57},
-  wjgjggl in 'wjgjggl.pas' {Form58};
+  wjgjggl in 'wjgjggl.pas' {Form58},
+  lhttjcpmx in 'lhttjcpmx.pas' {Form59},
+  htmxtz in 'htmxtz.pas' {Form60};
 
 {$R *.res}
 
@@ -129,5 +131,7 @@ begin
   Application.CreateForm(TForm56, Form56);
   Application.CreateForm(TForm57, Form57);
   Application.CreateForm(TForm58, Form58);
+  Application.CreateForm(TForm59, Form59);
+  Application.CreateForm(TForm60, Form60);
   Application.Run;
 end.

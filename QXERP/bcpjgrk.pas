@@ -81,7 +81,7 @@ var
 begin
   booldouble:=true;
   for i := 1 to stringgrid2.RowCount-2 do
-    if trim(stringgrid1.Cells[2,sARow])=trim(stringgrid2.Cells[2,i]) then
+    if trim(stringgrid1.Cells[1,sARow])=trim(stringgrid2.Cells[1,i]) then
       booldouble:=false;
   if booldouble=false then
     application.MessageBox('该产品编号已经添加至入库列表!','半成品加工入库提示')
@@ -101,7 +101,7 @@ end;
 
 procedure TForm56.Button2Click(Sender: TObject);
 begin
-  if (sARow2>0) and (sARow2<stringgrid1.RowCount) then
+  if (sARow2>0) and (sARow2<stringgrid2.RowCount-1) then
   begin
     DeleteStringGridRow(sARow2,stringgrid2);
   end;

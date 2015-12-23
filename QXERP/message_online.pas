@@ -188,6 +188,21 @@ begin
         execsql;
         DeleteStringGridRow(selectRow,stringgrid1);
         memo1.Lines.Clear;
+        close;
+        sql.Clear;
+        sql.Add('select count(*) from message_online where freciid='''+strUser+''' and fisread=''N'' and fisdel=''N''');
+        open;
+        intMessage:=fields[0].AsInteger;
+        if intMessage>0 then
+        begin
+          form1.Caption:=strcaption+'            ========【您有 '+inttostr(intMessage)+' 条新的消息】========';
+          form1.Label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+          form1.panel1.Visible:=true;
+        end else
+        begin
+          form1.Caption:=strcaption;
+          form1.panel1.Visible:=false;
+        end;
       end;
     except
       application.MessageBox('标记失败!','消息处理提示');
@@ -315,7 +330,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('delete message_online from where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisdel=''Y''');
+      sql.Add('delete from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisdel=''Y''');
       execsql;
       stringgrid4.RowCount:=1;
       memo5.Lines.Clear;
@@ -560,7 +575,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisread=''N'' and fisdel=''N''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisread=''N'' and fisdel=''N'' order by fsenddate desc');
         open;
         stringgrid1.RowCount:=RecordCount+1;
         while not eof do
@@ -592,7 +607,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''Y'' and fisdel=''N''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''Y'' and fisdel=''N''  order by fsenddate desc');
         open;
         stringgrid2.RowCount:=RecordCount+1;
         while not eof do
@@ -625,7 +640,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y'' and fisdel=''N''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisfavorite=''N'' and fisread=''Y'' and fisdel=''N'' order by fsenddate desc');
         open;
         stringgrid3.RowCount:=RecordCount+1;
         while not eof do
@@ -657,7 +672,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisdel=''Y''');
+        sql.Add('select fid,fsendid,fsenddate,fmessagetitle from message_online where freciid='''+main.strUser+''' and fisdel=''Y''  order by fsenddate desc');
         open;
         stringgrid4.RowCount:=RecordCount+1;
         while not eof do
@@ -690,7 +705,7 @@ begin
       try
         close;
         sql.Clear;
-        sql.Add('select fid,freciid,fsenddate,fisread,fmessagetitle from message_online where fsendid='''+main.strUser+'''');
+        sql.Add('select fid,freciid,fsenddate,fisread,fmessagetitle from message_online where fsendid='''+main.strUser+''' order by fsenddate desc');
         open;
         stringgrid5.RowCount:=RecordCount+1;
         while not eof do

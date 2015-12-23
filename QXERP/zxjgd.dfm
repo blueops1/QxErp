@@ -26,14 +26,14 @@ object Form50: TForm50
     Style = bsRaised
   end
   object Label2: TLabel
-    Left = 32
-    Top = 181
+    Left = 646
+    Top = 146
     Width = 48
     Height = 13
     Caption = #21152#24037#25968#37327
   end
   object Label3: TLabel
-    Left = 245
+    Left = 32
     Top = 181
     Width = 48
     Height = 13
@@ -89,8 +89,8 @@ object Form50: TForm50
     Transparent = False
   end
   object Label9: TLabel
-    Left = 56
-    Top = 223
+    Left = 432
+    Top = 181
     Width = 24
     Height = 13
     Caption = #22791#27880
@@ -111,7 +111,7 @@ object Form50: TForm50
     ParentFont = False
   end
   object Label10: TLabel
-    Left = 469
+    Left = 245
     Top = 181
     Width = 48
     Height = 13
@@ -125,16 +125,23 @@ object Form50: TForm50
     Caption = #21152#24037#31867#22411
   end
   object Label12: TLabel
-    Left = 641
-    Top = 81
+    Left = 157
+    Top = 562
     Width = 60
     Height = 13
     Caption = #21152#24037#24635#36153#29992
   end
+  object Label13: TLabel
+    Left = 32
+    Top = 219
+    Width = 48
+    Height = 13
+    Caption = #20215#26684#35828#26126
+  end
   object ComboBoxEx1: TComboBoxEx
     Left = 299
     Top = 142
-    Width = 385
+    Width = 319
     Height = 22
     ItemsEx = <>
     Color = clMoneyGreen
@@ -146,18 +153,18 @@ object Form50: TForm50
     DropDownCount = 16
   end
   object Edit2: TEdit
-    Left = 94
-    Top = 180
-    Width = 123
+    Left = 708
+    Top = 145
+    Width = 135
     Height = 21
     Color = clMoneyGreen
     TabOrder = 1
     OnKeyPress = Edit2KeyPress
   end
   object Edit3: TEdit
-    Left = 299
+    Left = 93
     Top = 178
-    Width = 149
+    Width = 124
     Height = 21
     ReadOnly = True
     TabOrder = 2
@@ -190,9 +197,9 @@ object Form50: TForm50
   end
   object StringGrid1: TStringGrid
     Left = 27
-    Top = 263
+    Top = 253
     Width = 816
-    Height = 266
+    Height = 283
     ColCount = 6
     FixedCols = 0
     RowCount = 1
@@ -230,8 +237,8 @@ object Form50: TForm50
     OnKeyDown = ComboBox1KeyDown
   end
   object Button2: TButton
-    Left = 723
-    Top = 174
+    Left = 746
+    Top = 212
     Width = 97
     Height = 29
     Caption = #28155#21152#26126#32454
@@ -239,16 +246,16 @@ object Form50: TForm50
     OnClick = Button2Click
   end
   object Edit5: TEdit
-    Left = 94
-    Top = 220
-    Width = 591
+    Left = 470
+    Top = 178
+    Width = 373
     Height = 21
     TabOrder = 10
   end
   object Edit1: TEdit
-    Left = 536
+    Left = 299
     Top = 178
-    Width = 148
+    Width = 102
     Height = 21
     Color = clMoneyGreen
     TabOrder = 11
@@ -263,13 +270,34 @@ object Form50: TForm50
     OnDropDown = ComboBox2DropDown
   end
   object Edit6: TEdit
-    Left = 708
-    Top = 78
+    Left = 224
+    Top = 559
     Width = 135
     Height = 21
     ReadOnly = True
     TabOrder = 13
     Text = '0'
+  end
+  object Edit7: TEdit
+    Left = 93
+    Top = 216
+    Width = 628
+    Height = 21
+    ReadOnly = True
+    TabOrder = 14
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 641
+    Top = 60
+    Width = 202
+    Height = 50
+    Caption = #21152#24037#31867#22411
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      #28165#21152#24037
+      #21253#24037#21253#26009)
+    TabOrder = 15
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

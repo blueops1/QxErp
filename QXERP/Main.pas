@@ -93,6 +93,8 @@ type
     Button56: TButton;
     Button57: TButton;
     Button58: TButton;
+    Button59: TButton;
+    Button60: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -157,6 +159,8 @@ type
     procedure Button56Click(Sender: TObject);
     procedure Button57Click(Sender: TObject);
     procedure Button58Click(Sender: TObject);
+    procedure Button59Click(Sender: TObject);
+    procedure Button60Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -178,6 +182,7 @@ var
   strPageCode:string;
   intMessage:integer;
   boolMesscandle:boolean;
+  strcaption:string;
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
@@ -193,7 +198,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      yskjs,yskcscx,bcptsck,bcpsctjcx,
      blzjjldj,zjbljlcx,zxjgd,jgsgl,
      wxdwcprk,rkddelgl,bcpjgdcx,bcpjgrk,
-     jgdjs,wjgjggl;
+     jgdjs,wjgjggl,lhttjcpmx,htmxtz;
 
 {$R *.dfm}
 
@@ -590,10 +595,26 @@ begin
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
+procedure TForm1.Button59Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,6,1)='1') then
+    lhttjcpmx.Form59.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
 procedure TForm1.Button5Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,5,1)='1') then
     khgl.Form5.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button60Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,6,1)='1') then
+    htmxtz.Form60.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
@@ -644,6 +665,7 @@ end;
 
 procedure TForm1.FormShow(Sender: TObject);
 begin
+    strcaption:='浙江秦山橡胶工程股份有限公司生产办公管理系统';
     dlgl.Form10.ShowModal;
     if(isLogined=false) then
     begin
@@ -662,14 +684,18 @@ begin
         intMessage:=fields[0].AsInteger;
         if intMessage>0 then
         begin
-        form1.label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
-        panel1.Visible:=true;
+          form1.Caption:=strcaption+'            ========【您有 '+inttostr(intMessage)+' 条新的消息】========';
+          form1.label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+          panel1.Visible:=true;
         end else
-        panel1.Visible:=false;
-        panel1.Left:=10;
-        panel1.Top:=10;
+        begin
+          panel1.Visible:=false;
+          form1.Caption:=strcaption;
+        end;
+        //panel1.Left:=10;
+        //panel1.Top:=10;
         //form1.OnResize(Sender);
-      end;
+    end;
     except
       application.MessageBox('查询数据失败！','在线消息提示');
     end;
@@ -722,10 +748,14 @@ begin
       intMessage:=fields[0].AsInteger;
       if intMessage>0 then
       begin
-      form1.Label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
-      panel1.Visible:=true;
+        form1.Caption:=strcaption+'            ========【您有 '+inttostr(intMessage)+' 条新的消息】========';
+        form1.Label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
+        panel1.Visible:=true;
       end else
-      panel1.Visible:=false;
+      begin
+        form1.Caption:=strcaption;
+        panel1.Visible:=false;
+      end;
     end;
   except
     application.MessageBox('查询数据失败！','在线消息提示');

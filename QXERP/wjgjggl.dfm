@@ -24,14 +24,8 @@ object Form58: TForm58
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 515
-    ExplicitHeight = 384
     object TabSheet1: TTabSheet
       Caption = #26032#22686#21152#24037#20215#26684#20449#24687
-      ExplicitLeft = 8
-      ExplicitTop = 28
-      ExplicitWidth = 507
-      ExplicitHeight = 356
       object Label1: TLabel
         Left = 56
         Top = 91
@@ -40,15 +34,15 @@ object Form58: TForm58
         Caption = #23545#24212#20135#21697#32534#21495
       end
       object Label2: TLabel
-        Left = 56
+        Left = 68
         Top = 139
-        Width = 72
+        Width = 60
         Height = 13
-        Caption = #21333#20301#21152#24037#20215#26684
+        Caption = #28165#21152#24037#20215#26684
       end
       object Label3: TLabel
         Left = 104
-        Top = 187
+        Top = 227
         Width = 24
         Height = 13
         Caption = #22791#27880
@@ -59,6 +53,13 @@ object Form58: TForm58
         Width = 60
         Height = 13
         Caption = #22806#21152#24037#31867#22411
+      end
+      object Label5: TLabel
+        Left = 56
+        Top = 179
+        Width = 72
+        Height = 13
+        Caption = #21253#24037#21253#26009#20215#26684
       end
       object ComboBox1: TComboBox
         Left = 144
@@ -79,14 +80,14 @@ object Form58: TForm58
       end
       object Memo1: TMemo
         Left = 144
-        Top = 184
+        Top = 224
         Width = 361
-        Height = 89
+        Height = 57
         TabOrder = 2
       end
       object Button1: TButton
         Left = 280
-        Top = 304
+        Top = 320
         Width = 75
         Height = 25
         Caption = #20445#23384
@@ -95,7 +96,7 @@ object Form58: TForm58
       end
       object Button2: TButton
         Left = 382
-        Top = 304
+        Top = 320
         Width = 75
         Height = 25
         Caption = #21462#28040
@@ -110,14 +111,20 @@ object Form58: TForm58
         TabOrder = 5
         OnDropDown = ComboBox2DropDown
       end
+      object Edit5: TEdit
+        Left = 144
+        Top = 176
+        Width = 161
+        Height = 21
+        TabOrder = 6
+        OnKeyPress = Edit1KeyPress
+      end
     end
     object TabSheet2: TTabSheet
       Caption = #20462#25913#20215#26684#20449#24687
       ImageIndex = 1
-      ExplicitWidth = 281
-      ExplicitHeight = 165
       object Label6: TLabel
-        Left = 32
+        Left = 44
         Top = 60
         Width = 48
         Height = 13
@@ -126,30 +133,37 @@ object Form58: TForm58
       object Label7: TLabel
         Left = 32
         Top = 104
-        Width = 48
+        Width = 60
         Height = 13
-        Caption = #21152#24037#20215#26684
+        Caption = #28165#21253#24037#20215#26684
       end
       object Label8: TLabel
-        Left = 56
-        Top = 148
+        Left = 68
+        Top = 187
         Width = 24
         Height = 13
         Caption = #22791#27880
       end
+      object Label9: TLabel
+        Left = 20
+        Top = 144
+        Width = 72
+        Height = 13
+        Caption = #21253#24037#21253#26009#20215#26684
+      end
       object Edit2: TEdit
-        Left = 86
+        Left = 98
         Top = 101
-        Width = 203
-        Height = 20
+        Width = 191
+        Height = 21
         TabOrder = 0
         OnKeyPress = Edit2KeyPress
       end
       object Memo2: TMemo
-        Left = 86
-        Top = 145
-        Width = 203
-        Height = 128
+        Left = 98
+        Top = 184
+        Width = 191
+        Height = 89
         TabOrder = 1
       end
       object Button3: TButton
@@ -172,7 +186,7 @@ object Form58: TForm58
       end
       object ListBox1: TListBox
         Left = 312
-        Top = 56
+        Top = 48
         Width = 225
         Height = 217
         ItemHeight = 13
@@ -188,19 +202,25 @@ object Form58: TForm58
         OnKeyDown = Edit3KeyDown
       end
       object Edit4: TEdit
-        Left = 86
+        Left = 98
         Top = 57
-        Width = 203
+        Width = 191
         Height = 21
         ReadOnly = True
         TabOrder = 6
+      end
+      object Edit6: TEdit
+        Left = 98
+        Top = 141
+        Width = 191
+        Height = 21
+        TabOrder = 7
+        OnKeyPress = Edit2KeyPress
       end
     end
     object TabSheet3: TTabSheet
       Caption = #26032#22686#22806#21152#24037#31867#22411
       ImageIndex = 2
-      ExplicitWidth = 507
-      ExplicitHeight = 356
     end
   end
   object ZStoredProc1: TZStoredProc

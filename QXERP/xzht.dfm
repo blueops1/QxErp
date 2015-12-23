@@ -191,8 +191,8 @@ object Form28: TForm28
     ColCount = 4
     RowCount = 1
     FixedRows = 0
+    PopupMenu = PopupMenu1
     TabOrder = 6
-    OnMouseUp = StringGrid1MouseUp
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       64
@@ -284,8 +284,8 @@ object Form28: TForm28
     Top = 376
   end
   object PopupMenu1: TPopupMenu
-    Left = 592
-    Top = 480
+    Left = 528
+    Top = 368
     object N1: TMenuItem
       Caption = #21024#38500#24403#21069#35760#24405
       OnClick = N1Click
