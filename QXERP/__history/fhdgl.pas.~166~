@@ -253,7 +253,7 @@ if key=13 then
       with zstoredproc1 do
       begin
         close;
-        zstoredproc1.StoredProcName:='proc_cx_fhdxxzl_xzhyd';   //c.ffhdid,c.fhtbh,c.fkhmc,d.fxsyxm,c.fcddate,c.ffhdate,c.fisfhbz,c.fmemo
+        zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';   //c.ffhdid,c.fhtbh,c.fkhmc,d.fxsyxm,c.fcddate,c.ffhdate,c.fisfhbz,c.fmemo
         zstoredproc1.ParamByName('fhdbh').Value:=edit1.Text;
         open;
         if ParamByName('returncode').Value=1 then
