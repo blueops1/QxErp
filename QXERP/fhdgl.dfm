@@ -1,7 +1,7 @@
 object Form19: TForm19
   Left = 0
   Top = 0
-  Caption = #21457#36135#21333#31649#29702
+  Caption = #36135#36816#21333#31649#29702
   ClientHeight = 543
   ClientWidth = 1069
   Color = clBtnFace
@@ -12,6 +12,7 @@ object Form19: TForm19
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel
@@ -101,15 +102,6 @@ object Form19: TForm19
     ParentColor = False
     ParentFont = False
   end
-  object Label6: TLabel
-    Left = 886
-    Top = 29
-    Width = 48
-    Height = 13
-    Caption = #23458#25143#32534#21495
-    Color = clWindowText
-    ParentColor = False
-  end
   object Label5: TLabel
     Left = 324
     Top = 70
@@ -152,6 +144,24 @@ object Form19: TForm19
     Width = 1031
     Height = 4
   end
+  object Label17: TLabel
+    Left = 858
+    Top = 70
+    Width = 36
+    Height = 13
+    Caption = #38144#21806#21592
+    Color = clWindowText
+    ParentColor = False
+  end
+  object Label6: TLabel
+    Left = 846
+    Top = 29
+    Width = 48
+    Height = 13
+    Caption = #20986#21333#26085#26399
+    Color = clWindowText
+    ParentColor = False
+  end
   object Edit2: TEdit
     Left = 120
     Top = 67
@@ -159,7 +169,6 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     TabOrder = 1
-    OnKeyDown = Edit2KeyDown
   end
   object Edit3: TEdit
     Left = 120
@@ -167,97 +176,46 @@ object Form19: TForm19
     Width = 137
     Height = 21
     Color = clMoneyGreen
-    ReadOnly = True
-    TabOrder = 11
-  end
-  object StringGrid1: TStringGrid
-    Left = 32
-    Top = 106
-    Width = 441
-    Height = 193
-    ColCount = 6
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
-    TabOrder = 9
-    OnSelectCell = StringGrid1SelectCell
-    ColWidths = (
-      64
-      88
-      79
-      64
-      64
-      64)
-    RowHeights = (
-      24
-      24
-      24
-      24
-      24)
+    TabOrder = 10
   end
   object StringGrid2: TStringGrid
-    Left = 536
+    Left = 45
     Top = 106
-    Width = 505
+    Width = 996
     Height = 193
     ColCount = 7
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing]
-    TabOrder = 10
+    TabOrder = 9
     OnSelectCell = StringGrid2SelectCell
     OnSetEditText = StringGrid2SetEditText
     ColWidths = (
       64
-      77
-      89
-      64
-      64
-      64
+      120
+      124
+      139
+      137
+      134
       64)
     RowHeights = (
       24
       24)
   end
-  object Button1: TButton
-    Left = 487
-    Top = 162
-    Width = 35
-    Height = 25
-    Caption = '>'
-    TabOrder = 17
-    OnClick = Button1Click
-  end
-  object Button3: TButton
-    Left = 487
-    Top = 210
-    Width = 35
-    Height = 25
-    Caption = '<'
-    TabOrder = 19
-    OnClick = Button3Click
-  end
   object Edit4: TEdit
     Left = 368
     Top = 26
-    Width = 497
+    Width = 457
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 12
+    TabOrder = 11
   end
   object Edit5: TEdit
     Left = 368
     Top = 67
-    Width = 673
+    Width = 457
     Height = 21
     TabOrder = 2
-  end
-  object Edit6: TEdit
-    Left = 952
-    Top = 26
-    Width = 89
-    Height = 21
-    Color = clMoneyGreen
-    ReadOnly = True
-    TabOrder = 13
   end
   object ComboBox1: TComboBox
     Left = 368
@@ -277,7 +235,7 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     ReadOnly = True
-    TabOrder = 14
+    TabOrder = 12
   end
   object Edit8: TEdit
     Left = 120
@@ -292,7 +250,7 @@ object Form19: TForm19
     Width = 673
     Height = 21
     Color = clMoneyGreen
-    TabOrder = 15
+    TabOrder = 13
   end
   object Edit10: TEdit
     Left = 579
@@ -332,7 +290,7 @@ object Form19: TForm19
     Width = 107
     Height = 25
     Caption = #20445#23384#21457#36135#21333
-    TabOrder = 18
+    TabOrder = 15
     OnClick = Button2Click
   end
   object Edit14: TEdit
@@ -341,7 +299,7 @@ object Form19: TForm19
     Width = 313
     Height = 21
     ReadOnly = True
-    TabOrder = 16
+    TabOrder = 14
   end
   object Edit1: TEdit
     Left = 120
@@ -350,21 +308,30 @@ object Form19: TForm19
     Height = 21
     Color = clMoneyGreen
     TabOrder = 0
-    OnChange = Edit1Change
+    TextHint = #36755#20837#21457#36135#21333#32534#21495
+    OnKeyDown = Edit1KeyDown
   end
-  object Button4: TButton
-    Left = 120
-    Top = 497
-    Width = 115
-    Height = 25
-    Caption = #33719#21462#26032#21457#36135#21333#32534#21495
-    TabOrder = 20
-    OnClick = Button4Click
+  object Edit15: TEdit
+    Left = 909
+    Top = 67
+    Width = 132
+    Height = 21
+    Color = clMoneyGreen
+    ReadOnly = True
+    TabOrder = 16
   end
-  object ZQuery1: TZQuery
+  object Edit6: TEdit
+    Left = 909
+    Top = 26
+    Width = 132
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 17
+  end
+  object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
     Left = 488
-    Top = 114
+    Top = 256
   end
 end

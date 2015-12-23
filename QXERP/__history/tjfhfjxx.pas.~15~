@@ -1,0 +1,107 @@
+unit tjfhfjxx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls;
+
+type
+  TForm61 = class(TForm)
+    ComboBox1: TComboBox;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Button1: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure Button1Click(Sender: TObject);
+    procedure ComboBox1Select(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form61: TForm61;
+  function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+
+implementation
+
+uses jhdxzfhd;
+
+{$R *.dfm}
+
+procedure TForm61.Button1Click(Sender: TObject);
+var
+  i:integer;
+begin
+  with jhdxzfhd.form40.stringgrid2 do
+  begin
+    i:=RowCount;
+    RowCount:=RowCount+1;
+    Cells[0,i]:=inttostr(i);
+    Cells[1,i]:=SplitString(combobox1.Text,'|');
+    Cells[2,i]:=edit1.Text;
+    Cells[3,i]:=edit2.Text;
+    Cells[4,i]:='0';
+    Cells[5,i]:=edit3.Text;
+    Rows[RowCount-1].Clear;
+  end;
+end;
+
+procedure TForm61.ComboBox1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox1.Items.Count>0 then
+    ComboBox1.Items.Clear;
+    edit1.Text:='';
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with jhdxzfhd.form40.ZStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox1.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox1.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','添加附属物件提示');
+  end;
+ end;
+end;
+
+procedure TForm61.ComboBox1Select(Sender: TObject);
+begin
+  try
+    with jhdxzfhd.form40.zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_cplxk_by_cpbh';
+      ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
+      Open;
+      if not eof then
+      begin
+        edit1.text:=fields[1].asstring;
+        edit2.text:=fields[2].asstring;
+      end;
+    end;
+  except
+    application.MessageBox('数据查询失败！','添加附属物件提示');
+  end;
+end;
+
+end.

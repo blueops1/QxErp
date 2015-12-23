@@ -82,7 +82,7 @@ begin
     if trim(stringgrid2.Cells[2,sARow])=trim(stringgrid3.Cells[2,i]) then
       booldouble:=false;
   if booldouble=false then
-    application.MessageBox('该产品编号已经添加至计划任务列表!','发票核帐提示')
+    application.MessageBox('该产品编号已经添加至计划任务列表!','新增生产计划提示')
     else if (sARow<stringgrid2.RowCount-1) and (sARow>0) and (strtofloat(stringgrid2.Cells[4,sARow])>strtofloat(stringgrid2.Cells[5,sARow])) then
     begin
       stringgrid3.RowCount:=stringgrid3.RowCount+1;
@@ -93,7 +93,8 @@ begin
       stringgrid3.Cells[4,stringgrid3.RowCount-2]:='';
       stringgrid3.Rows[stringgrid3.RowCount-1].Clear;
       sARow:=0;
-    end;
+    end else
+      application.MessageBox('该产品已经全部生成计划!','新增生产计划提示');
 end;
 
 procedure TForm36.Button2Click(Sender: TObject);
@@ -137,7 +138,7 @@ begin
       end;
     end;
   except
-    application.MessageBox('数据查询失败！','新增合同提示');
+    application.MessageBox('数据查询失败！','新增生产计划提示');
   end;
 end;
 

@@ -125,7 +125,7 @@ object Form21: TForm21
   end
   object Label1: TLabel
     Left = 45
-    Top = 33
+    Top = 30
     Width = 60
     Height = 13
     Caption = #21457#36135#21333#32534#21495

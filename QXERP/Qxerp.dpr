@@ -63,7 +63,8 @@ uses
   jgdjs in 'jgdjs.pas' {Form57},
   wjgjggl in 'wjgjggl.pas' {Form58},
   lhttjcpmx in 'lhttjcpmx.pas' {Form59},
-  htmxtz in 'htmxtz.pas' {Form60};
+  htmxtz in 'htmxtz.pas' {Form60},
+  tjfhfjxx in 'tjfhfjxx.pas' {Form61};
 
 {$R *.res}
 
@@ -133,5 +134,6 @@ begin
   Application.CreateForm(TForm58, Form58);
   Application.CreateForm(TForm59, Form59);
   Application.CreateForm(TForm60, Form60);
+  Application.CreateForm(TForm61, Form61);
   Application.Run;
 end.

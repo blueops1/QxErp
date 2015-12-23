@@ -5,21 +5,21 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Grids, ComCtrls, DB, ZAbstractRODataset,
-  ZAbstractDataset, ZStoredProcedure;
+  ZAbstractDataset, ZStoredProcedure, Menus;
 
 type
   TForm17 = class(TForm)
-    PageControl1: TPageControl;
-    TabSheet3: TTabSheet;
-    Label12: TLabel;
-    StringGrid1: TStringGrid;
-    Button6: TButton;
-    StringGrid2: TStringGrid;
-    Button8: TButton;
-    RadioGroup1: TRadioGroup;
     ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    PopupMenu2: TPopupMenu;
+    MenuItem1: TMenuItem;
+    Label12: TLabel;
     ComboBox1: TComboBox;
+    Button6: TButton;
     Button1: TButton;
+    StringGrid1: TStringGrid;
+    StringGrid2: TStringGrid;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -27,6 +27,8 @@ type
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure Button1Click(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
+    procedure MenuItem1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -130,6 +132,14 @@ begin      //proc_cx_khandzgdwandxsy_by_cxitemandcxmc
  end;
 end;
 
+procedure TForm17.Execl1Click(Sender: TObject);
+begin
+  if stringgrid1.RowCount>2 then
+    ExportStrGridToExcel([stringgrid1])
+  else
+    application.MessageBox('列表中没有任何数据！','计划单查询提示');
+end;
+
 procedure TForm17.FormShow(Sender: TObject);
 begin
   stringgrid1.Cells[0,0]:='序号';
@@ -149,7 +159,16 @@ begin
   stringgrid2.Cells[5,0]:='计划数量';
   stringgrid2.Cells[6,0]:='发货单已开数量';
   stringgrid2.Cells[7,0]:='库存数量';
-  stringgrid2.Cells[8,0]:='是否足够';
+  stringgrid2.Cells[8,0]:='已发数量';
+  stringgrid2.Cells[9,0]:='是否足够';
+end;
+
+procedure TForm17.MenuItem1Click(Sender: TObject);
+begin
+  if stringgrid2.RowCount>2 then
+    ExportStrGridToExcel([stringgrid2])
+  else
+    application.MessageBox('列表中没有任何数据！','计划单查询提示');
 end;
 
 procedure TForm17.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -182,7 +201,8 @@ begin
         stringgrid2.Cells[5,i]:=fields[4].AsString;
         stringgrid2.Cells[6,i]:=fields[5].AsString;
         stringgrid2.Cells[7,i]:=fields[6].AsString;
-        stringgrid2.Cells[8,i]:=fields[7].AsString;
+        stringgrid2.Cells[8,i]:=fields[8].AsString;
+        stringgrid2.Cells[9,i]:=fields[7].AsString;
         i:=i+1;
         stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
         next;

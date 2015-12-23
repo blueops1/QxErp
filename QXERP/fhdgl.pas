@@ -5,26 +5,20 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, StdCtrls, DB, ZAbstractRODataset, ZAbstractDataset, ZDataset,
-  ExtCtrls;
+  ExtCtrls, ZStoredProcedure;
 
 type
   TForm19 = class(TForm)
-    ZQuery1: TZQuery;
     Label1: TLabel;
     Label2: TLabel;
     Edit2: TEdit;
     Label3: TLabel;
     Edit3: TEdit;
-    StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
-    Button1: TButton;
-    Button3: TButton;
     Label4: TLabel;
     Edit4: TEdit;
     Label5: TLabel;
     Edit5: TEdit;
-    Edit6: TEdit;
-    Label6: TLabel;
     ComboBox1: TComboBox;
     Label7: TLabel;
     Label8: TLabel;
@@ -47,14 +41,16 @@ type
     Label16: TLabel;
     Edit1: TEdit;
     Bevel1: TBevel;
-    Button4: TButton;
-    procedure Edit2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    ZStoredProc1: TZStoredProc;
+    Label17: TLabel;
+    Edit15: TEdit;
+    Label6: TLabel;
+    Edit6: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
-    procedure Button3Click(Sender: TObject);
     procedure StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
       const Value: string);
     procedure Button2Click(Sender: TObject);
@@ -63,7 +59,9 @@ type
     procedure Edit1Change(Sender: TObject);
     procedure ComboBox1DropDown(Sender: TObject);
     procedure ComboBox1Select(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,7 +75,7 @@ var
   function SmallTOBig(small:real):string;stdcall;external 'dlltools.dll';
 
 implementation
- uses main;
+ uses main,tjfhfjxx;
 {$R *.dfm}
 
 
@@ -97,7 +95,7 @@ end;
 
 procedure TForm19.Button1Click(Sender: TObject);
 begin
-  if (sARow<stringgrid1.RowCount) and (sARow>0) then
+ { if (sARow<stringgrid1.RowCount) and (sARow>0) then
   begin
     stringgrid2.RowCount:=stringgrid2.RowCount+1;
     stringgrid2.Cells[0,stringgrid2.RowCount-1]:=stringgrid1.Cells[0,sARow];
@@ -109,7 +107,7 @@ begin
     stringgrid2.FixedRows:=1;
     DeleteStringGridRow(sARow,stringgrid1);
     sARow:=0;
-   end;
+   end;  }
 
 end;
 
@@ -123,7 +121,7 @@ begin
   boolnull:=true;
   for i:=0 to 35 do
   begin
-    if (i<>24) and (i<>33) and (i<>28) and (form19.Components[i] is tedit)  then
+    if (i<>24) and (i<>33) and (i<>28) and (i<>22) and (i<>25) and (i<>30) and (form19.Components[i] is tedit)  then
       if tedit(form19.Components[i]).Text='' then
       begin
         //application.MessageBox(pwidechar(form19.Components[i].Name+'|'+inttostr(i)),'aa');
@@ -132,120 +130,93 @@ begin
     if (form19.Components[i] is tcombobox)  then
       if tcombobox(form19.Components[i]).Text='' then
       begin
-       // application.MessageBox(pwidechar(form19.Components[i].Name),'aa');
+        //application.MessageBox(pwidechar(form19.Components[i].Name),'aa');
         boolnull:=false;
       end;
   end;
   try
   if boolnull=false then
-    application.MessageBox('请把所有项目填写完整!!','发货单管理提示')
+    application.MessageBox('请把所有项目填写完整!!','货运单管理提示')
   else begin
-    with zquery1 do
+    with zStoredProc1 do            //proc_insert_fahuodanmxz_fahuodaninfo_huoyundaninfo
     begin
       close;
-      sql.Clear;
-      sql.Add('select ffhdid from fahuodan_info where ffhdid='+edit1.Text);
+      StoredProcName:='proc_cx_hydidisExist_by_hydid';
+      ParamByName('hydid').Value:=edit3.Text;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
       open;
       if RecordCount>0 then
-        application.MessageBox('该发货单号已经存在，请核实！','发货单明细提示')
+        application.MessageBox('该货运单号已经存在，请核实！','货运单管理提示')
       else begin
-        errorID:='发货单明细保存错误！';
-        gridcount:=stringgrid2.RowCount;
-        for i := 1 to stringgrid2.rowcount-1 do
+        if edit1.Text<>edit3.Text then
         begin
-          if stringgrid2.Cells[6,i]<>'' then
-            if (strtoint(stringgrid2.Cells[4,i])-strtoint(stringgrid2.Cells[5,i])-strtoint(stringgrid2.Cells[6,i])>=0) then
-            begin
-              sql.Clear;
-              sql.Add('INSERT into fahuodan_mxz (ffhdid,fcpbh,fcpdj,ffhsl) VALUES ('''+edit1.Text+''','''+stringgrid2.Cells[0,i]+''','''+stringgrid2.Cells[3,i]+''','''+stringgrid2.Cells[6,i]+''')');
-              ExecSQL;
-            end else
-            begin
-              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量大于未发数量，请核实！'),'发货单明细提示');
-              exit;
-            end else
-            begin
-              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量为空，请填写完整'),'发货单明细提示');
-              exit;
-            end;
+          errorID:='发货单信息保存错误！';    //proc_insert_fahuodan_info
+          close;
+          StoredProcName:='proc_update_fahuodan_hydid_by_fhdid';
+          ParamByName('fhdid').Value:=edit1.Text;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
+          ParamByName('hydid').Value:=edit3.Text;
+          ExecProc;
         end;
-          errorID:='发货单信息保存错误！';
-          sql.Clear;
-          sql.Add('INSERT into fahuodan_info (ffhdid,fhtbh,fkhid,fhydid,fcddate,fmemo) VALUES ('''+edit1.Text+''','''+edit2.Text+''','''+edit6.Text+''','''+edit3.Text +''','''+datetimetostr(now())+''','''+edit5.Text +''')');
-          ExecSQL;
-          errorID:='货运单信息保存错误！';
-          sql.Clear;
-          sql.Add('insert into huoyundan_info (fhydid,fcyrid,ffhdid,fsendwhere,fcarno,fprice,fweight,fdistance,fmemo) VALUES ('''+edit3.text+''','''+edit7.Text+''','''+edit1.Text+''','''+edit8.Text+''','''+edit9.Text+''','''+edit10.Text+''','''+edit12.Text+''','''+edit11.Text+''','''+edit13.Text+''')');
-          ExecSQL;
-          application.MessageBox('新增发货单成功！','发货单管理提示');
+          errorID:='货运单信息保存错误！'; //proc_insert_huoyundan_info
+          close;
+          StoredProcName:='proc_insert_huoyundan_info';
+          ParamByName('fhdid').Value:=edit1.Text;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
+          ParamByName('hydid').Value:=edit3.text;
+          ParamByName('cyrid').Value:=edit7.Text;
+          ParamByName('sendwhere').Value:=edit9.Text;
+          ParamByName('carno').Value:=edit8.Text;
+          ParamByName('price').Value:=edit10.Text;
+          ParamByName('weight').Value:=edit12.Text;
+          ParamByName('distance').Value:=edit11.Text;
+          ParamByName('memo').Value:=edit13.Text;
+          ExecProc;
+          application.MessageBox('新增货运单成功！','货运单管理提示');
       end;
     end;
   end;
   except
-    application.MessageBox(pwidechar(errorID),'发货单管理提示');
+    application.MessageBox(pwidechar(errorID),'货运单管理提示');
   end;
 end;
 
-procedure TForm19.Button3Click(Sender: TObject);
+procedure TForm19.Button5Click(Sender: TObject);
 begin
-  if (sARow2<stringgrid2.RowCount) and (sARow2>0) then
-  begin
-    stringgrid1.RowCount:=stringgrid1.RowCount+1;
-    stringgrid1.Cells[0,stringgrid1.RowCount-1]:=stringgrid2.Cells[0,sARow2];
-    stringgrid1.Cells[1,stringgrid1.RowCount-1]:=stringgrid2.Cells[1,sARow2];
-    stringgrid1.Cells[2,stringgrid1.RowCount-1]:=stringgrid2.Cells[2,sARow2];
-    stringgrid1.Cells[3,stringgrid1.RowCount-1]:=stringgrid2.Cells[3,sARow2];
-    stringgrid1.Cells[4,stringgrid1.RowCount-1]:=stringgrid2.Cells[4,sARow2];
-    stringgrid1.Cells[5,stringgrid1.RowCount-1]:=stringgrid2.Cells[5,sARow2];
-    stringgrid1.FixedRows:=1;
-    DeleteStringGridRow(sARow2,stringgrid2);
-    sARow2:=0;
-   end;
-
-end;
-
-procedure TForm19.Button4Click(Sender: TObject);
-begin
-  with zquery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select max(ffhdid)+1 from fahuodan_info');
-    open;
-    if fields[0].AsString<>'' then
-      edit1.Text:=fields[0].AsString
-    else
-      edit1.Text:=formatDateTime('yyyy',date)+'0001';
-  end;
+  tjfhfjxx.Form61.ShowModal;
 end;
 
 procedure TForm19.ComboBox1DropDown(Sender: TObject);
 begin
-  with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select fcyrmc from chengyunren_info');
-    open;
-    combobox1.Items.Clear;
-    while not eof do
+  try
+    with zStoredProc1 do       //proc_cx_chengyunren_mc
     begin
-       combobox1.Items.Add(fields[0].asstring);
-       next;
+      close;
+      StoredProcName:='proc_cx_chengyunren_mc';
+      open;
+      combobox1.Items.Clear;
+      while not eof do
+      begin
+         combobox1.Items.Add(fields[0].asstring);
+         next;
+      end;
     end;
+  except
+    application.MessageBox('查询数据失败！','货运单管理提示');
   end;
 end;
 
 procedure TForm19.ComboBox1Select(Sender: TObject);
 begin
-  with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select fcyrid from chengyunren_info where fcyrmc='''+combobox1.Text+'''');
-    open;
-    if not eof then
-      edit7.Text:=fields[0].asstring;
+  try
+    with zStoredProc1 do   //proc_cx_chengyunrenbh_by_cyrmc
+    begin
+      close;
+      StoredProcName:='proc_cx_chengyunrenbh_by_cyrmc';
+      ParamByName('cyrmc').Value:=combobox1.Text;
+      open;
+      if not eof then
+        edit7.Text:=fields[0].asstring;
+    end;
+  except
+    application.MessageBox('查询数据失败！','货运单管理提示');
   end;
 end;
 
@@ -270,75 +241,86 @@ begin
   edit3.Text:=edit1.Text;
 end;
 
-procedure TForm19.Edit2KeyDown(Sender: TObject; var Key: Word;
+procedure TForm19.Edit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 var
-  y:integer;
+  i:integer;
 begin
-  if key=13 then
-  begin
-    try
-      with zquery1 do
+if key=13 then
+  try
+    stringgrid2.RowCount:=2;
+    stringgrid2.Rows[1].Clear;
+      with zstoredproc1 do
       begin
         close;
-        sql.Clear;
-        sql.Add('select a.fcpbh,b.fcpmc,b.fcpzl,a.fcpdj,a.fcpsl,a.fyfhsl FROM(SELECT fcpbh,fcpdj,fcpsl,fyfhsl from htcpmxb where fhtbh='''+edit2.Text+''') as a JOIN (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh;');
+        zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';   //c.ffhdid,c.fhtbh,c.fkhmc,d.fxsyxm,c.fcddate,c.ffhdate,c.fisfhbz,c.fmemo
+        zstoredproc1.ParamByName('fhdbh').Value:=edit1.Text;
         open;
-        if eof then
-        begin
-           application.MessageBox('该合同下无产品明细，可能是旧合同，请确认！','发货单管理提示');
-           edit4.Text:='';
-           edit6.Text:='';
-           edit9.Text:='';
-           stringgrid1.RowCount:=1;
-           stringgrid2.RowCount:=1;
-           edit5.Text:='';
-           edit2.SelectAll;
-        end else
-        begin
-            stringgrid1.RowCount:=zquery1.RecordCount+1;
-            stringgrid2.RowCount:=1;
-            y:=1;
-            stringgrid1.Cells[0,0]:='产品编号';
-            stringgrid1.Cells[1,0]:='产品名称';
-            stringgrid1.Cells[2,0]:='产品种类';
-            stringgrid1.Cells[3,0]:='销售价格';
-            stringgrid1.Cells[4,0]:='销售数量';
-            stringgrid1.Cells[5,0]:='已发货数量';
-            stringgrid2.Cells[0,0]:='产品编号';
-            stringgrid2.Cells[1,0]:='产品名称';
-            stringgrid2.Cells[2,0]:='产品种类';
-            stringgrid2.Cells[3,0]:='销售价格';
-            stringgrid2.Cells[4,0]:='销售数量';
-            stringgrid2.Cells[5,0]:='已发货数量';
-            stringgrid2.Cells[6,0]:='待发货数量';
-          while not eof do
-          begin
-            stringgrid1.Cells[0,y]:=fields[0].AsString;
-            stringgrid1.Cells[1,y]:=fields[1].AsString;
-            stringgrid1.Cells[2,y]:=fields[2].AsString;
-            stringgrid1.Cells[3,y]:=fields[3].AsString;
-            stringgrid1.Cells[4,y]:=fields[4].AsString;
-            stringgrid1.Cells[5,y]:=fields[5].AsString;
-            y:=y+1;
-            next;
-          end;
-          sql.Clear;
-          sql.Add('select a.fkhmc,a.fkdhid from (SELECT fkdhid,fkhmc from kh_info) as a JOIN (select fhtbh,fkhbh from ht_info where fhtbh='''+edit2.Text+''') as b on a.fkdhid=b.fkhbh');
-          open;
+        if ParamByName('returncode').Value=1 then
+          application.MessageBox('该发货单已经生成货运单！','货运单管理提示')
+        else  begin
+          zstoredproc1.FirstResultSet;
           if not eof then
           begin
-            edit4.Text:=fields[0].AsString;
-            edit6.Text:=fields[1].AsString;
-            edit9.Text:=fields[0].AsString;
+            edit1.Text:=fields[0].AsString;
+            edit2.Text:=fields[1].AsString;
+            edit4.Text:=fields[2].AsString;
+            edit6.Text:=fields[4].AsString;
+            edit15.Text:=fields[3].AsString;
+            edit12.Text:=fields[8].AsString;
+            edit5.Text:=fields[7].AsString;
+            edit3.Text:=edit1.Text;
+            edit9.Text:=edit4.Text;
+            edit12.Text:=fields[8].AsString;
+            zstoredproc1.NextResultSet;
+            i:=1;
+            stringgrid2.RowCount:=recordcount+2;
+            while not eof do
+            begin
+              stringgrid2.RowCount:=stringgrid2.RowCount+1;
+              stringgrid2.Cells[0,i]:=inttostr(i);
+              stringgrid2.Cells[1,i]:=fields[0].AsString;
+              stringgrid2.Cells[2,i]:=fields[1].AsString;
+              stringgrid2.Cells[3,i]:=fields[2].AsString;
+              stringgrid2.Cells[4,i]:=fields[3].AsString;
+              stringgrid2.Cells[5,i]:=fields[4].AsString;
+              stringgrid2.Cells[6,i]:=fields[5].AsString;
+              i:=i+1;
+              stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
+              next;
+            end;
+            zstoredproc1.NextResultSet;
+            while not eof do
+            begin
+              stringgrid2.RowCount:=stringgrid2.RowCount+1;
+              stringgrid2.Cells[0,i]:=fields[0].AsString;
+              stringgrid2.Cells[2,i]:=fields[1].AsString;
+              stringgrid2.Cells[3,i]:=fields[2].AsString;
+              stringgrid2.Cells[4,i]:=fields[3].AsString;
+              stringgrid2.Cells[5,i]:=fields[4].AsString;
+              stringgrid2.Cells[6,i]:=fields[5].AsString;
+              i:=i+1;
+              stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
+              next;
+            end;
           end else
-            application.MessageBox('查询数据失败！','发货单管理提示');
+        application.MessageBox('没有发现该发货单信息！','货运单管理提示');
         end;
       end;
     except
-      application.MessageBox('查询数据失败！','发货单管理提示')
+      application.MessageBox('查询数据失败！','货运单管理提示');
     end;
-  end;
+end;
+
+procedure TForm19.FormShow(Sender: TObject);
+begin
+  stringgrid2.Cells[0,0]:='序号';
+  stringgrid2.Cells[1,0]:='产品编号';
+  stringgrid2.Cells[2,0]:='产品名称';
+  stringgrid2.Cells[3,0]:='产品种类';
+  stringgrid2.Cells[4,0]:='销售价格';
+  stringgrid2.Cells[5,0]:='发货数量';
+  stringgrid2.Cells[6,0]:='合计金额';
 end;
 
 procedure TForm19.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;

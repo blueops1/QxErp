@@ -229,6 +229,9 @@
 			<DCCReference Include="htmxtz.pas">
 				<Form>Form60</Form>
 			</DCCReference>
+			<DCCReference Include="tjfhfjxx.pas">
+				<Form>Form61</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
