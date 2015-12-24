@@ -39,6 +39,7 @@ var
   Form17: TForm17;
   SelARow:integer;
   tmpjhdbh:string;
+  boolReaded:boolean;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
@@ -74,6 +75,7 @@ begin
       stringgrid1.Rows[1].Clear;
       stringgrid2.RowCount:=2;
       stringgrid2.Rows[1].Clear;
+      boolReaded:=false;
       with  zStoredProc1 do
       begin
         close;
@@ -98,6 +100,7 @@ begin
           next;
         end;
       end;
+      boolReaded:=true;
     except
       application.MessageBox('数据查询失败！','计划单查询提示');
     end else
@@ -159,7 +162,7 @@ begin
   stringgrid2.Cells[5,0]:='计划数量';
   stringgrid2.Cells[6,0]:='发货单已开数量';
   stringgrid2.Cells[7,0]:='库存数量';
-  stringgrid2.Cells[8,0]:='已发数量';
+  stringgrid2.Cells[8,0]:='计划单内已开发货数量';
   stringgrid2.Cells[9,0]:='是否足够';
 end;
 
@@ -180,7 +183,7 @@ begin
   stringgrid2.Rows[1].Clear;
   SelARow:=ARow;
   tmpjhdbh:=stringgrid1.Cells[5,ARow];
-  if stringgrid1.Cells[5,ARow]<>'' then
+  if (stringgrid1.Cells[5,ARow]<>'') and (boolReaded=true) then
   try
     with zStoredProc1 do
     begin

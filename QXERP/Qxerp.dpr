@@ -64,7 +64,9 @@ uses
   wjgjggl in 'wjgjggl.pas' {Form58},
   lhttjcpmx in 'lhttjcpmx.pas' {Form59},
   htmxtz in 'htmxtz.pas' {Form60},
-  tjfhfjxx in 'tjfhfjxx.pas' {Form61};
+  tjfhfjxx in 'tjfhfjxx.pas' {Form61},
+  fhck in 'fhck.pas' {Form62},
+  fhckinfo in 'fhckinfo.pas' {Form63};
 
 {$R *.res}
 
@@ -135,5 +137,7 @@ begin
   Application.CreateForm(TForm59, Form59);
   Application.CreateForm(TForm60, Form60);
   Application.CreateForm(TForm61, Form61);
+  Application.CreateForm(TForm62, Form62);
+  Application.CreateForm(TForm63, Form63);
   Application.Run;
 end.

@@ -147,15 +147,12 @@ begin
       if RecordCount>0 then
         application.MessageBox('该货运单号已经存在，请核实！','货运单管理提示')
       else begin
-        if edit1.Text<>edit3.Text then
-        begin
           errorID:='发货单信息保存错误！';    //proc_insert_fahuodan_info
           close;
           StoredProcName:='proc_update_fahuodan_hydid_by_fhdid';
           ParamByName('fhdid').Value:=edit1.Text;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
           ParamByName('hydid').Value:=edit3.Text;
           ExecProc;
-        end;
           errorID:='货运单信息保存错误！'; //proc_insert_huoyundan_info
           close;
           StoredProcName:='proc_insert_huoyundan_info';
@@ -170,6 +167,23 @@ begin
           ParamByName('memo').Value:=edit13.Text;
           ExecProc;
           application.MessageBox('新增货运单成功！','货运单管理提示');
+          edit1.Text:='';
+          edit2.Text:='';
+          edit4.Text:='';
+          edit6.Text:='';
+          edit15.Text:='';
+          edit5.Text:='';
+          edit3.Text:='';
+          edit7.Text:='';
+          edit8.Text:='';
+          edit12.Text:='';
+          edit11.Text:='';
+          edit10.Text:='';
+          edit13.Text:='';
+          edit9.Text:='';
+          edit14.Text:='';
+          stringgrid2.RowCount:=2;
+          stringgrid2.Rows[1].Clear;
       end;
     end;
   end;
@@ -274,7 +288,6 @@ if key=13 then
             edit12.Text:=fields[8].AsString;
             zstoredproc1.NextResultSet;
             i:=1;
-            stringgrid2.RowCount:=recordcount+2;
             while not eof do
             begin
               stringgrid2.RowCount:=stringgrid2.RowCount+1;

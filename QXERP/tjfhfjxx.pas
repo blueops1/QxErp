@@ -70,7 +70,7 @@ begin
           combobox1.SetFocus;
         end;
       end;
-    if isfrom='jhzfhd' then
+    if isfrom='jhdzfhd' then
       with jhdxzfhd.form40.stringgrid2 do
       begin
         for i := 1 to RowCount-2 do

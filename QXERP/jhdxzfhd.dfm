@@ -77,11 +77,11 @@ object Form40: TForm40
     Visible = False
   end
   object Label13: TLabel
-    Left = 267
+    Left = 261
     Top = 70
-    Width = 74
+    Width = 80
     Height = 13
-    Caption = #36135#29289#24635#37325#37327'(T)'
+    Caption = #36135#29289#24635#37325#37327'('#21544')'
   end
   object Label14: TLabel
     Left = 76
@@ -142,7 +142,7 @@ object Form40: TForm40
     ParentColor = False
   end
   object Label4: TLabel
-    Left = 267
+    Left = 273
     Top = 29
     Width = 60
     Height = 13

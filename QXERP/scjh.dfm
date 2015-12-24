@@ -82,20 +82,20 @@ object Form17: TForm17
     Height = 384
     Align = alBottom
     ColCount = 10
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
     PopupMenu = PopupMenu2
     TabOrder = 4
-    ExplicitWidth = 1005
     ColWidths = (
       64
       88
-      93
-      135
+      103
+      95
       105
       103
-      108
-      93
-      83
-      77)
+      96
+      81
+      129
+      96)
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

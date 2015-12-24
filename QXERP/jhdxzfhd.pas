@@ -134,7 +134,8 @@ begin
             begin
               close;
               StoredProcName:='proc_insert_fahuodan_mxz';
-              ParamByName('fhdid').Value:=edit1.Text;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
+              ParamByName('fhdid').Value:=edit1.Text;
+              ParamByName('jhdbh').Value:=scjh.tmpjhdbh;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
               ParamByName('cpbh').Value:=stringgrid2.Cells[1,i];
               ParamByName('cpdj').Value:=stringgrid2.Cells[4,i];
               ParamByName('fhsl').Value:=stringgrid2.Cells[5,i];
@@ -154,8 +155,23 @@ begin
           ParamByName('hydid').Value:=edit3.Text;
           ParamByName('weight').Value:=edit12.Text;
           ParamByName('cddate').Value:=datetimetostr(now());
-          ParamByName('memo').Value:=edit5.Text;
+          ParamByName('memo').Value:='*'+edit5.Text;
           ExecProc;
+          edit1.Text:='';
+          edit2.Text:='';
+          edit4.Text:='';
+          edit6.Text:='';
+          edit5.Text:='';
+          edit7.Text:='';
+          edit8.Text:='';
+          edit10.Text:='';
+          edit11.Text:='';
+          edit12.Text:='';
+          edit13.Text:='';
+          edit14.Text:='';
+          combobox1.Text:='';
+          stringgrid2.RowCount:=2;
+          stringgrid2.Rows[1].Clear;
           {errorID:='货运单信息保存错误！'; //proc_insert_huoyundan_info
           close;
           StoredProcName:='proc_insert_huoyundan_info';

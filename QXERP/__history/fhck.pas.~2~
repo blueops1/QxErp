@@ -1,0 +1,28 @@
+unit fhck;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure;
+
+type
+  TForm62 = class(TForm)
+    ZStoredProc1: TZStoredProc;
+    StringGrid1: TStringGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form62: TForm62;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+end.

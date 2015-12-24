@@ -232,6 +232,12 @@
 			<DCCReference Include="tjfhfjxx.pas">
 				<Form>Form61</Form>
 			</DCCReference>
+			<DCCReference Include="fhck.pas">
+				<Form>Form62</Form>
+			</DCCReference>
+			<DCCReference Include="fhckinfo.pas">
+				<Form>Form63</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

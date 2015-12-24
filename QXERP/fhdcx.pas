@@ -13,7 +13,6 @@ type
     RadioGroup1: TRadioGroup;
     Label1: TLabel;
     StringGrid1: TStringGrid;
-    ZQuery1: TZQuery;
     ZStoredProc1: TZStoredProc;
     Button1: TButton;
     procedure Button1Click(Sender: TObject);
@@ -28,7 +27,7 @@ type
 
 var
   Form20: TForm20;
-  fhdid:string;
+  //fhdid:string;
 
 implementation
 

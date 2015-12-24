@@ -1,7 +1,7 @@
 object Form21: TForm21
   Left = 0
   Top = 0
-  Caption = #21457#36135#21333#35814#32454#36164#26009
+  Caption = #25171#21360#21457#36135#21333#35814#32454#36164#26009
   ClientHeight = 662
   ClientWidth = 1079
   Color = clBtnFace
@@ -69,9 +69,9 @@ object Form21: TForm21
   object Label13: TLabel
     Left = 26
     Top = 539
-    Width = 74
+    Width = 80
     Height = 13
-    Caption = #36135#29289#24635#37325#37327'(T)'
+    Caption = #36135#29289#24635#37325#37327'('#21544')'
   end
   object Label14: TLabel
     Left = 76
@@ -292,7 +292,7 @@ object Form21: TForm21
     Top = 617
     Width = 107
     Height = 25
-    Caption = #20986#21333
+    Caption = #25171#21360#21457#36135#21333
     TabOrder = 13
   end
   object Edit14: TEdit

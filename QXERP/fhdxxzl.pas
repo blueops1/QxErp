@@ -59,13 +59,14 @@ type
 
 var
   Form21: TForm21;
+  fhdid:string;
   function SmallTOBig(small:real):string;stdcall;external 'dlltools.dll';
 
 implementation
 
 {$R *.dfm}
 
-uses main,fhdcx;
+uses main;
 
 procedure TForm21.Edit10Change(Sender: TObject);
 begin
@@ -84,7 +85,7 @@ begin
     begin
       close;
       zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
-      zstoredproc1.ParamByName('fhdbh').Value:=fhdcx.fhdid;
+      zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
       open;
       zstoredproc1.FirstResultSet;
       edit1.Text:=fields[0].AsString;

@@ -69,9 +69,9 @@ object Form19: TForm19
   object Label13: TLabel
     Left = 26
     Top = 419
-    Width = 74
+    Width = 80
     Height = 13
-    Caption = #36135#29289#24635#37325#37327'(T)'
+    Caption = #36135#29289#24635#37325#37327'('#21544')'
   end
   object Label14: TLabel
     Left = 76
