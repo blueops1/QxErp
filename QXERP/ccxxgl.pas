@@ -153,6 +153,44 @@ type
     Label44: TLabel;
     Label45: TLabel;
     Label46: TLabel;
+    TabSheet16: TTabSheet;
+    PageControl7: TPageControl;
+    TabSheet17: TTabSheet;
+    Label47: TLabel;
+    Label48: TLabel;
+    Label51: TLabel;
+    Label52: TLabel;
+    Edit11: TEdit;
+    Edit12: TEdit;
+    Memo11: TMemo;
+    Button21: TButton;
+    Button22: TButton;
+    TabSheet18: TTabSheet;
+    Label53: TLabel;
+    Label54: TLabel;
+    Label57: TLabel;
+    Label58: TLabel;
+    Label59: TLabel;
+    ListBox6: TListBox;
+    Edit15: TEdit;
+    Button23: TButton;
+    Button24: TButton;
+    Edit16: TEdit;
+    Memo12: TMemo;
+    Label60: TLabel;
+    ComboBox11: TComboBox;
+    Label61: TLabel;
+    ComboBox12: TComboBox;
+    Label62: TLabel;
+    ComboBox13: TComboBox;
+    Label63: TLabel;
+    Edit17: TEdit;
+    Label68: TLabel;
+    Label69: TLabel;
+    ComboBox14: TComboBox;
+    Label70: TLabel;
+    Edit18: TEdit;
+    Label74: TLabel;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit45KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Edit3KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -188,6 +226,17 @@ type
     procedure Button19Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button11Click(Sender: TObject);
+    procedure ComboBox11DropDown(Sender: TObject);
+    procedure Edit11KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Button21Click(Sender: TObject);
+    procedure ComboBox3Select(Sender: TObject);
+    procedure Edit17KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit18KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit15KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ListBox6Click(Sender: TObject);
+    procedure ComboBox14DropDown(Sender: TObject);
+    procedure ComboBox12DropDown(Sender: TObject);
+    procedure Button23Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -340,7 +389,7 @@ end;
 
 procedure TForm25.Button1Click(Sender: TObject);
 begin
-  if (edit1.Text<>'') and (edit2.Text<>'') and (combobox1.Text<>'') and (combobox2.Text<>'') and (combobox3.Text<>'') and (combobox4.Text<>'')then
+  if (edit1.Text<>'') and (edit2.Text<>'') and (combobox1.Text<>'') and (combobox2.Text<>'') and (combobox3.Text<>'') and (combobox4.Text<>'') and (combobox13.Text<>'') then
     try
       with zStoredProc1 do
       begin
@@ -350,8 +399,10 @@ begin
         ParamByName('itemmc').Value:=edit2.Text;
         ParamByName('itemdwid').Value:=SplitString(combobox4.Text,'|');
         ParamByName('itemlxid').Value:=SplitString(combobox3.Text,'|');
+        ParamByName('itemrjlxid').Value:=SplitString(combobox13.Text,'|');
         ParamByName('ckid').Value:=SplitString(combobox1.Text,'|');
         ParamByName('hjid').Value:=SplitString(combobox2.Text,'|');
+        ParamByName('weight').Value:=edit17.Text;
         ParamByName('memo').Value:='*'+memo1.Text;
         ExecProc;
         if ParamByName('returncode').Value=1 then
@@ -363,7 +414,9 @@ begin
           combobox1.Text:='';
           combobox2.Text:='';
           combobox3.Text:='';
+          combobox13.Text:='';
           combobox4.Text:='';
+          edit17.Text:='';
           memo1.Text:='';
           edit1.SetFocus;
         end;
@@ -376,9 +429,69 @@ begin
     application.MessageBox('请将必填项填写完整！','仓储信息管理提示');
 end;
 
+procedure TForm25.Button21Click(Sender: TObject);
+begin
+  if (edit11.Text<>'') and (edit12.Text<>'') and (combobox11.Text<>'') then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_insert_itemrjlxinfo';    //itemlxid,itemlxmc,itemlxmemo
+        ParamByName('itemrjlxid').Value:=edit11.Text;
+        ParamByName('itemrjlxmc').Value:=edit12.Text;
+        ParamByName('itemyjlxid').Value:=splitstring(combobox11.Text,'|');
+        ParamByName('itemrjlxmemo').Value:='*'+memo11.Text;
+        ExecProc;
+        if ParamByName('returncode').Value=1 then
+          application.MessageBox('该科目编号已经存在！','仓储信息管理提示')
+        else if ParamByName('returncode').Value=2 then
+          application.MessageBox('该二级科目已经存在！','仓储信息管理提示')
+        else begin
+          application.MessageBox('数据保存成功！','仓储信息管理提示');
+          edit11.Text:='';
+          edit12.Text:='';
+          memo11.Text:='';
+          combobox11.Text:='';
+          edit11.SetFocus;
+        end;
+
+        //fgysmc=gysmc,fgyszh=gyszh,fgyskhh=gyskhh,flxr=lxr,flxrphone=lxrphone,fmemo=memo
+      end;
+  except
+    application.MessageBox('数据更新失败！','仓储信息管理提示');
+  end else
+    application.MessageBox('请将必填项填写完整！','仓储信息管理提示');
+end;
+
+procedure TForm25.Button23Click(Sender: TObject);
+begin
+  if (edit15.Text<>'') and (edit16.Text<>'') and (combobox12.Text<>'')then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_update_itemrjlxid_by_itemrjlxid';    //itemlxid,itemlxmc,itemlxmemo
+        ParamByName('itemrjlxid').Value:=edit15.Text;
+        ParamByName('itemyjlxid').Value:=splitstring(combobox12.Text,'|');
+        ParamByName('itemrjlxmc').Value:=edit16.Text;
+        ParamByName('itemrjlxmemo').Value:=memo12.Text;
+        ExecProc;
+          application.MessageBox('数据修改成功！','仓储信息管理提示');
+          edit15.Text:='';
+          edit16.Text:='';
+          combobox12.Text:='';
+          memo12.Text:='';
+          edit15.SetFocus;
+       end;
+  except
+    application.MessageBox('数据修改失败！','仓储信息管理提示');
+  end else
+    application.MessageBox('请将必填项填写完整！','仓储信息管理提示');
+end;
+
 procedure TForm25.Button3Click(Sender: TObject);
 begin     //proc_update_ckiteminfo_by_itembh
-  if (edit7.Text<>'') and (edit5.Text<>'') and (combobox6.Text<>'') and (combobox7.Text<>'') and (combobox8.Text<>'') and (combobox9.Text<>'')then
+  if (edit7.Text<>'') and (edit5.Text<>'') and (combobox6.Text<>'') and (combobox7.Text<>'') and (combobox8.Text<>'') and (combobox9.Text<>'') and (combobox14.Text<>'')then
     try
       with zStoredProc1 do
       begin
@@ -388,18 +501,22 @@ begin     //proc_update_ckiteminfo_by_itembh
         ParamByName('itemmc').Value:=edit5.Text;
         ParamByName('itemdwid').Value:=SplitString(combobox6.Text,'|');
         ParamByName('itemlxid').Value:=SplitString(combobox7.Text,'|');
+        ParamByName('itemrjlxid').Value:=SplitString(combobox14.Text,'|');
         ParamByName('ckid').Value:=SplitString(combobox8.Text,'|');
         ParamByName('hjid').Value:=SplitString(combobox9.Text,'|');
         ParamByName('memo').Value:=memo2.Text;
+        ParamByName('weight').Value:=edit18.Text;
         ExecProc;
           application.MessageBox('数据修改成功！','仓储信息管理提示');
           edit7.Text:='';
           edit5.Text:='';
           combobox6.Text:='';
           combobox7.Text:='';
+          combobox14.Text:='';
           combobox8.Text:='';
           combobox9.Text:='';
           memo2.Text:='';
+          edit18.Text:='';
           edit7.SetFocus;
         //fgysmc=gysmc,fgyszh=gyszh,fgyskhh=gyskhh,flxr=lxr,flxrphone=lxrphone,fmemo=memo
       end;
@@ -518,6 +635,70 @@ begin
     end;
 end;
 
+procedure TForm25.ComboBox11DropDown(Sender: TObject);
+begin
+  if combobox11.Items.Count>0 then
+    combobox11.Items.Clear;
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_itemlxbhandmc';
+        open;
+        while not eof do
+        begin
+          combobox11.Items.Add(fields[0].asstring);
+          next;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','仓储信息管理提示');
+    end;
+end;
+
+procedure TForm25.ComboBox12DropDown(Sender: TObject);
+begin
+  if combobox12.Items.Count>0 then
+    combobox12.Items.Clear;
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_itemlxbhandmc';
+        open;
+        while not eof do
+        begin
+          combobox12.Items.Add(fields[0].asstring);
+          next;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','仓储信息管理提示');
+    end;
+end;
+
+procedure TForm25.ComboBox14DropDown(Sender: TObject);
+begin
+  if combobox14.Items.Count>0 then
+    combobox14.Items.Clear;
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_itemrjlxidandmc_by_itemyjlxid';
+        ParamByName('itemyjlxid').Value:=splitstring(combobox7.Text,'|');
+        open;
+        while not eof do
+        begin
+          combobox14.Items.Add(fields[0].asstring);
+          next;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','仓储信息管理提示');
+    end;
+end;
+
 procedure TForm25.ComboBox1DropDown(Sender: TObject);
 begin
   if combobox1.Items.Count>0 then
@@ -573,6 +754,30 @@ begin
         while not eof do
         begin
           combobox3.Items.Add(fields[0].asstring);
+          next;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','仓储信息管理提示');
+    end;
+end;
+
+procedure TForm25.ComboBox3Select(Sender: TObject);
+begin
+//proc_cx_itemrjlxidandmc_by_itemyjlxid
+  if combobox13.Items.Count>0 then
+    combobox13.Items.Clear;
+    combobox13.Text:='';
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_itemrjlxidandmc_by_itemyjlxid';
+        ParamByName('itemyjlxid').Value:=splitstring(combobox3.Text,'|');
+        open;
+        while not eof do
+        begin
+          combobox13.Items.Add(fields[0].asstring);
           next;
         end;
       end;
@@ -707,6 +912,27 @@ begin
     end;
 end;
 
+procedure TForm25.Edit11KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key=13 then
+  try
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_newitemrjlxid';
+      open;
+      if fields[0].AsString<>'' then
+      begin
+        edit11.Text:=fields[0].AsString;
+        edit12.SetFocus;
+      end;
+    end;
+  except
+    application.MessageBox('数据查询失败！','仓储信息管理提示');
+  end;
+end;
+
 procedure TForm25.Edit13KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -729,6 +955,51 @@ begin
   except
     application.MessageBox('数据查询失败！','仓储信息管理提示');
   end;
+end;
+
+procedure TForm25.Edit15KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key=13) and (edit15.Text<>'') then
+  try
+    with zstoredproc1 do
+    begin
+      close;
+      StoredProcName:='proc_modiitemrjlxxx_by_itemrjlxmc';
+      ParamByName('itemrjlxmc').Value:=edit15.Text;
+      open;
+      listbox6.Clear;
+      while not eof do
+      begin
+        listbox6.Items.Add(fields[0].asstring);
+        next;
+      end;
+      edit15.Text:='';
+      listbox6.ItemIndex:=0;
+    end;
+  except
+    application.MessageBox('数据查询失败！','供应商管理提示');
+  end;
+end;
+
+procedure TForm25.Edit17KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['-','0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit17.Text)>0)   then
+    key:=#0;
+      if (key='-') and (Pos('-',Edit17.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm25.Edit18KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['-','0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit18.Text)>0)   then
+    key:=#0;
+      if (key='-') and (Pos('-',Edit18.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm25.Edit19KeyDown(Sender: TObject; var Key: Word;
@@ -858,6 +1129,7 @@ end;
 procedure TForm25.Edit3KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+if key=13 then
   try
     with zstoredproc1 do
     begin
@@ -971,9 +1243,11 @@ begin
           Edit5.Text := fields[1].AsString;
           combobox6.Text := fields[2].AsString;
           combobox7.Text := fields[3].AsString;
+          combobox14.Text := fields[7].AsString;
           combobox8.Text := fields[4].AsString;
           combobox9.Text := fields[5].AsString;
           Memo2.Text := fields[6].AsString;
+          Edit18.Text := fields[8].AsString;
         end;
       end;
     except
@@ -1041,8 +1315,7 @@ end;
 
 procedure TForm25.ListBox4Click(Sender: TObject);
 begin
-  try
-    if ListBox4.Items.Strings[ListBox4.itemindex]<>'' then
+  if ListBox4.Items.Strings[ListBox4.itemindex]<>'' then
     try
       with zStoredProc1 do
       begin
@@ -1061,9 +1334,6 @@ begin
     except
       application.MessageBox('数据查询失败！','仓储信息管理提示');
     end;
-  except
-    application.MessageBox('数据查询失败111！','仓储信息管理提示');
-  end;
 end;
 
 procedure TForm25.ListBox5Click(Sender: TObject);
@@ -1091,6 +1361,30 @@ begin
   except
     application.MessageBox('数据查询失败111！','仓储信息管理提示');
   end;
+end;
+
+procedure TForm25.ListBox6Click(Sender: TObject);
+begin
+  if ListBox6.Items.Strings[ListBox6.itemindex]<>'' then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_ccxxglinfo_by_cxxmandcxbh';
+        ParamByName('cxxm').Value:='itemrjlx';
+        ParamByName('cxbh').Value:=SplitString(ListBox6.Items.Strings[ListBox6.itemindex],'|');
+        open;
+        if not eof then
+        begin
+          Edit15.Text := fields[0].AsString;
+          Edit16.Text := fields[1].AsString;
+          combobox12.Text:=fields[2].AsString;
+          Memo12.Text := fields[3].AsString;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','仓储信息管理提示');
+    end;
 end;
 
 end.

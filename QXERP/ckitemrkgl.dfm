@@ -16,22 +16,22 @@ object Form22: TForm22
   PixelsPerInch = 96
   TextHeight = 13
   object Bevel1: TBevel
-    Left = 14
-    Top = 127
+    Left = 19
+    Top = 119
     Width = 832
     Height = 346
     Shape = bsFrame
     Style = bsRaised
   end
   object Label2: TLabel
-    Left = 295
+    Left = 438
     Top = 148
     Width = 48
     Height = 13
     Caption = #20837#24211#25968#37327
   end
   object Label3: TLabel
-    Left = 514
+    Left = 657
     Top = 148
     Width = 48
     Height = 13
@@ -111,7 +111,7 @@ object Form22: TForm22
   object ComboBoxEx1: TComboBoxEx
     Left = 117
     Top = 145
-    Width = 140
+    Width = 300
     Height = 22
     ItemsEx = <>
     Color = clMoneyGreen
@@ -122,7 +122,7 @@ object Form22: TForm22
     DropDownCount = 16
   end
   object Edit2: TEdit
-    Left = 364
+    Left = 507
     Top = 145
     Width = 111
     Height = 21
@@ -131,7 +131,7 @@ object Form22: TForm22
     OnKeyPress = Edit2KeyPress
   end
   object Edit3: TEdit
-    Left = 573
+    Left = 716
     Top = 145
     Width = 111
     Height = 21
@@ -207,7 +207,7 @@ object Form22: TForm22
   object Button2: TButton
     Left = 715
     Top = 176
-    Width = 86
+    Width = 112
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 9

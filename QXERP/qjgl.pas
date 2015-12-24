@@ -27,11 +27,16 @@ type
     Edit1: TEdit;
     Label6: TLabel;
     Label9: TLabel;
+    DateTimePicker2: TDateTimePicker;
+    DateTimePicker4: TDateTimePicker;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure DateTimePicker1UserInput(Sender: TObject;
+      const UserString: string; var DateAndTime: TDateTime;
+      var AllowChange: Boolean);
   private
     { Private declarations }
   public
@@ -60,8 +65,8 @@ begin
       ParamByName('zgbh').Value:=SplitString(combobox1.Text,'|');
       ParamByName('qjlx').Value:=combobox2.Text;
       ParamByName('qjsqdate').Value:=datetimepicker5.Date;
-      ParamByName('qjksdate').Value:=datetimepicker1.DateTime;
-      ParamByName('qjjsdate').Value:=datetimepicker3.DateTime;
+      ParamByName('qjksdate').Value:=trunc(DateTimePicker1.Date)+frac(DateTimePicker2.Time);;
+      ParamByName('qjjsdate').Value:=trunc(DateTimePicker3.Date)+frac(DateTimePicker4.Time);
       ParamByName('qjly').Value:='*'+memo1.Text;
       ParamByName('czry').Value:=main.strUser;
       ExecProc;
@@ -73,6 +78,8 @@ begin
     datetimepicker1.DateTime:=now();
     datetimepicker5.DateTime:=now();
     datetimepicker3.DateTime:=now();
+    datetimepicker2.DateTime:=now();
+    datetimepicker4.DateTime:=now();
     edit1.setfocus;
     application.MessageBox('保存数据成功！','请假管理提示');
   except
@@ -111,6 +118,13 @@ begin
  end;
 end;
 
+procedure TForm37.DateTimePicker1UserInput(Sender: TObject;
+  const UserString: string; var DateAndTime: TDateTime;
+  var AllowChange: Boolean);
+begin
+  DateTimePicker1.DateTime:=DateAndTime;
+end;
+
 procedure TForm37.Edit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -131,11 +145,13 @@ if key=13 then
   end;
 end;
 
-procedure TForm37.FormShow(Sender: TObject);
+procedure TForm37.FormCreate(Sender: TObject);
 begin
   datetimepicker1.DateTime:=now();
   datetimepicker5.DateTime:=now();
   datetimepicker3.DateTime:=now();
+  datetimepicker2.DateTime:=now();
+  datetimepicker4.DateTime:=now();
 end;
 
 end.

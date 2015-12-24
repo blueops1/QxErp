@@ -133,8 +133,8 @@ object Form36: TForm36
     OnClick = Button3Click
   end
   object Button4: TButton
-    Left = 798
-    Top = 508
+    Left = 805
+    Top = 520
     Width = 97
     Height = 25
     Caption = #20445#23384#35745#21010#20449#24687
@@ -166,13 +166,22 @@ object Form36: TForm36
     TabOrder = 10
   end
   object Button5: TButton
-    Left = 744
-    Top = 15
-    Width = 158
+    Left = 640
+    Top = 17
+    Width = 128
     Height = 25
     Caption = #21462#28040#26032#22686#35745#21010#20219#21153#21333
     TabOrder = 11
     OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 792
+    Top = 17
+    Width = 119
+    Height = 25
+    Caption = #28155#21152#38468#23646#29983#20135#35745#21010
+    TabOrder = 12
+    OnClick = Button6Click
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

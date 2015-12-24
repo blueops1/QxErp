@@ -42,7 +42,7 @@ object Form61: TForm61
     Top = 75
     Width = 48
     Height = 13
-    Caption = #21457#36135#25968#37327
+    Caption = #28155#21152#25968#37327
   end
   object ComboBox1: TComboBox
     Left = 112
@@ -81,7 +81,7 @@ object Form61: TForm61
     Top = 120
     Width = 145
     Height = 25
-    Caption = #28155#21152#21457#36135#38468#20214
+    Caption = #28155#21152#38468#23646#29289#20214
     TabOrder = 4
     OnClick = Button1Click
   end

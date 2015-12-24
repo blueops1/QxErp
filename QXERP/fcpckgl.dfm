@@ -40,7 +40,7 @@ object Form27: TForm27
     Caption = #30003#39046#20154
   end
   object Label4: TLabel
-    Left = 497
+    Left = 609
     Top = 140
     Width = 48
     Height = 13
@@ -82,7 +82,7 @@ object Form27: TForm27
     Caption = #29289#36164#21517#31216
   end
   object Label7: TLabel
-    Left = 265
+    Left = 375
     Top = 140
     Width = 60
     Height = 13
@@ -113,7 +113,7 @@ object Form27: TForm27
   object ComboBoxEx1: TComboBoxEx
     Left = 104
     Top = 137
-    Width = 130
+    Width = 249
     Height = 22
     ItemsEx = <>
     TabOrder = 5
@@ -155,7 +155,7 @@ object Form27: TForm27
   object Memo1: TMemo
     Left = 104
     Top = 59
-    Width = 674
+    Width = 705
     Height = 42
     TabOrder = 3
   end
@@ -169,7 +169,7 @@ object Form27: TForm27
     OnClick = Button2Click
   end
   object Edit4: TEdit
-    Left = 335
+    Left = 445
     Top = 137
     Width = 131
     Height = 21
@@ -184,9 +184,9 @@ object Form27: TForm27
     OnChange = Edit4Change
   end
   object Edit3: TEdit
-    Left = 568
+    Left = 680
     Top = 137
-    Width = 115
+    Width = 107
     Height = 21
     Color = clMoneyGreen
     TabOrder = 7
@@ -194,8 +194,8 @@ object Form27: TForm27
   end
   object Button1: TButton
     Left = 698
-    Top = 135
-    Width = 75
+    Top = 170
+    Width = 89
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 8
@@ -220,7 +220,7 @@ object Form27: TForm27
   object Edit5: TEdit
     Left = 103
     Top = 172
-    Width = 579
+    Width = 580
     Height = 21
     TabOrder = 10
   end

@@ -180,6 +180,7 @@ end;
 
 procedure TForm40.Button5Click(Sender: TObject);
 begin
+  tjfhfjxx.isfrom:='jhdzfhd';
   tjfhfjxx.Form61.ShowModal;
 end;
 

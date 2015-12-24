@@ -26,6 +26,7 @@ type
     Label4: TLabel;
     Memo1: TMemo;
     Button5: TButton;
+    Button6: TButton;
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure Button1Click(Sender: TObject);
@@ -40,6 +41,7 @@ type
     procedure StringGrid3SetEditText(Sender: TObject; ACol, ARow: Integer;
       const Value: string);
     procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,7 +58,7 @@ implementation
 
 {$R *.dfm}
 
-uses main;
+uses main,tjfhfjxx;
 
 procedure DeleteStringGridRow(vRow: Integer; StringGrid: TStringGrid);
 var
@@ -211,6 +213,12 @@ begin
   stringgrid3.RowCount:=2;
   stringgrid3.Rows[1].Clear;
   form36.Close;
+end;
+
+procedure TForm36.Button6Click(Sender: TObject);
+begin
+ tjfhfjxx.isfrom:='xzjh';
+ tjfhfjxx.Form61.ShowModal;
 end;
 
 procedure TForm36.FormShow(Sender: TObject);

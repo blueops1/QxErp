@@ -30,11 +30,12 @@ type
 
 var
   Form61: TForm61;
+  isfrom:string;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
 
-uses jhdxzfhd;
+uses jhdxzfhd,xzscjh;
 
 {$R *.dfm}
 
@@ -45,30 +46,56 @@ var
 begin
   booldouble:=true;
   if edit3.text<>'' then
-    with jhdxzfhd.form40.stringgrid2 do
-    begin
-      for i := 1 to RowCount-2 do
-        if trim(Cells[1,i])=trim(SplitString(combobox1.Text,'|')) then
-          booldouble:=false;
-      if booldouble=false then
-        application.MessageBox('该产品编号已经添加至发货单列表!','添加附属物件提示')
-      else begin
-        RowCount:=RowCount+1;
-        Cells[0,RowCount-2]:=inttostr(RowCount-2);
-        Cells[1,RowCount-2]:=SplitString(combobox1.Text,'|');
-        Cells[2,RowCount-2]:=edit1.Text;
-        Cells[3,RowCount-2]:=edit2.Text;
-        Cells[4,RowCount-2]:='0';
-        Cells[5,RowCount-2]:=edit3.Text;
-        Rows[RowCount-1].Clear;
-        edit1.Text:='';
-        edit2.Text:='';
-        edit3.Text:='';
-        combobox1.Text:='';
-        combobox1.SetFocus;
+  begin
+    if isfrom='xzjh' then
+      with xzscjh.Form36.StringGrid3 do
+      begin
+        for i := 1 to RowCount-2 do
+          if trim(Cells[1,i])=trim(SplitString(combobox1.Text,'|')) then
+            booldouble:=false;
+        if booldouble=false then
+          application.MessageBox('该产品编号已经添加至发货单列表!','添加附属物件提示')
+        else begin
+          RowCount:=RowCount+1;
+          Cells[0,RowCount-2]:=inttostr(RowCount-2);
+          Cells[1,RowCount-2]:=edit2.Text;
+          Cells[2,RowCount-2]:=combobox1.Text;
+          Cells[3,RowCount-2]:=edit3.Text;
+          Cells[4,RowCount-2]:=edit3.Text;
+          Rows[RowCount-1].Clear;
+          edit1.Text:='';
+          edit2.Text:='';
+          edit3.Text:='';
+          combobox1.Text:='';
+          combobox1.SetFocus;
+        end;
       end;
-    end else
-      application.MessageBox('请将所有项目填写完整!','添加附属物件提示');
+    if isfrom='jhzfhd' then
+      with jhdxzfhd.form40.stringgrid2 do
+      begin
+        for i := 1 to RowCount-2 do
+          if trim(Cells[1,i])=trim(SplitString(combobox1.Text,'|')) then
+            booldouble:=false;
+        if booldouble=false then
+          application.MessageBox('该产品编号已经添加至发货单列表!','添加附属物件提示')
+        else begin
+          RowCount:=RowCount+1;
+          Cells[0,RowCount-2]:=inttostr(RowCount-2);
+          Cells[1,RowCount-2]:=SplitString(combobox1.Text,'|');
+          Cells[2,RowCount-2]:=edit1.Text;
+          Cells[3,RowCount-2]:=edit2.Text;
+          Cells[4,RowCount-2]:='0';
+          Cells[5,RowCount-2]:=edit3.Text;
+          Rows[RowCount-1].Clear;
+          edit1.Text:='';
+          edit2.Text:='';
+          edit3.Text:='';
+          combobox1.Text:='';
+          combobox1.SetFocus;
+        end;
+      end;
+  end else
+    application.MessageBox('请将所有项目填写完整!','添加附属物件提示');
 end;
 
 procedure TForm61.ComboBox1KeyDown(Sender: TObject; var Key: Word;

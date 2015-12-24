@@ -32,6 +32,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure N1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -188,6 +189,11 @@ begin
     key:=#0;
       if (key='-') and (Pos('-',Edit2.Text)>0)   then
     key:=#0;
+end;
+
+procedure TForm52.FormShow(Sender: TObject);
+begin
+  datetimepicker1.DateTime:=now();
 end;
 
 procedure TForm52.N1Click(Sender: TObject);
