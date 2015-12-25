@@ -49,6 +49,8 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Edit6KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit5KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -196,21 +198,17 @@ end;
 
 procedure TForm58.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
-  if not charinset(key,['-','0'..'9','.',#8]) then
+  if not charinset(key,['0'..'9','.',#8]) then
     key:=#0;
-  if (key='.') and (Pos('.',Edit2.Text)>0)   then
-    key:=#0;
-      if (key='-') and (Pos('-',Edit2.Text)>0)   then
+  if (key='.') and (Pos('.',Edit1.Text)>0)   then
     key:=#0;
 end;
 
 procedure TForm58.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
-  if not charinset(key,['-','0'..'9','.',#8]) then
+  if not charinset(key,['0'..'9','.',#8]) then
     key:=#0;
   if (key='.') and (Pos('.',Edit2.Text)>0)   then
-    key:=#0;
-      if (key='-') and (Pos('-',Edit2.Text)>0)   then
     key:=#0;
 end;
 
@@ -252,6 +250,22 @@ begin
     application.MessageBox('数据查询失败！','加工价格信息管理提示');
   end;
  end;
+end;
+
+procedure TForm58.Edit5KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit5.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm58.Edit6KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit6.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm58.ListBox1Click(Sender: TObject);

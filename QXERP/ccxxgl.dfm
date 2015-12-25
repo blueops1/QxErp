@@ -231,7 +231,6 @@ object Form25: TForm25
         object TabSheet5: TTabSheet
           Caption = #29289#21697#20449#24687#20462#25913
           ImageIndex = 1
-          ExplicitLeft = 12
           object Label8: TLabel
             Left = 429
             Top = 35

@@ -1218,7 +1218,7 @@ begin
         next;
       end;
       edit7.Text:='';
-      listbox1.ItemIndex:=0;
+      //listbox1.ItemIndex:=0;
     end;
   except
     application.MessageBox('数据查询失败！','仓储信息管理提示');
@@ -1227,7 +1227,6 @@ end;
 
 procedure TForm25.ListBox1Click(Sender: TObject);
 begin
-  try
     if ListBox1.Items.Strings[ListBox1.itemindex]<>'' then
     try
       with zStoredProc1 do
@@ -1253,9 +1252,6 @@ begin
     except
       application.MessageBox('数据查询失败！','仓储信息管理提示');
     end;
-  except
-    application.MessageBox('数据查询失败111！','仓储信息管理提示');
-  end;
 end;
 
 procedure TForm25.ListBox2Click(Sender: TObject);

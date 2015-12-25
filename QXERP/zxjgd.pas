@@ -274,21 +274,17 @@ end;
 
 procedure TForm50.Edit1KeyPress(Sender: TObject; var Key: Char);
 begin
-  if not charinset(key,['-','0'..'9','.',#8]) then
+  if not charinset(key,['0'..'9','.',#8]) then
     key:=#0;
-  if (key='.') and (Pos('.',Edit2.Text)>0)   then
-    key:=#0;
-      if (key='-') and (Pos('-',Edit2.Text)>0)   then
+  if (key='.') and (Pos('.',Edit1.Text)>0)   then
     key:=#0;
 end;
 
 procedure TForm50.Edit2KeyPress(Sender: TObject; var Key: Char);
 begin
-  if not charinset(key,['-','0'..'9','.',#8]) then
+  if not charinset(key,['0'..'9','.',#8]) then
     key:=#0;
   if (key='.') and (Pos('.',Edit2.Text)>0)   then
-    key:=#0;
-      if (key='-') and (Pos('-',Edit2.Text)>0)   then
     key:=#0;
 end;
 

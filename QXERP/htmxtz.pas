@@ -53,6 +53,8 @@ type
       var CanSelect: Boolean);
     procedure Edit9Change(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Edit9KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit6KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -188,11 +190,27 @@ begin
   end;
 end;
 
+procedure TForm60.Edit6KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit6.Text)>0)   then
+    key:=#0;
+end;
+
 procedure TForm60.Edit9Change(Sender: TObject);
 begin
   memo2.Lines.Clear;
   if edit9.Text<>'' then
     memo2.Lines.Add('本产品合同数量于'+datetimetostr(now())+'从原来的'+edit8.Text+'调整到现在的'+edit9.Text+',原因为:')
+end;
+
+procedure TForm60.Edit9KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit9.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm60.FormShow(Sender: TObject);
