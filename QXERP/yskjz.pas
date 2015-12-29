@@ -54,6 +54,8 @@ type
       var CanSelect: Boolean);
     procedure FormShow(Sender: TObject);
     procedure Edit3Change(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -82,7 +84,7 @@ begin
         ParamByName('yskbh').Value:=edit1.Text;
         ParamByName('jzje').Value:=edit2.Text;
         ParamByName('skdate').Value:=datetimepicker1.Date;
-        ParamByName('memo').Value:=main.strUser+edit4.Text;
+        ParamByName('memo').Value:='*'+main.strUser+edit4.Text;
         ExecSQL;
         edit1.Text := '';
         edit2.Text := '';
@@ -171,7 +173,7 @@ begin
         close;
         StoredProcName:='proc_cx_yskxx_yskbhandkhmc_by_cxitem';
         ParamByName('cxnr').Value:=edit3.Text;
-        if radiogroup1.ItemIndex=1 then
+        if radiogroup2.ItemIndex=1 then
           ParamByName('cxitem').Value:='xs'
         else
           ParamByName('cxitem').Value:='kh';
@@ -203,6 +205,12 @@ begin
   stringgrid1.Cells[1,0]:='客户项目名称';
 end;
 
+procedure TForm9.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  edit5.Text:=stringgrid1.Cells[0,ARow];
+end;
+
 procedure TForm9.StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
@@ -212,7 +220,7 @@ end;
 procedure TForm9.StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
-edit1.Text:=stringgrid4.Cells[0,ARow];
+  edit1.Text:=stringgrid4.Cells[0,ARow];
 end;
 
 end.

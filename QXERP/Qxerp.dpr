@@ -66,7 +66,10 @@ uses
   htmxtz in 'htmxtz.pas' {Form60},
   tjfhfjxx in 'tjfhfjxx.pas' {Form61},
   fhck in 'fhck.pas' {Form62},
-  fhckinfo in 'fhckinfo.pas' {Form63};
+  fhckinfo in 'fhckinfo.pas' {Form63},
+  csckgl in 'csckgl.pas' {Form64},
+  cscprkgl in 'cscprkgl.pas' {Form65},
+  csckdgl in 'csckdgl.pas' {Form66};
 
 {$R *.res}
 
@@ -139,5 +142,8 @@ begin
   Application.CreateForm(TForm61, Form61);
   Application.CreateForm(TForm62, Form62);
   Application.CreateForm(TForm63, Form63);
+  Application.CreateForm(TForm64, Form64);
+  Application.CreateForm(TForm65, Form65);
+  Application.CreateForm(TForm66, Form66);
   Application.Run;
 end.

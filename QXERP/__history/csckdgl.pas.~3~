@@ -1,0 +1,74 @@
+unit csckdgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, StdCtrls, ExtCtrls, DB, ZAbstractRODataset, ZAbstractDataset,
+  ZStoredProcedure;
+
+type
+  TForm66 = class(TForm)
+    RadioGroup1: TRadioGroup;
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form66: TForm66;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm66.FormShow(Sender: TObject);
+var
+  i:integer;
+begin
+stringgrid1.Cells[0,0]:='序号';
+stringgrid1.Cells[1,0]:='测试出库单';
+stringgrid1.Cells[2,0]:='测试申请人';
+stringgrid1.Cells[3,0]:='出库时间';
+stringgrid1.Cells[4,0]:='末次退回时间';
+stringgrid1.Cells[5,0]:='是否全部退回';
+stringgrid1.Cells[6,0]:='操作员';
+stringgrid1.Cells[7,0]:='备注';
+try
+  with zStoredProc1 do
+  begin
+    close;
+    StoredProcName:='proc_cx_ceshirukudan_info';
+    open;
+    i:=1;
+    stringgrid1.RowCount:=2;
+    stringgrid1.Rows[1].Clear;
+    while not eof do
+    begin
+      stringgrid1.RowCount:=stringgrid1.RowCount+1;
+      stringgrid1.Cells[0,i]:=inttostr(i);
+      stringgrid1.Cells[1,i]:=fields[0].asstring;
+      stringgrid1.Cells[2,i]:=fields[1].asstring;
+      stringgrid1.Cells[3,i]:=fields[2].asstring;
+      stringgrid1.Cells[4,i]:=fields[3].asstring;
+      stringgrid1.Cells[5,i]:=fields[4].asstring;
+      stringgrid1.Cells[6,i]:=fields[5].asstring;
+      stringgrid1.Cells[7,i]:=fields[6].asstring;
+      i:=i+1;
+      stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+      next;
+    end;
+  end;
+except
+  application.MessageBox('数据查询失败','产品测试出库单查询');
+
+end;
+end;
+
+end.

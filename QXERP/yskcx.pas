@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, ComCtrls, DB, ADODB, ExtCtrls,ComObj,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset;
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, ZStoredProcedure;
 
 type
   TForm7 = class(TForm)
@@ -38,6 +38,15 @@ type
     Button7: TButton;
     Button8: TButton;
     ZQuery1: TZQuery;
+    TabSheet5: TTabSheet;
+    Button9: TButton;
+    Button10: TButton;
+    StringGrid4: TStringGrid;
+    ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    ZStoredProc1: TZStoredProc;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -50,6 +59,12 @@ type
     procedure Button6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
+    procedure ComboBox2KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox2Select(Sender: TObject);
+    procedure TabSheet5Show(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,6 +81,11 @@ uses main;
 //  uses DLLTools;
 
 {$R *.dfm}
+
+procedure TForm7.Button10Click(Sender: TObject);
+begin
+  ExportStrGridToExcel([StringGrid4]);
+end;
 
 procedure TForm7.Button1Click(Sender: TObject);
 var y:integer;
@@ -287,6 +307,43 @@ begin
 ExportStrGridToExcel([StringGrid3]);
 end;
 
+procedure TForm7.Button9Click(Sender: TObject);
+var
+  i:integer;
+begin     //proc_cx_yskxx_of_dw__by_zgdwbh_khid
+  if (combobox2.Text<>'') and (combobox3.Text<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_yskxx_of_dw__by_zgdwbh_khid';
+      ParamByName('zgdwbh').Value:=splitstring(combobox2.Text,'|');
+      ParamByName('khid').Value:=splitstring(combobox3.Text,'|');
+      open;
+      i:=1;
+      stringgrid4.RowCount:=stringgrid4.RowCount+1;
+      stringgrid4.Rows[1].Clear;
+      while not eof do
+      begin
+        stringgrid4.RowCount:=stringgrid4.RowCount+1;
+        stringgrid4.Cells[0,i]:=inttostr(i);
+        stringgrid4.Cells[1,i]:=fields[0].AsString;
+        stringgrid4.Cells[2,i]:=fields[1].AsString;
+        stringgrid4.Cells[3,i]:=fields[2].AsString;
+        stringgrid4.Cells[4,i]:=fields[3].AsString;
+        stringgrid4.Cells[5,i]:=fields[4].AsString;
+        stringgrid4.Cells[6,i]:=fields[5].AsString;
+        i:=i+1;
+        stringgrid4.Rows[stringgrid4.RowCount-1].Clear;
+        next;
+      end;
+    end;
+  except
+    application.MessageBox('查询数据失败','应收款管理');
+  end else
+    application.MessageBox('请选择查询的项目','应收款管理');
+end;
+
 procedure TForm7.ComboBox1DropDown(Sender: TObject);
 begin
   combobox1.Items.Clear;
@@ -304,6 +361,59 @@ begin
     end;
   end;
   //application.MessageBox(pwidechar(splitstring(combobox1.Text,'|')),'aaaaaa');
+end;
+
+procedure TForm7.ComboBox2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox2.Items.Count>0 then
+    ComboBox2.Items.Clear;
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_khandzgdwandxsy_by_cxitemandcxmc';
+        zstoredproc1.ParamByName('cxitem').Value:='zgdw';
+        zstoredproc1.ParamByName('cxmc').Value:=ComboBox2.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox2.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','新增合同提示');
+  end;
+ end;
+end;
+
+procedure TForm7.ComboBox2Select(Sender: TObject);
+begin
+    if combobox3.Items.Count>0 then
+      ComboBox3.Items.Clear;
+      combobox3.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_khandzgdwandxsy_by_cxitemandcxmc';
+        zstoredproc1.ParamByName('cxitem').Value:='khbyzg';
+        zstoredproc1.ParamByName('cxmc').Value:=splitstring(ComboBox2.Text,'|');
+        open;
+        while not eof do
+        begin
+          ComboBox3.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','新增合同提示');
+  end;
 end;
 
 procedure TForm7.FormActivate(Sender: TObject);
@@ -361,4 +471,15 @@ begin
     Application.MessageBox('查询失败！','应收款统计查询提示');
   end;
 end;
+procedure TForm7.TabSheet5Show(Sender: TObject);
+begin
+  stringgrid4.Cells[0,0]:='序号';
+  stringgrid4.Cells[1,0]:='应收款编号';
+  stringgrid4.Cells[2,0]:='客户名称';
+  stringgrid4.Cells[3,0]:='主管单位名称';
+  stringgrid4.Cells[4,0]:='当前余额';
+  stringgrid4.Cells[5,0]:='销售员';
+  stringgrid4.Cells[6,0]:='末笔收款日期';
+end;
+
 end.

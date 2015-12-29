@@ -285,6 +285,12 @@ object Form13: TForm13
       Caption = #21592#24037#20449#24687#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
+      object Shape1: TShape
+        Left = 595
+        Top = 125
+        Width = 305
+        Height = 80
+      end
       object Label12: TLabel
         Left = 240
         Top = 88
@@ -305,7 +311,7 @@ object Form13: TForm13
       end
       object Label14: TLabel
         Left = 240
-        Top = 171
+        Top = 227
         Width = 65
         Height = 13
         Alignment = taRightJustify
@@ -314,7 +320,7 @@ object Form13: TForm13
       end
       object Label15: TLabel
         Left = 240
-        Top = 208
+        Top = 264
         Width = 65
         Height = 13
         Alignment = taRightJustify
@@ -323,7 +329,7 @@ object Form13: TForm13
       end
       object Label18: TLabel
         Left = 240
-        Top = 251
+        Top = 307
         Width = 65
         Height = 13
         Alignment = taRightJustify
@@ -332,7 +338,7 @@ object Form13: TForm13
       end
       object Label19: TLabel
         Left = 240
-        Top = 291
+        Top = 347
         Width = 65
         Height = 13
         Alignment = taRightJustify
@@ -341,7 +347,7 @@ object Form13: TForm13
       end
       object Label20: TLabel
         Left = 240
-        Top = 328
+        Top = 384
         Width = 65
         Height = 13
         Alignment = taRightJustify
@@ -350,7 +356,7 @@ object Form13: TForm13
       end
       object Label21: TLabel
         Left = 240
-        Top = 371
+        Top = 427
         Width = 65
         Height = 13
         Alignment = taRightJustify
@@ -364,10 +370,24 @@ object Form13: TForm13
         Height = 13
         Caption = #27169#31946#26597#35810
       end
+      object Label33: TLabel
+        Left = 607
+        Top = 166
+        Width = 48
+        Height = 13
+        Caption = #31163#32844#26102#38388
+      end
+      object Label34: TLabel
+        Left = 671
+        Top = 140
+        Width = 120
+        Height = 13
+        Caption = #35831#36873#23450#20934#30830#30340#31163#32844#26102#38388
+      end
       object ListBox1: TListBox
         Left = 0
         Top = 0
-        Width = 137
+        Width = 161
         Height = 587
         Align = alLeft
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -377,7 +397,7 @@ object Form13: TForm13
       end
       object Button3: TButton
         Left = 312
-        Top = 464
+        Top = 488
         Width = 75
         Height = 25
         Caption = #20445#23384
@@ -385,8 +405,8 @@ object Form13: TForm13
         OnClick = Button3Click
       end
       object Button4: TButton
-        Left = 456
-        Top = 464
+        Left = 464
+        Top = 488
         Width = 75
         Height = 25
         Caption = #21462#28040
@@ -403,7 +423,7 @@ object Form13: TForm13
       end
       object CheckBox2: TCheckBox
         Left = 492
-        Top = 170
+        Top = 226
         Width = 97
         Height = 17
         Caption = #20462#25913
@@ -412,7 +432,7 @@ object Form13: TForm13
       end
       object CheckBox4: TCheckBox
         Left = 492
-        Top = 207
+        Top = 263
         Width = 97
         Height = 17
         Caption = #20462#25913
@@ -439,7 +459,7 @@ object Form13: TForm13
       end
       object Edit6: TEdit
         Left = 327
-        Top = 168
+        Top = 224
         Width = 150
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -448,7 +468,7 @@ object Form13: TForm13
       end
       object Edit7: TEdit
         Left = 327
-        Top = 205
+        Top = 261
         Width = 150
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -457,7 +477,7 @@ object Form13: TForm13
       end
       object Edit8: TEdit
         Left = 327
-        Top = 248
+        Top = 304
         Width = 150
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -466,7 +486,7 @@ object Form13: TForm13
       end
       object Edit13: TEdit
         Left = 327
-        Top = 288
+        Top = 344
         Width = 150
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -475,7 +495,7 @@ object Form13: TForm13
       end
       object ComboBox2: TComboBox
         Left = 327
-        Top = 325
+        Top = 381
         Width = 145
         Height = 21
         Enabled = False
@@ -485,7 +505,7 @@ object Form13: TForm13
       end
       object Edit14: TEdit
         Left = 327
-        Top = 368
+        Top = 424
         Width = 150
         Height = 21
         ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -494,7 +514,7 @@ object Form13: TForm13
       end
       object CheckBox3: TCheckBox
         Left = 492
-        Top = 250
+        Top = 306
         Width = 97
         Height = 17
         Caption = #20462#25913
@@ -503,7 +523,7 @@ object Form13: TForm13
       end
       object CheckBox5: TCheckBox
         Left = 492
-        Top = 290
+        Top = 346
         Width = 97
         Height = 17
         Caption = #20462#25913
@@ -512,7 +532,7 @@ object Form13: TForm13
       end
       object CheckBox6: TCheckBox
         Left = 492
-        Top = 327
+        Top = 383
         Width = 97
         Height = 17
         Caption = #20462#25913
@@ -521,7 +541,7 @@ object Form13: TForm13
       end
       object CheckBox7: TCheckBox
         Left = 492
-        Top = 370
+        Top = 426
         Width = 97
         Height = 17
         Caption = #20462#25913
@@ -545,6 +565,36 @@ object Form13: TForm13
         TabOrder = 19
         OnClick = Button5Click
       end
+      object DateTimePicker1: TDateTimePicker
+        Left = 671
+        Top = 163
+        Width = 121
+        Height = 21
+        Date = 42365.357582719910000000
+        Time = 42365.357582719910000000
+        TabOrder = 20
+      end
+      object Button14: TButton
+        Left = 806
+        Top = 161
+        Width = 75
+        Height = 25
+        Caption = #32844#24037#31163#32844
+        TabOrder = 21
+        OnClick = Button14Click
+      end
+      object RadioGroup2: TRadioGroup
+        Left = 327
+        Top = 165
+        Width = 150
+        Height = 40
+        Caption = #22312#32844#29366#24577
+        Columns = 2
+        Items.Strings = (
+          #22312#32844
+          #31163#32844)
+        TabOrder = 22
+      end
     end
     object TabSheet3: TTabSheet
       Caption = #32844#24037#20449#24687#27983#35272
@@ -552,9 +602,9 @@ object Form13: TForm13
       OnShow = TabSheet3Show
       object StringGrid1: TStringGrid
         Left = 0
-        Top = 40
+        Top = 56
         Width = 952
-        Height = 547
+        Height = 531
         Align = alCustom
         ColCount = 8
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
@@ -577,6 +627,21 @@ object Form13: TForm13
         Caption = #23548#20986#21040'EXECL'
         TabOrder = 1
         OnClick = Button13Click
+      end
+      object RadioGroup1: TRadioGroup
+        Left = 64
+        Top = 3
+        Width = 297
+        Height = 47
+        Caption = #26597#35810#36873#39033
+        Columns = 3
+        ItemIndex = 0
+        Items.Strings = (
+          #22312#32844#32844#24037
+          #31163#32844#32844#24037
+          #20840#37096#32844#24037)
+        TabOrder = 2
+        OnClick = RadioGroup1Click
       end
     end
     object TabSheet4: TTabSheet
@@ -812,7 +877,7 @@ object Form13: TForm13
   object ZQuery1: TZQuery
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 728
-    Top = 232
+    Left = 840
+    Top = 240
   end
 end

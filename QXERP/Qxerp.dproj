@@ -238,6 +238,15 @@
 			<DCCReference Include="fhckinfo.pas">
 				<Form>Form63</Form>
 			</DCCReference>
+			<DCCReference Include="csckgl.pas">
+				<Form>Form64</Form>
+			</DCCReference>
+			<DCCReference Include="cscprkgl.pas">
+				<Form>Form65</Form>
+			</DCCReference>
+			<DCCReference Include="csckdgl.pas">
+				<Form>Form66</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

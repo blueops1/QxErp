@@ -24,10 +24,8 @@ object Form9: TForm9
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 652
     object TabSheet1: TTabSheet
       Caption = #26032#22686#24212#25910#27454#35760#24080
-      ExplicitHeight = 624
       object Label1: TLabel
         Left = 48
         Top = 472
@@ -192,7 +190,6 @@ object Form9: TForm9
     object TabSheet2: TTabSheet
       Caption = #24212#25910#27454#22238#25910#35760#24080
       ImageIndex = 1
-      ExplicitHeight = 624
       object Label7: TLabel
         Left = 57
         Top = 32
@@ -267,7 +264,7 @@ object Form9: TForm9
         Caption = #22791#27880
       end
       object Edit3: TEdit
-        Left = 135
+        Left = 136
         Top = 29
         Width = 169
         Height = 21
@@ -297,7 +294,7 @@ object Form9: TForm9
         ColCount = 2
         FixedCols = 0
         TabOrder = 2
-        OnSelectCell = StringGrid4SelectCell
+        OnSelectCell = StringGrid1SelectCell
         ColWidths = (
           81
           861)
