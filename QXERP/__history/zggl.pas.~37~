@@ -102,6 +102,13 @@ type
     Button14: TButton;
     Label33: TLabel;
     RadioGroup2: TRadioGroup;
+    Shape1: TShape;
+    Label34: TLabel;
+    DateTimePicker2: TDateTimePicker;
+    Label35: TLabel;
+    Label36: TLabel;
+    DateTimePicker3: TDateTimePicker;
+    CheckBox10: TCheckBox;
     procedure TabSheet3Show(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
@@ -128,6 +135,8 @@ type
     procedure Button13Click(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
     procedure Button14Click(Sender: TObject);
+    procedure TabSheet1Show(Sender: TObject);
+    procedure CheckBox10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -202,7 +211,7 @@ begin
           strBmbh := fields[0].AsString;
         close;
         sql.Clear;
-        sql.Add('insert into zg_info (fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+edit9.Text+''','''+edit3.Text+''','''+edit10.Text+''','''+edit11.Text+''','''+strBmbh+''','''+main.strUser+edit12.Text+''')');
+        sql.Add('insert into zg_info (fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo,frzdate) values ('''+edit1.Text+''','''+edit2.Text+''','''+edit9.Text+''','''+edit3.Text+''','''+edit10.Text+''','''+edit11.Text+''','''+strBmbh+''','''+main.strUser+edit12.Text+''','''+datetimetostr(datetimepicker2.Date)+''')');
         ExecSQL;
         edit1.Text := '';
         edit2.Text := '';
@@ -215,7 +224,7 @@ begin
         Application.MessageBox('新增职工成功！','职工管理提示');
         close;
         sql.Clear;
-        sql.Add('select top 1 fzgbh+1 from zg_info order by CONVERT(int,fzgbh) desc');
+        sql.Add('select IFNULL(max(cast(fZGbh as UNSIGNED))+1,1) from ZG_info');
         open;
         if not eof then
            edit1.Text := fields[0].AsString;
@@ -262,6 +271,9 @@ begin
        end;
        if CheckBox7.Checked then
         sql.Add('update zg_info set fmemo = '''+edit14.Text+''' where fzgbh = '''+edit4.Text+'''');
+        ExecSQL;
+       if CheckBox10.Checked then
+        sql.Add('update zg_info set frzdate = '''+datetimetostr(datetimepicker3.Date)+''' where fzgbh = '''+edit4.Text+'''');
         ExecSQL;
         edit5.ReadOnly := True;
         edit6.ReadOnly := True;
@@ -378,6 +390,12 @@ begin
         next;
       end;
   end;
+end;
+
+procedure TForm13.CheckBox10Click(Sender: TObject);
+begin
+  if edit4.Text <> '' then
+    datetimepicker3.Enabled := not datetimepicker3.Enabled;
 end;
 
 procedure TForm13.CheckBox1Click(Sender: TObject);
@@ -566,6 +584,11 @@ begin
   end;
 end;
 
+procedure TForm13.TabSheet1Show(Sender: TObject);
+begin
+  datetimepicker2.DateTime:=now();
+end;
+
 procedure TForm13.TabSheet2Show(Sender: TObject);
 begin
 datetimepicker1.DateTime:=now();
@@ -595,8 +618,9 @@ begin
   stringgrid1.Cells[4,0]:='虚拟网';
   stringgrid1.Cells[5,0]:='宅电';
   stringgrid1.Cells[6,0]:='部门';
-  stringgrid1.Cells[7,0]:='备注';
-
+  stringgrid1.Cells[7,0]:='入职时间';
+  stringgrid1.Cells[8,0]:='离职时间';
+  stringgrid1.Cells[9,0]:='备注';
   y:=1;
   try
   with ZQuery1 do
@@ -617,6 +641,8 @@ begin
       stringgrid1.Cells[5,y]:=fields[5].AsString;
       stringgrid1.Cells[6,y]:=fields[6].AsString;
       stringgrid1.Cells[7,y]:=fields[7].AsString;
+      stringgrid1.Cells[8,y]:=fields[8].AsString;
+      stringgrid1.Cells[9,y]:=fields[9].AsString;
       y:=y+1;
       next;
     end;

@@ -98,10 +98,14 @@ type
     Button13: TButton;
     ZQuery1: TZQuery;
     RadioGroup1: TRadioGroup;
-    TabSheet6: TTabSheet;
     DateTimePicker1: TDateTimePicker;
     Button14: TButton;
     Label33: TLabel;
+    RadioGroup2: TRadioGroup;
+    Shape1: TShape;
+    Label34: TLabel;
+    DateTimePicker2: TDateTimePicker;
+    Label35: TLabel;
     procedure TabSheet3Show(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
@@ -128,6 +132,7 @@ type
     procedure Button13Click(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
     procedure Button14Click(Sender: TObject);
+    procedure TabSheet1Show(Sender: TObject);
   private
     { Private declarations }
   public
@@ -177,7 +182,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('update zg_info set fislzbz=''Y'',flzdate='''+datetimetostr(datetimepicker1.DateTime)+''' where fzgbh='''+edit4.Text+'''');
+      sql.Add('update zg_info set fiszzbz=''N'',flzdate='''+datetimetostr(datetimepicker1.DateTime)+''' where fzgbh='''+edit4.Text+'''');
       ExecSql;
     end;
     Application.MessageBox('数据保存成功！','职工管理提示');
@@ -480,7 +485,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info where fzgxm = '''+strZgmc+'''');
+    sql.Add('select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo,fiszzbz,flzdate from zg_info where fzgxm = '''+strZgmc+'''');
     open;
     if not eof then
     begin
@@ -492,6 +497,11 @@ begin
       edit13.Text := fields[5].AsString;
       strBmbh := fields[6].AsString;
       edit14.Text := fields[7].AsString;
+      if fields[8].AsString='Y' then
+        radiogroup2.ItemIndex:=0
+      else
+        radiogroup2.ItemIndex:=1;
+      datetimepicker1.Date:=fields[9].AsDateTime;
       close;
       sql.Clear;
       sql.Add('select fbmmc from bm_info where fbmmc = '''+strBmbh + '''');
@@ -559,6 +569,11 @@ begin
   Except
         Application.MessageBox('查询失败！','合同管理提示');
   end;
+end;
+
+procedure TForm13.TabSheet1Show(Sender: TObject);
+begin
+  datetimepicker2.DateTime:=now();
 end;
 
 procedure TForm13.TabSheet2Show(Sender: TObject);

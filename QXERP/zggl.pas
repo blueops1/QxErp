@@ -104,6 +104,11 @@ type
     RadioGroup2: TRadioGroup;
     Shape1: TShape;
     Label34: TLabel;
+    DateTimePicker2: TDateTimePicker;
+    Label35: TLabel;
+    Label36: TLabel;
+    DateTimePicker3: TDateTimePicker;
+    CheckBox10: TCheckBox;
     procedure TabSheet3Show(Sender: TObject);
     procedure Button8Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
@@ -130,6 +135,8 @@ type
     procedure Button13Click(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
     procedure Button14Click(Sender: TObject);
+    procedure TabSheet1Show(Sender: TObject);
+    procedure CheckBox10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -204,7 +211,7 @@ begin
           strBmbh := fields[0].AsString;
         close;
         sql.Clear;
-        sql.Add('insert into zg_info (fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+edit9.Text+''','''+edit3.Text+''','''+edit10.Text+''','''+edit11.Text+''','''+strBmbh+''','''+main.strUser+edit12.Text+''')');
+        sql.Add('insert into zg_info (fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo,frzdate) values ('''+edit1.Text+''','''+edit2.Text+''','''+edit9.Text+''','''+edit3.Text+''','''+edit10.Text+''','''+edit11.Text+''','''+strBmbh+''','''+main.strUser+edit12.Text+''','''+datetimetostr(datetimepicker2.Date)+''')');
         ExecSQL;
         edit1.Text := '';
         edit2.Text := '';
@@ -217,7 +224,7 @@ begin
         Application.MessageBox('新增职工成功！','职工管理提示');
         close;
         sql.Clear;
-        sql.Add('select top 1 fzgbh+1 from zg_info order by CONVERT(int,fzgbh) desc');
+        sql.Add('select IFNULL(max(cast(fZGbh as UNSIGNED))+1,1) from ZG_info');
         open;
         if not eof then
            edit1.Text := fields[0].AsString;
@@ -264,6 +271,8 @@ begin
        end;
        if CheckBox7.Checked then
         sql.Add('update zg_info set fmemo = '''+edit14.Text+''' where fzgbh = '''+edit4.Text+'''');
+       if CheckBox10.Checked then
+        sql.Add('update zg_info set frzdate = '''+datetimetostr(datetimepicker3.Date)+''' where fzgbh = '''+edit4.Text+'''');
         ExecSQL;
         edit5.ReadOnly := True;
         edit6.ReadOnly := True;
@@ -271,6 +280,14 @@ begin
         edit8.ReadOnly := True;
         edit13.ReadOnly := True;
         edit14.ReadOnly := True;
+        edit5.text := '';
+        edit6.text := '';
+        edit7.text := '';
+        edit8.text := '';
+        edit13.text := '';
+        edit14.text := '';
+        combobox2.Text:='';
+        datetimepicker3.Enabled:=false;
         combobox2.Enabled:= false;
         checkbox1.Checked := False;
         checkbox2.Checked := False;
@@ -279,6 +296,7 @@ begin
         checkbox5.Checked := False;
         checkbox6.Checked := False;
         checkbox7.Checked := False;
+        checkbox10.Checked := False;
         listbox1.Clear;
         close;
         sql.Clear;
@@ -382,6 +400,12 @@ begin
   end;
 end;
 
+procedure TForm13.CheckBox10Click(Sender: TObject);
+begin
+  if edit4.Text <> '' then
+    datetimepicker3.Enabled := not datetimepicker3.Enabled;
+end;
+
 procedure TForm13.CheckBox1Click(Sender: TObject);
 begin
   if edit4.Text <> '' then
@@ -482,7 +506,7 @@ begin
   begin
     close;
     sql.Clear;
-    sql.Add('select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo,fiszzbz,flzdate from zg_info where fzgxm = '''+strZgmc+'''');
+    sql.Add('select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo,fiszzbz,flzdate,frzdate from zg_info where fzgxm = '''+strZgmc+'''');
     open;
     if not eof then
     begin
@@ -499,6 +523,7 @@ begin
       else
         radiogroup2.ItemIndex:=1;
       datetimepicker1.Date:=fields[9].AsDateTime;
+      datetimepicker3.Date:=fields[10].AsDateTime;
       close;
       sql.Clear;
       sql.Add('select fbmmc from bm_info where fbmmc = '''+strBmbh + '''');
@@ -535,11 +560,11 @@ var
 begin
   y:=1;
   if radiogroup1.ItemIndex=0 then
-    strSql:= 'select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info where fiszzbz=''Y'') as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh';
+    strSql:= 'select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,frzdate,flzdate,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,frzdate,flzdate,fmemo from zg_info where fiszzbz=''Y'') as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh';
   if radiogroup1.ItemIndex=1 then
-    strSql:= 'select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info where fiszzbz=''N'') as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh';
+    strSql:= 'select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,frzdate,flzdate,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,frzdate,flzdate,fmemo from zg_info where fiszzbz=''N'') as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh';
   if radiogroup1.ItemIndex=2 then
-    strSql:= 'select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info) as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh';
+    strSql:= 'select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,frzdate,flzdate,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,frzdate,flzdate,fmemo from zg_info) as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh';
   try
   with ZQuery1 do
   begin
@@ -566,6 +591,11 @@ begin
   Except
         Application.MessageBox('查询失败！','合同管理提示');
   end;
+end;
+
+procedure TForm13.TabSheet1Show(Sender: TObject);
+begin
+  datetimepicker2.DateTime:=now();
 end;
 
 procedure TForm13.TabSheet2Show(Sender: TObject);
@@ -597,15 +627,16 @@ begin
   stringgrid1.Cells[4,0]:='虚拟网';
   stringgrid1.Cells[5,0]:='宅电';
   stringgrid1.Cells[6,0]:='部门';
-  stringgrid1.Cells[7,0]:='备注';
-
+  stringgrid1.Cells[7,0]:='入职时间';
+  stringgrid1.Cells[8,0]:='离职时间';
+  stringgrid1.Cells[9,0]:='备注';
   y:=1;
   try
   with ZQuery1 do
   begin
     close;
     sql.Clear;
-    sql.Add('select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,fmemo from zg_info where fiszzbz=''Y'') as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh');
+    sql.Add('select cast(fzgbh as UNSIGNED) as zgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fbmmc,frzdate,flzdate,fmemo from'+' '+'(select fzgbh,fzgxm,fzgsfz,fzgmobile,fzgsyw,fzghomedh,fssbmbh,frzdate,flzdate,fmemo from zg_info where fiszzbz=''Y'') as a left join(select fbmbh,fbmmc from bm_info) as b on a.fssbmbh=b.fbmbh order by zgbh');
     open;
     stringgrid1.RowCount:=ZQuery1.RecordCount+1;
     while not eof do
@@ -619,6 +650,8 @@ begin
       stringgrid1.Cells[5,y]:=fields[5].AsString;
       stringgrid1.Cells[6,y]:=fields[6].AsString;
       stringgrid1.Cells[7,y]:=fields[7].AsString;
+      stringgrid1.Cells[8,y]:=fields[8].AsString;
+      stringgrid1.Cells[9,y]:=fields[9].AsString;
       y:=y+1;
       next;
     end;

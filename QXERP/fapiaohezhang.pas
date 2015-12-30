@@ -124,14 +124,18 @@ begin
         //ffpbh=fpbh,ffpdate=fpdate,ffpczry=fpczry,ffpmemo=fpmemo
         execProc;
       end;
-      application.MessageBox('数据保存成功!','发票核帐提示');
-      combobox1.Text:='';
-      stringgrid1.RowCount:=1;
-      stringgrid2.RowCount:=1;
-      listbox1.Items.Clear;
-      edit1.Text:='';
-      edit2.Text:='';
-      memo1.Text:='';
+      if ParamByName('returncode').Value=1 then
+        application.MessageBox('该发票编号已经存在！','发票核帐提示')
+      else begin
+        application.MessageBox('数据保存成功!','发票核帐提示');
+        combobox1.Text:='';
+        stringgrid1.RowCount:=1;
+        stringgrid2.RowCount:=1;
+        listbox1.Items.Clear;
+        edit1.Text:='';
+        edit2.Text:='';
+        memo1.Text:='';
+      end;
     end;
   except
     application.MessageBox(pwidechar('编号为：'+ListBox1.Items.ValueFromIndex[i]+'的数据保存失败!'),'发票核帐提示');
