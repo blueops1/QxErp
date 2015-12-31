@@ -97,7 +97,7 @@ begin
       end;
     end;
   except
-
+      application.MessageBox('打印失败','计划单打印提示');
   end;
 end;
 

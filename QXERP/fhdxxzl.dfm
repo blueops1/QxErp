@@ -294,6 +294,7 @@ object Form21: TForm21
     Height = 25
     Caption = #25171#21360#21457#36135#21333
     TabOrder = 13
+    OnClick = Button2Click
   end
   object Edit14: TEdit
     Left = 728

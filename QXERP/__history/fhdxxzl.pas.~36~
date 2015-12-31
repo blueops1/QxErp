@@ -51,6 +51,7 @@ type
     Edit18: TEdit;
     procedure FormShow(Sender: TObject);
     procedure Edit10Change(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,13 +60,63 @@ type
 
 var
   Form21: TForm21;
+  fhdid:string;
   function SmallTOBig(small:real):string;stdcall;external 'dlltools.dll';
 
 implementation
 
 {$R *.dfm}
 
-uses main,fhdcx;
+uses main;
+
+procedure TForm21.Button2Click(Sender: TObject);
+var
+i:integer;
+begin
+    try
+    form1.RvDataSetConnection1.DataSet:=zstoredProc1;
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
+      zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
+      zstoredproc1.SetResultSet(0);
+      open;
+      with form1 do
+      begin
+        rvproject1.Open;
+        rvproject1.SelectReport('fhtzd',true);
+        rvproject1.ClearParams;
+        rvproject1.SetParam('fhdbh',edit1.Text);
+        rvproject1.SetParam('khmc',edit4.Text);
+        rvproject1.SetParam('fhdz',edit9.Text);
+        rvproject1.SetParam('memo',edit5.Text);
+        rvproject1.SetParam('hjje',stringgrid1.Cells[6,stringgrid1.RowCount-1]+'元（￥:'+SmallTOBig(strtofloat(stringgrid1.Cells[6,stringgrid1.RowCount-2]))+'）');
+        rvproject1.SetParam('cdrq',edit15.Text);
+        rvproject1.SetParam('czry',main.strUser);
+        rvproject1.SetParam('xsyxm',edit6.Text);
+        zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
+        zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
+        zstoredproc1.SetResultSet(2);
+        open;
+        rvproject1.SetParam('cys',edit18.Text);
+        rvproject1.SetParam('cpdh',edit8.Text);
+        rvproject1.SetParam('yunfei',edit10.Text+'元（￥:'+edit14.Text+'）');
+        rvproject1.SetParam('ysjl',edit11.Text);
+        rvproject1.SetParam('hwzl',edit12.Text);
+        rvproject1.SetParam('hydmemo',edit13.Text);
+        zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
+        zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
+        zstoredproc1.SetResultSet(1);
+        open;
+        RvProject1.Execute;
+        rvproject1.Close;
+      end;
+    end;
+  except
+    application.MessageBox('2222','222');
+  end;
+end;
 
 procedure TForm21.Edit10Change(Sender: TObject);
 begin
@@ -84,7 +135,7 @@ begin
     begin
       close;
       zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
-      zstoredproc1.ParamByName('fhdbh').Value:=fhdcx.fhdid;
+      zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
       open;
       zstoredproc1.FirstResultSet;
       edit1.Text:=fields[0].AsString;
@@ -100,18 +151,33 @@ begin
       stringgrid1.Cells[0,0]:='序号';
       stringgrid1.Cells[1,0]:='产品编号';
       stringgrid1.Cells[2,0]:='产品名称';
-      stringgrid1.Cells[3,0]:='销售各类';
+      stringgrid1.Cells[3,0]:='产品种类';
       stringgrid1.Cells[4,0]:='销售价格';
       stringgrid1.Cells[5,0]:='发货数量';
-      stringgrid1.RowCount:=recordcount+1;
+      stringgrid1.Cells[6,0]:='合计金额';
+      stringgrid1.RowCount:=recordcount+2;
       while not eof do
       begin
         stringgrid1.Cells[0,i]:=inttostr(i);
-        stringgrid1.Cells[1,i]:=fields[1].AsString;
-        stringgrid1.Cells[2,i]:=fields[2].AsString;
-        stringgrid1.Cells[3,i]:=fields[3].AsString;
-        stringgrid1.Cells[4,i]:=fields[4].AsString;
-        stringgrid1.Cells[5,i]:=fields[5].AsString;
+        stringgrid1.Cells[1,i]:=fields[0].AsString;
+        stringgrid1.Cells[2,i]:=fields[1].AsString;
+        stringgrid1.Cells[3,i]:=fields[2].AsString;
+        stringgrid1.Cells[4,i]:=fields[3].AsString;
+        stringgrid1.Cells[5,i]:=fields[4].AsString;
+        stringgrid1.Cells[6,i]:=fields[5].AsString;
+        i:=i+1;
+        next;
+      end;
+      zstoredproc1.NextResultSet;
+      while not eof do
+      begin
+        //stringgrid1.Cells[0,i]:=inttostr(i);
+        stringgrid1.Cells[0,i]:=fields[0].AsString;
+        stringgrid1.Cells[2,i]:=fields[1].AsString;
+        stringgrid1.Cells[3,i]:=fields[2].AsString;
+        stringgrid1.Cells[4,i]:=fields[3].AsString;
+        stringgrid1.Cells[5,i]:=fields[4].AsString;
+        stringgrid1.Cells[6,i]:=fields[5].AsString;
         i:=i+1;
         next;
       end;
