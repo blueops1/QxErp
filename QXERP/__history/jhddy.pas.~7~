@@ -1,0 +1,41 @@
+unit jhddy;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, RpDefine, RpCon, RpConDS, DB, ZAbstractRODataset,
+  ZAbstractDataset, ZStoredProcedure;
+
+type
+  TForm67 = class(TForm)
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+    RvDataSetConnection1: TRvDataSetConnection;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form67: TForm67;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm67.Button1Click(Sender: TObject);
+begin
+  with form1 do
+  begin
+   RvProject1.Execute;
+  end;
+
+
+end;
+
+end.

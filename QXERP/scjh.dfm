@@ -57,7 +57,7 @@ object Form17: TForm17
     Width = 1021
     Height = 193
     Align = alCustom
-    ColCount = 9
+    ColCount = 10
     DefaultColWidth = 200
     FixedCols = 0
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowSelect]
@@ -73,7 +73,8 @@ object Form17: TForm17
       73
       72
       73
-      165)
+      165
+      200)
   end
   object StringGrid2: TStringGrid
     Left = 0
@@ -96,6 +97,15 @@ object Form17: TForm17
       81
       129
       96)
+  end
+  object Button2: TButton
+    Left = 923
+    Top = 17
+    Width = 75
+    Height = 25
+    Caption = #25171#21360#35745#21010#21333
+    TabOrder = 5
+    OnClick = Button2Click
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

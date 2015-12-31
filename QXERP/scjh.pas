@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Grids, ComCtrls, DB, ZAbstractRODataset,
-  ZAbstractDataset, ZStoredProcedure, Menus;
+  ZAbstractDataset, ZStoredProcedure, Menus, RpDefine, RpCon, RpConDS, DBGrids;
 
 type
   TForm17 = class(TForm)
@@ -20,6 +20,7 @@ type
     Button1: TButton;
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
+    Button2: TButton;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -29,6 +30,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Execl1Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,6 +67,40 @@ begin
       application.MessageBox('有项目库存数量不够，请核实','计划单转发货单管理提示');
 end;
 
+procedure TForm17.Button2Click(Sender: TObject);
+begin
+  try
+    form1.RvDataSetConnection1.DataSet:=zstoredProc1;
+    with zstoredproc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,SelARow];
+      ParamByName('htbh').Value:=stringgrid1.Cells[1,SelARow];
+      ExecProc;
+      with form1 do
+      begin
+        rvproject1.Open;
+        rvproject1.SelectReport('scjhd',true);
+        rvproject1.ClearParams;
+        rvproject1.SetParam('jhdbh',stringgrid1.Cells[5,SelARow]);
+        rvproject1.SetParam('khmc',stringgrid1.Cells[2,SelARow]);
+        rvproject1.SetParam('htbh',stringgrid1.Cells[1,SelARow]);
+        rvproject1.SetParam('jhksdate',stringgrid1.Cells[6,SelARow]);
+        rvproject1.SetParam('jhjhdate',stringgrid1.Cells[7,SelARow]);
+        rvproject1.SetParam('jhdmemo',stringgrid1.Cells[8,SelARow]);
+        rvproject1.SetParam('czry',main.strUser);
+        rvproject1.SetParam('printdate',datetimetostr(now()));
+        rvproject1.SetParam('xsyxm',stringgrid1.Cells[9,SelARow]);
+        RvProject1.Execute;
+        rvproject1.Close;
+      end;
+    end;
+  except
+
+  end;
+end;
+
 procedure TForm17.Button6Click(Sender: TObject);
 var
   i:integer;
@@ -95,6 +131,7 @@ begin
           stringgrid1.Cells[6,i]:=fields[5].AsString;
           stringgrid1.Cells[7,i]:=fields[6].AsString;
           stringgrid1.Cells[8,i]:=fields[7].AsString;
+          stringgrid1.Cells[9,i]:=fields[8].AsString;
           i:=i+1;
           stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
           next;
@@ -154,6 +191,7 @@ begin
   stringgrid1.Cells[6,0]:='计划开始时间';
   stringgrid1.Cells[7,0]:='预计发货时间';
   stringgrid1.Cells[8,0]:='备注';
+  stringgrid1.Cells[9,0]:='销售员';
   stringgrid2.Cells[0,0]:='序号';
   stringgrid2.Cells[1,0]:='产品编号';
   stringgrid2.Cells[2,0]:='产品名称';

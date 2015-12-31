@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math,
   ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset;
+  ZDataset, RpDefine, RpRave, RpCon, RpConDS, RpConBDE, RpBase, RpSystem;
 
 type
   TForm1 = class(TForm)
@@ -99,6 +99,10 @@ type
     Button62: TButton;
     Button63: TButton;
     Button64: TButton;
+    RvProject1: TRvProject;
+    Button65: TButton;
+    RvSystem1: TRvSystem;
+    RvDataSetConnection1: TRvDataSetConnection;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -169,6 +173,7 @@ type
     procedure Button62Click(Sender: TObject);
     procedure Button63Click(Sender: TObject);
     procedure Button64Click(Sender: TObject);
+    procedure Button65Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -207,7 +212,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      blzjjldj,zjbljlcx,zxjgd,jgsgl,
      wxdwcprk,rkddelgl,bcpjgdcx,bcpjgrk,
      jgdjs,wjgjggl,lhttjcpmx,htmxtz,
-     fhck,csckgl,cscprkgl,csckdgl;
+     fhck,csckgl,cscprkgl,csckdgl,jhddy;
 
 {$R *.dfm}
 
@@ -656,6 +661,14 @@ procedure TForm1.Button64Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,16,1)='1') then
     csckdgl.Form66.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button65Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    jhddy.Form67.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

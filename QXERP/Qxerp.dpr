@@ -69,7 +69,8 @@ uses
   fhckinfo in 'fhckinfo.pas' {Form63},
   csckgl in 'csckgl.pas' {Form64},
   cscprkgl in 'cscprkgl.pas' {Form65},
-  csckdgl in 'csckdgl.pas' {Form66};
+  csckdgl in 'csckdgl.pas' {Form66},
+  jhddy in 'jhddy.pas' {Form67};
 
 {$R *.res}
 
@@ -145,5 +146,6 @@ begin
   Application.CreateForm(TForm64, Form64);
   Application.CreateForm(TForm65, Form65);
   Application.CreateForm(TForm66, Form66);
+  Application.CreateForm(TForm67, Form67);
   Application.Run;
 end.
