@@ -70,7 +70,7 @@ object Form54: TForm54
   end
   object Label12: TLabel
     Left = 741
-    Top = 81
+    Top = 66
     Width = 60
     Height = 13
     Caption = #21152#24037#24635#36153#29992
@@ -127,12 +127,21 @@ object Form54: TForm54
   end
   object Edit6: TEdit
     Left = 808
-    Top = 78
+    Top = 63
     Width = 167
     Height = 21
     ReadOnly = True
     TabOrder = 5
     Text = '0'
+  end
+  object Button1: TButton
+    Left = 808
+    Top = 98
+    Width = 167
+    Height = 25
+    Caption = #21152#24037#21333#25171#21360
+    TabOrder = 6
+    OnClick = Button1Click
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

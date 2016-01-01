@@ -128,6 +128,8 @@ begin
       stringgrid1.RowCount:=2;
       stringgrid1.Rows[1].Clear;
       i:=1;
+      for y := 0 to 2 do
+      begin
       nextresultset;
         while not eof do
         begin
@@ -148,6 +150,7 @@ begin
           end;
           next;
         end;
+      end;
     end;
   except
     application.MessageBox('数据查询失败！','新增加工单管理提示');

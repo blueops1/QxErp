@@ -54,9 +54,6 @@ begin
     with zstoredproc1 do
     begin
       close;
-      StoredProcName:='proc_ccx_jgdinfo_mxz_by_jgdbh';
-      ParamByName('jgdbh').Value:=edit4.Text;
-      open;
       with form1 do
       begin
         rvproject1.Open;
@@ -68,6 +65,9 @@ begin
         rvproject1.SetParam('hjje','（人民币）'+edit6.Text+'元（￥:'+SmallTOBig(strtofloat(edit6.Text))+'）');
         rvproject1.SetParam('cdrq',edit2.Text);
         rvproject1.SetParam('czry',main.strUser);
+        StoredProcName:='proc_ccx_jgdinfo_mxz_by_jgdbh';
+        ParamByName('jgdbh').Value:=strjgdbh;
+        execproc;
         zstoredproc1.SetResultSet(1);
         RvProject1.Execute;
         rvproject1.Close;
@@ -128,6 +128,8 @@ begin
       stringgrid1.RowCount:=2;
       stringgrid1.Rows[1].Clear;
       i:=1;
+      for y := 0 to 2 do
+      begin
       nextresultset;
         while not eof do
         begin
@@ -148,6 +150,7 @@ begin
           end;
           next;
         end;
+      end;
     end;
   except
     application.MessageBox('数据查询失败！','新增加工单管理提示');

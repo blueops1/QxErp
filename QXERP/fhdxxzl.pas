@@ -71,7 +71,7 @@ uses main;
 
 procedure TForm21.Button2Click(Sender: TObject);
 begin
-    try
+  try
     form1.RvDataSetConnection1.DataSet:=zstoredProc1;
     with zstoredproc1 do
     begin
@@ -79,7 +79,7 @@ begin
       zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
       zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
       open;
-      zstoredproc1.SetResultSet(0);
+      //zstoredproc1.SetResultSet(0);
       with form1 do
       begin
         rvproject1.Open;
@@ -95,7 +95,7 @@ begin
         rvproject1.SetParam('xsyxm',edit6.Text);
         //zstoredproc1.StoredProcName:='proc_cx_fhdxxzl';
         //zstoredproc1.ParamByName('fhdbh').Value:=fhdid;
-        zstoredproc1.SetResultSet(2);
+        //zstoredproc1.SetResultSet(2);
         //open;
         rvproject1.SetParam('cys',edit18.Text);
         rvproject1.SetParam('cpdh',edit8.Text);

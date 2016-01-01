@@ -68,7 +68,12 @@ begin
         rvproject1.SetParam('hjje','£¨ÈËÃñ±Ò£©'+edit6.Text+'Ôª£¨£¤:'+SmallTOBig(strtofloat(edit6.Text))+'£©');
         rvproject1.SetParam('cdrq',edit2.Text);
         rvproject1.SetParam('czry',main.strUser);
+        if stringgrid1.Cells[6,1]='1' then
         zstoredproc1.SetResultSet(1);
+        if stringgrid1.Cells[6,1]='2' then
+        zstoredproc1.SetResultSet(2);
+        if stringgrid1.Cells[6,1]='1' then
+        zstoredproc1.SetResultSet(3);
         RvProject1.Execute;
         rvproject1.Close;
       end;

@@ -68,7 +68,12 @@ begin
         rvproject1.SetParam('hjje','（人民币）'+edit6.Text+'元（￥:'+SmallTOBig(strtofloat(edit6.Text))+'）');
         rvproject1.SetParam('cdrq',edit2.Text);
         rvproject1.SetParam('czry',main.strUser);
+        if stringgrid1.Cells[6,1]='1' then
         zstoredproc1.SetResultSet(1);
+        if stringgrid1.Cells[6,1]='2' then
+        zstoredproc1.SetResultSet(2);
+        if stringgrid1.Cells[6,1]='1' then
+        zstoredproc1.SetResultSet(3);
         RvProject1.Execute;
         rvproject1.Close;
       end;
@@ -128,6 +133,8 @@ begin
       stringgrid1.RowCount:=2;
       stringgrid1.Rows[1].Clear;
       i:=1;
+      for y := 0 to 2 do
+      begin
       nextresultset;
         while not eof do
         begin
@@ -148,6 +155,7 @@ begin
           end;
           next;
         end;
+      end;
     end;
   except
     application.MessageBox('数据查询失败！','新增加工单管理提示');
