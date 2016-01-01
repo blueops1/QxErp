@@ -70,7 +70,7 @@ uses
   csckgl in 'csckgl.pas' {Form64},
   cscprkgl in 'cscprkgl.pas' {Form65},
   csckdgl in 'csckdgl.pas' {Form66},
-  jhddy in 'jhddy.pas' {Form67};
+  csckddy in 'csckddy.pas' {Form67};
 
 {$R *.res}
 

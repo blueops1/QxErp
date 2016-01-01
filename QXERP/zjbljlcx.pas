@@ -19,11 +19,13 @@ type
     StringGrid1: TStringGrid;
     PopupMenu1: TPopupMenu;
     Execl1: TMenuItem;
+    Button2: TButton;
     procedure ComboBox2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Execl1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +37,7 @@ var
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 implementation
+uses main;
 
 {$R *.dfm}
 
@@ -78,6 +81,40 @@ begin
     application.MessageBox('数据查询失败！','不良质检记录查询');
   end else
     application.MessageBox('请选择需要查询的职工名称！','不良质检记录查询');
+end;
+
+procedure TForm49.Button2Click(Sender: TObject);
+begin
+  form1.RvDataSetConnection1.DataSet:=zstoredProc1;
+  if stringgrid1.RowCount>2 then
+  try
+    with zStoredProc1 do
+    begin
+      Close;
+      StoredProcName:='proc_zhijianbuliangjilu_by_zgbh_zjdate_cxxx';
+      ParamByName('zgbh').Value:=SplitString(combobox2.Text,'|');
+      ParamByName('zjdate').Value:=datetimepicker1.date;
+      if radiogroup1.ItemIndex=2 then
+        ParamByName('cxxx').Value:='all';
+      if radiogroup1.ItemIndex=0 then
+        ParamByName('cxxx').Value:='month';
+      if radiogroup1.ItemIndex=1 then
+        ParamByName('cxxx').Value:='year';
+      open;
+      with form1 do
+      begin
+        rvproject1.Open;
+        rvproject1.SelectReport('zjreport',true);
+        rvproject1.ClearParams;
+        rvproject1.SetParam('czry',main.strUser);
+        RvProject1.Execute;
+        rvproject1.Close;
+      end;
+    end;
+  except
+    application.MessageBox('数据查询失败！','不良质检报告打印');
+  end else
+    application.MessageBox('当前不良记录为空！','不良质检报告打印');
 end;
 
 procedure TForm49.ComboBox2KeyDown(Sender: TObject; var Key: Word;

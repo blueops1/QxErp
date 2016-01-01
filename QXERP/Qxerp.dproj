@@ -247,7 +247,7 @@
 			<DCCReference Include="csckdgl.pas">
 				<Form>Form66</Form>
 			</DCCReference>
-			<DCCReference Include="jhddy.pas">
+			<DCCReference Include="csckddy.pas">
 				<Form>Form67</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">

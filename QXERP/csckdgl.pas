@@ -14,6 +14,9 @@ type
     ZStoredProc1: TZStoredProc;
     procedure FormShow(Sender: TObject);
     procedure RadioGroup1Click(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure StringGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,7 +28,7 @@ var
 
 implementation
 
-uses main;
+uses main,csckddy;
 
 {$R *.dfm}
 
@@ -109,6 +112,20 @@ try
 except
   application.MessageBox('数据查询失败','产品测试出库单查询');
 end;
+end;
+
+procedure TForm66.StringGrid1DblClick(Sender: TObject);
+begin
+  if csckddy.strcsckdbh<>'' then
+    csckddy.Form67.ShowModal;
+end;
+
+procedure TForm66.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  csckddy.strcsckdbh:='';
+  if (ARow>0) and (ARow+1<stringgrid1.RowCount) then
+    csckddy.strcsckdbh:=stringgrid1.Cells[1,ARow];
 end;
 
 end.
