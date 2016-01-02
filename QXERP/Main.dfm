@@ -301,8 +301,6 @@ object Form1: TForm1
     object TabSheet9: TTabSheet
       Caption = #36136#37327#31649#29702
       ImageIndex = 8
-      ExplicitLeft = 8
-      ExplicitTop = 22
       object Button45: TButton
         Left = 160
         Top = 104
@@ -534,6 +532,15 @@ object Form1: TForm1
         Caption = #27979#35797#20986#24211#21333#25171#21360
         TabOrder = 15
         OnClick = Button68Click
+      end
+      object Button69: TButton
+        Left = 704
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20179#24211#26376#25253#34920#26597#35810
+        TabOrder = 16
+        OnClick = Button69Click
       end
     end
     object TabSheet4: TTabSheet
@@ -777,8 +784,8 @@ object Form1: TForm1
       'controls_cp=CP_UTF16')
     Port = 0
     Protocol = 'mysql-5'
-    Left = 496
-    Top = 528
+    Left = 896
+    Top = 216
   end
   object Timer1: TTimer
     Interval = 60000

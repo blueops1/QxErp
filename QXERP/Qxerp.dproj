@@ -250,6 +250,12 @@
 			<DCCReference Include="csckddy.pas">
 				<Form>Form67</Form>
 			</DCCReference>
+			<DCCReference Include="ckwzybb.pas">
+				<Form>Form68</Form>
+			</DCCReference>
+			<DCCReference Include="monthreports.pas">
+				<Form>Form69</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

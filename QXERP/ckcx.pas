@@ -46,6 +46,7 @@ implementation
 
 uses main,kcmxzcx;
 
+
 procedure TForm34.Button1Click(Sender: TObject);
 var
   i:integer;

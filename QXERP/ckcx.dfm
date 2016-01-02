@@ -45,7 +45,6 @@ object Form34: TForm34
     OnDblClick = StringGrid1DblClick
     OnDrawCell = StringGrid1DrawCell
     OnSelectCell = StringGrid1SelectCell
-    ExplicitTop = 43
     ColWidths = (
       55
       64

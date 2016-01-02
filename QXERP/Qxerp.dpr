@@ -70,7 +70,9 @@ uses
   csckgl in 'csckgl.pas' {Form64},
   cscprkgl in 'cscprkgl.pas' {Form65},
   csckdgl in 'csckdgl.pas' {Form66},
-  csckddy in 'csckddy.pas' {Form67};
+  csckddy in 'csckddy.pas' {Form67},
+  ckwzybb in 'ckwzybb.pas' {Form68},
+  monthreports in 'monthreports.pas' {Form69};
 
 {$R *.res}
 
@@ -147,5 +149,7 @@ begin
   Application.CreateForm(TForm65, Form65);
   Application.CreateForm(TForm66, Form66);
   Application.CreateForm(TForm67, Form67);
+  Application.CreateForm(TForm68, Form68);
+  Application.CreateForm(TForm69, Form69);
   Application.Run;
 end.

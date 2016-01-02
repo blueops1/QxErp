@@ -151,6 +151,10 @@
     <Transaction>2015/12/31 08:40:08.193.dfm,E:\QxErp\QXERP\Unit67.dfm=E:\QxErp\QXERP\jhddy.dfm</Transaction>
     <Transaction>2016/01/01 13:11:20.492.pas,F:\QxErp\QXERP\jhddy.pas=F:\QxErp\QXERP\csckddy.pas</Transaction>
     <Transaction>2016/01/01 13:11:20.492.dfm,F:\QxErp\QXERP\jhddy.dfm=F:\QxErp\QXERP\csckddy.dfm</Transaction>
+    <Transaction>2016/01/02 09:55:02.040.pas,E:\QxErp\QXERP\Unit68.pas=E:\QxErp\QXERP\ckwzybb.pas</Transaction>
+    <Transaction>2016/01/02 09:55:02.040.dfm,E:\QxErp\QXERP\Unit68.dfm=E:\QxErp\QXERP\ckwzybb.dfm</Transaction>
+    <Transaction>2016/01/02 10:05:48.573.pas,E:\QxErp\QXERP\Unit69.pas=E:\QxErp\QXERP\monthreports.pas</Transaction>
+    <Transaction>2016/01/02 10:05:48.573.dfm,E:\QxErp\QXERP\Unit69.dfm=E:\QxErp\QXERP\monthreports.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -291,5 +295,9 @@
     <File Path="csckdgl.dfm"/>
     <File Path="csckddy.pas"/>
     <File Path="csckddy.dfm"/>
+    <File Path="ckwzybb.pas"/>
+    <File Path="ckwzybb.dfm"/>
+    <File Path="monthreports.pas"/>
+    <File Path="monthreports.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>
