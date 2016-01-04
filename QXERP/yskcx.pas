@@ -65,6 +65,9 @@ type
     procedure TabSheet5Show(Sender: TObject);
     procedure Button9Click(Sender: TObject);
     procedure Button10Click(Sender: TObject);
+    procedure StringGrid4DblClick(Sender: TObject);
+    procedure StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -77,7 +80,7 @@ var
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
-uses main;
+uses main,yskkhmxz;
 //  uses DLLTools;
 
 {$R *.dfm}
@@ -471,6 +474,24 @@ begin
     Application.MessageBox('查询失败！','应收款统计查询提示');
   end;
 end;
+procedure TForm7.StringGrid4DblClick(Sender: TObject);
+begin
+  if strYskbh<>'NULL' then
+  yskkhmxz.Form42.ShowModal;
+end;
+
+procedure TForm7.StringGrid4SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if stringgrid4.RowCount>2 then
+  begin
+    strYskbh:=stringgrid4.Cells[1,ARow];
+    strKhmc:=stringgrid4.Cells[3,ARow];
+  end
+  else
+    strYskbh:='NULL';
+end;
+
 procedure TForm7.TabSheet5Show(Sender: TObject);
 begin
   stringgrid4.Cells[0,0]:='序号';

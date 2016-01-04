@@ -115,6 +115,7 @@ begin
       StoredProcName:='proc_update_fphz_by_rkdbh';
       for i := 0 to listbox1.Count - 1 do
       begin
+        ParamByName('rkdno').Value:=i;
         ParamByName('rkdbh').Value:=ListBox1.Items.Strings[i];
         ParamByName('fpbh').Value:=edit1.Text;
         ParamByName('fpsl').Value:=edit2.Text;
@@ -123,6 +124,8 @@ begin
         ParamByName('fpmemo').Value:='*'+memo1.Text;
         //ffpbh=fpbh,ffpdate=fpdate,ffpczry=fpczry,ffpmemo=fpmemo
         execProc;
+        if ParamByName('returncode').Value=1 then
+          break;
       end;
       if ParamByName('returncode').Value=1 then
         application.MessageBox('该发票编号已经存在！','发票核帐提示')

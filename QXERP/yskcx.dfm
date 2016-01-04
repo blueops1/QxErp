@@ -293,8 +293,6 @@ object Form7: TForm7
       Caption = #25353#21333#20301#26597#35810
       ImageIndex = 4
       OnShow = TabSheet5Show
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label4: TLabel
         Left = 24
         Top = 24
@@ -337,6 +335,8 @@ object Form7: TForm7
         RowCount = 2
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         TabOrder = 2
+        OnDblClick = StringGrid4DblClick
+        OnSelectCell = StringGrid4SelectCell
         ColWidths = (
           64
           107

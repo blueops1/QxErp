@@ -103,8 +103,8 @@ begin
           stringgrid1.Cells[0,i]:=inttostr(i);
           stringgrid1.Cells[1,i]:=fields[0].AsString;
           stringgrid1.Cells[2,i]:=fields[1].AsString;
-          stringgrid1.Cells[3,i]:=fields[2].AsString;
-          stringgrid1.Cells[4,i]:=fields[3].AsString;
+          stringgrid1.Cells[3,i]:=fields[3].AsString;
+         // stringgrid1.Cells[4,i]:=fields[3].AsString;
           i:=i+1;
           stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
           next;
@@ -159,8 +159,7 @@ try
         stringgrid1.Cells[0,i]:=inttostr(i);
         stringgrid1.Cells[1,i]:=fields[0].AsString;
         stringgrid1.Cells[2,i]:=fields[1].AsString;
-        stringgrid1.Cells[3,i]:=fields[2].AsString;
-        stringgrid1.Cells[4,i]:=fields[3].AsString;
+        stringgrid1.Cells[3,i]:=fields[3].AsString;
         i:=i+1;
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;

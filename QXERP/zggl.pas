@@ -584,6 +584,8 @@ begin
       stringgrid1.Cells[5,y]:=fields[5].AsString;
       stringgrid1.Cells[6,y]:=fields[6].AsString;
       stringgrid1.Cells[7,y]:=fields[7].AsString;
+      stringgrid1.Cells[8,y]:=fields[8].AsString;
+      stringgrid1.Cells[9,y]:=fields[9].AsString;
       y:=y+1;
       next;
     end;

@@ -101,12 +101,12 @@ begin
               StoredProcName:='proc_update_csckd_info_mxz_by_csckdid';
               ParamByName('cxitem').Value:='mxz';
               ParamByName('csckdid').Value:=edit1.Text;
-              ParamByName('csckcpbh').Value:=stringgrid1.Cells[2,i];
+              ParamByName('csckcpbh').Value:=splitstring(stringgrid1.Cells[1,i],'|');
               ParamByName('csgksl').Value:=stringgrid1.Cells[3,i];
               ExecProc;
             end;
           end;
-          application.MessageBox('全部归库保存成功！','测试产品归库提示');
+          application.MessageBox('归库保存成功！','测试产品归库提示');
           edit1.Text:='';
           edit2.Text:='';
           edit3.Text:='';
@@ -115,7 +115,7 @@ begin
           stringgrid1.Rows[1].Clear;
         end;
       except
-        application.MessageBox('全部归库保存失败！','测试产品归库提示');
+        application.MessageBox('归库保存失败！','测试产品归库提示');
       end;
     end;
   end else

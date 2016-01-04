@@ -204,6 +204,8 @@ begin
         if not eof then
         begin
           edit2.Text:=fields[0].asstring;
+          edit12.Text:=fields[1].asstring;
+          edit13.Text:=fields[2].asstring;
         end;
         //combobox1.DroppedDown:=true;
       end;

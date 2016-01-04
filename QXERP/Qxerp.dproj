@@ -256,6 +256,9 @@
 			<DCCReference Include="monthreports.pas">
 				<Form>Form69</Form>
 			</DCCReference>
+			<DCCReference Include="rkdinfocx.pas">
+				<Form>Form70</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

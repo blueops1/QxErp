@@ -125,6 +125,7 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
       edit3.Text:='';
       edit4.Text:='';
       edit5.Text:='';
+      edit6.Text:='0';
       comboboxex1.Text:='';
       combobox1.Text:='';
       memo1.Text:='';

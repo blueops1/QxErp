@@ -1,0 +1,219 @@
+unit rkdinfocx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls, ExtCtrls, DB, ZAbstractRODataset,
+  ZAbstractDataset, ZStoredProcedure, Grids;
+
+type
+  TForm70 = class(TForm)
+    Label1: TLabel;
+    ComboBox1: TComboBox;
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    Button2: TButton;
+    ZStoredProc1: TZStoredProc;
+    RadioGroup1: TRadioGroup;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    Label3: TLabel;
+    自: TLabel;
+    至: TLabel;
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+      Rect: TRect; State: TGridDrawState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form70: TForm70;
+  function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm70.Button1Click(Sender: TObject);
+var
+  cxdate1,cxdate2:string;
+  gyslist:tstringlist;
+  i:integer;
+  tmpgysid:string;
+  cxgysid:string;
+  y:integer;
+begin
+  if combobox1.Text<>'' then
+  try
+    with zStoredProc1 do
+    begin
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
+      close;
+      StoredProcName:='proc_cx_rkdinfocx_by_gysbh_cxitem';
+      ParamByName('cxitem').Value:=radiogroup1.Items.strings[radiogroup1.ItemIndex];
+      ParamByName('gysbh').Value:=SplitString(ComboBox1.Text,'|');
+      ParamByName('cxksdate').Value:=datetimepicker1.Date;
+      ParamByName('cxjsdate').Value:=datetimepicker2.Date;
+      open;
+      if not eof then
+      begin
+        gyslist:=tstringlist.Create;
+        tmpgysid:='gysid';
+        y:=1;
+      while not eof do
+      begin
+        gyslist.Add(fields[0].asstring);
+        next;
+      end;
+      for i := 0 to gyslist.Count - 1 do     //proc_cx_fpwhzcx_by_rkdbh
+        begin
+          close;
+          StoredProcName:='proc_cx_fpwhzcx_by_rkdbh';
+          ParamByName('rkdbh').Value:=gyslist[i];
+                  //application.MessageBox(pwidechar(gyslist[i]),'发票未核帐查询提示');
+          open;
+          zstoredproc1.FirstResultSet;
+          cxgysid:=fields[0].AsString;
+          if tmpgysid<>cxgysid then
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            tmpgysid:=cxgysid;
+            stringgrid1.Cells[0,y]:=inttostr(y);
+            stringgrid1.Cells[1,y]:=tmpgysid;
+            stringgrid1.Cells[2,y]:=fields[1].AsString;
+            y:=y+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+            stringgrid1.Cells[0,y]:=inttostr(y);
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            zstoredproc1.NextResultSet;
+            stringgrid1.Cells[3,y]:=fields[0].AsString;
+            stringgrid1.Cells[4,y]:=fields[1].AsString;
+            stringgrid1.Cells[5,y]:=fields[2].AsString;
+            y:=y+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+            zstoredproc1.LastResultSet;
+            while not eof do
+            begin
+              stringgrid1.RowCount:=stringgrid1.RowCount+1;
+              stringgrid1.Cells[0,y]:=inttostr(y);
+              stringgrid1.Cells[6,y]:=fields[0].AsString;
+              stringgrid1.Cells[7,y]:=fields[1].AsString;
+              stringgrid1.Cells[8,y]:=fields[2].AsString;
+              y:=y+1;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+              stringgrid1.Rows[y].Clear;
+              next;
+            end;
+          end else
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            zstoredproc1.NextResultSet;
+            stringgrid1.Cells[0,y]:=inttostr(y);
+            stringgrid1.Cells[3,y]:=fields[0].AsString;
+            stringgrid1.Cells[4,y]:=fields[1].AsString;
+            stringgrid1.Cells[5,y]:=fields[2].AsString;
+            y:=y+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+            zstoredproc1.LastResultSet;
+            while not eof do
+            begin
+              stringgrid1.RowCount:=stringgrid1.RowCount+1;
+              stringgrid1.Cells[0,y]:=inttostr(y);
+              stringgrid1.Cells[6,y]:=fields[0].AsString;
+              stringgrid1.Cells[7,y]:=fields[1].AsString;
+              stringgrid1.Cells[8,y]:=fields[2].AsString;
+              y:=y+1;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+              next;
+            end;
+          end;
+        end;
+        form70.Invalidate;
+        gyslist.Free;
+      end else
+      begin
+        datetimetostring(cxdate1,'yyyy-mm-dd',datetimepicker1.Date);
+        datetimetostring(cxdate2,'yyyy-mm-dd',datetimepicker2.Date);
+        application.MessageBox(pwidechar('自'+cxdate1+'至'+cxdate2+'该供应商没有入库单！'),'入库单信息查询提示');
+
+      end;
+    end;
+  except
+    application.MessageBox('查询数据失败！','入库单信息查询提示');
+  end;
+end;
+
+procedure TForm70.ComboBox1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox1.Items.Count>0 then
+    ComboBox1.Items.Clear;
+    combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_gysmc';
+        zstoredproc1.ParamByName('gysname').Value:=ComboBox1.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox1.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','入库单信息查询提示');
+  end;
+ end;
+end;
+
+procedure TForm70.FormShow(Sender: TObject);
+begin
+  datetimepicker1.Date:=now();
+  datetimepicker2.Date:=now();
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='供应商编号';
+  stringgrid1.Cells[2,0]:='供应商名称';
+  stringgrid1.Cells[3,0]:='入库单编号';
+  stringgrid1.Cells[4,0]:='入库时间';
+  stringgrid1.Cells[5,0]:='入库人';
+  stringgrid1.Cells[6,0]:='物品名称';
+  stringgrid1.Cells[7,0]:='入库数量';
+  stringgrid1.Cells[8,0]:='物品单价';
+end;
+
+procedure TForm70.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
+  Rect: TRect; State: TGridDrawState);
+begin
+  with TStringGrid(Sender) do
+  begin
+    if (ARow>0) and (ARow<TStringGrid(Sender).rowCount-1) then
+      if(Cells[1,ARow]<>'') then
+        Canvas.Brush.Color:=clSkyBlue
+        //Canvas.Font.Color:=clRed
+      else if(Cells[3,ARow]<>'') then
+        Canvas.Brush.Color:=clMoneyGreen
+        else
+          Canvas.Brush.Color:=clWindow;
+  //      Canvas.Font.Color:=clWindowText;
+    Canvas.FillRect(Rect);
+    Canvas.TextOut(Rect.Left+2,Rect.Top+2,Cells[ACol,ARow]);
+  end;
+end;
+
+end.

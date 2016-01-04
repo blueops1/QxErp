@@ -388,6 +388,8 @@ object Form1: TForm1
     object TabSheet3: TTabSheet
       Caption = #20179#24211#31649#29702
       ImageIndex = 2
+      ExplicitLeft = 172
+      ExplicitTop = 0
       object Button25: TButton
         Left = 160
         Top = 104
@@ -541,6 +543,15 @@ object Form1: TForm1
         Caption = #20179#24211#26376#25253#34920#26597#35810
         TabOrder = 16
         OnClick = Button69Click
+      end
+      object Button70: TButton
+        Left = 704
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #20837#24211#21333#20449#24687#26597#35810
+        TabOrder = 17
+        OnClick = Button70Click
       end
     end
     object TabSheet4: TTabSheet
@@ -796,8 +807,8 @@ object Form1: TForm1
   object ZQuery1: TZQuery
     Connection = ZConnection1
     Params = <>
-    Left = 752
-    Top = 264
+    Left = 912
+    Top = 376
   end
   object RvProject1: TRvProject
     Engine = RvSystem1
@@ -15459,7 +15470,7 @@ object Form1: TForm1
   object RvDataSetConnection1: TRvDataSetConnection
     RuntimeVisibility = rtDeveloper
     DisableDataSource = False
-    Left = 752
-    Top = 336
+    Left = 952
+    Top = 328
   end
 end
