@@ -76,7 +76,9 @@ uses
   rkdinfocx in 'rkdinfocx.pas' {Form70},
   fpcxrkd in 'fpcxrkd.pas' {Form71},
   cyrxxgl in 'cyrxxgl.pas' {Form72},
-  thcl in 'thcl.pas' {Form73};
+  thcl in 'thcl.pas' {Form73},
+  bthcscktzd in 'bthcscktzd.pas' {Form74},
+  bthcstzddy in 'bthcstzddy.pas' {Form75};
 
 {$R *.res}
 
@@ -159,5 +161,7 @@ begin
   Application.CreateForm(TForm71, Form71);
   Application.CreateForm(TForm72, Form72);
   Application.CreateForm(TForm73, Form73);
+  Application.CreateForm(TForm74, Form74);
+  Application.CreateForm(TForm75, Form75);
   Application.Run;
 end.

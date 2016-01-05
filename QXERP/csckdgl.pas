@@ -88,6 +88,8 @@ try
        ParamByName('cxitem').Value:='wrk'
     else if radiogroup1.ItemIndex=1 then
       ParamByName('cxitem').Value:='yrk'
+      else if radiogroup1.ItemIndex=2 then
+      ParamByName('cxitem').Value:='bth'
     else  ParamByName('cxitem').Value:='all';
     open;
     i:=1;

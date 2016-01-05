@@ -23,11 +23,12 @@ object Form66: TForm66
     Width = 273
     Height = 49
     Caption = #26597#35810#36873#39033
-    Columns = 3
+    Columns = 4
     ItemIndex = 0
     Items.Strings = (
       #26410#36864#22238
       #24050#36864#22238
+      #19981#36864#22238
       #20840#37096)
     TabOrder = 0
     OnClick = RadioGroup1Click
