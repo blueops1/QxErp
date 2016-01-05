@@ -159,6 +159,12 @@
     <Transaction>2016/01/04 14:59:39.676.dfm,E:\QxErp\QXERP\Unit70.dfm=E:\QxErp\QXERP\入库单信息查询.dfm</Transaction>
     <Transaction>2016/01/04 15:00:06.305.pas,E:\QxErp\QXERP\入库单信息查询.pas=E:\QxErp\QXERP\rkdinfocx.pas</Transaction>
     <Transaction>2016/01/04 15:00:06.305.dfm,E:\QxErp\QXERP\入库单信息查询.dfm=E:\QxErp\QXERP\rkdinfocx.dfm</Transaction>
+    <Transaction>2016/01/05 10:12:57.474.pas,E:\QxErp\QXERP\Unit71.pas=E:\QxErp\QXERP\fpcxrkd.pas</Transaction>
+    <Transaction>2016/01/05 10:12:57.474.dfm,E:\QxErp\QXERP\Unit71.dfm=E:\QxErp\QXERP\fpcxrkd.dfm</Transaction>
+    <Transaction>2016/01/05 10:48:35.815.pas,E:\QxErp\QXERP\Unit72.pas=E:\QxErp\QXERP\cyrxxgl.pas</Transaction>
+    <Transaction>2016/01/05 10:48:35.815.dfm,E:\QxErp\QXERP\Unit72.dfm=E:\QxErp\QXERP\cyrxxgl.dfm</Transaction>
+    <Transaction>2016/01/05 12:49:57.305.pas,E:\QxErp\QXERP\Unit73.pas=E:\QxErp\QXERP\thcl.pas</Transaction>
+    <Transaction>2016/01/05 12:49:57.305.dfm,E:\QxErp\QXERP\Unit73.dfm=E:\QxErp\QXERP\thcl.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -305,5 +311,11 @@
     <File Path="monthreports.dfm"/>
     <File Path="rkdinfocx.pas"/>
     <File Path="rkdinfocx.dfm"/>
+    <File Path="fpcxrkd.pas"/>
+    <File Path="fpcxrkd.dfm"/>
+    <File Path="cyrxxgl.pas"/>
+    <File Path="cyrxxgl.dfm"/>
+    <File Path="thcl.pas"/>
+    <File Path="thcl.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

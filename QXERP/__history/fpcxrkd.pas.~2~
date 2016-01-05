@@ -1,0 +1,48 @@
+unit fpcxrkd;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Menus,
+  Grids, StdCtrls;
+
+type
+  TForm71 = class(TForm)
+    Label1: TLabel;
+    Edit1: TEdit;
+    Button1: TButton;
+    StringGrid1: TStringGrid;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    ZStoredProc1: TZStoredProc;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form71: TForm71;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm71.FormShow(Sender: TObject);
+begin
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='供应商编号';
+  stringgrid1.Cells[2,0]:='供应商名称';
+  stringgrid1.Cells[3,0]:='入库单编号';
+  stringgrid1.Cells[4,0]:='入库时间';
+  stringgrid1.Cells[5,0]:='入库人';
+  stringgrid1.Cells[6,0]:='物品名称';
+  stringgrid1.Cells[7,0]:='入库数量';
+  stringgrid1.Cells[8,0]:='物品单价';
+end;
+
+end.

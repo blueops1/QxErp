@@ -1,0 +1,120 @@
+unit cyrxxgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls, DB, ZAbstractRODataset, ZAbstractDataset,
+  ZStoredProcedure;
+
+type
+  TForm72 = class(TForm)
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label16: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Memo1: TMemo;
+    Button1: TButton;
+    Button2: TButton;
+    TabSheet2: TTabSheet;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    ListBox1: TListBox;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Edit11: TEdit;
+    Edit12: TEdit;
+    Memo2: TMemo;
+    Button3: TButton;
+    Button4: TButton;
+    Edit15: TEdit;
+    ZStoredProc1: TZStoredProc;
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form72: TForm72;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm72.Button1Click(Sender: TObject);
+begin
+  if (edit1.Text<>'') and (edit2.Text<>'') and (edit5.Text<>'') and (edit6.Text<>'') then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_insert_cyrinfo';     // cysid,cysmc,lxr,lxrphone,memo
+        ParamByName('cysid').Value:=edit1.Text;
+        ParamByName('cysmc').Value:=edit2.Text;
+        ParamByName('lxr').Value:=edit5.Text;
+        ParamByName('lxrphone').Value:=edit6.Text;
+        ParamByName('memo').Value:='*'+memo1.Text;
+        ExecProc;
+        if ParamByName('returncode').Value=1 then
+          application.MessageBox('该承运商已经存在！','承运商管理提示')
+        else begin
+          application.MessageBox('数据保存成功！','承运商管理提示');
+          edit1.Text:='';
+          edit2.Text:='';
+          edit5.Text:='';
+          edit6.Text:='';
+          memo1.Text:='';
+          edit1.SetFocus;
+        end;
+      end;
+  except
+    application.MessageBox('数据更新失败！','承运商管理提示');
+  end else
+    application.MessageBox('请将必填项填写完整！','承运商管理提示');
+end;
+
+procedure TForm72.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+if key=13 then
+  try
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_newcyrid';
+      open;
+      if fields[0].AsString<>'' then
+      begin
+        edit1.Text:=fields[0].AsString;
+        edit2.SetFocus;
+      end else
+      begin
+        edit1.Text:='1';
+        edit2.SetFocus;
+      end;
+    end;
+  except
+    application.MessageBox('数据查询失败！','承运商管理提示');
+  end;
+end;
+
+end.

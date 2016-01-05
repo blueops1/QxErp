@@ -1,0 +1,285 @@
+object Form72: TForm72
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = #25215#36816#21830#20449#24687#31649#29702
+  ClientHeight = 504
+  ClientWidth = 864
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 0
+    Width = 864
+    Height = 504
+    ActivePage = TabSheet1
+    Align = alClient
+    TabOrder = 0
+    ExplicitWidth = 785
+    ExplicitHeight = 494
+    object TabSheet1: TTabSheet
+      Caption = #26032#22686#25215#36816#21830
+      ExplicitWidth = 907
+      ExplicitHeight = 486
+      object Label1: TLabel
+        Left = 173
+        Top = 27
+        Width = 60
+        Height = 13
+        Caption = #25215#36816#21830#32534#21495
+      end
+      object Label2: TLabel
+        Left = 174
+        Top = 67
+        Width = 60
+        Height = 13
+        Caption = #25215#36816#21830#21517#31216
+      end
+      object Label5: TLabel
+        Left = 198
+        Top = 107
+        Width = 36
+        Height = 13
+        Caption = #32852#31995#20154
+      end
+      object Label6: TLabel
+        Left = 186
+        Top = 147
+        Width = 48
+        Height = 13
+        Caption = #32852#31995#30005#35805
+      end
+      object Label7: TLabel
+        Left = 210
+        Top = 187
+        Width = 24
+        Height = 13
+        Caption = #22791#27880
+      end
+      object Label16: TLabel
+        Left = 241
+        Top = 293
+        Width = 84
+        Height = 13
+        Caption = #32511#33394#26159#24517#22635#36873#39033
+        Color = clBtnFace
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+      end
+      object Edit1: TEdit
+        Left = 240
+        Top = 24
+        Width = 121
+        Height = 21
+        Color = clMoneyGreen
+        TabOrder = 0
+        TextHint = #22238#36710#33719#21462#32534#21495
+        OnKeyDown = Edit1KeyDown
+      end
+      object Edit2: TEdit
+        Left = 240
+        Top = 64
+        Width = 393
+        Height = 21
+        Color = clMoneyGreen
+        TabOrder = 1
+      end
+      object Edit5: TEdit
+        Left = 241
+        Top = 104
+        Width = 121
+        Height = 21
+        Color = clMoneyGreen
+        TabOrder = 2
+      end
+      object Edit6: TEdit
+        Left = 241
+        Top = 144
+        Width = 169
+        Height = 21
+        Color = clMoneyGreen
+        TabOrder = 3
+      end
+      object Memo1: TMemo
+        Left = 240
+        Top = 184
+        Width = 393
+        Height = 89
+        TabOrder = 4
+      end
+      object Button1: TButton
+        Left = 409
+        Top = 326
+        Width = 97
+        Height = 25
+        Caption = #20445#23384
+        TabOrder = 5
+        OnClick = Button1Click
+      end
+      object Button2: TButton
+        Left = 536
+        Top = 326
+        Width = 97
+        Height = 25
+        Caption = #21462#28040
+        TabOrder = 6
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = #25215#36816#21830#20449#24687#20462#25913
+      ImageIndex = 1
+      ExplicitWidth = 777
+      ExplicitHeight = 466
+      object Label8: TLabel
+        Left = 325
+        Top = 75
+        Width = 60
+        Height = 13
+        Caption = #25215#36816#21830#32534#21495
+      end
+      object Label9: TLabel
+        Left = 326
+        Top = 115
+        Width = 60
+        Height = 13
+        Caption = #25215#36816#21830#21517#31216
+      end
+      object Label12: TLabel
+        Left = 349
+        Top = 155
+        Width = 36
+        Height = 13
+        Caption = #32852#31995#20154
+      end
+      object Label13: TLabel
+        Left = 338
+        Top = 195
+        Width = 48
+        Height = 13
+        Caption = #32852#31995#30005#35805
+      end
+      object Label14: TLabel
+        Left = 361
+        Top = 235
+        Width = 24
+        Height = 13
+        Caption = #22791#27880
+      end
+      object Label15: TLabel
+        Left = 528
+        Top = 35
+        Width = 276
+        Height = 13
+        Caption = #27169#31946#26597#35810#20379#24212#21830#20449#24687#65292#26597#35810#20840#37096#36755#20837#19968#20010#31354#26684#21518#22238#36710
+      end
+      object Label19: TLabel
+        Left = 302
+        Top = 35
+        Width = 84
+        Height = 13
+        Caption = #25215#36816#21830#20449#24687#26597#35810
+      end
+      object Label20: TLabel
+        Left = 392
+        Top = 356
+        Width = 150
+        Height = 13
+        Caption = #26356#25913#22791#27880#65292#35831#20445#30041#24320#22836#30340'*'#21495
+      end
+      object ListBox1: TListBox
+        Left = 0
+        Top = 0
+        Width = 241
+        Height = 476
+        Align = alLeft
+        ItemHeight = 13
+        TabOrder = 0
+        OnClick = ListBox1Click
+        ExplicitHeight = 466
+      end
+      object Edit7: TEdit
+        Left = 392
+        Top = 32
+        Width = 121
+        Height = 21
+        Color = clMoneyGreen
+        TabOrder = 1
+        TextHint = #36755#20837#20851#38190#23383#21518#22238#36710
+        OnKeyDown = Edit7KeyDown
+      end
+      object Edit8: TEdit
+        Left = 392
+        Top = 112
+        Width = 393
+        Height = 21
+        TabOrder = 3
+      end
+      object Edit11: TEdit
+        Left = 392
+        Top = 152
+        Width = 121
+        Height = 21
+        TabOrder = 4
+      end
+      object Edit12: TEdit
+        Left = 393
+        Top = 192
+        Width = 169
+        Height = 21
+        TabOrder = 5
+      end
+      object Memo2: TMemo
+        Left = 393
+        Top = 235
+        Width = 392
+        Height = 89
+        TabOrder = 6
+      end
+      object Button3: TButton
+        Left = 688
+        Top = 351
+        Width = 97
+        Height = 25
+        Caption = #20445#23384#20462#25913
+        TabOrder = 7
+        OnClick = Button3Click
+      end
+      object Button4: TButton
+        Left = 561
+        Top = 351
+        Width = 104
+        Height = 25
+        Caption = #21462#28040
+        TabOrder = 8
+      end
+      object Edit15: TEdit
+        Left = 392
+        Top = 72
+        Width = 121
+        Height = 21
+        ReadOnly = True
+        TabOrder = 2
+      end
+    end
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 56
+    Top = 272
+  end
+end

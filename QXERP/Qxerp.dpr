@@ -73,7 +73,10 @@ uses
   csckddy in 'csckddy.pas' {Form67},
   ckwzybb in 'ckwzybb.pas' {Form68},
   monthreports in 'monthreports.pas' {Form69},
-  rkdinfocx in 'rkdinfocx.pas' {Form70};
+  rkdinfocx in 'rkdinfocx.pas' {Form70},
+  fpcxrkd in 'fpcxrkd.pas' {Form71},
+  cyrxxgl in 'cyrxxgl.pas' {Form72},
+  thcl in 'thcl.pas' {Form73};
 
 {$R *.res}
 
@@ -153,5 +156,8 @@ begin
   Application.CreateForm(TForm68, Form68);
   Application.CreateForm(TForm69, Form69);
   Application.CreateForm(TForm70, Form70);
+  Application.CreateForm(TForm71, Form71);
+  Application.CreateForm(TForm72, Form72);
+  Application.CreateForm(TForm73, Form73);
   Application.Run;
 end.

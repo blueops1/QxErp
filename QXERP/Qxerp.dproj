@@ -259,6 +259,15 @@
 			<DCCReference Include="rkdinfocx.pas">
 				<Form>Form70</Form>
 			</DCCReference>
+			<DCCReference Include="fpcxrkd.pas">
+				<Form>Form71</Form>
+			</DCCReference>
+			<DCCReference Include="cyrxxgl.pas">
+				<Form>Form72</Form>
+			</DCCReference>
+			<DCCReference Include="thcl.pas">
+				<Form>Form73</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

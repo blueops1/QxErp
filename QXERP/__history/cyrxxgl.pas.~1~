@@ -1,0 +1,57 @@
+unit cyrxxgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ComCtrls;
+
+type
+  TForm72 = class(TForm)
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label16: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Memo1: TMemo;
+    Button1: TButton;
+    Button2: TButton;
+    TabSheet2: TTabSheet;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label19: TLabel;
+    Label20: TLabel;
+    ListBox1: TListBox;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Edit11: TEdit;
+    Edit12: TEdit;
+    Memo2: TMemo;
+    Button3: TButton;
+    Button4: TButton;
+    Edit15: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form72: TForm72;
+
+implementation
+
+{$R *.dfm}
+
+end.

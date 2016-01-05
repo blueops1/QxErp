@@ -198,6 +198,163 @@ object Form8: TForm8
           #22871)
       end
     end
+    object TabSheet4: TTabSheet
+      Caption = #20135#21697#20449#24687#20462#25913
+      ImageIndex = 3
+      object Label15: TLabel
+        Left = 368
+        Top = 136
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #20135#21697#32534#21495
+      end
+      object Label16: TLabel
+        Left = 360
+        Top = 173
+        Width = 89
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #20135#21697#35268#26684
+      end
+      object Label17: TLabel
+        Left = 368
+        Top = 208
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #35745#37327#21333#20301
+      end
+      object Label18: TLabel
+        Left = 368
+        Top = 243
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #20135#21697#31867#22411
+      end
+      object Label19: TLabel
+        Left = 368
+        Top = 280
+        Width = 81
+        Height = 13
+        Alignment = taRightJustify
+        AutoSize = False
+        Caption = #20135#21697#22791#27880
+      end
+      object Label20: TLabel
+        Left = 456
+        Top = 309
+        Width = 57
+        Height = 13
+        Caption = '* '#20026#24517#22635#39033
+        Color = clRed
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentColor = False
+        ParentFont = False
+      end
+      object Edit7: TEdit
+        Left = 464
+        Top = 133
+        Width = 177
+        Height = 21
+        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object Edit8: TEdit
+        Left = 463
+        Top = 170
+        Width = 177
+        Height = 21
+        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+        TabOrder = 1
+      end
+      object ComboBox5: TComboBox
+        Left = 464
+        Top = 205
+        Width = 176
+        Height = 21
+        DropDownCount = 16
+        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+        TabOrder = 2
+        OnDropDown = ComboBox5DropDown
+        Items.Strings = (
+          #20010
+          #22359
+          #26465
+          #22871)
+      end
+      object ComboBox6: TComboBox
+        Left = 463
+        Top = 240
+        Width = 177
+        Height = 21
+        DropDownCount = 16
+        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+        TabOrder = 3
+        OnDropDown = ComboBox1DropDown
+      end
+      object Edit11: TEdit
+        Left = 463
+        Top = 277
+        Width = 418
+        Height = 21
+        ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
+        TabOrder = 4
+      end
+      object Button3: TButton
+        Left = 456
+        Top = 369
+        Width = 75
+        Height = 25
+        Caption = #20445#23384
+        TabOrder = 5
+        OnClick = Button3Click
+      end
+      object Button4: TButton
+        Left = 558
+        Top = 369
+        Width = 75
+        Height = 25
+        Caption = #21462#28040
+        TabOrder = 6
+      end
+      object ListBox2: TListBox
+        Left = 0
+        Top = 0
+        Width = 201
+        Height = 583
+        Align = alLeft
+        ItemHeight = 13
+        TabOrder = 7
+        OnClick = ListBox2Click
+      end
+      object Edit12: TEdit
+        Left = 464
+        Top = 64
+        Width = 176
+        Height = 21
+        TabOrder = 8
+      end
+      object Button9: TButton
+        Left = 672
+        Top = 62
+        Width = 89
+        Height = 25
+        Caption = #31946#31946#26597#35810
+        TabOrder = 9
+        OnClick = Button9Click
+      end
+    end
     object TabSheet2: TTabSheet
       Caption = #26032#22686#21512#21516#26126#32454
       Enabled = False
@@ -423,7 +580,7 @@ object Form8: TForm8
   object ZQuery1: TZQuery
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 480
-    Top = 80
+    Left = 904
+    Top = 56
   end
 end

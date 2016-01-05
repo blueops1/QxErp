@@ -119,7 +119,7 @@ begin
     with zStoredProc1 do
     begin
       close;
-      StoredProcName:='proc_insert_jysinfo_by_jgsid';
+      StoredProcName:='proc_update_gysinfo_by_gysid';
         ParamByName('jgsbh').Value:=edit15.Text;
         ParamByName('jgsmc').Value:=edit8.Text;
         ParamByName('jgsaddr').Value:=edit14.Text;
@@ -208,7 +208,6 @@ begin
           Edit11.Text := fields[6].AsString;
           Edit12.Text := fields[7].AsString;
           Memo2.Text := fields[8].AsString;
-
         end;
       end;
     except

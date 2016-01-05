@@ -54,12 +54,33 @@ type
     Label14: TLabel;
     Edit6: TEdit;
     ZQuery1: TZQuery;
+    TabSheet4: TTabSheet;
+    Label15: TLabel;
+    Edit7: TEdit;
+    Label16: TLabel;
+    Edit8: TEdit;
+    Label17: TLabel;
+    ComboBox5: TComboBox;
+    Label18: TLabel;
+    ComboBox6: TComboBox;
+    Label19: TLabel;
+    Edit11: TEdit;
+    Label20: TLabel;
+    Button3: TButton;
+    Button4: TButton;
+    ListBox2: TListBox;
+    Edit12: TEdit;
+    Button9: TButton;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
+    procedure Button9Click(Sender: TObject);
+    procedure ListBox2Click(Sender: TObject);
+    procedure ComboBox5DropDown(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,6 +123,31 @@ begin
       end;
       Except
       Application.MessageBox('新增记录失败！','产品信息管理提示');
+    end;
+   end else
+    Application.MessageBox('请将必填项目填写完整！','产品信息管理提示');
+end;
+
+procedure TForm8.Button3Click(Sender: TObject);
+begin
+  if (edit7.Text <> '') and (edit8.Text <> '') and(combobox5.Text <> '') and (combobox6.Text <> '')then
+  begin
+    try
+      with ZQuery1 do
+      begin
+        close;
+        sql.Clear;
+        sql.Add('update cplxk set fcpmc='''+edit8.Text+''',fcpdw='''+combobox5.Text+''',fcpzl='''+combobox6.Text+''',fmemo='''+edit11.Text+''' where fcpbh='''+edit7.Text+'''');
+        ExecSQL;
+        Application.MessageBox('修改记录成功！','产品信息管理提示');
+        edit7.Text := '';
+        edit8.Text := '';
+        combobox5.Text := '';
+        combobox6.Text:='';
+        edit11.Text := '';
+      end;
+    Except
+      Application.MessageBox('修改记录成功！','产品信息管理提示');
     end;
    end else
     Application.MessageBox('请将必填项目填写完整！','产品信息管理提示');
@@ -152,9 +198,26 @@ begin
 
 end;
 
+procedure TForm8.Button9Click(Sender: TObject);
+begin
+listbox2.Clear;
+with ZQuery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select concat(fcpbh,''|'',fcpmc,''|'',fcpzl) from cplxk where fcpmc like ''%'+edit12.text+'%''');
+    open;
+    while not eof  do
+    begin
+      listbox2.Items.Append(fields[0].AsString);
+      next;
+    end;
+  end;
+end;
+
 procedure TForm8.ComboBox1DropDown(Sender: TObject);
 begin
-  combobox1.Items.Clear;
+  combobox6.Items.Clear;
   with ZQuery1 do
   begin
     close;
@@ -163,7 +226,24 @@ begin
     open;
     while not eof do
     begin
-       combobox1.Items.Add(fields[0].asstring);
+       combobox6.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
+procedure TForm8.ComboBox5DropDown(Sender: TObject);
+begin
+  combobox5.Items.Clear;
+  with ZQuery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select distinct fcpzl from cplxk');
+    open;
+    while not eof do
+    begin
+       combobox5.Items.Add(fields[0].asstring);
        next;
     end;
   end;
@@ -181,6 +261,27 @@ begin
     if not eof then
        strCPBH := fields[0].AsString;
     edit1.Text := strCPBH;
+  end;
+end;
+
+procedure TForm8.ListBox2Click(Sender: TObject);
+var strcpbh:String;
+begin
+  strcpbh := SplitString(listbox2.Items.Strings[listbox2.itemindex],'|');
+  with ZQuery1 do
+  begin
+    close;
+    sql.Clear;
+    sql.Add('select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpbh = '''+strcpbh+'''');
+    open;
+    if not eof then
+    begin
+      edit7.Text := fields[0].AsString;
+      edit8.Text := fields[1].AsString;
+      combobox5.Text := fields[2].AsString;
+      combobox6.Text := fields[3].AsString;
+      edit11.Text := fields[4].AsString;
+    end;
   end;
 end;
 

@@ -164,6 +164,7 @@ object Form64: TForm64
     Width = 399
     Height = 21
     TabOrder = 6
+    TextHint = #26368#22810#20116#21313#20010#27721#23383
   end
   object Edit4: TEdit
     Left = 147
