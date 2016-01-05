@@ -78,7 +78,8 @@ uses
   cyrxxgl in 'cyrxxgl.pas' {Form72},
   thcl in 'thcl.pas' {Form73},
   bthcscktzd in 'bthcscktzd.pas' {Form74},
-  bthcstzddy in 'bthcstzddy.pas' {Form75};
+  bthcstzddy in 'bthcstzddy.pas' {Form75},
+  bthcsckgl in 'bthcsckgl.pas' {Form76};
 
 {$R *.res}
 
@@ -163,5 +164,6 @@ begin
   Application.CreateForm(TForm73, Form73);
   Application.CreateForm(TForm74, Form74);
   Application.CreateForm(TForm75, Form75);
+  Application.CreateForm(TForm76, Form76);
   Application.Run;
 end.

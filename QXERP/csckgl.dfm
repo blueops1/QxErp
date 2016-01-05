@@ -57,7 +57,7 @@ object Form64: TForm64
     Top = 27
     Width = 48
     Height = 13
-    Caption = #20986#24211#26085#26399
+    Caption = #20986#21333#26085#26399
   end
   object Label7: TLabel
     Left = 99

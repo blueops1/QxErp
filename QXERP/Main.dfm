@@ -301,8 +301,6 @@ object Form1: TForm1
     object TabSheet9: TTabSheet
       Caption = #36136#37327#31649#29702
       ImageIndex = 8
-      ExplicitLeft = 8
-      ExplicitTop = 22
       object Button45: TButton
         Left = 160
         Top = 104
@@ -322,17 +320,18 @@ object Form1: TForm1
         OnClick = Button46Click
       end
       object Button66: TButton
-        Left = 432
-        Top = 104
+        Left = 160
+        Top = 200
         Width = 97
         Height = 65
-        Caption = #20135#21697#27979#35797#31649#29702
+        Caption = '      '#26032'        '#22686'         '#20135#21697#27979#35797#20986#24211#21333
         TabOrder = 2
+        WordWrap = True
         OnClick = Button66Click
       end
       object Button65: TButton
         Left = 296
-        Top = 208
+        Top = 200
         Width = 97
         Height = 65
         Caption = #27979#35797#20986#24211#21333#25171#21360
@@ -340,8 +339,8 @@ object Form1: TForm1
         OnClick = Button65Click
       end
       object Button67: TButton
-        Left = 160
-        Top = 208
+        Left = 704
+        Top = 200
         Width = 97
         Height = 65
         Caption = #20135#21697#27979#35797#21333#26597#35810
@@ -349,21 +348,23 @@ object Form1: TForm1
         OnClick = Button67Click
       end
       object Button72: TButton
-        Left = 568
-        Top = 104
+        Left = 432
+        Top = 200
         Width = 97
         Height = 65
-        Caption = #19981#36864#22238#36890#30693#21333
+        Caption = '       '#26032'        '#22686'         '#19981#36864#22238#36890#30693#21333
         TabOrder = 5
+        WordWrap = True
         OnClick = Button72Click
       end
       object Button73: TButton
-        Left = 432
-        Top = 208
+        Left = 568
+        Top = 200
         Width = 97
         Height = 65
-        Caption = #19981#36864#22238#36890#30693#25171#21360
+        Caption = '      '#25171'        '#21360'         '#19981#36864#22238#36890#30693#21333
         TabOrder = 6
+        WordWrap = True
         OnClick = Button73Click
       end
     end
@@ -419,8 +420,8 @@ object Form1: TForm1
         OnClick = Button25Click
       end
       object Button26: TButton
-        Left = 296
-        Top = 200
+        Left = 568
+        Top = 104
         Width = 97
         Height = 65
         Caption = #21457#31080#26680#24080
@@ -428,8 +429,8 @@ object Form1: TForm1
         OnClick = Button26Click
       end
       object Button29: TButton
-        Left = 160
-        Top = 200
+        Left = 704
+        Top = 104
         Width = 97
         Height = 65
         Caption = #21457#31080#26410#26680#24080#26597#35810
@@ -465,7 +466,7 @@ object Form1: TForm1
       end
       object Button34: TButton
         Left = 568
-        Top = 104
+        Top = 200
         Width = 97
         Height = 65
         Caption = #24120#35268#24211#23384#36319#36394
@@ -473,7 +474,7 @@ object Form1: TForm1
         OnClick = Button34Click
       end
       object Button37: TButton
-        Left = 568
+        Left = 704
         Top = 200
         Width = 97
         Height = 65
@@ -483,7 +484,7 @@ object Form1: TForm1
       end
       object Button15: TButton
         Left = 432
-        Top = 104
+        Top = 200
         Width = 97
         Height = 65
         Caption = #24211#23384#29289#36164#26597#35810
@@ -502,7 +503,7 @@ object Form1: TForm1
       end
       object Button50: TButton
         Left = 432
-        Top = 200
+        Top = 104
         Width = 97
         Height = 65
         Caption = #20837#24211#21333#31649#29702
@@ -518,22 +519,13 @@ object Form1: TForm1
         TabOrder = 11
         OnClick = Button61Click
       end
-      object Button62: TButton
+      object Button63: TButton
         Left = 160
         Top = 392
         Width = 97
         Height = 65
-        Caption = #20135#21697#27979#35797#31649#29702
-        TabOrder = 12
-        OnClick = Button62Click
-      end
-      object Button63: TButton
-        Left = 296
-        Top = 392
-        Width = 97
-        Height = 65
         Caption = #20135#21697#27979#35797#24402#24211
-        TabOrder = 13
+        TabOrder = 12
         OnClick = Button63Click
       end
       object Button64: TButton
@@ -542,44 +534,44 @@ object Form1: TForm1
         Width = 97
         Height = 65
         Caption = #20135#21697#27979#35797#21333#26597#35810
-        TabOrder = 14
+        TabOrder = 13
         OnClick = Button64Click
       end
-      object Button68: TButton
-        Left = 568
-        Top = 392
-        Width = 97
-        Height = 65
-        Caption = #27979#35797#20986#24211#21333#25171#21360
-        TabOrder = 15
-        OnClick = Button68Click
-      end
       object Button69: TButton
-        Left = 704
-        Top = 104
-        Width = 97
-        Height = 65
-        Caption = #20179#24211#26376#25253#34920#26597#35810
-        TabOrder = 16
-        OnClick = Button69Click
-      end
-      object Button70: TButton
-        Left = 704
-        Top = 200
-        Width = 97
-        Height = 65
-        Caption = #20837#24211#21333#20449#24687#26597#35810
-        TabOrder = 17
-        OnClick = Button70Click
-      end
-      object Button71: TButton
         Left = 704
         Top = 296
         Width = 97
         Height = 65
+        Caption = #20179#24211#26376#25253#34920#26597#35810
+        TabOrder = 14
+        OnClick = Button69Click
+      end
+      object Button70: TButton
+        Left = 160
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #20837#24211#21333#20449#24687#26597#35810
+        TabOrder = 15
+        OnClick = Button70Click
+      end
+      object Button71: TButton
+        Left = 296
+        Top = 200
+        Width = 97
+        Height = 65
         Caption = #21457#31080#20837#24211#21333#26597#35810
-        TabOrder = 18
+        TabOrder = 16
         OnClick = Button71Click
+      end
+      object Button62: TButton
+        Left = 296
+        Top = 392
+        Width = 97
+        Height = 65
+        Caption = #27979#35797#19981#36864#22238#20986#24211
+        TabOrder = 17
+        OnClick = Button62Click
       end
     end
     object TabSheet4: TTabSheet

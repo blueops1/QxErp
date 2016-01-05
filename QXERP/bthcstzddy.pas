@@ -76,9 +76,9 @@ if(edit1.Text<>'') and (stringgrid1.RowCount>2) then
       edit1.SetFocus;
     end;
   except
-    application.MessageBox('打印失败','加工单打印提示');
+    application.MessageBox('打印失败','测试出库不退回通知单打印提示');
   end else
-    application.MessageBox('请先调入已保存的产品测试出库单！','加工单打印提示');
+    application.MessageBox('请先调入已保存的产品测试出库单！','测试出库不退回通知单打印提示');
 end;
 
 procedure TForm75.Edit1KeyDown(Sender: TObject; var Key: Word;
@@ -102,24 +102,24 @@ begin
           edit3.Text:=fields[2].AsString;
           memo1.Text:=fields[3].AsString;
           memo2.Text:=fields[6].AsString;
-
-        stringgrid1.RowCount:=2;
-        stringgrid1.Rows[1].Clear;
-        i:=1;
-        nextresultset;
-        while not eof do
-        begin
-          stringgrid1.RowCount:=stringgrid1.RowCount+1;
-          stringgrid1.Cells[0,i]:=inttostr(i);
-          stringgrid1.Cells[1,i]:=fields[0].AsString;
-          stringgrid1.Cells[2,i]:=fields[1].AsString;
-          stringgrid1.Cells[3,i]:=fields[3].AsString;
-         // stringgrid1.Cells[4,i]:=fields[3].AsString;
-          i:=i+1;
-          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
-          next;
-        end;
-        end;
+          stringgrid1.RowCount:=2;
+          stringgrid1.Rows[1].Clear;
+          i:=1;
+          nextresultset;
+          while not eof do
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i);
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[3].AsString;
+           // stringgrid1.Cells[4,i]:=fields[3].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+            next;
+          end;
+        end else
+          application.MessageBox('该不退回测试产品出库单号不存在或已完成出库处理！','不退回测试产品出库提示');
       end;
     except
       application.MessageBox('数据查询失败！','测试出库不退回通知单打印提示');
@@ -132,6 +132,14 @@ begin
   stringgrid1.Cells[1,0]:='产品名称';
   stringgrid1.Cells[2,0]:='测试数量';
   stringgrid1.Cells[3,0]:='备注';
+  edit1.Text:='';
+  edit2.Text:='';
+  edit3.Text:='';
+  memo1.Lines.Clear;
+  memo2.Lines.Clear;
+  stringgrid1.RowCount:=2;
+  stringgrid1.Rows[1].Clear;
+  edit1.SetFocus;
 end;
 
 end.

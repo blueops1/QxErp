@@ -39,7 +39,7 @@ begin
 stringgrid1.Cells[0,0]:='序号';
 stringgrid1.Cells[1,0]:='测试出库单';
 stringgrid1.Cells[2,0]:='测试申请人';
-stringgrid1.Cells[3,0]:='出库时间';
+stringgrid1.Cells[3,0]:='出单日期';
 stringgrid1.Cells[4,0]:='末次退回时间';
 stringgrid1.Cells[5,0]:='是否全部退回';
 stringgrid1.Cells[6,0]:='操作员';
@@ -103,7 +103,12 @@ try
       stringgrid1.Cells[2,i]:=fields[1].asstring;
       stringgrid1.Cells[3,i]:=fields[2].asstring;
       stringgrid1.Cells[4,i]:=fields[3].asstring;
-      stringgrid1.Cells[5,i]:=fields[4].asstring;
+      if fields[4].AsString='N' then
+      stringgrid1.Cells[5,i]:='否'
+      else if fields[4].AsString='Y' then
+      stringgrid1.Cells[5,i]:='是'
+      else
+      stringgrid1.Cells[5,i]:='不退回';
       stringgrid1.Cells[6,i]:=fields[5].asstring;
       stringgrid1.Cells[7,i]:=fields[6].asstring;
       i:=i+1;

@@ -1,4 +1,4 @@
-unit bthcstzddy;
+unit bthcsckgl;
 
 interface
 
@@ -8,21 +8,23 @@ uses
   Grids;
 
 type
-  TForm75 = class(TForm)
+  TForm76 = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label6: TLabel;
+    Label4: TLabel;
     Edit1: TEdit;
     Memo1: TMemo;
     StringGrid1: TStringGrid;
     Button3: TButton;
     Edit2: TEdit;
     Edit3: TEdit;
-    ZStoredProc1: TZStoredProc;
     Memo2: TMemo;
-    Label4: TLabel;
+    ZStoredProc1: TZStoredProc;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,13 +32,49 @@ type
   end;
 
 var
-  Form75: TForm75;
+  Form76: TForm76;
 
 implementation
 
+uses main;
+
 {$R *.dfm}
 
-procedure TForm75.Edit1KeyDown(Sender: TObject; var Key: Word;
+procedure TForm76.Button3Click(Sender: TObject);
+var
+  i:integer;
+begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
+  if stringgrid1.RowCount>2 then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_insert_cpcrkmxz_cpck';
+      for i := 1 to stringgrid1.RowCount - 2 do
+      begin
+        ParamByName('cpbh').Value:=SplitString(stringgrid1.Cells[1,i],'|');
+        ParamByName('cksl').Value:=stringgrid1.Cells[2,i];
+        ParamByName('jzdate').Value:=edit3.Text;
+        ParamByName('memo').Value:=memo2.Text+'产品测试出库单号：'+edit1.Text+'销售员：'+edit2.text;
+        ParamByName('czry').Value:=main.strUser;
+        ExecProc;
+      end;
+        stringgrid1.RowCount:=2;
+        stringgrid1.Rows[1].Clear;
+        edit1.Text:='';
+        edit2.Text:='';
+        edit3.Text:='';
+        memo1.Lines.Clear;
+        memo2.Lines.Clear;
+        edit1.SetFocus;
+        application.MessageBox('保存数据成功！','不退回测试产品出库提示');
+    end;
+  except
+    application.MessageBox('保存数据失败！','不退回测试产品出库提示');
+  end;
+end;
+
+procedure TForm76.Edit1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 var
   i:integer;
@@ -56,8 +94,7 @@ begin
           edit2.Text:=fields[1].AsString;
           edit3.Text:=fields[2].AsString;
           memo1.Text:=fields[3].AsString;
-          memo2.Text:=fields[4].AsString;
-        end;
+          memo2.Text:=fields[6].AsString;
         stringgrid1.RowCount:=2;
         stringgrid1.Rows[1].Clear;
         i:=1;
@@ -74,10 +111,19 @@ begin
           stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
           next;
         end;
+        end;
       end;
     except
       application.MessageBox('数据查询失败！','测试出库不退回通知单打印提示');
     end;
+end;
+
+procedure TForm76.FormShow(Sender: TObject);
+begin
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='产品名称';
+  stringgrid1.Cells[2,0]:='测试数量';
+  stringgrid1.Cells[3,0]:='备注';
 end;
 
 end.
