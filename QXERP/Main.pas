@@ -110,6 +110,7 @@ type
     Button72: TButton;
     Button73: TButton;
     Button62: TButton;
+    Button68: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -230,7 +231,8 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      jgdjs,wjgjggl,lhttjcpmx,htmxtz,
      fhck,csckgl,cscprkgl,csckdgl,csckddy,
      monthreports,rkdinfocx,fpcxrkd,
-     cyrxxgl,bthcscktzd,bthcstzddy,bthcsckgl;
+     cyrxxgl,bthcscktzd,bthcstzddy,
+     bthcsckgl,thcl;
 
 {$R *.dfm}
 
@@ -718,7 +720,7 @@ end;
 procedure TForm1.Button68Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,16,1)='1') then
-    csckddy.Form67.Show
+    thcl.Form73.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

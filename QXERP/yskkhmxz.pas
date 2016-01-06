@@ -49,7 +49,8 @@ begin
   stringgrid1.Cells[1,0]:='应收款增加';
   stringgrid1.Cells[2,0]:='应收款收回';
   stringgrid1.Cells[3,0]:='收回日期';
-  stringgrid1.Cells[4,0]:='备注';
+  stringgrid1.Cells[4,0]:='是否开票';
+  stringgrid1.Cells[5,0]:='备注';
   form42.Caption:='应收款客户明细查询【'+strKhmc+'】应收款编号：'+strYskbh;
   try
     with yskjs.Form41.ZStoredProc1 do
@@ -67,7 +68,8 @@ begin
         stringgrid1.Cells[1,i]:=fields[0].AsString;
         stringgrid1.Cells[2,i]:=fields[1].AsString;
         stringgrid1.Cells[3,i]:=fields[2].AsString;
-        stringgrid1.Cells[4,i]:=fields[3].AsString;
+        stringgrid1.Cells[4,i]:=fields[4].AsString;
+        stringgrid1.Cells[5,i]:=fields[3].AsString;
         i:=i+1;
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
@@ -78,7 +80,6 @@ begin
       stringgrid1.Cells[1,i]:=fields[0].AsString;
       stringgrid1.Cells[2,i]:=fields[1].AsString;
       stringgrid1.Cells[3,i]:=fields[2].AsString;
-      stringgrid1.Cells[4,i]:=fields[3].AsString;
       i:=i+1;
       stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
     end;

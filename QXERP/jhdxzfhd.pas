@@ -100,10 +100,10 @@ begin
   boolnull:=true;
   for i:=0 to form40.ComponentCount-1 do
   begin
-    if (i<>20) and (i<22) and (i<>19) and (form40.Components[i] is tedit)  then
+    if (i<>20) and (i<22) and (i<>19) and (form40.Components[i] is tedit) then
       if tedit(form40.Components[i]).Text='' then
       begin
-        application.MessageBox(pwidechar(form40.Components[i].Name+'|'+inttostr(i)),'aa');
+        //application.MessageBox(pwidechar(form40.Components[i].Name+'|'+inttostr(i)),'aa');
         boolnull:=false;
       end;
     {if (form40.Components[i] is tcombobox)  then
@@ -113,6 +113,8 @@ begin
         boolnull:=false;
       end; }
   end;
+  if  edit12.Text='' then
+    boolnull:=false;
   try
   if boolnull=false then
     application.MessageBox('请把所有项目填写完整!!','发货单管理提示')

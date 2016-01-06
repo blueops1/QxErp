@@ -91,7 +91,7 @@ object Form16: TForm16
         Width = 527
         Height = 585
         Align = alCustom
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         TabOrder = 4
         ColWidths = (
           64
@@ -168,7 +168,7 @@ object Form16: TForm16
         Width = 527
         Height = 585
         Align = alCustom
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         TabOrder = 3
         ColWidths = (
           64
@@ -245,7 +245,7 @@ object Form16: TForm16
         Width = 527
         Height = 585
         Align = alCustom
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         TabOrder = 3
         ColWidths = (
           64
@@ -322,7 +322,7 @@ object Form16: TForm16
         Width = 527
         Height = 585
         Align = alCustom
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         TabOrder = 3
         ColWidths = (
           64
