@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, StdCtrls, ComCtrls, DB, ADODB, ExtCtrls, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset;
+  ZAbstractDataset, ZDataset, ZStoredProcedure;
 
 type
   TForm8 = class(TForm)
@@ -26,12 +26,6 @@ type
     Edit2: TEdit;
     Edit10: TEdit;
     TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    Label12: TLabel;
-    StringGrid1: TStringGrid;
-    Edit9: TEdit;
-    Button6: TButton;
-    StringGrid2: TStringGrid;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     ListBox1: TListBox;
@@ -53,7 +47,6 @@ type
     ComboBox4: TComboBox;
     Label14: TLabel;
     Edit6: TEdit;
-    ZQuery1: TZQuery;
     TabSheet4: TTabSheet;
     Label15: TLabel;
     Edit7: TEdit;
@@ -71,16 +64,30 @@ type
     ListBox2: TListBox;
     Edit12: TEdit;
     Button9: TButton;
+    Label21: TLabel;
+    Edit13: TEdit;
+    Label22: TLabel;
+    Edit14: TEdit;
+    Label23: TLabel;
+    Label24: TLabel;
+    Label27: TLabel;
+    ZStoredProc1: TZStoredProc;
+    Label12: TLabel;
+    Edit9: TEdit;
+    Label28: TLabel;
+    Edit15: TEdit;
+    Label29: TLabel;
+    Label30: TLabel;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure ComboBox1DropDown(Sender: TObject);
-    procedure Button6Click(Sender: TObject);
-    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
-      var CanSelect: Boolean);
     procedure Button9Click(Sender: TObject);
     procedure ListBox2Click(Sender: TObject);
     procedure ComboBox5DropDown(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Edit13KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit14KeyPress(Sender: TObject; var Key: Char);
+    procedure ComboBox6DropDown(Sender: TObject);
   private
     { Private declarations }
   public
@@ -97,31 +104,39 @@ uses Main;
 
 procedure TForm8.Button1Click(Sender: TObject);
 begin
-  if (edit2.Text <> '') and (combobox1.Text <> '') and (combobox2.Text <> '')then
+  if (edit2.Text <> '') and (combobox1.Text <> '') and (combobox2.Text <> '') and (edit13.Text <> '') and(edit14.Text <> '') then
   begin
     try
-      with ZQuery1 do
+      with ZStoredProc1 do
       begin
         close;
-        sql.Clear;
-        sql.Add('insert into cplxk (fcpbh,fcpmc,fcpdw,fcpzl,fmemo) values ('''+edit1.Text+''','''+edit2.Text+''','''+combobox2.Text+''','''+combobox1.Text+''','''+main.strUser+edit10.Text+''')');
-        ExecSQL;
-        sql.Clear;
-        sql.Add('insert into cpkcb (fcpbh,fcpkcs) values ('''+edit1.Text+''','''+'0'+''')');
-        ExecSQL;
-        Application.MessageBox('新增记录成功！','产品信息管理提示');
-        edit2.Text := '';
-        combobox2.Text := '';
-        combobox1.Text:='';
-        edit10.Text := '';
-      close;
-      sql.Clear;
-      sql.Add('select max(cast(fcpbh as unsigned))+1 from cpkcb');
-      open;
-      if not eof then
-        edit1.Text := fields[0].AsString;
+        StoredProcName:='proc_insert_new_cplxk_cpkcb';  //cpbh,cpmc,cpdw,cpzl,memo,zltj1,zltj2
+        ParamByName('cpbh').Value:=edit1.Text;
+        ParamByName('cpmc').Value:=edit2.Text;
+        ParamByName('cpdw').Value:=combobox2.Text;
+        ParamByName('cpzl').Value:=combobox1.Text;
+        ParamByName('memo').Value:=main.strUser+edit10.Text;
+        ParamByName('zltj1').Value:=edit13.Text;
+        ParamByName('zltj2').Value:=edit14.Text;
+        ExecProc;
+        if ParamByName('returncode').Value=1 then
+          application.MessageBox('该货架信息已经存在！','仓储信息管理提示')
+        else begin
+          Application.MessageBox('新增记录成功！','产品信息管理提示');
+          edit2.Text := '';
+          combobox2.Text := '';
+          combobox1.Text:='';
+          edit10.Text := '';
+          edit13.Text := '0';
+          edit14.Text := '0';       //proc_cx_newcpbh
+          close;
+          StoredProcName:='proc_cx_newcpbh';
+          open;
+          if not eof then
+            edit1.Text := fields[0].AsString;
+        end;
       end;
-      Except
+    Except
       Application.MessageBox('新增记录失败！','产品信息管理提示');
     end;
    end else
@@ -130,149 +145,162 @@ end;
 
 procedure TForm8.Button3Click(Sender: TObject);
 begin
-  if (edit7.Text <> '') and (edit8.Text <> '') and(combobox5.Text <> '') and (combobox6.Text <> '')then
-  begin
-    try
-      with ZQuery1 do
-      begin
-        close;
-        sql.Clear;
-        sql.Add('update cplxk set fcpmc='''+edit8.Text+''',fcpdw='''+combobox5.Text+''',fcpzl='''+combobox6.Text+''',fmemo='''+edit11.Text+''' where fcpbh='''+edit7.Text+'''');
-        ExecSQL;
-        Application.MessageBox('修改记录成功！','产品信息管理提示');
-        edit7.Text := '';
-        edit8.Text := '';
-        combobox5.Text := '';
-        combobox6.Text:='';
-        edit11.Text := '';
+  if (edit7.Text <> '') and (edit8.Text <> '') and(combobox5.Text <> '') and (combobox6.Text <> '') and (edit9.Text <> '') and (edit15.Text <> '')then
+  begin         //proc_update_cplxk cpbh,cpmc,cpdw,cpzl,memo,zltj1,zltj2
+  try
+    with ZStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_update_cplxk';
+      ParamByName('cpbh').Value:=edit7.Text;
+      ParamByName('cpmc').Value:=edit8.Text;
+      ParamByName('cpdw').Value:=combobox5.Text;
+      ParamByName('cpzl').Value:=combobox6.Text;
+      ParamByName('memo').Value:=edit11.Text;
+      ParamByName('zltj1').Value:=edit9.Text;
+      ParamByName('zltj2').Value:=edit15.Text;
+      ExecProc;
+      Application.MessageBox('修改记录成功！','产品信息管理提示');
+      edit7.Text := '';
+      edit8.Text := '';
+      combobox5.Text := '';
+      combobox6.Text:='';
+      edit11.Text := '';
+      edit9.Text := '';
+      edit15.Text := '';
       end;
     Except
-      Application.MessageBox('修改记录成功！','产品信息管理提示');
+      Application.MessageBox('修改记录失败！','产品信息管理提示');
     end;
    end else
     Application.MessageBox('请将必填项目填写完整！','产品信息管理提示');
 end;
 
-procedure TForm8.Button6Click(Sender: TObject);
-var y:integer;
-begin
-  stringgrid1.ColWidths[0]:=100;
-  stringgrid1.ColWidths[1]:=100;
-  stringgrid1.ColWidths[2]:=100;
-  stringgrid1.ColWidths[3]:=100;
-  stringgrid1.ColWidths[4]:=100;
-  stringgrid1.ColWidths[5]:=100;
-  stringgrid1.Cells[0,0]:='产品编号';
-  stringgrid1.Cells[1,0]:='产品规格';
-  stringgrid1.Cells[2,0]:='计量单位';
-  stringgrid1.Cells[3,0]:='产品类型';
-  stringgrid1.Cells[4,0]:='库存数量';
-  stringgrid1.Cells[5,0]:='备注';
-  //stringgrid1.RowCount:=1;
-  y:=1;
-  try
-  with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select a.fcpbh,fcpmc,fcpdw,fcpzl,fcpkcs,fmemo from (select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpmc like ''%'+edit9.Text+'%'') as a inner join (select fcpbh,fcpkcs from cpkcb) as b on a.fcpbh=b.fcpbh');
-    open;
-    stringgrid1.RowCount:=ZQuery1.RecordCount+1;
-
-    while not eof do
-    begin
-      stringgrid1.Rows[y].Clear;
-      stringgrid1.Cells[0,y]:=fields[0].AsString;
-      stringgrid1.Cells[1,y]:=fields[1].AsString;
-      stringgrid1.Cells[2,y]:=fields[2].AsString;
-      stringgrid1.Cells[3,y]:=fields[3].AsString;
-      stringgrid1.Cells[4,y]:=fields[4].AsString;
-      stringgrid1.Cells[5,y]:=fields[5].AsString;
-      y:=y+1;
-      next;
-    end;
-  end;
-  Except
-      Application.MessageBox('查询失败！','成品管理提示');
-  end;
-
-end;
-
 procedure TForm8.Button9Click(Sender: TObject);
 begin
-listbox2.Clear;
-with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select concat(fcpbh,''|'',fcpmc,''|'',fcpzl) from cplxk where fcpmc like ''%'+edit12.text+'%''');
-    open;
-    while not eof  do
+listbox2.Clear;          //proc_cx_modicplxk_cpbhmczl_by_cpmc
+  try
+    with ZStoredProc1 do
     begin
-      listbox2.Items.Append(fields[0].AsString);
-      next;
+      close;
+      StoredProcName:='proc_cx_modicplxk_cpbhmczl_by_cpmc';
+      ParamByName('cpmc').Value:=edit12.Text;
+      open;
+      while not eof  do
+      begin
+        listbox2.Items.Append(fields[0].AsString);
+        next;
+      end;
     end;
+  except
+    application.MessageBox('查询数据失败！','新增产品信息提示');
   end;
 end;
 
 procedure TForm8.ComboBox1DropDown(Sender: TObject);
 begin
-  combobox6.Items.Clear;
-  with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select distinct fcpzl from cplxk');
-    open;
-    while not eof do
+  combobox1.Items.Clear;
+  try
+    with ZStoredProc1 do
     begin
-       combobox6.Items.Add(fields[0].asstring);
-       next;
+      close;
+      StoredProcName:='proc_cx_cplxk_cplz';
+      open;
+      while not eof do
+      begin
+         combobox1.Items.Add(fields[0].asstring);
+         next;
+      end;
     end;
+  except
+    application.MessageBox('查询数据失败！','新增产品信息提示');
   end;
 end;
 
 procedure TForm8.ComboBox5DropDown(Sender: TObject);
 begin
-  combobox5.Items.Clear;
-  with ZQuery1 do
-  begin
-    close;
-    sql.Clear;
-    sql.Add('select distinct fcpzl from cplxk');
-    open;
-    while not eof do
+  combobox5.Items.Clear;    //proc_cx_cplxk_cplz
+  try
+    with ZStoredProc1 do
     begin
-       combobox5.Items.Add(fields[0].asstring);
-       next;
+      close;
+      StoredProcName:='proc_cx_cplxk_cplz';
+      open;
+      while not eof do
+      begin
+         combobox5.Items.Add(fields[0].asstring);
+         next;
+      end;
     end;
+  except
+    application.MessageBox('查询数据失败！','新增产品信息提示');
   end;
+end;
+
+procedure TForm8.ComboBox6DropDown(Sender: TObject);
+begin
+  combobox6.Items.Clear;
+  try
+    with ZStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_cplxk_cplz';
+      open;
+      while not eof do
+      begin
+         combobox6.Items.Add(fields[0].asstring);
+         next;
+      end;
+    end;
+  except
+    application.MessageBox('查询数据失败！','新增产品信息提示');
+  end;
+end;
+
+procedure TForm8.Edit13KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit13.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm8.Edit14KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit14.Text)>0)   then
+    key:=#0;
 end;
 
 procedure TForm8.FormShow(Sender: TObject);
 var strCPBH : String;
 begin
-  with ZQuery1 do
-  begin
+  try
+    with ZStoredProc1 do
+    begin
     close;
-    sql.Clear;
-    sql.Add('select max(cast(fcpbh as unsigned))+1 from cpkcb');
-    open;
-    if not eof then
-       strCPBH := fields[0].AsString;
-    edit1.Text := strCPBH;
+    StoredProcName:='proc_cx_newcpbh';
+      open;
+      if not eof then
+         strCPBH := fields[0].AsString;
+      edit1.Text := strCPBH;
+    end;
+  except
+     application.MessageBox('查询数据失败！','新增产品信息提示');
   end;
 end;
 
 procedure TForm8.ListBox2Click(Sender: TObject);
 var strcpbh:String;
 begin
-  strcpbh := SplitString(listbox2.Items.Strings[listbox2.itemindex],'|');
-  with ZQuery1 do
-  begin
+  strcpbh := SplitString(listbox2.Items.Strings[listbox2.itemindex],'|');   //proc_modicpxx_by_cpbh
+  try
+    with ZStoredProc1 do
+    begin
     close;
-    sql.Clear;
-    sql.Add('select fcpbh,fcpmc,fcpdw,fcpzl,fmemo from cplxk where fcpbh = '''+strcpbh+'''');
+    StoredProcName:='proc_modicpxx_by_cpbh';
+    ParamByName('cpbh').Value:=strcpbh;
     open;
     if not eof then
     begin
@@ -281,61 +309,12 @@ begin
       combobox5.Text := fields[2].AsString;
       combobox6.Text := fields[3].AsString;
       edit11.Text := fields[4].AsString;
+      edit9.Text := fields[5].AsString;
+      edit15.Text := fields[6].AsString;
     end;
   end;
-end;
-
-procedure TForm8.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
-  var CanSelect: Boolean);
-  var y:integer;
-  strCpbh:string;
-begin
-  stringgrid2.ColWidths[0]:=100;
-  stringgrid2.ColWidths[1]:=100;
-  stringgrid2.ColWidths[2]:=100;
-  stringgrid2.ColWidths[3]:=100;
-  stringgrid2.ColWidths[4]:=100;
-  stringgrid2.Cells[0,0]:='产品编号';
-  stringgrid2.Cells[1,0]:='记帐日期';
-  stringgrid2.Cells[2,0]:='入库数量';
-  stringgrid2.Cells[3,0]:='出库数量';
-  stringgrid2.Cells[4,0]:='备注';
-  stringgrid2.RowCount:=1;
-  begin
-  strCpbh:= stringgrid1.Cells[0,ARow];
-  if strCpbh<>'' then
-  begin
-    y:=1;
-    try
-    with ZQuery1 do
-    begin
-      close;
-      sql.Clear;
-      sql.Add('select fcpbh,fjzdate,frksl,fcksl,fmemo from cpcrkmxz where fcpbh='''+strCpbh+''' and fisdel=''N''');
-      open;
-      if not eof then
-      begin
-        stringgrid2.RowCount:=ZQuery1.RecordCount+1;
-      end else
-      begin
-        stringgrid2.RowCount:=1;
-      end;
-      while not eof do
-      begin
-        stringgrid2.Rows[y].Clear;
-        stringgrid2.Cells[0,y]:=fields[0].AsString;
-        stringgrid2.Cells[1,y]:=fields[1].AsString;
-        stringgrid2.Cells[2,y]:=fields[2].AsString;
-        stringgrid2.Cells[3,y]:=fields[3].AsString;
-        stringgrid2.Cells[4,y]:=fields[4].AsString;
-        y:=y+1;
-        next;
-      end;
-    end;
-    Except
-        Application.MessageBox('查询失败！','产品管理提示');
-    end;
-  end;
+  except
+     application.MessageBox('查询数据失败！','新增产品信息提示');
   end;
 end;
 

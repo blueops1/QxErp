@@ -4,8 +4,8 @@ object Form64: TForm64
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20135#21697#27979#35797#20986#24211#35760#24405
-  ClientHeight = 511
-  ClientWidth = 685
+  ClientHeight = 552
+  ClientWidth = 835
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,66 +18,80 @@ object Form64: TForm64
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 40
+    Left = 29
     Top = 27
     Width = 84
     Height = 13
     Caption = #27979#35797#20986#24211#21333#32534#21495
   end
   object Label2: TLabel
-    Left = 272
+    Left = 471
     Top = 27
-    Width = 60
+    Width = 48
     Height = 13
-    Caption = #20986#24211#30003#35831#20154
+    Caption = #21512#21516#32534#21495
   end
   object Label3: TLabel
-    Left = 76
-    Top = 61
+    Left = 65
+    Top = 93
     Width = 48
     Height = 13
     Caption = #20986#24211#29702#30001
   end
   object Label4: TLabel
-    Left = 75
-    Top = 131
+    Left = 64
+    Top = 163
     Width = 48
     Height = 13
     Caption = #20135#21697#21517#31216
   end
   object Label5: TLabel
-    Left = 339
-    Top = 131
+    Left = 328
+    Top = 163
     Width = 48
     Height = 13
     Caption = #20986#24211#25968#37327
   end
   object Label6: TLabel
-    Left = 480
+    Left = 277
     Top = 27
     Width = 48
     Height = 13
     Caption = #20986#21333#26085#26399
   end
   object Label7: TLabel
-    Left = 99
-    Top = 168
+    Left = 88
+    Top = 200
     Width = 24
     Height = 13
     Caption = #22791#27880
   end
   object Label8: TLabel
-    Left = 52
-    Top = 463
+    Left = 504
+    Top = 163
     Width = 77
     Height = 13
     Alignment = taRightJustify
     AutoSize = False
     Caption = #24403#21069#24211#23384#25968#37327
   end
+  object Label9: TLabel
+    Left = 61
+    Top = 60
+    Width = 48
+    Height = 13
+    Caption = #23458#25143#21517#31216
+  end
+  object Label10: TLabel
+    Left = 649
+    Top = 27
+    Width = 36
+    Height = 13
+    Caption = #38144#21806#21592
+  end
   object ComboBox1: TComboBox
-    Left = 129
-    Top = 128
+    Left = 118
+    Top = 160
     Width = 191
     Height = 21
     TabOrder = 4
@@ -85,15 +99,16 @@ object Form64: TForm64
     OnSelect = ComboBox1Select
   end
   object ComboBox2: TComboBox
-    Left = 352
-    Top = 24
-    Width = 113
+    Left = 118
+    Top = 57
+    Width = 680
     Height = 21
     TabOrder = 1
     OnKeyDown = ComboBox2KeyDown
+    OnSelect = ComboBox2Select
   end
   object Edit1: TEdit
-    Left = 130
+    Left = 119
     Top = 24
     Width = 121
     Height = 21
@@ -101,30 +116,32 @@ object Form64: TForm64
     OnKeyDown = Edit1KeyDown
   end
   object Memo1: TMemo
-    Left = 130
-    Top = 58
-    Width = 503
+    Left = 119
+    Top = 90
+    Width = 679
     Height = 57
     TabOrder = 3
   end
   object Edit2: TEdit
-    Left = 407
-    Top = 128
-    Width = 121
+    Left = 396
+    Top = 160
+    Width = 93
     Height = 21
     TabOrder = 5
     OnKeyPress = Edit2KeyPress
   end
   object StringGrid1: TStringGrid
-    Left = 24
-    Top = 201
-    Width = 625
+    Left = 118
+    Top = 229
+    Width = 680
     Height = 241
     TabStop = False
     ColCount = 4
     FixedCols = 0
     RowCount = 2
+    PopupMenu = PopupMenu1
     TabOrder = 8
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       70
       151
@@ -132,7 +149,7 @@ object Form64: TForm64
       219)
   end
   object DateTimePicker1: TDateTimePicker
-    Left = 544
+    Left = 349
     Top = 24
     Width = 89
     Height = 21
@@ -141,34 +158,34 @@ object Form64: TForm64
     TabOrder = 2
   end
   object Button1: TButton
-    Left = 558
-    Top = 166
-    Width = 75
+    Left = 712
+    Top = 195
+    Width = 86
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 7
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 558
-    Top = 458
-    Width = 75
+    Left = 712
+    Top = 498
+    Width = 86
     Height = 25
     Caption = #20445#23384#20449#24687
     TabOrder = 9
     OnClick = Button2Click
   end
   object Edit3: TEdit
-    Left = 129
-    Top = 165
-    Width = 399
+    Left = 118
+    Top = 197
+    Width = 577
     Height = 21
     TabOrder = 6
     TextHint = #26368#22810#20116#21313#20010#27721#23383
   end
   object Edit4: TEdit
-    Left = 147
-    Top = 460
+    Left = 598
+    Top = 160
     Width = 97
     Height = 21
     TabStop = False
@@ -177,10 +194,51 @@ object Form64: TForm64
     TabOrder = 10
     OnKeyPress = Edit2KeyPress
   end
+  object Edit5: TEdit
+    Left = 533
+    Top = 24
+    Width = 89
+    Height = 21
+    ReadOnly = True
+    TabOrder = 11
+  end
+  object Edit6: TEdit
+    Left = 701
+    Top = 24
+    Width = 97
+    Height = 21
+    ReadOnly = True
+    TabOrder = 12
+  end
+  object Edit7: TEdit
+    Left = 16
+    Top = 484
+    Width = 669
+    Height = 21
+    TabOrder = 13
+    Visible = False
+  end
+  object Edit8: TEdit
+    Left = 119
+    Top = 511
+    Width = 566
+    Height = 21
+    ReadOnly = True
+    TabOrder = 14
+    Visible = False
+  end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 504
+    Left = 493
     Top = 304
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 576
+    Top = 272
+    object N1: TMenuItem
+      Caption = #21024#38500#24403#21069#35760#24405
+      OnClick = N1Click
+    end
   end
 end

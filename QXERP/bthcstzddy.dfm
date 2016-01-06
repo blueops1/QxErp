@@ -4,8 +4,8 @@ object Form75: TForm75
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #19981#36864#22238#36890#30693#21333#25171#21360
-  ClientHeight = 495
-  ClientWidth = 678
+  ClientHeight = 527
+  ClientWidth = 811
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -25,21 +25,21 @@ object Form75: TForm75
     Caption = #27979#35797#20986#24211#21333#32534#21495
   end
   object Label2: TLabel
-    Left = 246
+    Left = 593
     Top = 19
-    Width = 60
+    Width = 48
     Height = 13
-    Caption = #20986#24211#30003#35831#20154
+    Caption = #38144#21806#22995#21517
   end
   object Label3: TLabel
     Left = 60
-    Top = 55
+    Top = 81
     Width = 48
     Height = 13
     Caption = #20986#24211#29702#30001
   end
   object Label6: TLabel
-    Left = 453
+    Left = 253
     Top = 19
     Width = 48
     Height = 13
@@ -47,10 +47,24 @@ object Form75: TForm75
   end
   object Label4: TLabel
     Left = 48
-    Top = 379
+    Top = 405
     Width = 60
     Height = 13
     Caption = #19981#36864#22238#35828#26126
+  end
+  object Label5: TLabel
+    Left = 60
+    Top = 49
+    Width = 48
+    Height = 13
+    Caption = #23458#25143#21517#31216
+  end
+  object Label7: TLabel
+    Left = 418
+    Top = 19
+    Width = 48
+    Height = 13
+    Caption = #21512#21516#32534#21495
   end
   object Edit1: TEdit
     Left = 114
@@ -63,16 +77,16 @@ object Form75: TForm75
   end
   object Memo1: TMemo
     Left = 114
-    Top = 52
-    Width = 535
+    Top = 78
+    Width = 662
     Height = 57
     ReadOnly = True
     TabOrder = 1
   end
   object StringGrid1: TStringGrid
-    Left = 24
-    Top = 122
-    Width = 625
+    Left = 114
+    Top = 148
+    Width = 662
     Height = 241
     TabStop = False
     ColCount = 4
@@ -86,8 +100,8 @@ object Form75: TForm75
       257)
   end
   object Button3: TButton
-    Left = 478
-    Top = 455
+    Left = 621
+    Top = 481
     Width = 155
     Height = 25
     Caption = #25171#21360#19981#36864#22238#20986#24211#36890#30693#21333
@@ -95,27 +109,43 @@ object Form75: TForm75
     OnClick = Button3Click
   end
   object Edit2: TEdit
-    Left = 318
+    Left = 666
     Top = 16
-    Width = 121
+    Width = 110
     Height = 21
     ReadOnly = True
     TabOrder = 4
   end
   object Edit3: TEdit
-    Left = 511
+    Left = 311
     Top = 16
-    Width = 138
+    Width = 90
     Height = 21
     ReadOnly = True
     TabOrder = 5
   end
   object Memo2: TMemo
     Left = 114
-    Top = 376
-    Width = 535
+    Top = 402
+    Width = 662
     Height = 65
     TabOrder = 6
+  end
+  object Edit4: TEdit
+    Left = 114
+    Top = 46
+    Width = 662
+    Height = 21
+    ReadOnly = True
+    TabOrder = 7
+  end
+  object Edit5: TEdit
+    Left = 478
+    Top = 16
+    Width = 99
+    Height = 21
+    ReadOnly = True
+    TabOrder = 8
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

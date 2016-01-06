@@ -24,6 +24,10 @@ type
     ZStoredProc1: TZStoredProc;
     DateTimePicker1: TDateTimePicker;
     Label5: TLabel;
+    Label9: TLabel;
+    Edit6: TEdit;
+    Label7: TLabel;
+    Edit5: TEdit;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -102,6 +106,8 @@ begin
           edit3.Text:=fields[2].AsString;
           memo1.Text:=fields[3].AsString;
           memo2.Text:=fields[6].AsString;
+          edit5.Text:=fields[7].AsString;
+          edit6.Text:=fields[8].AsString;
           stringgrid1.RowCount:=2;
           stringgrid1.Rows[1].Clear;
           i:=1;

@@ -103,7 +103,7 @@ var
 begin
   if StringGrid.RowCount > vRow then
   begin
-    for i:= vRow to StringGrid.RowCount - vRow do
+    for i:= vRow to StringGrid.RowCount - 1 do
     begin
       StringGrid.Rows[i]:= StringGrid.Rows[i+1];
     end;

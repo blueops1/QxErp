@@ -75,7 +75,7 @@ begin
         stringgrid1.Cells[5,i]:=fields[4].AsString;
         stringgrid1.Cells[6,i]:=fields[5].AsString;
         stringgrid1.Cells[7,i]:=fields[6].AsString;
-        stringgrid1.Cells[8,i]:=floattostr(strtofloat(stringgrid1.Cells[6,i])/strtofloat(stringgrid1.Cells[7,i]));
+        stringgrid1.Cells[8,i]:=fields[7].AsString;
         stringgrid1.Cells[9,i]:=floattostr(strtofloat(stringgrid1.Cells[5,i])*strtofloat(stringgrid1.Cells[8,i]));
         sumofgz:=sumofgz+ strtofloat(stringgrid1.Cells[5,i])*strtofloat(stringgrid1.Cells[8,i]);
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;

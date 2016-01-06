@@ -64,7 +64,7 @@ procedure DeleteStringGridRow(vRow: Integer; StringGrid: TStringGrid);
 var
   i:Integer;
 begin
-  if StringGrid.RowCount > vRow then
+  if StringGrid.RowCount > 1 then
   begin
     for i:= vRow to StringGrid.RowCount - vRow do
     begin

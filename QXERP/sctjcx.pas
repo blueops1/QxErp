@@ -178,7 +178,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select a.fcpbh,b.fcpmc,b.fcpzl,a.rkzs,a.ckzs from (select fcpbh,sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where month(fjzdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' group by fcpbh) as a join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh order by b.fcpzl,b.fcpmc');
+      sql.Add('select a.fcpbh,b.fcpmc,b.fcpzl,a.rkzs,a.ckzs from (select fcpbh,sum(frksl) as rkzs,SUM(fcksl) as ckzs from cpcrkmxz where month(fjzdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker4.Date)+''') and fisdel=''N'' group by fcpbh) as a join (select fcpbh,fcpmc,fcpzl from cplxk) as b on a.fcpbh=b.fcpbh order by b.fcpzl,b.fcpmc');
       open;
       stringgrid5.RowCount:=RecordCount+2;
       while not eof do
@@ -424,7 +424,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
       open;
       stringgrid8.RowCount:=RecordCount+1;
       while not eof do

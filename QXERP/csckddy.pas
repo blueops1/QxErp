@@ -20,6 +20,10 @@ type
     ZStoredProc1: TZStoredProc;
     Edit2: TEdit;
     Edit3: TEdit;
+    Edit4: TEdit;
+    Label4: TLabel;
+    Edit5: TEdit;
+    Label5: TLabel;
     procedure FormShow(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -60,6 +64,8 @@ if(edit1.Text<>'') and (stringgrid1.RowCount>2) then
         rvproject1.SetParam('sqrxm',edit2.Text);
         rvproject1.SetParam('memo',memo1.Text);
         rvproject1.SetParam('cdrq',edit3.Text);
+        rvproject1.SetParam('htbh',edit5.Text);
+        rvproject1.SetParam('khmc',edit4.Text);
         rvproject1.SetParam('czry',main.strUser);
         zstoredproc1.SetResultSet(1);
         RvProject1.Execute;
@@ -82,7 +88,7 @@ begin
       with zStoredProc1 do
       begin
         close;
-        StoredProcName:='proc_cx_ceshichukudan_info_mxz_by_csckdid';
+        StoredProcName:='proc_cx_ceshichukudan_info_mxz_by_csckdid';   //fcsckdid,fxsyxm,fcsckdate,fcsckly,fcsisrk,fcsrkdate,fhtbh,fkhmc
         ParamByName('csckdid').Value:=edit1.Text;
         open;
         firstresultset;
@@ -92,6 +98,8 @@ begin
           edit2.Text:=fields[1].AsString;
           edit3.Text:=fields[2].AsString;
           memo1.Text:=fields[3].AsString;
+          edit5.Text:=fields[6].AsString;
+          edit4.Text:=fields[7].AsString;
         end;
         stringgrid1.RowCount:=2;
         stringgrid1.Rows[1].Clear;
@@ -120,6 +128,8 @@ begin
   edit1.Text:='';
   edit2.Text:='';
   edit3.Text:='';
+  edit4.Text:='';
+  edit5.Text:='';
   memo1.Text:='';
   stringgrid1.RowCount:=2;
   stringgrid1.Rows[1].Clear;
@@ -148,6 +158,8 @@ try
         edit2.Text:=fields[1].AsString;
         edit3.Text:=fields[2].AsString;
         memo1.Text:=fields[3].AsString;
+        edit5.Text:=fields[6].AsString;
+        edit4.Text:=fields[7].AsString;
       end;
       stringgrid1.RowCount:=2;
       stringgrid1.Rows[1].Clear;

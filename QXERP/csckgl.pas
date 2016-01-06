@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
-  ComCtrls, Grids;
+  ComCtrls, Grids, Menus;
 
 type
   TForm64 = class(TForm)
@@ -29,6 +29,14 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Edit4: TEdit;
+    Edit5: TEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
     procedure ComboBox2KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -39,6 +47,10 @@ type
     procedure ComboBox1Select(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure ComboBox2Select(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure N1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,11 +59,26 @@ type
 
 var
   Form64: TForm64;
+  selRowIndex:integer;
 
 implementation
 uses main;
 
 {$R *.dfm}
+
+procedure DeleteStringGridRow(vRow: Integer; StringGrid: TStringGrid);
+var
+  i:Integer;
+begin
+  if StringGrid.RowCount > vRow then
+  begin
+    for i:= vRow to StringGrid.RowCount - 1 do
+    begin
+      StringGrid.Rows[i]:= StringGrid.Rows[i+1];
+    end;
+    StringGrid.RowCount := StringGrid.RowCount - 1;
+  end;
+end;
 
 procedure TForm64.Button1Click(Sender: TObject);
 var
@@ -76,7 +103,7 @@ begin
           stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
           stringgrid1.Cells[1,stringgrid1.RowCount-2]:=combobox1.Text;
           stringgrid1.Cells[2,stringgrid1.RowCount-2]:=edit2.Text;
-          stringgrid1.Cells[3,stringgrid1.RowCount-2]:=edit3.Text;
+          stringgrid1.Cells[3,stringgrid1.RowCount-2]:=edit3.Text+edit8.Text;
           stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
           combobox1.Text:='';
           edit2.Text:='';
@@ -94,7 +121,7 @@ procedure TForm64.Button2Click(Sender: TObject);
 var
   y:integer;
 begin
-if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
+if application.MessageBox('确定要保存数据吗？','成品测试出库提示',1)=1 then
   if stringgrid1.RowCount>1 then
     try
       with zstoredproc1 do
@@ -102,10 +129,12 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
         close;
         zstoredproc1.StoredProcName:='proc_insert_ceshichuku_info';  //csckdid,cscksqrid,csckdate,czry,csckly
         zstoredproc1.ParamByName('csckdid').Value:=edit1.Text;
-        zstoredproc1.ParamByName('cscksqrid').Value:=splitstring(combobox2.Text,'|');
+        zstoredproc1.ParamByName('cscksqrid').Value:=splitstring(edit6.Text,'|');
         zstoredproc1.ParamByName('csckdate').Value:=datetimepicker1.Date;
         zstoredproc1.ParamByName('czry').Value:=main.strUser;
         zstoredproc1.ParamByName('csckly').Value:='*'+memo1.Text;
+        zstoredproc1.ParamByName('htbh').Value:=edit5.Text;
+        zstoredproc1.ParamByName('khmc').Value:=edit7.Text;
         execProc;
         zstoredproc1.StoredProcName:='proc_insert_ceshichuku_mxz';  //jcsckdid,csckcpbh,cscksl,csckmemo
         for y := 1 to stringgrid1.RowCount - 2 do
@@ -117,7 +146,7 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
           execProc;
         end;
       end;
-      application.MessageBox('保存数据成功！','新增加工单管理提示');
+      application.MessageBox('保存数据成功！','成品测试出库提示');
       edit1.Text:='';
       edit2.Text:='';
       edit3.Text:='';
@@ -127,9 +156,9 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
       memo1.Text:='';
       stringgrid1.RowCount:=1;
   except
-    application.MessageBox('保存数据失败！','新增加工单管理提示');
+    application.MessageBox('保存数据失败！','成品测试出库提示');
   end else
-    application.MessageBox('请添加加工单内的明细！','新增加工单管理提示');
+    application.MessageBox('请添加出库单内的明细！','成品测试出库提示');
 end;
 
 procedure TForm64.ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -163,10 +192,21 @@ end;
 
 procedure TForm64.ComboBox1Select(Sender: TObject);
 begin
-  edit4.Text:='';
+  edit4.Text:='';                 //proc_cx_csckcpbh_hedui_by_cpbh_htbh
   try
     with zStoredProc1 do
     begin
+      close;
+      StoredProcName:='proc_cx_csckcpbh_hedui_by_cpbh_htbh';
+      ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
+      ParamByName('htbh').Value:=SplitString(combobox1.Text,'|');
+      ExecProc;
+      if ParamByName('returncode').Value<>1 then
+      begin
+        edit8.Text:='该产品未包含在合同产品中！';
+        application.MessageBox('该产品未包含在合同产品中！','成品测试出库提示');
+      end else
+        edit8.Text:='';
       close;
       StoredProcName:='proc_cx_cpkcb_by_cbph';
       ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
@@ -175,7 +215,7 @@ begin
         edit4.Text:=fields[0].AsString;
     end;
   except
-    application.MessageBox('数据查询失败！','成品出库提示');
+    application.MessageBox('数据查询失败！','成品测试出库提示');
   end;
 end;
 
@@ -192,7 +232,7 @@ begin
       begin
         close;
         zstoredproc1.StoredProcName:='proc_cx_khandzgdwandxsy_by_cxitemandcxmc';
-        zstoredproc1.ParamByName('cxitem').Value:='xsy';
+        zstoredproc1.ParamByName('cxitem').Value:='khhtxsy';
         zstoredproc1.ParamByName('cxmc').Value:=ComboBox2.Text;
         open;
         while not eof do
@@ -203,9 +243,33 @@ begin
         //combobox1.DroppedDown:=true;
       end;
   except
-    application.MessageBox('数据查询失败！','非产品出库管理提示');
+    application.MessageBox('数据查询失败！','成品测试出库提示');
   end;
  end;
+end;
+
+procedure TForm64.ComboBox2Select(Sender: TObject);
+begin
+  edit7.Text:='';
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_cx_khandzgdwandxsy_by_cxitemandcxmc';
+        zstoredproc1.ParamByName('cxitem').Value:='khhtxsyxx';
+        zstoredproc1.ParamByName('cxmc').Value:=SplitString(ComboBox2.Text,'|');
+        open;
+        if not eof then
+        begin
+          edit5.Text:=fields[0].asstring;
+          edit7.Text:=fields[1].asstring;
+          edit6.Text:=fields[2].asstring;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','成品测试出库提示');
+  end;
 end;
 
 procedure TForm64.Edit1KeyDown(Sender: TObject; var Key: Word;
@@ -224,7 +288,7 @@ begin
           edit1.Text:=formatDateTime('yyyy',date)+'0001';
       end;
     except
-      application.MessageBox('数据查询失败！','新增加工单管理提示');
+      application.MessageBox('数据查询失败！','成品测试出库提示');
     end;
 end;
 
@@ -243,6 +307,20 @@ begin
   stringgrid1.Cells[1,0]:='产品名称';
   stringgrid1.Cells[2,0]:='测试数量';
   stringgrid1.Cells[3,0]:='备注';
+end;
+
+procedure TForm64.N1Click(Sender: TObject);
+begin
+  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
+  begin
+    DeleteStringGridRow(selRowIndex,stringgrid1);
+  end;
+end;
+
+procedure TForm64.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  selRowIndex:=ARow;
 end;
 
 end.

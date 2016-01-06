@@ -23,6 +23,10 @@ type
     Memo2: TMemo;
     Label4: TLabel;
     Edit4: TEdit;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Label9: TLabel;
+    Edit6: TEdit;
     procedure FormShow(Sender: TObject);
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Button3Click(Sender: TObject);
@@ -43,7 +47,7 @@ uses main;
 procedure TForm74.Button3Click(Sender: TObject);
 begin
 if application.MessageBox('确定要保存数据吗？','新产品测试不退回通知单管理提示',1)=1 then
-  if memo1.Text<>'' then
+  if memo2.Text<>'' then
     try
       with zstoredproc1 do
       begin
@@ -93,6 +97,8 @@ begin
           edit2.Text:=fields[1].AsString;
           edit3.Text:=fields[2].AsString;
           memo1.Text:=fields[3].AsString;
+          edit5.Text:=fields[6].AsString;
+          edit6.Text:=fields[7].AsString;
           edit4.Text:=edit1.Text;
         end;
         stringgrid1.RowCount:=2;

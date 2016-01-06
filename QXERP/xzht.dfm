@@ -27,7 +27,7 @@ object Form28: TForm28
   end
   object Label2: TLabel
     Left = 34
-    Top = 54
+    Top = 57
     Width = 48
     Height = 13
     Alignment = taRightJustify

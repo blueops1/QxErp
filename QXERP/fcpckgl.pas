@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, ComCtrls, DB, ZAbstractRODataset, ZAbstractDataset,
-  ZStoredProcedure, ExtCtrls;
+  ZStoredProcedure, ExtCtrls, Menus;
 
 type
   TForm27 = class(TForm)
@@ -32,6 +32,8 @@ type
     Label16: TLabel;
     Label9: TLabel;
     Edit5: TEdit;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -44,6 +46,9 @@ type
     procedure Button2Click(Sender: TObject);
     procedure ComboBoxEx1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure N1Click(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -52,12 +57,27 @@ type
 
 var
   Form27: TForm27;
+  selRowIndex:integer;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 implementation
 
 {$R *.dfm}
 
 uses main;
+
+procedure DeleteStringGridRow(vRow: Integer; StringGrid: TStringGrid);
+var
+  i:Integer;
+begin
+  if StringGrid.RowCount > vRow then
+  begin
+    for i:= vRow to StringGrid.RowCount - 1 do
+    begin
+      StringGrid.Rows[i]:= StringGrid.Rows[i+1];
+    end;
+    StringGrid.RowCount := StringGrid.RowCount - 1;
+  end;
+end;
 
 procedure TForm27.Button1Click(Sender: TObject);
 begin
@@ -275,6 +295,20 @@ begin
   stringgrid1.Cells[2,0]:='出库数量';
   stringgrid1.Cells[3,0]:='备注';
 
+end;
+
+procedure TForm27.N1Click(Sender: TObject);
+begin
+  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
+  begin
+    DeleteStringGridRow(selRowIndex,stringgrid1);
+  end;
+end;
+
+procedure TForm27.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  selRowIndex:=ARow;
 end;
 
 end.

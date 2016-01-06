@@ -225,6 +225,7 @@ object Form25: TForm25
             Width = 121
             Height = 21
             TabOrder = 10
+            Text = '0'
             OnKeyPress = Edit17KeyPress
           end
         end

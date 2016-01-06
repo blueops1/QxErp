@@ -63,7 +63,7 @@ var
 begin
   if StringGrid.RowCount > vRow then
   begin
-    for i:= vRow to StringGrid.RowCount - vRow do
+    for i:= vRow to StringGrid.RowCount - 1 do
     begin
       StringGrid.Rows[i]:= StringGrid.Rows[i+1];
     end;
@@ -73,12 +73,13 @@ end;
 
 procedure TForm32.Button1Click(Sender: TObject);
 begin
-  if (SelARow>0) and (SelARow<stringgrid1.RowCount-1) and (stringgrid1.Cells[1,SelARow]<>'') then
+  if (SelArow>0) and (SelArow<stringgrid1.RowCount-1) and (stringgrid1.Cells[1,SelArow]<>'') then
   try
     with zStoredProc1 do
     begin
+      close;
       StoredProcName:='proc_insert_itemkctips_of_itemid';
-      ParamByName('itemid').Value:=stringgrid1.Cells[1,SelARow];
+      ParamByName('itemid').Value:=stringgrid1.Cells[1,SelArow];
       ParamByName('czlx').Value:='ADD';
       ExecProc;
       application.MessageBox('增加库存跟踪项目成功！','常规库存跟踪信息设置');
@@ -87,7 +88,7 @@ begin
       stringgrid2.Cells[1,stringgrid2.RowCount-2]:=stringgrid1.Cells[1,SelArow];
       stringgrid2.Cells[2,stringgrid2.RowCount-2]:=stringgrid1.Cells[2,SelArow];
       stringgrid2.Cells[3,stringgrid2.RowCount-2]:='0';
-      DeleteStringGridRow(SelARow,stringgrid1);
+      DeleteStringGridRow(SelArow,stringgrid1);
     end;
   except
     application.MessageBox('增加库存跟踪项目失败','常规库存跟踪信息设置');
@@ -100,13 +101,14 @@ begin
   try
     with zStoredProc1 do
     begin
+      close;
       StoredProcName:='proc_insert_itemkctips_of_itemid';
       ParamByName('itemid').Value:=stringgrid2.Cells[1,gzSelARow];
       ParamByName('czlx').Value:='DEL';
       ExecProc;
-      application.MessageBox('删除库存跟踪项目成功！','常规库存跟踪信息设置');
-      DeleteStringGridRow(gzSelARow,stringgrid2);
     end;
+      DeleteStringGridRow(gzSelARow,stringgrid2);
+      application.MessageBox('删除库存跟踪项目成功！','常规库存跟踪信息设置');
   except
     application.MessageBox('增加库存跟踪项目失败','常规库存跟踪信息设置');
   end;
@@ -216,6 +218,7 @@ begin
   try
     with zStoredProc1 do
     begin
+      close;
       StoredProcName:='proc_cx_itemkctips';
       open;
       i:=1;

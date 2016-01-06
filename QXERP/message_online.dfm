@@ -111,6 +111,7 @@ object Form18: TForm18
         Height = 157
         Align = alTop
         ColCount = 4
+        RowCount = 2
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRowSelect]
         TabOrder = 1
         OnSelectCell = StringGrid1SelectCell
@@ -161,6 +162,10 @@ object Form18: TForm18
       Caption = #25910#34255#30340#20449#24687
       ImageIndex = 2
       OnShow = TabSheet3Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object StringGrid2: TStringGrid
         Left = 0
         Top = 0
@@ -200,6 +205,10 @@ object Form18: TForm18
       Caption = #26087#30340#20449#24687
       ImageIndex = 3
       OnShow = TabSheet4Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object StringGrid3: TStringGrid
         Left = 0
         Top = 0
@@ -248,6 +257,10 @@ object Form18: TForm18
       Caption = #22238#25910#31665
       ImageIndex = 4
       OnShow = TabSheet5Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object StringGrid4: TStringGrid
         Left = 0
         Top = 0
@@ -296,6 +309,10 @@ object Form18: TForm18
       Caption = #21457#36865#30340#20449#24687
       ImageIndex = 5
       OnShow = TabSheet6Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object StringGrid5: TStringGrid
         Left = 0
         Top = 0

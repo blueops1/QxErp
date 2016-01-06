@@ -22,6 +22,10 @@ type
     ZStoredProc1: TZStoredProc;
     Memo2: TMemo;
     Label4: TLabel;
+    Label5: TLabel;
+    Edit4: TEdit;
+    Label7: TLabel;
+    Edit5: TEdit;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Button3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -61,6 +65,8 @@ if(edit1.Text<>'') and (stringgrid1.RowCount>2) then
         rvproject1.SetParam('bthmemo',memo2.Text);
         rvproject1.SetParam('memo',memo1.Text);
         rvproject1.SetParam('cdrq',edit3.Text);
+        rvproject1.SetParam('htbh',edit5.Text);
+        rvproject1.SetParam('khmc',edit4.Text);
         rvproject1.SetParam('czry',main.strUser);
         zstoredproc1.SetResultSet(1);
         RvProject1.Execute;
@@ -102,6 +108,8 @@ begin
           edit3.Text:=fields[2].AsString;
           memo1.Text:=fields[3].AsString;
           memo2.Text:=fields[6].AsString;
+          edit5.Text:=fields[7].AsString;
+          edit4.Text:=fields[8].AsString;
           stringgrid1.RowCount:=2;
           stringgrid1.Rows[1].Clear;
           i:=1;

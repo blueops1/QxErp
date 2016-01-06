@@ -20,7 +20,7 @@ object Form13: TForm13
     Top = 0
     Width = 1093
     Height = 615
-    ActivePage = TabSheet3
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     object TabSheet1: TTabSheet
@@ -304,6 +304,10 @@ object Form13: TForm13
       Caption = #21592#24037#20449#24687#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Shape1: TShape
         Left = 675
         Top = 125
@@ -695,6 +699,10 @@ object Form13: TForm13
     object TabSheet4: TTabSheet
       Caption = #26032#22686#37096#38376
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label23: TLabel
         Left = 200
         Top = 107
@@ -802,6 +810,10 @@ object Form13: TForm13
       Caption = #37096#38376#20449#24687#20462#25913
       ImageIndex = 4
       OnShow = TabSheet5Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label28: TLabel
         Left = 239
         Top = 38
