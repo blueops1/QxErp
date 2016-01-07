@@ -11,10 +11,6 @@ type
   TForm7 = class(TForm)
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
-    Label2: TLabel;
-    Label3: TLabel;
-    DateTimePicker1: TDateTimePicker;
-    DateTimePicker2: TDateTimePicker;
     Button1: TButton;
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
@@ -47,6 +43,10 @@ type
     Label4: TLabel;
     Label5: TLabel;
     ZStoredProc1: TZStoredProc;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    Label2: TLabel;
+    Label3: TLabel;
     procedure ComboBox1DropDown(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -110,19 +110,23 @@ begin
       if tmpxsyid='*' then
       sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fisdel=''N'' )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc')
       else
-      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.fyskbh,b.fkhmc,a.fzgdwbh,a.fdqye,a.flastdate from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fxsyid='+tmpxsyid+' and fisdel=''N'' ) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc');
+      sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.fyskbh,b.fkhmc,a.fzgdwbh,a.fdqye,a.flastdate from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fxsyid='+tmpxsyid+' and fisdel=''N'') as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.fdqye desc');
       open;
-      stringgrid1.RowCount:=RecordCount+2;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
       while not eof do
       begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
         stringgrid1.Cells[0,y]:=fields[0].AsString;
         stringgrid1.Cells[1,y]:=fields[1].AsString;
         stringgrid1.Cells[2,y]:=fields[2].AsString;
         stringgrid1.Cells[3,y]:=fields[3].AsString;
         stringgrid1.Cells[4,y]:=fields[4].AsString;
         y := y +1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
       end;
+      close;
       sql.Clear;
       if tmpxsyid='*' then
       sql.Add('select ''ºÏ¼Æ'',count(*),'''',SUM(c.fdqye),'''' from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where fisdel=''N'')'+''+'  as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid')
@@ -131,11 +135,13 @@ begin
       open;
       if not eof then
       begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
         stringgrid1.Cells[0,y]:=fields[0].AsString;
         stringgrid1.Cells[1,y]:=fields[1].AsString;
         stringgrid1.Cells[2,y]:=fields[2].AsString;
         stringgrid1.Cells[3,y]:=fields[3].AsString;
         stringgrid1.Cells[4,y]:=fields[4].AsString;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
       end;
     end;
   Except
@@ -161,15 +167,18 @@ begin
       sql.Clear;
       sql.Add('select c.fyskbh,c.fkhmc,d.fzgdwmc,c.fdqye,c.flastdate from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh,fdqye,flastdate from yskxx where week(flastdate)=week('''+datetimetostr(datetimepicker3.Date)+''')and year(flastdate)=year('''+datetimetostr(datetimepicker3.Date)+''')) as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid order by c.flastdate,c.fdqye desc');
       open;
-      stringgrid3.RowCount:=RecordCount+2;
+      stringgrid3.RowCount:=2;
+      stringgrid3.Rows[1].Clear;
       while not eof do
       begin
+        stringgrid3.RowCount:=stringgrid3.RowCount+1;
         stringgrid3.Cells[0,y]:=fields[0].AsString;
         stringgrid3.Cells[1,y]:=fields[1].AsString;
         stringgrid3.Cells[2,y]:=fields[2].AsString;
         stringgrid3.Cells[3,y]:=fields[3].AsString;
         stringgrid3.Cells[4,y]:=fields[4].AsString;
         y := y +1;
+        stringgrid3.Rows[stringgrid3.RowCount-1].Clear;
         next;
       end;
       sql.Clear;
@@ -177,11 +186,13 @@ begin
       open;
       if not eof then
       begin
+        stringgrid3.RowCount:=stringgrid3.RowCount+1;
         stringgrid3.Cells[0,y]:=fields[0].AsString;
         stringgrid3.Cells[1,y]:=fields[1].AsString;
         stringgrid3.Cells[2,y]:=fields[2].AsString;
         stringgrid3.Cells[3,y]:=fields[3].AsString;
         stringgrid3.Cells[4,y]:=fields[4].AsString;
+        stringgrid3.Rows[stringgrid3.RowCount-1].Clear;
       end;
     end;
   Except
@@ -207,9 +218,11 @@ begin
       sql.Clear;
       sql.Add('select d.*,e.fxzje,e.fhsje,e.fskdate from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where month(fskdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fskdate)=year('''+datetimetostr(datetimepicker4.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
       open;
-      stringgrid5.RowCount:=RecordCount+2;
+      stringgrid5.RowCount:=2;
+      stringgrid5.Rows[1].Clear;
       while not eof do
       begin
+        stringgrid5.RowCount:=stringgrid5.RowCount+1;
         stringgrid5.Cells[0,y]:=fields[0].AsString;
         stringgrid5.Cells[1,y]:=fields[1].AsString;
         stringgrid5.Cells[2,y]:=fields[2].AsString;
@@ -217,6 +230,7 @@ begin
         stringgrid5.Cells[4,y]:=fields[4].AsString;
         stringgrid5.Cells[5,y]:=fields[5].AsString;
         y := y +1;
+        stringgrid5.Rows[stringgrid5.RowCount-1].Clear;
         next;
       end;
       sql.Clear;
@@ -224,12 +238,14 @@ begin
       open;
       if not eof then
       begin
+        stringgrid5.RowCount:=stringgrid5.RowCount+1;
         stringgrid5.Cells[0,y]:=fields[0].AsString;
         stringgrid5.Cells[1,y]:=fields[1].AsString;
         stringgrid5.Cells[2,y]:=fields[2].AsString;
         stringgrid5.Cells[3,y]:=fields[3].AsString;
         stringgrid5.Cells[4,y]:=fields[4].AsString;
         stringgrid5.Cells[5,y]:=fields[5].AsString;
+        stringgrid5.Rows[stringgrid5.RowCount-1].Clear;
       end;
     end;
   Except
@@ -255,9 +271,11 @@ begin
       sql.Clear;
       sql.Add('select d.*,e.fxzje,e.fhsje,e.fskdate from (select c.fyskbh,c.fkhmc,d.fzgdwmc from (select a.*,b.fkhmc from (select fyskbh,fkhid,fzgdwbh from yskxx )'+''+' as a join (select fkdhid,fkhmc from Kh_info) as b on a.fkhid=b.fkdhid) as c join(select fzgdwid,fzgdwmc from zgdw_info) as d on c.fzgdwbh=d.fzgdwid) as d join (select fyskbh,fxzje,fhsje,fskdate from yskmxz where year(fskdate)=year('''+datetimetostr(datetimepicker5.Date)+''')) as e on d.fyskbh=e.fyskbh order by e.fskdate desc');
       open;
-      stringgrid6.RowCount:=RecordCount+2;
+      stringgrid6.RowCount:=2;
+      stringgrid6.Rows[1].Clear;
       while not eof do
       begin
+        stringgrid6.RowCount:=stringgrid6.RowCount+1;
         stringgrid6.Cells[0,y]:=fields[0].AsString;
         stringgrid6.Cells[1,y]:=fields[1].AsString;
         stringgrid6.Cells[2,y]:=fields[2].AsString;
@@ -265,6 +283,7 @@ begin
         stringgrid6.Cells[4,y]:=fields[4].AsString;
         stringgrid6.Cells[5,y]:=fields[5].AsString;
         y := y +1;
+        stringgrid6.Rows[stringgrid6.RowCount-1].Clear;
         next;
       end;
       sql.Clear;
@@ -272,12 +291,14 @@ begin
       open;
       if not eof then
       begin
+        stringgrid6.RowCount:=stringgrid6.RowCount+1;
         stringgrid6.Cells[0,y]:=fields[0].AsString;
         stringgrid6.Cells[1,y]:=fields[1].AsString;
         stringgrid6.Cells[2,y]:=fields[2].AsString;
         stringgrid6.Cells[3,y]:=fields[3].AsString;
         stringgrid6.Cells[4,y]:=fields[4].AsString;
         stringgrid6.Cells[5,y]:=fields[5].AsString;
+        stringgrid6.Rows[stringgrid6.RowCount-1].Clear;
       end;
     end;
   Except
@@ -421,8 +442,8 @@ end;
 
 procedure TForm7.FormActivate(Sender: TObject);
 begin
-  datetimepicker1.DateTime := strtodate('2010/01/01');
-  datetimepicker2.DateTime := date();
+  datetimepicker1.Date:=strtodatetime('2010/1/1');
+  datetimepicker2.DateTime:=now();
   datetimepicker3.DateTime := date();
   datetimepicker4.DateTime := date();
   datetimepicker5.DateTime := date();
@@ -447,15 +468,18 @@ begin
       sql.Clear;
       sql.Add('select fyskbh,fxzje,fhsje,fskdate,fmemo from yskmxz where fyskbh='''+strCpbh+''' and isdel=''N'' and fskdate>='''+datetimetostr(datetimepicker1.Date)+''' and fskdate<='''+datetimetostr(datetimepicker2.Date)+'''');
       open;
-      stringgrid2.RowCount:=RecordCount+2;
+      stringgrid2.RowCount:=2;
+      stringgrid2.Rows[1].Clear;
       while not eof do
       begin
+        stringgrid2.RowCount:=stringgrid2.RowCount+1;
         stringgrid2.Cells[0,y]:=fields[0].AsString;
         stringgrid2.Cells[1,y]:=fields[1].AsString;
         stringgrid2.Cells[2,y]:=fields[2].AsString;
         stringgrid2.Cells[3,y]:=fields[3].AsString;
         stringgrid2.Cells[4,y]:=fields[4].AsString;
         y := y +1;
+        stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
         next;
       end;
       sql.Clear;
@@ -463,11 +487,13 @@ begin
       open;
       if not eof then
       begin
+        stringgrid2.RowCount:=stringgrid2.RowCount+1;
         stringgrid2.Cells[0,y]:=fields[0].AsString;
         stringgrid2.Cells[1,y]:=fields[1].AsString;
         stringgrid2.Cells[2,y]:=fields[2].AsString;
         stringgrid2.Cells[3,y]:=fields[3].AsString;
         stringgrid2.Cells[4,y]:=fields[4].AsString;
+        stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
       end;
     end;
   Except

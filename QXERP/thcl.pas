@@ -46,6 +46,7 @@ type
     Label3: TLabel;
     Edit2: TEdit;
     Button3: TButton;
+    Edit10: TEdit;
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure ComboBox4KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -119,6 +120,7 @@ end;
 procedure TForm73.Button2Click(Sender: TObject);
 var
   i:integer;
+  newfhdid:string;
 begin
   if  application.MessageBox('确定要进行退货处理吗？','退货处理提示',1)=1 then
     if (stringgrid1.RowCount>2) and (edit1.Text<>'') then
@@ -126,11 +128,19 @@ begin
         with zStoredProc1 do          //proc_modify_tuihuo_htinfo_yskmxzwkp_yskxx htbh,thje,thdate,memo
         begin                          //proc_modify_tuihuo_htmxz_cpmxz_cpkcb htbh,cpbh,thsl,thdate,czry,memo
           close;
+          StoredProcName:='proc_cx_newfhdbh';
+          open;
+          if fields[0].AsString<>'' then
+            newfhdid:=fields[0].AsString
+          else
+            newfhdid:=formatDateTime('yyyy',date)+'0001';
+          close;
           StoredProcName:='proc_modify_tuihuo_htinfo_yskmxzwkp_yskxx';
           ParamByName('htbh').Value:=edit1.Text;
           ParamByName('thje').Value:=edit2.Text;
           ParamByName('thdate').Value:=datetimepicker1.Date;
           ParamByName('memo').Value:='*合同编号为：'+edit1.Text+'退货';
+          ParamByName('khid').Value:=edit10.Text;
           ExecProc;
           close;
           StoredProcName:='proc_modify_tuihuo_htmxz_cpmxz_cpkcb';
@@ -139,6 +149,7 @@ begin
             ParamByName('htbh').Value:=edit1.Text;
             ParamByName('cpbh').Value:=splitstring(stringgrid1.Cells[1,i],'|');
             ParamByName('thsl').Value:=stringgrid1.Cells[3,i];
+            ParamByName('cpdj').Value:=stringgrid1.Cells[2,i];
             ParamByName('thdate').Value:=datetimepicker1.Date;
             ParamByName('czry').Value:=main.strUser;
             ParamByName('memo').Value:='*合同编号为：'+edit1.Text+'退货';;
@@ -166,7 +177,8 @@ begin
         end;
       except
         application.MessageBox('退货处理失败！','退货处理提示');
-      end;
+      end else
+        application.MessageBox('请调入合同信息以及添加退货明细！','退货处理提示');
 end;
 
 procedure TForm73.Button3Click(Sender: TObject);
@@ -187,6 +199,7 @@ begin
     edit8.Text:='';
     edit7.Text:='';
     edit1.Text:='';
+    edit10.Text:='';
     combobox4.Text:='';
     stringgrid1.RowCount:=2;
     stringgrid1.Rows[1].Clear;
@@ -265,6 +278,7 @@ begin
           edit12.text:=fields[4].AsString;
           edit13.text:=fields[5].AsString;
           memo1.Text:=fields[6].AsString;
+          edit10.text:=fields[7].AsString;
         end;
 
       end;

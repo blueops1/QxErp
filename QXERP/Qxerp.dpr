@@ -79,7 +79,10 @@ uses
   thcl in 'thcl.pas' {Form73},
   bthcscktzd in 'bthcscktzd.pas' {Form74},
   bthcstzddy in 'bthcstzddy.pas' {Form75},
-  bthcsckgl in 'bthcsckgl.pas' {Form76};
+  bthcsckgl in 'bthcsckgl.pas' {Form76},
+  kptzs in 'kptzs.pas' {Form77},
+  kptzsdycx in 'kptzsdycx.pas' {Form78},
+  kptzsdy in 'kptzsdy.pas' {Form79};
 
 {$R *.res}
 
@@ -165,5 +168,8 @@ begin
   Application.CreateForm(TForm74, Form74);
   Application.CreateForm(TForm75, Form75);
   Application.CreateForm(TForm76, Form76);
+  Application.CreateForm(TForm77, Form77);
+  Application.CreateForm(TForm78, Form78);
+  Application.CreateForm(TForm79, Form79);
   Application.Run;
 end.

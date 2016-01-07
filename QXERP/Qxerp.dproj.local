@@ -171,6 +171,14 @@
     <Transaction>2016/01/05 16:50:01.572.dfm,E:\QxErp\QXERP\Unit75.dfm=E:\QxErp\QXERP\bthcstzddy.dfm</Transaction>
     <Transaction>2016/01/05 20:41:02.692.pas,F:\QxErp\QXERP\Unit76.pas=F:\QxErp\QXERP\bthcsckgl.pas</Transaction>
     <Transaction>2016/01/05 20:41:02.692.dfm,F:\QxErp\QXERP\Unit76.dfm=F:\QxErp\QXERP\bthcsckgl.dfm</Transaction>
+    <Transaction>2016/01/07 08:34:28.474.pas,E:\QxErp\QXERP\Unit77.pas=E:\QxErp\QXERP\开票通知书.pas</Transaction>
+    <Transaction>2016/01/07 08:34:28.474.dfm,E:\QxErp\QXERP\Unit77.dfm=E:\QxErp\QXERP\开票通知书.dfm</Transaction>
+    <Transaction>2016/01/07 08:34:57.130.pas,E:\QxErp\QXERP\开票通知书.pas=E:\QxErp\QXERP\kptzs.pas</Transaction>
+    <Transaction>2016/01/07 08:34:57.130.dfm,E:\QxErp\QXERP\开票通知书.dfm=E:\QxErp\QXERP\kptzs.dfm</Transaction>
+    <Transaction>2016/01/07 11:52:19.608.pas,E:\QxErp\QXERP\Unit78.pas=E:\QxErp\QXERP\kptzsdycx.pas</Transaction>
+    <Transaction>2016/01/07 11:52:19.608.dfm,E:\QxErp\QXERP\Unit78.dfm=E:\QxErp\QXERP\kptzsdycx.dfm</Transaction>
+    <Transaction>2016/01/07 12:54:37.285.pas,E:\QxErp\QXERP\Unit79.pas=E:\QxErp\QXERP\kptzsdy.pas</Transaction>
+    <Transaction>2016/01/07 12:54:37.285.dfm,E:\QxErp\QXERP\Unit79.dfm=E:\QxErp\QXERP\kptzsdy.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -329,5 +337,11 @@
     <File Path="bthcstzddy.dfm"/>
     <File Path="bthcsckgl.pas"/>
     <File Path="bthcsckgl.dfm"/>
+    <File Path="kptzs.pas"/>
+    <File Path="kptzs.dfm"/>
+    <File Path="kptzsdycx.pas"/>
+    <File Path="kptzsdycx.dfm"/>
+    <File Path="kptzsdy.pas"/>
+    <File Path="kptzsdy.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

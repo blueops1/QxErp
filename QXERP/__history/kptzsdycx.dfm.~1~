@@ -1,0 +1,24 @@
+object Form78: TForm78
+  Left = 0
+  Top = 0
+  Caption = #24320#31080#36890#30693#20070#25171#21360
+  ClientHeight = 521
+  ClientWidth = 840
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 840
+    Height = 521
+    Align = alClient
+    TabOrder = 0
+  end
+end
