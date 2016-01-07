@@ -1,0 +1,28 @@
+unit jgdrkmxz;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure;
+
+type
+  TForm80 = class(TForm)
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form80: TForm80;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+end.

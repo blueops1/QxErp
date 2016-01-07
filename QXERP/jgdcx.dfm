@@ -75,6 +75,13 @@ object Form54: TForm54
     Height = 13
     Caption = #21152#24037#24635#36153#29992
   end
+  object Label1: TLabel
+    Left = 440
+    Top = 141
+    Width = 132
+    Height = 13
+    Caption = #21452#20987#35760#24405#26465#26597#30475#20837#24211#26126#32454
+  end
   object Edit4: TEdit
     Left = 90
     Top = 22
@@ -100,6 +107,8 @@ object Form54: TForm54
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 2
+    OnDblClick = StringGrid1DblClick
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       47
       70

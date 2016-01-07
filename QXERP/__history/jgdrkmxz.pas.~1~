@@ -1,0 +1,25 @@
+unit jgdrkmxz;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids;
+
+type
+  TForm80 = class(TForm)
+    StringGrid1: TStringGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form80: TForm80;
+
+implementation
+
+{$R *.dfm}
+
+end.

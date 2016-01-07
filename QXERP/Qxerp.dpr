@@ -82,7 +82,8 @@ uses
   bthcsckgl in 'bthcsckgl.pas' {Form76},
   kptzs in 'kptzs.pas' {Form77},
   kptzsdycx in 'kptzsdycx.pas' {Form78},
-  kptzsdy in 'kptzsdy.pas' {Form79};
+  kptzsdy in 'kptzsdy.pas' {Form79},
+  jgdrkmxz in 'jgdrkmxz.pas' {Form80};
 
 {$R *.res}
 
@@ -171,5 +172,6 @@ begin
   Application.CreateForm(TForm77, Form77);
   Application.CreateForm(TForm78, Form78);
   Application.CreateForm(TForm79, Form79);
+  Application.CreateForm(TForm80, Form80);
   Application.Run;
 end.

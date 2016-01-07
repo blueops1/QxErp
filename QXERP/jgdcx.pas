@@ -26,10 +26,14 @@ type
     Label12: TLabel;
     Edit6: TEdit;
     Button1: TButton;
+    Label1: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Execl1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -43,7 +47,7 @@ var
 
 implementation
 
-uses main;
+uses main,jgdrkmxz;
 
 {$R *.dfm}
 
@@ -152,6 +156,24 @@ begin
   except
     application.MessageBox('数据查询失败！','新增加工单管理提示');
   end;
+end;
+
+procedure TForm54.StringGrid1DblClick(Sender: TObject);
+begin
+   if jgdrkmxz.strjgdbh<>'NULL' then
+    jgdrkmxz.Form80.ShowModal;
+end;
+
+procedure TForm54.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if (ARow>0) and (stringgrid1.RowCount>2) then
+  begin
+    jgdrkmxz.strjgdbh:=stringgrid1.Cells[1,ARow];
+    strcpmc:=stringgrid1.Cells[2,ARow];
+  end
+  else
+    jgdrkmxz.strjgdbh:='NULL';
 end;
 
 end.

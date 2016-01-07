@@ -286,6 +286,9 @@
 			<DCCReference Include="kptzsdy.pas">
 				<Form>Form79</Form>
 			</DCCReference>
+			<DCCReference Include="jgdrkmxz.pas">
+				<Form>Form80</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
