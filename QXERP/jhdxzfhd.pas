@@ -58,6 +58,9 @@ type
     procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure Edit12KeyPress(Sender: TObject; var Key: Char);
+    procedure StringGrid2KeyPress(Sender: TObject; var Key: Char);
+    procedure StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
+      const Value: string);
   private
     { Private declarations }
   public
@@ -68,6 +71,7 @@ var
   Form40: TForm40;
   selRowIndex:integer;
   oldRowCount:integer;
+  tmpsl:string;
   function SmallTOBig(small:real):string;stdcall;external 'dlltools.dll';
 
 implementation
@@ -132,7 +136,7 @@ begin
         gridcount:=stringgrid2.RowCount;
         for i := 1 to stringgrid2.rowcount-2 do
         begin
-          if stringgrid2.Cells[5,i]<>'' then
+          if (stringgrid2.Cells[5,i]<>'') or (stringgrid2.Cells[5,i]<>'0') then
             begin
               close;
               StoredProcName:='proc_insert_fahuodan_mxz';
@@ -144,7 +148,7 @@ begin
               ExecProc;
             end else
             begin
-              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量为空，请填写完整'),'发货单明细提示');
+              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量为空(零)，请填写完整'),'发货单明细提示');
               exit;
             end;
         end;
@@ -295,7 +299,8 @@ begin
   stringgrid2.Cells[2,0]:='产品名称';
   stringgrid2.Cells[3,0]:='产品种类';
   stringgrid2.Cells[4,0]:='销售价格';
-  stringgrid2.Cells[5,0]:='发货数量';
+  stringgrid2.Cells[5,0]:='发货数量(可调整)';
+  stringgrid2.Cells[6,0]:='库存数量';
   try
     with zStoredProc1 do
     begin
@@ -330,6 +335,7 @@ begin
           stringgrid2.Cells[5,y]:=floattostr(strtofloat(scjh.Form17.StringGrid2.Cells[7,i])-strtofloat(scjh.Form17.StringGrid2.Cells[6,i]))
         else
           stringgrid2.Cells[5,y]:=floattostr(strtofloat(scjh.Form17.StringGrid2.Cells[5,i])-strtofloat(scjh.Form17.StringGrid2.Cells[8,i]));
+        stringgrid2.Cells[6,y]:= scjh.Form17.stringgrid2.Cells[7,i];
         stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
       end else
         y:=y-1;
@@ -348,10 +354,32 @@ begin
   end;
 end;
 
+procedure TForm40.StringGrid2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit2.Text)>0)   then
+    key:=#0;
+end;
+
 procedure TForm40.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   selRowIndex:=ARow;
+  tmpsl:=stringgrid2.Cells[5,ARow];
+    if (ARow=0) or (ARow=stringgrid2.RowCount-1) or (ACol<>5) then
+    stringgrid2.Options:=[goFixedVertLine,goFixedHorzLine,goVertLine,goHorzLine]
+  else
+    stringgrid2.Options:=[goFixedVertLine,goFixedHorzLine,goVertLine,goHorzLine,goEditing];
+
+end;
+
+procedure TForm40.StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
+  const Value: string);
+begin
+  if stringgrid2.Cells[5,ARow]<>'' then
+  if strtofloat(stringgrid2.Cells[6,ARow])<strtofloat(stringgrid2.Cells[5,ARow]) then
+    stringgrid2.Cells[5,ARow]:=tmpSl;
 end;
 
 end.

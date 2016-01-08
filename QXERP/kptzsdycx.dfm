@@ -23,6 +23,7 @@ object Form78: TForm78
     Align = alClient
     ColCount = 7
     FixedCols = 0
+    RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     TabOrder = 0
     OnDblClick = StringGrid1DblClick

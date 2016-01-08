@@ -37,6 +37,9 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -50,7 +53,7 @@ var
 
 implementation
 
-uses main;
+uses main,fhdxxzl;
 
 {$R *.dfm}
 
@@ -166,6 +169,22 @@ begin
     except
       application.MessageBox('查询数据失败','开票通知书打印');
     end;
+end;
+
+procedure TForm79.StringGrid1DblClick(Sender: TObject);
+begin
+  if (fhdid<>'') then
+    fhdxxzl.form21.ShowModal;
+end;
+
+procedure TForm79.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  //sARow:=ARow;
+  if (stringgrid1.RowCount>2) and (ARow>0) and (ARow<stringgrid1.RowCount-1) then
+    fhdid:=stringgrid1.Cells[2,ARow]
+  else
+    fhdid:='';
 end;
 
 end.

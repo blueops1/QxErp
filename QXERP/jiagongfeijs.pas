@@ -57,6 +57,8 @@ type
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure StringGrid2DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,7 +70,7 @@ var
   sARow,sARow2:integer;
 
 implementation
-uses main;
+uses main,jgdcx;
 
 {$R *.dfm}
 
@@ -323,16 +325,40 @@ begin
   stringgrid2.Cells[4,0]:='±¸×¢';
 end;
 
+procedure TForm81.StringGrid1DblClick(Sender: TObject);
+begin
+  if strjgdbh<>'NULL' then
+    jgdcx.Form54.ShowModal;
+end;
+
 procedure TForm81.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   sARow:=ARow;
+  if (stringgrid1.RowCount>2) and (ARow>0) and (ARow<stringgrid1.RowCount-1) then
+  begin
+    strjgdbh:=stringgrid1.Cells[1,ARow];
+  end
+  else
+    strjgdbh:='NULL';
+end;
+
+procedure TForm81.StringGrid2DblClick(Sender: TObject);
+begin
+  if strjgdbh<>'NULL' then
+    jgdcx.Form54.ShowModal;
 end;
 
 procedure TForm81.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   sARow2:=ARow;
+    if (stringgrid2.RowCount>2) and (ARow>0) and (ARow<stringgrid2.RowCount-1) then
+  begin
+    strjgdbh:=stringgrid2.Cells[1,ARow];
+  end
+  else
+    strjgdbh:='NULL';
 end;
 
 end.

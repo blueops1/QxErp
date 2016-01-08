@@ -39,6 +39,9 @@ type
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -49,6 +52,7 @@ var
   Form85: TForm85;
 
 implementation
+uses main,fhdxxzl;
 
 {$R *.dfm}
 
@@ -169,6 +173,21 @@ begin
   stringgrid1.Cells[2,0]:='发货单编号';
   stringgrid1.Cells[3,0]:='本次开票额';
   stringgrid1.Cells[4,0]:='备注';
+end;
+
+procedure TForm85.StringGrid1DblClick(Sender: TObject);
+begin
+  if (fhdid<>'') then
+    fhdxxzl.form21.ShowModal;
+end;
+
+procedure TForm85.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if (stringgrid1.RowCount>2) and (ARow>0) and (ARow<stringgrid1.RowCount-1) then
+    fhdid:=stringgrid1.Cells[2,ARow]
+  else
+    fhdid:='';
 end;
 
 end.

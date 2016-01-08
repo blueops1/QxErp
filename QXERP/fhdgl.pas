@@ -51,8 +51,6 @@ type
       var CanSelect: Boolean);
     procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
-    procedure StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
-      const Value: string);
     procedure Button2Click(Sender: TObject);
     procedure Edit10Change(Sender: TObject);
     procedure Edit10KeyPress(Sender: TObject; var Key: Char);
@@ -346,16 +344,6 @@ procedure TForm19.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   sARow2:=ARow;
-  tmpString:=stringgrid2.Cells[ACol,ARow];
-end;
-
-procedure TForm19.StringGrid2SetEditText(Sender: TObject; ACol, ARow: Integer;
-  const Value: string);
-begin
-  if (ACol<>6) and (ARow>0) then
-  begin
-    stringgrid2.Cells[ACol,ARow]:=tmpString;
-  end;
 end;
 
 end.

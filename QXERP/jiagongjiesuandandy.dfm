@@ -183,6 +183,8 @@ object Form83: TForm83
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 8
+    OnDblClick = StringGrid1DblClick
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       48
       90

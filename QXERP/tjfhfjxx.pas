@@ -58,7 +58,7 @@ begin
         else begin
           RowCount:=RowCount+1;
           Cells[0,RowCount-2]:=inttostr(RowCount-2);
-          Cells[1,RowCount-2]:=edit2.Text;
+          Cells[1,RowCount-2]:=xzscjh.Form36.Edit2.Text;
           Cells[2,RowCount-2]:=combobox1.Text;
           Cells[3,RowCount-2]:=edit3.Text;
           Cells[4,RowCount-2]:=edit3.Text;

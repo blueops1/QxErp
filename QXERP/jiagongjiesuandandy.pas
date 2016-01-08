@@ -42,6 +42,9 @@ type
     procedure FormShow(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure StringGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,7 +58,7 @@ var
 
 implementation
 
-uses main;
+uses main,jgdcx;
 
 {$R *.dfm}
 
@@ -184,6 +187,23 @@ begin
   except
     application.MessageBox('数据查询失败！','加工结算单打印提示');
   end;
+end;
+
+procedure TForm83.StringGrid1DblClick(Sender: TObject);
+begin
+  if strjgdbh<>'NULL' then
+    jgdcx.Form54.ShowModal;
+end;
+
+procedure TForm83.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if (stringgrid1.RowCount>2) and (ARow>0) and (ARow<stringgrid1.RowCount-1)then
+  begin
+    strjgdbh:=stringgrid1.Cells[2,ARow];
+  end
+  else
+    strjgdbh:='NULL';
 end;
 
 end.

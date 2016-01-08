@@ -176,6 +176,8 @@ object Form79: TForm79
     FixedCols = 0
     RowCount = 2
     TabOrder = 8
+    OnDblClick = StringGrid1DblClick
+    OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       48
       76

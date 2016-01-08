@@ -318,19 +318,22 @@ object Form40: TForm40
     Top = 132
     Width = 722
     Height = 345
-    ColCount = 6
+    ColCount = 7
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing]
     PopupMenu = PopupMenu1
     TabOrder = 2
+    OnKeyPress = StringGrid2KeyPress
     OnSelectCell = StringGrid2SelectCell
+    OnSetEditText = StringGrid2SetEditText
     ColWidths = (
       64
       100
       111
       96
-      116
-      128)
+      104
+      117
+      90)
     RowHeights = (
       24
       24)
@@ -342,8 +345,8 @@ object Form40: TForm40
     Top = 256
   end
   object PopupMenu1: TPopupMenu
-    Left = 672
-    Top = 200
+    Left = 240
+    Top = 232
     object N1: TMenuItem
       Caption = #21024#38500#24403#21069#35760#24405
       OnClick = N1Click

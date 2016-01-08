@@ -185,10 +185,9 @@ object Form19: TForm19
     Height = 193
     ColCount = 7
     RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goEditing]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine]
     TabOrder = 9
     OnSelectCell = StringGrid2SelectCell
-    OnSetEditText = StringGrid2SetEditText
     ColWidths = (
       64
       120

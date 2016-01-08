@@ -194,6 +194,7 @@ object Form77: TForm77
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 9
+    OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       48

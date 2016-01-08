@@ -42,6 +42,7 @@ type
       const Value: string);
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure StringGrid3KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -50,7 +51,7 @@ type
 
 var
   Form36: TForm36;
-  sARow,sARow2:integer;
+  sARow,sARow2,sACol2:integer;
   tmpString:string;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
@@ -286,22 +287,33 @@ begin
   sARow:=ARow;
 end;
 
+procedure TForm36.StringGrid3KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',stringgrid3.Cells[sACol2,sARow])>0)   then
+    key:=#0;
+end;
+
 procedure TForm36.StringGrid3SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   sARow2:=ARow;
-  tmpString:=stringgrid3.Cells[ACol,ARow];
+  sACol2:=ACol;
+  if (ARow=0) or (ARow=stringgrid3.RowCount-1) or (ACol<>4) then
+    stringgrid3.Options:=[goFixedVertLine,goFixedHorzLine,goVertLine,goHorzLine]
+  else
+    stringgrid3.Options:=[goFixedVertLine,goFixedHorzLine,goVertLine,goHorzLine,goEditing];
+  tmpString:=stringgrid3.Cells[4,ARow];
 end;
 
 procedure TForm36.StringGrid3SetEditText(Sender: TObject; ACol, ARow: Integer;
   const Value: string);
 begin
-  if (ACol<>4) and (ARow>0) then
-  begin
-    stringgrid3.Cells[ACol,ARow]:=tmpString;
-  end else
+  if (stringgrid3.Cells[4,ARow]<>'') and (stringgrid3.Cells[3,ARow]<>'') then
   if strtofloat(stringgrid3.Cells[3,ARow])<strtofloat(stringgrid3.Cells[4,ARow]) then
-    stringgrid3.Cells[4,ARow]:='0';
+    stringgrid3.Cells[4,ARow]:=tmpString;
+
 end;
 
 end.

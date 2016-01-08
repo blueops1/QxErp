@@ -76,7 +76,7 @@ end;
 procedure TForm20.StringGrid1DblClick(Sender: TObject);
 begin
   if (fhdid<>'') then
-    form21.ShowModal;
+    fhdxxzl.form21.ShowModal;
 
 end;
 

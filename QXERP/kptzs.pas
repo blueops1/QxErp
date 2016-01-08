@@ -51,6 +51,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -62,7 +63,7 @@ var
   sARow,sARow2:integer;
 
 implementation
-uses main;
+uses main,fhdxxzl;
 
 {$R *.dfm}
 
@@ -295,10 +296,20 @@ begin
   stringgrid2.Cells[3,0]:='±¾´Î¿ªÆ±¶î';
 end;
 
+procedure TForm77.StringGrid1DblClick(Sender: TObject);
+begin
+  if (fhdid<>'') then
+    fhdxxzl.form21.ShowModal;
+end;
+
 procedure TForm77.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 begin
   sARow:=ARow;
+  if (stringgrid1.RowCount>2) and (ARow>0) and (ARow<stringgrid1.RowCount-1) then
+    fhdid:=stringgrid1.Cells[0,ARow]
+  else
+    fhdid:='';
 end;
 
 procedure TForm77.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
