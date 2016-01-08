@@ -223,7 +223,7 @@ object Form77: TForm77
     Left = 113
     Top = 175
     Width = 129
-    Height = 24
+    Height = 21
     TabStop = False
     ReadOnly = True
     TabOrder = 11
@@ -270,6 +270,15 @@ object Form77: TForm77
     Caption = #21462#28040
     TabOrder = 16
     OnClick = Button4Click
+  end
+  object Edit4: TEdit
+    Left = 259
+    Top = 176
+    Width = 121
+    Height = 21
+    ReadOnly = True
+    TabOrder = 17
+    Text = '0'
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

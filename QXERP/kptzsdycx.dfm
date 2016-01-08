@@ -1,7 +1,7 @@
 object Form78: TForm78
   Left = 0
   Top = 0
-  Caption = #24320#31080#36890#30693#20070#25171#21360#26597#35810'('#21452#20987#35760#24405#34892','#36827#34892#25171#21360#30028#38754')'
+  Caption = #24320#31080#36890#30693#20070#25171#21360#26597#35810'('#21452#20987#35760#24405#34892','#36827#20837#25171#21360#30028#38754')'
   ClientHeight = 521
   ClientWidth = 1022
   Color = clBtnFace
@@ -27,7 +27,6 @@ object Form78: TForm78
     TabOrder = 0
     OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
-    ExplicitWidth = 840
     ColWidths = (
       54
       83

@@ -1,0 +1,26 @@
+unit jgjsddycx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Grids;
+
+type
+  TForm82 = class(TForm)
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form82: TForm82;
+
+implementation
+
+{$R *.dfm}
+
+end.

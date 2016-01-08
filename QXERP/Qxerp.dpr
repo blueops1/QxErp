@@ -83,7 +83,12 @@ uses
   kptzs in 'kptzs.pas' {Form77},
   kptzsdycx in 'kptzsdycx.pas' {Form78},
   kptzsdy in 'kptzsdy.pas' {Form79},
-  jgdrkmxz in 'jgdrkmxz.pas' {Form80};
+  jgdrkmxz in 'jgdrkmxz.pas' {Form80},
+  jiagongfeijs in 'jiagongfeijs.pas' {Form81},
+  jgjsddycx in 'jgjsddycx.pas' {Form82},
+  jiagongjiesuandandy in 'jiagongjiesuandandy.pas' {Form83},
+  jgjsdqrpay in 'jgjsdqrpay.pas' {Form84},
+  kptzskpqr in 'kptzskpqr.pas' {Form85};
 
 {$R *.res}
 
@@ -173,5 +178,10 @@ begin
   Application.CreateForm(TForm78, Form78);
   Application.CreateForm(TForm79, Form79);
   Application.CreateForm(TForm80, Form80);
+  Application.CreateForm(TForm81, Form81);
+  Application.CreateForm(TForm82, Form82);
+  Application.CreateForm(TForm83, Form83);
+  Application.CreateForm(TForm84, Form84);
+  Application.CreateForm(TForm85, Form85);
   Application.Run;
 end.

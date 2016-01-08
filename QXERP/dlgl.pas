@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, DB, ADODB,inifiles,math, ZAbstractRODataset,
-  ZAbstractDataset, ZDataset;
+  ZAbstractDataset, ZDataset, pngimage;
 
 type
   TForm10 = class(TForm)
@@ -16,6 +16,7 @@ type
     Button2: TButton;
     ZQuery1: TZQuery;
     ComboBox1: TComboBox;
+    ProgramIcon: TImage;
     procedure Button3Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -129,7 +130,7 @@ procedure TForm10.FormActivate(Sender: TObject);
 var
   oldver,newver:string;
 begin
-    oldver:='2016010703'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
+    oldver:='2016010802'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin

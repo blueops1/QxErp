@@ -38,6 +38,7 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Button4: TButton;
+    Edit4: TEdit;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure ComboBox1Select(Sender: TObject);
@@ -98,6 +99,7 @@ begin
       stringgrid2.Cells[2,stringgrid2.RowCount-2]:=stringgrid1.Cells[4,sARow];
       stringgrid2.Cells[3,stringgrid2.RowCount-2]:=stringgrid1.Cells[4,sARow];
       stringgrid2.Cells[4,stringgrid2.RowCount-2]:='';
+      edit4.Text:=floattostr(strtofloat(edit4.Text)+strtofloat(stringgrid1.Cells[4,sARow]));
       stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
       sARow:=0;
     end;
@@ -107,6 +109,7 @@ procedure TForm77.Button2Click(Sender: TObject);
 begin
   if (sARow2<stringgrid2.RowCount-1) and (sARow2>0) then
   begin
+    edit4.Text:=floattostr(strtofloat(edit4.Text)+strtofloat(stringgrid2.Cells[3,sARow]));
     DeleteStringGridRow(sARow2,stringgrid2);
     sARow2:=0;
   end;
@@ -124,6 +127,7 @@ if (stringgrid2.RowCount>2) and (edit2.Text<>'') then
       StoredProcName:='proc_insert_kaipiaotongzhishu';  //kptzsid,htbh,CURDATE(),czry,memo
       ParamByName('kptzsid').Value:=edit2.Text;
       ParamByName('htbh').Value:=edit1.Text;
+      ParamByName('kpje').Value:=edit4.text;
       ParamByName('czry').Value:=main.strUser;
       ParamByName('memo').Value:='*'+memo2.Text;
       ExecProc;
@@ -155,7 +159,6 @@ if (stringgrid2.RowCount>2) and (edit2.Text<>'') then
       edit1.Text:='';
       combobox1.SetFocus;
     end;
-
   except
     application.MessageBox('保存数据失败','开票通知书提示');
   end;

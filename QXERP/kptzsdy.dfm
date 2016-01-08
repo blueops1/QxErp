@@ -187,13 +187,13 @@ object Form79: TForm79
     Left = 102
     Top = 20
     Width = 104
-    Height = 24
+    Height = 21
     TabStop = False
     ReadOnly = True
     TabOrder = 9
   end
   object Button3: TButton
-    Left = 654
+    Left = 543
     Top = 518
     Width = 104
     Height = 25
@@ -209,7 +209,7 @@ object Form79: TForm79
     TabOrder = 11
   end
   object Button4: TButton
-    Left = 533
+    Left = 679
     Top = 518
     Width = 87
     Height = 25

@@ -113,6 +113,10 @@ type
     Button68: TButton;
     Button74: TButton;
     Button75: TButton;
+    Button76: TButton;
+    Button77: TButton;
+    Button78: TButton;
+    Button79: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -195,6 +199,10 @@ type
     procedure Button73Click(Sender: TObject);
     procedure Button74Click(Sender: TObject);
     procedure Button75Click(Sender: TObject);
+    procedure Button76Click(Sender: TObject);
+    procedure Button77Click(Sender: TObject);
+    procedure Button78Click(Sender: TObject);
+    procedure Button79Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -236,7 +244,8 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      fhck,csckgl,cscprkgl,csckdgl,csckddy,
      monthreports,rkdinfocx,fpcxrkd,
      cyrxxgl,bthcscktzd,bthcstzddy,
-     bthcsckgl,thcl,kptzs,kptzsdycx;
+     bthcsckgl,thcl,kptzs,kptzsdycx,
+     jiagongfeijs,jgjsddycx,jgjsdqrpay,kptzskpqr;
 
 {$R *.dfm}
 
@@ -942,6 +951,38 @@ procedure TForm1.Button75Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,1,1)='1') then
     kptzsdycx.Form78.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button76Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,12,1)='1') then
+    jiagongfeijs.Form81.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button77Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,12,1)='1') then
+    jgjsddycx.Form82.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button78Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,12,1)='1') then
+    jgjsdqrpay.Form84.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button79Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,1,1)='1') then
+    kptzskpqr.Form85.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

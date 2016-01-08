@@ -289,6 +289,21 @@
 			<DCCReference Include="jgdrkmxz.pas">
 				<Form>Form80</Form>
 			</DCCReference>
+			<DCCReference Include="jiagongfeijs.pas">
+				<Form>Form81</Form>
+			</DCCReference>
+			<DCCReference Include="jgjsddycx.pas">
+				<Form>Form82</Form>
+			</DCCReference>
+			<DCCReference Include="jiagongjiesuandandy.pas">
+				<Form>Form83</Form>
+			</DCCReference>
+			<DCCReference Include="jgjsdqrpay.pas">
+				<Form>Form84</Form>
+			</DCCReference>
+			<DCCReference Include="kptzskpqr.pas">
+				<Form>Form85</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

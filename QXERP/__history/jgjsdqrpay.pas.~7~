@@ -1,0 +1,128 @@
+unit jgjsdqrpay;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  Grids;
+
+type
+  TForm84 = class(TForm)
+    Label8: TLabel;
+    Label9: TLabel;
+    Label18: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label6: TLabel;
+    Edit15: TEdit;
+    Edit8: TEdit;
+    Edit14: TEdit;
+    Edit9: TEdit;
+    Edit10: TEdit;
+    Edit11: TEdit;
+    Edit12: TEdit;
+    Edit2: TEdit;
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+    Label5: TLabel;
+    Memo2: TMemo;
+    Button3: TButton;
+    Button4: TButton;
+    Edit1: TEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Label4: TLabel;
+    Label1: TLabel;
+    Edit5: TEdit;
+    procedure Edit2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form84: TForm84;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm84.Edit2KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  i:integer;
+  strerrorxx:string;
+begin
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='结算单编号';
+  stringgrid1.Cells[2,0]:='加工单编号';
+  stringgrid1.Cells[3,0]:='开票金额';
+  stringgrid1.Cells[4,0]:='备注';
+  try
+    if edit2.Text<>'' then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        strerrorxx:='结算单信息读取失败';
+        StoredProcName:='proc_cx_jgjsd_mxz_by_jgjsdid';   //ffpbh,ffpsl,fjszje,fcddate,fmemo
+        ParamByName('jgjsdid').Value:=edit2.Text;
+        open;
+        firstresultset;
+        if not eof then
+        begin
+          edit1.Text:= fields[0].AsString;
+          edit3.Text:= fields[1].AsString;
+          Edit4.Text:= fields[2].AsString;
+          Edit5.Text:= fields[3].AsString;
+          Memo2.Text:= fields[4].AsString;
+          edit15.Text:=fields[5].AsString;
+        end;
+        nextresultset;
+        i:=1;
+        stringgrid1.RowCount:=2;
+        stringgrid1.Rows[1].Clear;
+        while not eof do
+        begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i);
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[2].AsString;
+            stringgrid1.Cells[4,i]:=fields[3].AsString;
+            //stringgrid1.Cells[5,i]:=fields[3].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;         //proc_cx_newkptzsid
+          next;
+        end;
+        close;
+        strerrorxx:='供应商信息读取失败';
+        StoredProcName:='proc_cx_jgsinfo_jgsbh';
+        ParamByName('jgsbh').Value:=edit15.Text;
+        open;
+        if not eof then
+        begin
+          Edit15.Text := fields[1].AsString;
+          Edit8.Text := fields[2].AsString;
+          Edit14.Text := fields[3].AsString;
+          Edit9.Text := fields[4].AsString;
+          Edit10.Text := fields[5].AsString;
+          Edit11.Text := fields[6].AsString;
+          Edit12.Text := fields[7].AsString;
+        end;
+      end;
+    except
+      application.MessageBox(pwidechar(strerrorxx),,'加工结算单打印提示');
+    end;
+  except
+    application.MessageBox('数据查询失败！','加工结算单打印提示');
+  end;
+end;
+
+end.
