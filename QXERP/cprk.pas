@@ -95,7 +95,7 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
       for i := 1 to stringgrid1.RowCount - 2 do
       begin
         close;
-        StoredProcName:='proc_cx_bcplxkinfo_bcpbh_by_cpbh';
+        StoredProcName:='proc_cx_bcplxkinfo_bcpbh_by_cpbh_new';
         ParamByName('cpbh').Value:=SplitString(stringgrid1.Cells[1,i],'|');
         open;
         if not eof then
@@ -216,10 +216,14 @@ begin
       if not eof then
         edit1.Text:=fields[0].AsString;
       close;
-      StoredProcName:='proc_cprk_bcpxxhd_by_cpbh';
+      StoredProcName:='proc_cx_cprk_bcpxxhd_by_cpbh';
       ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
       open;
-      edit3.Text:=fields[0].AsString;
+      while not eof do
+      begin
+        edit3.Text:=edit3.text+fields[0].AsString+'; ';
+        next;
+      end;
     end;
   except
     application.MessageBox('数据查询失败！','成品入库提示');

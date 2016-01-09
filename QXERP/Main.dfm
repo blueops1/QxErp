@@ -104,10 +104,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button1: TButton
         Left = 160
         Top = 104
@@ -190,10 +186,6 @@ object Form1: TForm1
     object TabSheet2: TTabSheet
       Caption = #29983#20135#31649#29702
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button11: TButton
         Left = 432
         Top = 200
@@ -265,14 +257,19 @@ object Form1: TForm1
         TabOrder = 7
         OnClick = Button44Click
       end
+      object Button81: TButton
+        Left = 160
+        Top = 296
+        Width = 97
+        Height = 65
+        Caption = #24120#35268#20135#21697#36319#36394
+        TabOrder = 8
+        OnClick = Button81Click
+      end
     end
     object TabSheet10: TTabSheet
       Caption = #22806#21327#21152#24037
       ImageIndex = 9
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button47: TButton
         Left = 160
         Top = 104
@@ -340,10 +337,6 @@ object Form1: TForm1
     object TabSheet9: TTabSheet
       Caption = #36136#37327#31649#29702
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button45: TButton
         Left = 160
         Top = 104
@@ -480,10 +473,6 @@ object Form1: TForm1
     object TabSheet3: TTabSheet
       Caption = #20179#24211#31649#29702
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button25: TButton
         Left = 160
         Top = 104
@@ -660,10 +649,6 @@ object Form1: TForm1
     object TabSheet4: TTabSheet
       Caption = #25910#27454#31649#29702
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button6: TButton
         Left = 160
         Top = 104
@@ -704,10 +689,6 @@ object Form1: TForm1
     object TabSheet6: TTabSheet
       Caption = #26597#35810#32479#35745
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button14: TButton
         Left = 297
         Top = 104
@@ -766,10 +747,6 @@ object Form1: TForm1
     object TabSheet5: TTabSheet
       Caption = #22522#26412#35774#32622
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button4: TButton
         Left = 160
         Top = 104
@@ -790,7 +767,7 @@ object Form1: TForm1
       end
       object Button9: TButton
         Left = 296
-        Top = 200
+        Top = 296
         Width = 97
         Height = 65
         Caption = #32844#24037#20449#24687#31649#29702
@@ -856,6 +833,15 @@ object Form1: TForm1
         Caption = #21152#24037#20215#26684#31649#29702
         TabOrder = 8
         OnClick = Button54Click
+      end
+      object Button80: TButton
+        Left = 296
+        Top = 200
+        Width = 97
+        Height = 65
+        Caption = #21322#25104#21697#36319#36394#35774#32622
+        TabOrder = 9
+        OnClick = Button80Click
       end
     end
   end

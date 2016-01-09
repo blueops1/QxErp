@@ -47,7 +47,7 @@ begin
   stringgrid1.Cells[3,0]:='物品类型';
   stringgrid1.Cells[4,0]:='当前库存数';
   stringgrid1.Cells[5,0]:='库存下限数';
-  stringgrid1.Cells[6,0]:='库存下限数';
+  stringgrid1.Cells[6,0]:='下限缺补数';
   stringgrid1.RowCount:=2;
   stringgrid1.Rows[1].Clear;
   try

@@ -88,7 +88,9 @@ uses
   jgjsddycx in 'jgjsddycx.pas' {Form82},
   jiagongjiesuandandy in 'jiagongjiesuandandy.pas' {Form83},
   jgjsdqrpay in 'jgjsdqrpay.pas' {Form84},
-  kptzskpqr in 'kptzskpqr.pas' {Form85};
+  kptzskpqr in 'kptzskpqr.pas' {Form85},
+  bcpkczzgl in 'bcpkczzgl.pas' {Form86},
+  bcpkcgz in 'bcpkcgz.pas' {Form87};
 
 {$R *.res}
 
@@ -183,5 +185,7 @@ begin
   Application.CreateForm(TForm83, Form83);
   Application.CreateForm(TForm84, Form84);
   Application.CreateForm(TForm85, Form85);
+  Application.CreateForm(TForm86, Form86);
+  Application.CreateForm(TForm87, Form87);
   Application.Run;
 end.

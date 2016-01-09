@@ -1,0 +1,836 @@
+unit bcpxxgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ADODB, Grids, StdCtrls, ComCtrls, ZAbstractRODataset,
+  ZAbstractDataset, ZDataset, ZStoredProcedure;
+
+type
+  TForm11 = class(TForm)
+    PageControl1: TPageControl;
+    TabSheet2: TTabSheet;
+    Label5: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label14: TLabel;
+    ListBox1: TListBox;
+    Edit3: TEdit;
+    Button5: TButton;
+    Button7: TButton;
+    Button8: TButton;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    TabSheet4: TTabSheet;
+    Label10: TLabel;
+    Edit8: TEdit;
+    Label11: TLabel;
+    Edit11: TEdit;
+    Label15: TLabel;
+    Edit12: TEdit;
+    Button3: TButton;
+    Button4: TButton;
+    Button10: TButton;
+    Label16: TLabel;
+    Label17: TLabel;
+    ZStoredProc1: TZStoredProc;
+    TabSheet5: TTabSheet;
+    Label37: TLabel;
+    Edit15: TEdit;
+    Label38: TLabel;
+    Edit16: TEdit;
+    Label39: TLabel;
+    ComboBox21: TComboBox;
+    Label40: TLabel;
+    ComboBox22: TComboBox;
+    Label41: TLabel;
+    ComboBox23: TComboBox;
+    ListBox3: TListBox;
+    Edit17: TEdit;
+    Edit18: TEdit;
+    Label42: TLabel;
+    Button11: TButton;
+    Button12: TButton;
+    TabSheet6: TTabSheet;
+    Label43: TLabel;
+    Edit19: TEdit;
+    Label44: TLabel;
+    Edit20: TEdit;
+    Label45: TLabel;
+    ComboBox24: TComboBox;
+    Label46: TLabel;
+    ComboBox25: TComboBox;
+    Label47: TLabel;
+    ComboBox26: TComboBox;
+    Memo3: TMemo;
+    Edit21: TEdit;
+    Label48: TLabel;
+    Button13: TButton;
+    Button14: TButton;
+    Memo2: TMemo;
+    Label49: TLabel;
+    Button15: TButton;
+    procedure Button10Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure ListBox1Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure ComboBox2DropDown(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure TabSheet2Show(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure TabSheet1Show(Sender: TObject);
+    procedure TabSheet4Show(Sender: TObject);
+    procedure ComboBox4DropDown(Sender: TObject);
+    procedure Edit7KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ListBox2Click(Sender: TObject);
+    procedure ComboBox5KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox6KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox8KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox9DropDown(Sender: TObject);
+    procedure Edit20Change(Sender: TObject);
+    procedure ComboBox24DropDown(Sender: TObject);
+    procedure ComboBox24Select(Sender: TObject);
+    procedure ComboBox25DropDown(Sender: TObject);
+    procedure ComboBox25Select(Sender: TObject);
+    procedure ComboBox26KeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure ComboBox26Select(Sender: TObject);
+    procedure TabSheet6Show(Sender: TObject);
+    procedure Edit17KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure ListBox3Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure ComboBox21DropDown(Sender: TObject);
+    procedure ComboBox22DropDown(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form11: TForm11;
+  function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm11.Button10Click(Sender: TObject);
+begin                  //proc_cx_bcplxb_newbcplxbh
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcplxb_newbcplxbh';
+      open;
+      if not eof then
+        edit8.Text := fields[0].AsString
+      else
+        edit8.Text := '1';
+    end;
+  Except
+    Application.MessageBox('查询失败！','半成品管理提示');
+  end;
+end;
+
+procedure TForm11.Button11Click(Sender: TObject);
+begin
+  if (edit15.Text <> '') and (combobox23.Text <> '')then
+  begin
+    try
+      with zStoredProc1 do   //proc_insert_bcplxk_bcpkcb   bcpbh,bcpmc,bcplxbh,sscpbh,sscpbh1,memo,czry
+      begin
+        close;
+        StoredProcName:='proc_delete_bcp_cp_gl_by_bcpbh_sscpbh';
+        ParamByName('bcpbh').Value:=edit15.Text;
+        ParamByName('sscpbh').Value:=splitString(combobox23.Text,'|');
+        ExecProc;
+        edit15.Text :='';
+        edit16.Text :='';
+        combobox21.Text :='';
+        combobox22.Text :='';
+        combobox23.Text :='';
+        edit18.Text := '';
+        Application.MessageBox('删除关联产品编号成功！','半成品管理提示');
+      end;
+    Except
+      Application.MessageBox('删除关联产品编号失败！','半成品管理提示');
+    end;
+  end else
+    Application.MessageBox('请选择需要删除的关联产品编号！','半成品管理提示');
+end;
+
+procedure TForm11.Button1Click(Sender: TObject);
+begin
+  if (edit19.Text <> '') and (edit20.Text <> '') and (combobox24.Text <> '') and (combobox25.Text <> '') and (combobox26.Text <> '')  then
+  begin
+    try
+      with zStoredProc1 do   //proc_insert_bcplxk_bcpkcb   bcpbh,bcpmc,bcplxbh,sscpbh,sscpbh1,memo,czry
+      begin
+        close;
+        StoredProcName:='proc_insert_bcplxk_bcpkcb_new';
+        if memo2.Text='' then
+          ParamByName('cxitem').Value:='new'
+        else
+          ParamByName('cxitem').Value:='old';
+        ParamByName('bcpbh').Value:=edit19.Text;
+        ParamByName('bcpmc').Value:=edit20.Text;
+        ParamByName('bcplxbh').Value:=SplitString(combobox24.Text,'|');
+        ParamByName('cpzl').Value:=combobox25.Text;
+        ParamByName('sscpbh').Value:=SplitString(combobox26.Text,'|');
+        ParamByName('memo').Value:=edit21.Text;
+        ParamByName('czry').Value:=main.strUser;
+        ExecProc;
+        edit19.Text := '';
+        edit20.Text := '';
+        edit21.Text := '';
+        combobox24.Text := '';
+        combobox25.Text := '';
+        combobox26.Text := '';
+        memo2.Lines.Clear;
+        Application.MessageBox('新增半成品信息成功！','半成品管理提示');
+        close;
+        StoredProcName:='proc_cx_newbcplxbh';
+        open;
+        if fields[0].AsString<>'' then
+          edit19.Text:=fields[0].AsString
+        else
+          edit19.Text:='1';
+      end;
+      edit20.SetFocus;
+    Except
+      Application.MessageBox('新增半成品信息失败！','半成品管理提示');
+    end;
+  end else
+    Application.MessageBox('请将必填项目填写完整！','半成品管理提示');
+end;
+
+
+procedure TForm11.Button3Click(Sender: TObject);
+begin
+  if (edit8.Text<>'') and (edit11.Text <> '')then     //proc_insert_bcplxb bcplxbh,bcplxmc,memo
+  begin
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_insert_bcplxb';
+        ParamByName('bcplxbh').Value:=edit8.Text;
+        ParamByName('bcplxmc').Value:=edit11.Text;
+        ParamByName('memo').Value:=edit12.Text;
+        ExecProc;
+        Application.MessageBox('新增记录成功！','半成品信息管理提示');
+        edit11.Text := '';
+        edit12.Text := '';
+        close;
+        StoredProcName:='proc_cx_bcplxb_newbcplxbh';
+        open;
+        if not eof then
+          edit8.Text := fields[0].AsString
+        else
+          edit8.Text := '1';
+        edit11.SetFocus;
+      end;
+    Except
+      Application.MessageBox('新增记录失败！','半成品信息管理提示');
+    end;
+   end else
+    Application.MessageBox('请将必填项目填写完整！','半成品信息管理提示');
+
+end;
+
+procedure TForm11.Button5Click(Sender: TObject);
+begin                   //proc_cx_bcplxb_fbcplxbhmc_by_bcplxmc
+  listbox1.Clear;
+  with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcplxb_fbcplxbhmc_by_bcplxmc';
+      ParamByName('bcplxmc').Value:=edit3.Text;
+      open;
+      while not eof  do
+      begin
+        listbox1.Items.Append(fields[0].AsString);
+        next;
+      end;
+  end;
+end;
+
+procedure TForm11.Button7Click(Sender: TObject);
+begin
+ if (edit4.Text <> '') and (edit5.Text <> '') then   //proc_update_bcplxb IN `bcplxbh` char(10),IN `bcplxmc` varchar(20),IN `memo` text
+ begin
+   try
+     with zStoredProc1 do
+     begin
+       close;
+       StoredProcName:='proc_update_bcplxb';
+       ParamByName('bcplxbh').Value:=edit4.Text;
+       ParamByName('bcplxmc').Value:=edit4.Text;
+       ParamByName('memo').Value:=edit4.Text;
+       ExecProc;
+       listbox1.Clear;
+       close;
+       StoredProcName:='proc_cx_bcplxb_fbcplxbhmc_by_bcplxmc';
+       ParamByName('bcplxmc').Value:=edit3.Text;
+       open;
+       while not eof  do
+       begin
+        listbox1.Items.Append(fields[0].AsString);
+        next;
+       end;
+        Application.MessageBox('记录修改成功！','提示');
+       end;
+    Except
+      Application.MessageBox('记录修改失败！','提示');
+    end;
+  end else
+    Application.MessageBox('请选择需要修改的记录并将信息填写完整！','半成品信息管理提示');
+end;
+
+procedure TForm11.ComboBox21DropDown(Sender: TObject);
+begin
+  combobox21.Items.Clear;
+  with zStoredProc1 do
+  begin
+    close;
+    StoredProcName:='proc_cx_bcplxb_bcplxmc';
+    open;
+    while not eof do
+    begin
+       combobox21.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
+procedure TForm11.ComboBox22DropDown(Sender: TObject);
+begin
+  if combobox22.Items.Count>0 then
+    ComboBox22.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cplxk_cpzl';
+        open;
+        while not eof do
+        begin
+          ComboBox22.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+end;
+
+procedure TForm11.ComboBox24DropDown(Sender: TObject);
+begin
+  combobox24.Items.Clear;
+  with zStoredProc1 do
+  begin
+    close;
+    StoredProcName:='proc_cx_bcplxb_bcplxmc';
+    open;
+    while not eof do
+    begin
+       combobox24.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
+procedure TForm11.ComboBox24Select(Sender: TObject);
+begin
+if edit20.Text<>'' then
+  try
+    with  zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcpmc_ygl_cpinfo_by_bcpmc';
+      ParamByName('bcpmc').Value:=edit20.Text;
+      ParamByName('cpzl').Value:=combobox25.Text;
+      if combobox24.Text<>'' then
+        ParamByName('bcplxbh').Value:=splitstring(combobox24.Text,'|')
+      else
+        ParamByName('bcplxbh').Value:='';
+      open;
+      memo2.Lines.Clear;
+      while not eof do
+      begin
+        memo2.Lines.APPEND(fields[0].asstring);
+        next;
+      end;
+    end;
+  except
+
+  end;
+end;
+
+procedure TForm11.ComboBox25DropDown(Sender: TObject);
+begin
+  if combobox25.Items.Count>0 then
+    ComboBox25.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cplxk_cpzl';
+        open;
+        while not eof do
+        begin
+          ComboBox25.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+end;
+
+procedure TForm11.ComboBox25Select(Sender: TObject);
+begin
+if edit20.Text<>'' then
+  try
+    with  zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcpmc_ygl_cpinfo_by_bcpmc';
+      ParamByName('bcpmc').Value:=edit20.Text;
+      ParamByName('cpzl').Value:=combobox25.Text;
+      if combobox24.Text<>'' then
+        ParamByName('bcplxbh').Value:=splitstring(combobox24.Text,'|')
+      else
+        ParamByName('bcplxbh').Value:='';
+      open;
+      firstresultset;
+      memo2.Lines.Clear;
+      while not eof do
+      begin
+        memo2.Lines.APPEND(fields[0].asstring);
+        next;
+      end;
+      nextresultset;
+      if not eof then
+      edit19.Text:=fields[0].AsString;
+    end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+end;
+
+procedure TForm11.ComboBox26KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox26.Items.Count>0 then
+    ComboBox26.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox26.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox26.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ComboBox26Select(Sender: TObject);
+begin
+  if Pos(combobox26.Text,memo2.Text)>0 then
+  begin
+    application.MessageBox('该产品已经被关联！','半成品信息管理提示');
+    combobox26.Items.Clear;
+    combobox26.Text:='';
+  end;
+end;
+
+procedure TForm11.ComboBox2DropDown(Sender: TObject);
+begin
+  combobox2.Items.Clear;
+  with zStoredProc1 do
+  begin
+    close;
+    StoredProcName:='proc_cx_bcplxb_bcplxmc';
+    open;
+    while not eof do
+    begin
+       combobox2.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
+procedure TForm11.ComboBox8KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    if combobox8.Items.Count>0 then
+    ComboBox8.Items.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_cmlxk_cpbhandmcandzl_by_cpmc';
+        ParamByName('cpmc').Value:=ComboBox8.Text;
+        open;
+        while not eof do
+        begin
+          ComboBox8.Items.Add(fields[0].asstring);
+          next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ComboBox9DropDown(Sender: TObject);
+begin
+  combobox9.Items.Clear;
+  with zStoredProc1 do
+  begin
+    close;
+    StoredProcName:='proc_cx_bcplxb_bcplxmc';
+    open;
+    while not eof do
+    begin
+       combobox9.Items.Add(fields[0].asstring);
+       next;
+    end;
+  end;
+end;
+
+procedure TForm11.Edit17KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    listbox3.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcp_cp_gl_by_bcpbh';
+        ParamByName('bcpmc').Value:=edit17.Text;
+        open;
+        while not eof do
+        begin
+        listbox3.Items.Append(fields[0].AsString);
+        next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+ end;
+end;
+
+procedure TForm11.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin      //proc_cx_newbcplxbh
+  if key=13 then
+  try
+  with  zStoredProc1 do
+  begin
+    close;
+    StoredProcName:='proc_cx_newbcplxbh';
+    open;
+    if fields[0].AsString<>'' then
+      edit1.Text:=fields[0].AsString
+    else
+      edit1.Text:='1';
+  end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+end;
+
+procedure TForm11.Edit20Change(Sender: TObject);
+begin
+if edit20.Text<>'' then
+  try
+    with  zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcpmc_ygl_cpinfo_by_bcpmc';
+      ParamByName('bcpmc').Value:=edit20.Text;
+      ParamByName('cpzl').Value:=combobox25.Text;
+      if combobox24.Text<>'' then
+        ParamByName('bcplxbh').Value:=splitstring(combobox24.Text,'|')
+      else
+        ParamByName('bcplxbh').Value:='';
+      open;
+      firstresultset;
+      memo2.Lines.Clear;
+      while not eof do
+      begin
+        memo2.Lines.APPEND(fields[0].asstring);
+        next;
+      end;
+      nextresultset;
+      if not eof then
+      edit19.Text:=fields[0].AsString;
+    end;
+  except
+
+  end;
+end;
+
+procedure TForm11.Edit7KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if key=13 then
+ begin
+    listbox2.Clear;
+    //combobox1.Items.Add('*|全部供应商');
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcplxk_bcpbh';
+        ParamByName('bcpmc').Value:=edit7.Text;
+        open;
+        while not eof do
+        begin
+        listbox2.Items.Append(fields[0].AsString);
+        next;
+        end;
+        //combobox1.DroppedDown:=true;
+      end;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+ end;
+end;
+
+procedure TForm11.ListBox1Click(Sender: TObject);
+var strBcplxmc:String;
+begin
+  if listbox1.ItemIndex>=0 then
+  begin
+    strBcplxmc := listbox1.Items.Strings[listbox1.itemindex];
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcplxb_info_by_bcplxbh';
+        ParamByName('bcplxbh').Value:=SplitString(strBcplxmc,'|');
+        open;
+        if not eof then
+        begin
+          edit4.Text := fields[0].AsString;
+          edit5.Text := fields[1].AsString;
+          edit6.Text := fields[2].AsString;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','半成品信息管理提示');
+    end;
+  end;
+end;
+
+procedure TForm11.ListBox2Click(Sender: TObject);
+begin
+  if listbox2.ItemIndex>=0 then
+  begin
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcplxkinfo_all_by_bcpbh';
+        ParamByName('bcpbh').Value:=SplitString(listbox2.Items.Strings[listbox2.itemindex],'|');
+        open;
+        if not eof then
+        begin
+          edit14.Text := fields[0].AsString;
+          edit9.Text := fields[1].AsString;
+          if fields[2].AsString<>'' then
+            combobox9.Text :=fields[2].AsString
+          else
+            combobox9.Text :=fields[2].AsString+'|*';
+          combobox10.Text :=fields[3].AsString;
+          if fields[4].AsString<>'' then
+            combobox11.Text :=fields[4].AsString
+          else
+            combobox11.Text :=fields[4].AsString+'|*';
+          if fields[5].AsString<>'' then
+            combobox12.Text :=fields[5].AsString
+          else
+            combobox12.Text :=fields[5].AsString+'|*';
+          if fields[6].AsString<>'' then
+            combobox13.Text :=fields[6].AsString
+          else
+            combobox13.Text :=fields[6].AsString+'|*';
+          if fields[7].AsString<>'' then
+            combobox14.Text :=fields[7].AsString
+          else
+            combobox14.Text :=fields[7].AsString+'|*';
+          if fields[8].AsString<>'' then
+            combobox16.Text :=fields[8].AsString
+          else
+            combobox16.Text :=fields[8].AsString+'|*';
+          if fields[9].AsString<>'' then
+            combobox15.Text :=fields[9].AsString
+          else
+            combobox15.Text :=fields[9].AsString+'|*';
+          if fields[10].AsString<>'' then
+            combobox19.Text :=fields[10].AsString
+          else
+            combobox19.Text :=fields[10].AsString+'|*';
+          if fields[11].AsString<>'' then
+            combobox20.Text :=fields[11].AsString
+          else
+            combobox20.Text :=fields[11].AsString+'|*';
+          edit13.Text := fields[12].AsString;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','半成品信息管理提示');
+    end;
+  end;
+end;
+
+procedure TForm11.ListBox3Click(Sender: TObject);
+begin
+  if listbox3.ItemIndex>=0 then
+  begin
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcplxk_gl_info_all_by_bcpbh';
+        ParamByName('bcpbh').Value:=SplitString(listbox3.Items.Strings[listbox3.itemindex],'|');
+        open;
+        firstresultset;
+        if not eof then
+        begin
+          edit15.Text := fields[0].AsString;
+          edit16.Text := fields[1].AsString;
+          if fields[2].AsString<>'' then
+            combobox21.Text :=fields[2].AsString
+          else
+            combobox21.Text :=fields[2].AsString+'|*';
+          combobox22.Text :=fields[3].AsString;
+          edit18.Text := fields[4].AsString;
+        end;
+        nextresultset;
+        combobox23.Items.Clear;
+        combobox23.Text:='';
+        while not eof do
+        begin
+          combobox23.Items.Add(fields[0].asstring);
+          next;
+        end;
+      end;
+    except
+      application.MessageBox('数据查询失败！','半成品信息管理提示');
+    end;
+  end;
+end;
+
+procedure TForm11.TabSheet1Show(Sender: TObject);
+begin
+  try
+    with  zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_newbcplxbh';
+      open;
+      if fields[0].AsString<>'' then
+        edit1.Text:=fields[0].AsString
+      else
+        edit1.Text:='1';
+    end;
+    edit2.SetFocus;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+end;
+
+procedure TForm11.TabSheet2Show(Sender: TObject);
+begin
+  listbox1.Clear;
+  with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcplxb_fbcplxbhmc_by_bcplxmc';
+      ParamByName('bcplxmc').Value:=edit3.Text;
+      open;
+      while not eof  do
+      begin
+        listbox1.Items.Append(fields[0].AsString);
+        next;
+      end;
+  end;
+end;
+
+procedure TForm11.TabSheet4Show(Sender: TObject);
+begin
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_bcplxb_newbcplxbh';
+      open;
+      if not eof then
+        edit8.Text := fields[0].AsString
+      else
+        edit8.Text := '1';
+    end;
+  Except
+    Application.MessageBox('查询失败！','半成品信息管理提示');
+  end;
+end;
+
+procedure TForm11.TabSheet6Show(Sender: TObject);
+begin
+  try
+    with  zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_newbcplxbh';
+      open;
+      if fields[0].AsString<>'' then
+        edit19.Text:=fields[0].AsString
+      else
+        edit19.Text:='1';
+    end;
+    edit20.SetFocus;
+  except
+    application.MessageBox('数据查询失败！','半成品信息管理提示');
+  end;
+end;
+
+end.

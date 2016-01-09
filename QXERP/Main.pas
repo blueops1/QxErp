@@ -117,6 +117,8 @@ type
     Button77: TButton;
     Button78: TButton;
     Button79: TButton;
+    Button80: TButton;
+    Button81: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -203,6 +205,8 @@ type
     procedure Button77Click(Sender: TObject);
     procedure Button78Click(Sender: TObject);
     procedure Button79Click(Sender: TObject);
+    procedure Button80Click(Sender: TObject);
+    procedure Button81Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -245,7 +249,8 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      monthreports,rkdinfocx,fpcxrkd,
      cyrxxgl,bthcscktzd,bthcstzddy,
      bthcsckgl,thcl,kptzs,kptzsdycx,
-     jiagongfeijs,jgjsddycx,jgjsdqrpay,kptzskpqr;
+     jiagongfeijs,jgjsddycx,jgjsdqrpay,
+     kptzskpqr,bcpkczzgl,bcpkcgz;
 
 {$R *.dfm}
 
@@ -754,6 +759,22 @@ procedure TForm1.Button6Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,10,1)='1') then
     yskjz.form9.Show  //权限设置位为第10位 ，因为FORM9与应收款管理的FORM9重复。
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button80Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,12,1)='1') then
+    bcpkczzgl.Form86.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button81Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    bcpkcgz.Form87.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
