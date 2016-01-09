@@ -4,7 +4,7 @@ object Form29: TForm29
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #20135#25104#21697#20837#24211
-  ClientHeight = 464
+  ClientHeight = 486
   ClientWidth = 765
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -52,7 +52,7 @@ object Form29: TForm29
   end
   object Label5: TLabel
     Left = 52
-    Top = 420
+    Top = 444
     Width = 77
     Height = 13
     Alignment = taRightJustify
@@ -96,7 +96,7 @@ object Form29: TForm29
   end
   object StringGrid1: TStringGrid
     Left = 32
-    Top = 152
+    Top = 176
     Width = 697
     Height = 241
     FixedCols = 0
@@ -114,7 +114,7 @@ object Form29: TForm29
   end
   object Button1: TButton
     Left = 640
-    Top = 415
+    Top = 439
     Width = 89
     Height = 25
     Caption = #20445#23384#20837#24211#20449#24687
@@ -142,7 +142,7 @@ object Form29: TForm29
   end
   object Edit1: TEdit
     Left = 147
-    Top = 417
+    Top = 441
     Width = 97
     Height = 21
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
@@ -150,28 +150,27 @@ object Form29: TForm29
     TabOrder = 7
     OnKeyPress = Edit2KeyPress
   end
-  object Edit3: TEdit
+  object Button3: TButton
+    Left = 431
+    Top = 439
+    Width = 106
+    Height = 25
+    Caption = #32534#36753#21322#25104#21697#20449#24687
+    TabOrder = 8
+    Visible = False
+  end
+  object Memo1: TMemo
     Left = 122
-    Top = 108
+    Top = 105
     Width = 607
-    Height = 21
+    Height = 59
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    ReadOnly = True
-    TabOrder = 8
-  end
-  object Button3: TButton
-    Left = 431
-    Top = 415
-    Width = 106
-    Height = 25
-    Caption = #32534#36753#21322#25104#21697#20449#24687
     TabOrder = 9
-    Visible = False
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

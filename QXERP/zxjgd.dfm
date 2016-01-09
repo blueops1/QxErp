@@ -201,9 +201,7 @@ object Form50: TForm50
     Width = 816
     Height = 283
     ColCount = 6
-    FixedCols = 0
-    RowCount = 1
-    FixedRows = 0
+    RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 6

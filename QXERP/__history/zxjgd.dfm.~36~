@@ -1,0 +1,315 @@
+object Form50: TForm50
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = #26032#22686#21152#24037#21333
+  ClientHeight = 595
+  ClientWidth = 877
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 14
+    Top = 127
+    Width = 851
+    Height = 419
+    Shape = bsFrame
+    Style = bsRaised
+  end
+  object Label2: TLabel
+    Left = 646
+    Top = 146
+    Width = 48
+    Height = 13
+    Caption = #21152#24037#25968#37327
+  end
+  object Label3: TLabel
+    Left = 32
+    Top = 181
+    Width = 48
+    Height = 13
+    Caption = #40664#35748#21333#20215
+  end
+  object Label1: TLabel
+    Left = 245
+    Top = 145
+    Width = 48
+    Height = 13
+    Caption = #37197#20214#21517#31216
+  end
+  object Label4: TLabel
+    Left = 641
+    Top = 25
+    Width = 48
+    Height = 13
+    Caption = #20986#21333#26085#26399
+  end
+  object Label5: TLabel
+    Left = 63
+    Top = 81
+    Width = 24
+    Height = 13
+    Caption = #22791#27880
+  end
+  object Label6: TLabel
+    Left = 27
+    Top = 25
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#21333#32534#21495
+  end
+  object Label7: TLabel
+    Left = 233
+    Top = 25
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#21830#21517#31216
+  end
+  object Label8: TLabel
+    Left = 374
+    Top = 120
+    Width = 112
+    Height = 16
+    Caption = #28155#21152#21152#24037#21333#26126#32454
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = False
+  end
+  object Label9: TLabel
+    Left = 432
+    Top = 181
+    Width = 24
+    Height = 13
+    Caption = #22791#27880
+  end
+  object Label16: TLabel
+    Left = 32
+    Top = 562
+    Width = 84
+    Height = 13
+    Caption = #32511#33394#26159#24517#22635#36873#39033
+    Color = clBtnFace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 245
+    Top = 181
+    Width = 48
+    Height = 13
+    Caption = #35843#25972#21333#20215
+  end
+  object Label11: TLabel
+    Left = 32
+    Top = 145
+    Width = 48
+    Height = 13
+    Caption = #21152#24037#31867#22411
+  end
+  object Label12: TLabel
+    Left = 157
+    Top = 562
+    Width = 60
+    Height = 13
+    Caption = #21152#24037#24635#36153#29992
+  end
+  object Label13: TLabel
+    Left = 32
+    Top = 219
+    Width = 48
+    Height = 13
+    Caption = #20215#26684#35828#26126
+  end
+  object ComboBoxEx1: TComboBoxEx
+    Left = 299
+    Top = 142
+    Width = 319
+    Height = 22
+    ItemsEx = <>
+    Color = clMoneyGreen
+    DragMode = dmAutomatic
+    TabOrder = 0
+    TabStop = False
+    OnKeyDown = ComboBoxEx1KeyDown
+    OnSelect = ComboBoxEx1Select
+    DropDownCount = 16
+  end
+  object Edit2: TEdit
+    Left = 708
+    Top = 145
+    Width = 135
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 1
+    OnKeyPress = Edit2KeyPress
+  end
+  object Edit3: TEdit
+    Left = 93
+    Top = 178
+    Width = 124
+    Height = 21
+    ReadOnly = True
+    TabOrder = 2
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 708
+    Top = 22
+    Width = 135
+    Height = 21
+    Date = 42329.660776898150000000
+    Time = 42329.660776898150000000
+    Color = clMoneyGreen
+    TabOrder = 3
+  end
+  object Button1: TButton
+    Left = 723
+    Top = 552
+    Width = 97
+    Height = 25
+    Caption = #20445#23384#21152#24037#21333#20449#24687
+    TabOrder = 4
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 93
+    Top = 57
+    Width = 525
+    Height = 53
+    TabOrder = 5
+  end
+  object StringGrid1: TStringGrid
+    Left = 27
+    Top = 253
+    Width = 816
+    Height = 283
+    ColCount = 6
+    RowCount = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
+    PopupMenu = PopupMenu1
+    TabOrder = 6
+    OnSelectCell = StringGrid1SelectCell
+    ColWidths = (
+      56
+      206
+      85
+      88
+      83
+      253)
+  end
+  object Edit4: TEdit
+    Left = 93
+    Top = 22
+    Width = 124
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 7
+    TextHint = #22238#36710#33719#21462#32534#21495
+    OnKeyDown = Edit4KeyDown
+  end
+  object ComboBox1: TComboBox
+    Left = 299
+    Top = 22
+    Width = 319
+    Height = 21
+    Color = clMoneyGreen
+    DropDownCount = 16
+    TabOrder = 8
+    OnKeyDown = ComboBox1KeyDown
+  end
+  object Button2: TButton
+    Left = 746
+    Top = 212
+    Width = 97
+    Height = 29
+    Caption = #28155#21152#26126#32454
+    TabOrder = 9
+    OnClick = Button2Click
+  end
+  object Edit5: TEdit
+    Left = 470
+    Top = 178
+    Width = 373
+    Height = 21
+    TabOrder = 10
+  end
+  object Edit1: TEdit
+    Left = 299
+    Top = 178
+    Width = 102
+    Height = 21
+    Color = clMoneyGreen
+    TabOrder = 11
+    OnKeyPress = Edit1KeyPress
+  end
+  object ComboBox2: TComboBox
+    Left = 94
+    Top = 142
+    Width = 123
+    Height = 21
+    TabOrder = 12
+    OnDropDown = ComboBox2DropDown
+  end
+  object Edit6: TEdit
+    Left = 224
+    Top = 559
+    Width = 135
+    Height = 21
+    ReadOnly = True
+    TabOrder = 13
+    Text = '0'
+  end
+  object Edit7: TEdit
+    Left = 93
+    Top = 216
+    Width = 628
+    Height = 21
+    ReadOnly = True
+    TabOrder = 14
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 641
+    Top = 60
+    Width = 202
+    Height = 50
+    Caption = #21152#24037#31867#22411
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      #28165#21152#24037
+      #21253#24037#21253#26009)
+    TabOrder = 15
+    OnClick = RadioGroup1Click
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 690
+    Top = 407
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 480
+    Top = 352
+    object N1: TMenuItem
+      Caption = #21024#38500#24403#21069#35760#24405
+      OnClick = N1Click
+    end
+  end
+end

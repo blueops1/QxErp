@@ -25,9 +25,9 @@ type
     N1: TMenuItem;
     Label5: TLabel;
     Edit1: TEdit;
-    Edit3: TEdit;
     Label6: TLabel;
     Button3: TButton;
+    Memo1: TMemo;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button2Click(Sender: TObject);
@@ -165,7 +165,7 @@ begin
         combobox1.Text:='';
         edit1.Text:='';
         edit2.Text:='';
-        edit3.Text:='';
+        memo1.Text:='';
         edit4.Text:='';
         combobox1.SetFocus;
       end else
@@ -205,7 +205,6 @@ end;
 procedure TForm29.ComboBox1Select(Sender: TObject);
 begin
   edit1.Text:='';
-  edit3.Text:='';
   try
     with zStoredProc1 do
     begin
@@ -219,9 +218,10 @@ begin
       StoredProcName:='proc_cx_cprk_bcpxxhd_by_cpbh';
       ParamByName('cpbh').Value:=SplitString(combobox1.Text,'|');
       open;
+      memo1.Text:='';
       while not eof do
       begin
-        edit3.Text:=edit3.text+fields[0].AsString+'; ';
+        memo1.Text:=memo1.Text+fields[0].AsString+';    ';
         next;
       end;
     end;

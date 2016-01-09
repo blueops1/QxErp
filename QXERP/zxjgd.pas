@@ -92,6 +92,7 @@ end;
 procedure TForm50.Button1Click(Sender: TObject);
 var
   y:integer;
+  strjglx:string;
 begin
 if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
   if stringgrid1.RowCount>1 then
@@ -105,10 +106,14 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
         zstoredproc1.ParamByName('jgsbh').Value:=splitstring(ComboBox1.Text,'|');
         zstoredproc1.ParamByName('jgddate').Value:=datetimepicker1.Date;
         zstoredproc1.ParamByName('czry').Value:=main.strUser;
-        zstoredproc1.ParamByName('memo').Value:='*'+memo1.Text;
+        if radiogroup1.ItemIndex=0 then
+         strjglx:='清加工'
+        else
+          strjglx:='包工包料';
+        zstoredproc1.ParamByName('memo').Value:='*价格类型:'+strjglx+'  加工说明:'+memo1.Text;
         execProc;
         zstoredproc1.StoredProcName:='proc_insert_jiagongdan_mxz';  //jgdbh,pjbh,pjsl,jgprice,memo
-        for y := 1 to stringgrid1.RowCount - 1 do
+        for y := 1 to stringgrid1.RowCount - 2 do
         begin
           zstoredproc1.ParamByName('jgdbh').Value:=edit4.Text;
           zstoredproc1.ParamByName('pjbh').Value:=splitstring(stringgrid1.Cells[1,y],'|');
@@ -129,7 +134,8 @@ if application.MessageBox('确定要保存数据吗？','新增加工单管理提示',1)=1 then
       comboboxex1.Text:='';
       combobox1.Text:='';
       memo1.Text:='';
-      stringgrid1.RowCount:=1;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
   except
     application.MessageBox('保存数据失败！','新增加工单管理提示');
   end else
@@ -149,12 +155,13 @@ begin
       if (strtofloat(edit3.Text)>=strtofloat(gjprice)) then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
-        stringgrid1.Cells[1,stringgrid1.RowCount-1]:=comboboxex1.Text;
-        stringgrid1.Cells[2,stringgrid1.RowCount-1]:=edit2.Text;
-        stringgrid1.Cells[3,stringgrid1.RowCount-1]:=gjprice;
-        stringgrid1.Cells[4,stringgrid1.RowCount-1]:=combobox2.Text;
-        stringgrid1.Cells[5,stringgrid1.RowCount-1]:=edit5.Text;
+        stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
+        stringgrid1.Cells[1,stringgrid1.RowCount-2]:=comboboxex1.Text;
+        stringgrid1.Cells[2,stringgrid1.RowCount-2]:=edit2.Text;
+        stringgrid1.Cells[3,stringgrid1.RowCount-2]:=gjprice;
+        stringgrid1.Cells[4,stringgrid1.RowCount-2]:=combobox2.Text;
+        stringgrid1.Cells[5,stringgrid1.RowCount-2]:=edit5.Text;
+        stringgrid1.rows[stringgrid1.RowCount-1].Clear;
         edit6.Text:=floattostr(strtofloat(edit6.Text)+strtofloat(gjprice)*strtofloat(edit2.Text));
         ComboBoxEx1.Text:='';
         edit3.Text:='';
@@ -322,10 +329,12 @@ end;
 
 procedure TForm50.N1Click(Sender: TObject);
 begin
-  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
+  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount-1) then
   begin
-    DeleteStringGridRow(selRowIndex,stringgrid1);
     edit6.Text:=floattostr(strtofloat(edit6.Text)-strtofloat(stringgrid1.Cells[2,selRowIndex])*strtofloat(stringgrid1.Cells[3,selRowIndex]));
+    if strtofloat(edit6.Text)<1 then
+      edit6.Text:='0';
+    DeleteStringGridRow(selRowIndex,stringgrid1);
   end;
 end;
 

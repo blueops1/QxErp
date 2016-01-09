@@ -189,7 +189,7 @@ object Form28: TForm28
     Width = 792
     Height = 273
     ColCount = 4
-    RowCount = 1
+    RowCount = 2
     FixedRows = 0
     PopupMenu = PopupMenu1
     TabOrder = 6

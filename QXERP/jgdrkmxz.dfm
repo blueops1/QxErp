@@ -26,10 +26,6 @@ object Form80: TForm80
     ColCount = 4
     RowCount = 2
     TabOrder = 0
-    ExplicitLeft = 128
-    ExplicitTop = 64
-    ExplicitWidth = 320
-    ExplicitHeight = 120
     ColWidths = (
       64
       156

@@ -41,6 +41,7 @@ begin
       close;
       StoredProcName:='proc_cx_waixiejiagong_rk_mxz_by_jgdbh';
       ParamByName('jgdbh').Value:=strjgdbh;
+      ParamByName('cpmc').Value:=splitstring(strcpmc,'|');
       open;
       i:=1;
       stringgrid1.RowCount:=2;

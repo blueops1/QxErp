@@ -97,11 +97,12 @@ begin
     if (edit7.Text<>'') and (edit8.Text<>'') and (combobox4.Text<>'') then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
-        stringgrid1.Cells[1,stringgrid1.RowCount-1]:=combobox4.Text;
-        stringgrid1.Cells[2,stringgrid1.RowCount-1]:=edit7.Text;
-        stringgrid1.Cells[3,stringgrid1.RowCount-1]:=edit8.Text;
-        edit11.Text:=floattostr(strtofloat(edit11.Text)+strtofloat(stringgrid1.Cells[2,stringgrid1.RowCount-1])*strtofloat(stringgrid1.Cells[3,stringgrid1.RowCount-1]));
+        stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
+        stringgrid1.Cells[1,stringgrid1.RowCount-2]:=combobox4.Text;
+        stringgrid1.Cells[2,stringgrid1.RowCount-2]:=edit7.Text;
+        stringgrid1.Cells[3,stringgrid1.RowCount-2]:=edit8.Text;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+        edit11.Text:=floattostr(strtofloat(edit11.Text)+strtofloat(stringgrid1.Cells[2,stringgrid1.RowCount-2])*strtofloat(stringgrid1.Cells[3,stringgrid1.RowCount-2]));
         combobox4.Text:='';
         edit7.Text:='';
         edit8.Text:='';
@@ -136,7 +137,7 @@ if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
         zstoredproc1.ParamByName('memo').Value:='*'+memo1.Text;
         execProc;
         zstoredproc1.StoredProcName:='proc_insert_htcpmxb';
-        for y := 1 to stringgrid1.RowCount - 1 do
+        for y := 1 to stringgrid1.RowCount - 2 do
         begin
           zstoredproc1.ParamByName('htbh').Value:=edit1.Text;
           zstoredproc1.ParamByName('cpbh').Value:=splitstring(stringgrid1.Cells[1,y],'|');
@@ -154,7 +155,8 @@ if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
       combobox1.Text:='';
       combobox3.Text:='';
       memo1.Text:='';
-      stringgrid1.RowCount:=1;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
   except
     application.MessageBox('保存数据失败！','新增合同提示');
   end else
@@ -337,9 +339,11 @@ end;
 
 procedure TForm28.N1Click(Sender: TObject);
 begin
-  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount) then
+  if (selRowIndex>0) and (selRowIndex<stringgrid1.RowCount-1) then
   begin
     edit11.Text:=floattostr(strtofloat(edit11.Text)-strtofloat(stringgrid1.Cells[2,selRowIndex])*strtofloat(stringgrid1.Cells[3,selRowIndex]));
+    if strtofloat(edit11.Text)<1 then
+      edit11.Text:='0';
     DeleteStringGridRow(selRowIndex,stringgrid1);
   end;
 end;
