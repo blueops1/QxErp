@@ -27,7 +27,6 @@ object Form87: TForm87
     PopupMenu = PopupMenu1
     TabOrder = 0
     OnDrawCell = StringGrid1DrawCell
-    ExplicitWidth = 1009
     ColWidths = (
       64
       61

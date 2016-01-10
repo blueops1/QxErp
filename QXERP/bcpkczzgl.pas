@@ -18,7 +18,6 @@ type
     Label5: TLabel;
     Label8: TLabel;
     Label6: TLabel;
-    ComboBox1: TComboBox;
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     Button1: TButton;
@@ -28,9 +27,8 @@ type
     Edit2: TEdit;
     Edit3: TEdit;
     ZStoredProc1: TZStoredProc;
-    procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure ComboBox1Select(Sender: TObject);
+    Edit4: TEdit;
+    Button4: TButton;
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -40,6 +38,8 @@ type
       var CanSelect: Boolean);
     procedure Edit3KeyPress(Sender: TObject; var Key: Char);
     procedure Button3Click(Sender: TObject);
+    procedure Edit4KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,27 +70,36 @@ begin
 end;
 
 procedure TForm86.Button1Click(Sender: TObject);
+var
+  i:integer;
+  booldouble:boolean;
 begin
-  if (SelArow>0) and (SelArow<stringgrid1.RowCount-1) and (stringgrid1.Cells[1,SelArow]<>'') then
-  try
-    with zStoredProc1 do
-    begin
-      close;
-      StoredProcName:='proc_insert_bcpkctips_of_itemid';
-      ParamByName('itemid').Value:=stringgrid1.Cells[1,SelArow];
-      ParamByName('czlx').Value:='ADD';
-      ExecProc;
-      application.MessageBox('增加库存跟踪项目成功！','半成品库存跟踪信息提示');
-      stringgrid2.RowCount:=stringgrid2.RowCount+1;
-      stringgrid2.Cells[0,stringgrid2.RowCount-2]:=inttostr(stringgrid2.RowCount-2);
-      stringgrid2.Cells[1,stringgrid2.RowCount-2]:=stringgrid1.Cells[1,SelArow];
-      stringgrid2.Cells[2,stringgrid2.RowCount-2]:=stringgrid1.Cells[2,SelArow];
-      stringgrid2.Cells[3,stringgrid2.RowCount-2]:='0';
-      DeleteStringGridRow(SelArow,stringgrid1);
+  booldouble:=true;
+  for i := 1 to stringgrid2.RowCount-2 do
+    if trim(stringgrid1.Cells[1,SelArow])=trim(stringgrid2.Cells[1,i]) then
+      booldouble:=false;
+  if booldouble=false then
+    application.MessageBox('该产品编号已经添加至跟踪列表!','半成品库存跟踪信息提示')
+  else if (SelArow>0) and (SelArow<stringgrid1.RowCount-1) and (stringgrid1.Cells[1,SelArow]<>'') then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_insert_bcpkctips_of_itemid';
+        ParamByName('itemid').Value:=stringgrid1.Cells[1,SelArow];
+        ParamByName('czlx').Value:='ADD';
+        ExecProc;
+        application.MessageBox('增加库存跟踪项目成功！','半成品库存跟踪信息提示');
+        stringgrid2.RowCount:=stringgrid2.RowCount+1;
+        stringgrid2.Cells[0,stringgrid2.RowCount-2]:=inttostr(stringgrid2.RowCount-2);
+        stringgrid2.Cells[1,stringgrid2.RowCount-2]:=stringgrid1.Cells[1,SelArow];
+        stringgrid2.Cells[2,stringgrid2.RowCount-2]:=stringgrid1.Cells[2,SelArow];
+        stringgrid2.Cells[3,stringgrid2.RowCount-2]:='0';
+        DeleteStringGridRow(SelArow,stringgrid1);
+      end;
+    except
+      application.MessageBox('增加库存跟踪项目失败','半成品库存跟踪信息提示');
     end;
-  except
-    application.MessageBox('增加库存跟踪项目失败','半成品库存跟踪信息提示');
-  end;
 end;
 
 procedure TForm86.Button2Click(Sender: TObject);
@@ -106,9 +115,9 @@ begin
       ExecProc;
     end;
       DeleteStringGridRow(gzSelARow,stringgrid2);
-      application.MessageBox('删除库存跟踪项目成功！','常规库存跟踪信息设置');
+      application.MessageBox('删除库存跟踪项目成功！','半成品库存跟踪信息提示');
   except
-    application.MessageBox('增加库存跟踪项目失败','常规库存跟踪信息设置');
+    application.MessageBox('增加库存跟踪项目失败','半成品库存跟踪信息提示');
   end;
 end;
 
@@ -124,45 +133,54 @@ begin
       ParamByName('kcminls').Value:=edit3.Text;
       ExecProc;
       stringgrid2.Cells[3,gzSelARow]:=edit3.Text;
-      application.MessageBox('库存下限设置成功！','常规库存跟踪信息设置');
+      application.MessageBox('库存下限设置成功！','半成品库存跟踪信息提示');
     end;
   except
-    application.MessageBox('库存下限设置失败！','常规库存跟踪信息设置');
+    application.MessageBox('库存下限设置失败！','半成品库存跟踪信息提示');
   end else
     application.MessageBox('请在右侧列表框中选择需要设置的记录行，并在下限数量中设置数量！','半成品库存跟踪信息提示');
 end;
 
-procedure TForm86.ComboBox1KeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
+procedure TForm86.Button4Click(Sender: TObject);
 begin
-  combobox1.Items.Clear;
+ if  application.MessageBox('确定清除所有跟踪项目吗？','半成品库存跟踪信息提示',1)=1 then
   try
-    with ZStoredProc1 do
+    with zStoredProc1 do
     begin
       close;
-      StoredProcName:='proc_cx_cplxk_cplz';
-      open;
-      while not eof do
-      begin
-         combobox1.Items.Add(fields[0].asstring);
-         next;
-      end;
+      StoredProcName:='proc_insert_bcpkctips_of_itemid';
+      ParamByName('itemid').Value:='';
+      ParamByName('czlx').Value:='CLR';
+      ExecProc;
     end;
+      stringgrid2.RowCount:=2;
+      stringgrid2.Rows[1].Clear;
+      application.MessageBox('清除库存跟踪项目成功！','半成品库存跟踪信息提示');
   except
-    application.MessageBox('查询数据失败！','半成品库存跟踪信息提示');
+    application.MessageBox('清除库存跟踪项目失败','半成品库存跟踪信息提示');
   end;
 end;
 
-procedure TForm86.ComboBox1Select(Sender: TObject);
+procedure TForm86.Edit3KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit3.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm86.Edit4KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 var
   i:integer;
 begin
+ if (edit4.Text<>'') and (key=13) then
   try
     with ZStoredProc1 do
     begin
       close;
       StoredProcName:='proc_cx_cplxk_by_cpzl';
-      ParamByName('cpzl').Value:=combobox1.Text;
+      ParamByName('cpmc').Value:=edit4.Text;
       open;
       i:=1;
       stringgrid1.RowCount:=2;
@@ -181,14 +199,6 @@ begin
   except
     application.MessageBox('查询数据失败！','半成品库存跟踪信息提示');
   end;
-end;
-
-procedure TForm86.Edit3KeyPress(Sender: TObject; var Key: Char);
-begin
-  if not charinset(key,['0'..'9','.',#8]) then
-    key:=#0;
-  if (key='.') and (Pos('.',Edit3.Text)>0)   then
-    key:=#0;
 end;
 
 procedure TForm86.FormShow(Sender: TObject);
@@ -221,6 +231,7 @@ begin
         stringgrid2.Cells[2,i]:=fields[1].AsString;
         stringgrid2.Cells[3,i]:=fields[2].AsString;
         i:=i+1;
+        stringgrid2.rows[stringgrid2.RowCount-1].Clear;
         next;
       end;
     end;

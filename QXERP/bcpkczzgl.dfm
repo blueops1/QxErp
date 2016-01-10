@@ -34,11 +34,11 @@ object Form86: TForm86
     Style = bsRaised
   end
   object Label1: TLabel
-    Left = 47
+    Left = 33
     Top = 26
-    Width = 72
+    Width = 96
     Height = 13
-    Caption = #36873#25321#25104#21697#31867#22411
+    Caption = #36755#20837#20135#21697#21517#31216#26597#35810
   end
   object Label2: TLabel
     Left = 57
@@ -96,16 +96,6 @@ object Form86: TForm86
     ParentFont = False
     Transparent = False
   end
-  object ComboBox1: TComboBox
-    Left = 151
-    Top = 23
-    Width = 177
-    Height = 21
-    DropDownCount = 16
-    TabOrder = 0
-    OnKeyDown = ComboBox1KeyDown
-    OnSelect = ComboBox1Select
-  end
   object StringGrid1: TStringGrid
     Left = 47
     Top = 82
@@ -115,7 +105,7 @@ object Form86: TForm86
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
-    TabOrder = 1
+    TabOrder = 0
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       64
@@ -130,7 +120,7 @@ object Form86: TForm86
     ColCount = 4
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
-    TabOrder = 2
+    TabOrder = 1
     OnSelectCell = StringGrid2SelectCell
     ColWidths = (
       64
@@ -140,20 +130,20 @@ object Form86: TForm86
   end
   object Button1: TButton
     Left = 350
-    Top = 178
+    Top = 146
     Width = 43
     Height = 41
     Caption = '>'
-    TabOrder = 3
+    TabOrder = 2
     OnClick = Button1Click
   end
   object Button2: TButton
     Left = 350
-    Top = 290
+    Top = 234
     Width = 43
     Height = 41
     Caption = #21024#38500
-    TabOrder = 4
+    TabOrder = 3
     OnClick = Button2Click
   end
   object Button3: TButton
@@ -162,7 +152,7 @@ object Form86: TForm86
     Width = 137
     Height = 25
     Caption = #35774#32622#36319#36394#39033#30446#24211#23384#19979#38480
-    TabOrder = 5
+    TabOrder = 4
     WordWrap = True
     OnClick = Button3Click
   end
@@ -172,7 +162,7 @@ object Form86: TForm86
     Width = 121
     Height = 21
     ReadOnly = True
-    TabOrder = 6
+    TabOrder = 5
   end
   object Edit2: TEdit
     Left = 314
@@ -180,15 +170,32 @@ object Form86: TForm86
     Width = 121
     Height = 21
     ReadOnly = True
-    TabOrder = 7
+    TabOrder = 6
   end
   object Edit3: TEdit
     Left = 514
     Top = 482
     Width = 121
     Height = 21
-    TabOrder = 8
+    TabOrder = 7
     OnKeyPress = Edit3KeyPress
+  end
+  object Edit4: TEdit
+    Left = 144
+    Top = 24
+    Width = 164
+    Height = 21
+    TabOrder = 8
+    OnKeyDown = Edit4KeyDown
+  end
+  object Button4: TButton
+    Left = 350
+    Top = 322
+    Width = 43
+    Height = 41
+    Caption = #28165#38500
+    TabOrder = 9
+    OnClick = Button4Click
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

@@ -74,7 +74,7 @@ begin
         stringgrid1.Cells[6,i]:=fields[5].AsString;
         stringgrid1.Cells[7,i]:=fields[6].AsString;
         stringgrid1.Cells[8,i]:=fields[7].AsString;
-        stringgrid1.Cells[9,i]:=floattostr(strtofloat(stringgrid1.Cells[7,i])-strtofloat(stringgrid1.Cells[8,i]));
+        stringgrid1.Cells[9,i]:=floattostr(strtofloat(stringgrid1.Cells[3,i])+strtofloat(stringgrid1.Cells[7,i])-strtofloat(stringgrid1.Cells[8,i]));
         i:=i+1;
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
