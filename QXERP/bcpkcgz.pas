@@ -17,6 +17,9 @@ type
     procedure Execl1Click(Sender: TObject);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
       Rect: TRect; State: TGridDrawState);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure StringGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -28,6 +31,7 @@ var
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
+uses main,cpbcpmxzcx;
 
 {$R *.dfm}
 
@@ -74,7 +78,7 @@ begin
         stringgrid1.Cells[6,i]:=fields[5].AsString;
         stringgrid1.Cells[7,i]:=fields[6].AsString;
         stringgrid1.Cells[8,i]:=fields[7].AsString;
-        stringgrid1.Cells[9,i]:=floattostr(strtofloat(stringgrid1.Cells[3,i])+strtofloat(stringgrid1.Cells[7,i])-strtofloat(stringgrid1.Cells[8,i]));
+        stringgrid1.Cells[9,i]:=fields[8].AsString;
         i:=i+1;
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
@@ -84,6 +88,11 @@ begin
     application.MessageBox('数据查询失败！','常规库存跟踪管理');
   end;
 
+end;
+
+procedure TForm87.StringGrid1DblClick(Sender: TObject);
+begin
+  cpbcpmxzcx.Form91.ShowModal;
 end;
 
 procedure TForm87.StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -100,6 +109,22 @@ begin
         Canvas.Font.Color:=clWindowText;
     Canvas.FillRect(Rect);
     Canvas.TextOut(Rect.Left+2,Rect.Top+2,Cells[ACol,ARow]);
+  end;
+end;
+
+procedure TForm87.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  cpbcpmxzcx.strcpbh:='null';
+  cpbcpmxzcx.strbcpbh:='null';
+  cpbcpmxzcx.strcpmc:='';
+  cpbcpmxzcx.strbcpmc:='';
+  if (ARow>0) and (ARow+1<stringgrid1.RowCount) then
+  begin
+    cpbcpmxzcx.strcpbh:=splitstring(stringgrid1.Cells[2,ARow],'|');
+    cpbcpmxzcx.strbcpbh:=stringgrid1.Cells[4,ARow];
+    cpbcpmxzcx.strcpmc:=stringgrid1.Cells[2,ARow];
+    cpbcpmxzcx.strbcpmc:=stringgrid1.Cells[5,ARow]+stringgrid1.Cells[6,ARow];
   end;
 end;
 

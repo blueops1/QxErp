@@ -1,0 +1,30 @@
+unit cpbcpmxzcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Grids;
+
+type
+  TForm91 = class(TForm)
+    StringGrid2: TStringGrid;
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form91: TForm91;
+  strcpbh,strbcpbh:string;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+end.

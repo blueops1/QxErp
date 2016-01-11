@@ -1,0 +1,44 @@
+unit scjhdmxzcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Menus,
+  Grids;
+
+type
+  TForm90 = class(TForm)
+    StringGrid2: TStringGrid;
+    PopupMenu2: TPopupMenu;
+    MenuItem1: TMenuItem;
+    ZStoredProc1: TZStoredProc;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form90: TForm90;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm90.FormShow(Sender: TObject);
+begin
+  stringgrid2.Cells[0,0]:='序号';
+  stringgrid2.Cells[1,0]:='产品编号';
+  stringgrid2.Cells[2,0]:='产品名称';
+  stringgrid2.Cells[3,0]:='产品类型';
+  stringgrid2.Cells[4,0]:='产品单价';
+  stringgrid2.Cells[5,0]:='计划数量';
+  stringgrid2.Cells[6,0]:='发货单已开数量';
+  stringgrid2.Cells[7,0]:='库存数量';
+  stringgrid2.Cells[8,0]:='计划单内已开发货数量';
+  stringgrid2.Cells[9,0]:='是否足够';
+end;
+
+end.

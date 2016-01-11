@@ -228,7 +228,7 @@ begin
       close;
       StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
       ParamByName('jhdbh').Value:=stringgrid1.Cells[5,ARow];
-      ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
       open;
       i:=1;
       while not eof do

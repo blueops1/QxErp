@@ -90,7 +90,11 @@ uses
   jgjsdqrpay in 'jgjsdqrpay.pas' {Form84},
   kptzskpqr in 'kptzskpqr.pas' {Form85},
   bcpkczzgl in 'bcpkczzgl.pas' {Form86},
-  bcpkcgz in 'bcpkcgz.pas' {Form87};
+  bcpkcgz in 'bcpkcgz.pas' {Form87},
+  scjhzggl in 'scjhzggl.pas' {Form88},
+  scjhjdgz in 'scjhjdgz.pas' {Form89},
+  scjhdmxzcx in 'scjhdmxzcx.pas' {Form90},
+  cpbcpmxzcx in 'cpbcpmxzcx.pas' {Form91};
 
 {$R *.res}
 
@@ -187,5 +191,9 @@ begin
   Application.CreateForm(TForm85, Form85);
   Application.CreateForm(TForm86, Form86);
   Application.CreateForm(TForm87, Form87);
+  Application.CreateForm(TForm88, Form88);
+  Application.CreateForm(TForm89, Form89);
+  Application.CreateForm(TForm90, Form90);
+  Application.CreateForm(TForm91, Form91);
   Application.Run;
 end.
