@@ -4,7 +4,7 @@ object Form4: TForm4
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #20027#31649#21333#20301#31649#29702
   ClientHeight = 547
-  ClientWidth = 940
+  ClientWidth = 845
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,13 +19,15 @@ object Form4: TForm4
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 940
+    Width = 845
     Height = 547
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 940
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20027#31649#21333#20301
+      ExplicitWidth = 932
       object Label1: TLabel
         Left = 152
         Top = 80
@@ -159,8 +161,9 @@ object Form4: TForm4
       Caption = #20027#31649#21333#20301#20449#24687#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
+      ExplicitWidth = 932
       object Label8: TLabel
-        Left = 328
+        Left = 280
         Top = 117
         Width = 82
         Height = 13
@@ -168,7 +171,7 @@ object Form4: TForm4
         Caption = #20027#31649#21333#20301#32534#21495
       end
       object Label9: TLabel
-        Left = 328
+        Left = 280
         Top = 189
         Width = 82
         Height = 13
@@ -176,7 +179,7 @@ object Form4: TForm4
         Caption = #20027#31649#21333#20301#21517#31216
       end
       object Label10: TLabel
-        Left = 328
+        Left = 280
         Top = 261
         Width = 82
         Height = 13
@@ -184,7 +187,7 @@ object Form4: TForm4
         Caption = #20027#31649#21333#20301#22320#22336
       end
       object Label11: TLabel
-        Left = 328
+        Left = 280
         Top = 333
         Width = 73
         Height = 13
@@ -192,7 +195,7 @@ object Form4: TForm4
         Caption = #22791'                '#27880
       end
       object Label12: TLabel
-        Left = 328
+        Left = 280
         Top = 38
         Width = 48
         Height = 13
@@ -210,7 +213,7 @@ object Form4: TForm4
         OnClick = ListBox1Click
       end
       object Button3: TButton
-        Left = 491
+        Left = 443
         Top = 408
         Width = 75
         Height = 25
@@ -219,7 +222,7 @@ object Form4: TForm4
         OnClick = Button3Click
       end
       object Button4: TButton
-        Left = 680
+        Left = 632
         Top = 408
         Width = 75
         Height = 25
@@ -228,34 +231,34 @@ object Form4: TForm4
         OnClick = Button4Click
       end
       object CheckBox1: TCheckBox
-        Left = 812
-        Top = 188
-        Width = 97
+        Left = 761
+        Top = 186
+        Width = 55
         Height = 17
         Caption = #20462#25913
         TabOrder = 3
         OnClick = CheckBox1Click
       end
       object CheckBox2: TCheckBox
-        Left = 812
-        Top = 260
-        Width = 97
+        Left = 761
+        Top = 258
+        Width = 55
         Height = 17
         Caption = #20462#25913
         TabOrder = 4
         OnClick = CheckBox2Click
       end
       object CheckBox4: TCheckBox
-        Left = 812
-        Top = 332
-        Width = 97
+        Left = 761
+        Top = 330
+        Width = 55
         Height = 17
         Caption = #20462#25913
         TabOrder = 5
         OnClick = CheckBox4Click
       end
       object Edit5: TEdit
-        Left = 416
+        Left = 368
         Top = 114
         Width = 150
         Height = 21
@@ -264,7 +267,7 @@ object Form4: TForm4
         TabOrder = 6
       end
       object Edit6: TEdit
-        Left = 416
+        Left = 368
         Top = 186
         Width = 377
         Height = 21
@@ -273,7 +276,7 @@ object Form4: TForm4
         TabOrder = 7
       end
       object Edit7: TEdit
-        Left = 416
+        Left = 368
         Top = 258
         Width = 377
         Height = 21
@@ -282,7 +285,7 @@ object Form4: TForm4
         TabOrder = 8
       end
       object Edit8: TEdit
-        Left = 416
+        Left = 368
         Top = 330
         Width = 377
         Height = 21
@@ -291,7 +294,7 @@ object Form4: TForm4
         TabOrder = 9
       end
       object Edit9: TEdit
-        Left = 416
+        Left = 368
         Top = 35
         Width = 150
         Height = 21
@@ -299,7 +302,7 @@ object Form4: TForm4
         TabOrder = 10
       end
       object Button5: TButton
-        Left = 616
+        Left = 568
         Top = 33
         Width = 75
         Height = 25

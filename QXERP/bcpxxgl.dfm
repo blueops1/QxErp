@@ -26,8 +26,6 @@ object Form11: TForm11
     object TabSheet6: TTabSheet
       Caption = #26032#22686#21322#25104#21697#20449#24687
       ImageIndex = 5
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label43: TLabel
         Left = 40
         Top = 53
@@ -196,8 +194,6 @@ object Form11: TForm11
     object TabSheet5: TTabSheet
       Caption = #21322#25104#21697#20449#24687#20462#25913
       ImageIndex = 4
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label37: TLabel
         Left = 50
         Top = 53
@@ -251,6 +247,13 @@ object Form11: TForm11
         Alignment = taRightJustify
         AutoSize = False
         Caption = #21322#25104#21697#20449#24687#22791#27880
+      end
+      object Label1: TLabel
+        Left = 18
+        Top = 320
+        Width = 672
+        Height = 13
+        Caption = #22914#26524#35201#20462#25913#21322#25104#21697#21517#31216#20197#22806#30340#20449#24687#65292#38656#35201#20808#21024#38500#20808#21322#25104#21697#19979#30340#24050#20851#32852#32534#21495#65292#22914#26524#24050#20851#32852#30340#32534#21495#19981#28165#31354#65292#21017#21482#25913#21322#25104#21697#21517#31216#21644#22791#27880
       end
       object Edit15: TEdit
         Left = 146
@@ -341,12 +344,13 @@ object Form11: TForm11
         TabOrder = 9
       end
       object Button15: TButton
-        Left = 144
+        Left = 146
         Top = 369
         Width = 113
         Height = 25
         Caption = #26356#26032#21322#25104#21697#20449#24687
         TabOrder = 10
+        OnClick = Button15Click
       end
     end
     object TabSheet4: TTabSheet
@@ -466,8 +470,6 @@ object Form11: TForm11
       Caption = #21322#25104#21697#31181#31867#20462#25913
       ImageIndex = 1
       OnShow = TabSheet2Show
-      ExplicitLeft = 8
-      ExplicitTop = 28
       object Label5: TLabel
         Left = 288
         Top = 62

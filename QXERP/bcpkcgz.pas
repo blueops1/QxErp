@@ -13,6 +13,8 @@ type
     ZStoredProc1: TZStoredProc;
     PopupMenu1: TPopupMenu;
     Execl1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
     procedure FormShow(Sender: TObject);
     procedure Execl1Click(Sender: TObject);
     procedure StringGrid1DrawCell(Sender: TObject; ACol, ARow: Integer;
@@ -20,6 +22,8 @@ type
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure StringGrid1DblClick(Sender: TObject);
+    procedure N1Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +35,7 @@ var
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
-uses main,cpbcpmxzcx;
+uses main,cpbcpmxzcx,sjscjhmxz;
 
 {$R *.dfm}
 
@@ -59,6 +63,7 @@ begin
   stringgrid1.Cells[9,0]:='半成品缺补数';
   stringgrid1.RowCount:=2;
   stringgrid1.Rows[1].Clear;
+  screen.Cursor:=crHourGlass;
   try
     with zStoredProc1 do
     begin
@@ -83,11 +88,26 @@ begin
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
       end;
+      Screen.Cursor:=crDefault;
     end;
   except
     application.MessageBox('数据查询失败！','常规库存跟踪管理');
+    Screen.Cursor:=crDefault;
   end;
+end;
 
+procedure TForm87.N1Click(Sender: TObject);
+begin
+  sjscjhmxz.strcxitem:='bhcp';
+  sjscjhmxz.strgzlx:='cgkcgz';
+  sjscjhmxz.Form92.ShowModal;
+end;
+
+procedure TForm87.N2Click(Sender: TObject);
+begin
+  sjscjhmxz.strcxitem:='bbhcp';
+  sjscjhmxz.strgzlx:='cgkcgz';
+  sjscjhmxz.Form92.ShowModal;
 end;
 
 procedure TForm87.StringGrid1DblClick(Sender: TObject);
@@ -117,14 +137,16 @@ procedure TForm87.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
 begin
   cpbcpmxzcx.strcpbh:='null';
   cpbcpmxzcx.strbcpbh:='null';
+  cpbcpmxzcx.strcpzl:='null';
   cpbcpmxzcx.strcpmc:='';
   cpbcpmxzcx.strbcpmc:='';
   if (ARow>0) and (ARow+1<stringgrid1.RowCount) then
   begin
-    cpbcpmxzcx.strcpbh:=splitstring(stringgrid1.Cells[2,ARow],'|');
+    cpbcpmxzcx.strcpbh:=stringgrid1.Cells[2,ARow];
     cpbcpmxzcx.strbcpbh:=stringgrid1.Cells[4,ARow];
-    cpbcpmxzcx.strcpmc:=stringgrid1.Cells[2,ARow];
-    cpbcpmxzcx.strbcpmc:=stringgrid1.Cells[5,ARow]+stringgrid1.Cells[6,ARow];
+    cpbcpmxzcx.strcpzl:=stringgrid1.Cells[1,ARow];
+    cpbcpmxzcx.strcpmc:=stringgrid1.Cells[2,ARow]+'-'+stringgrid1.Cells[1,ARow];
+    cpbcpmxzcx.strbcpmc:=stringgrid1.Cells[5,ARow]+'-'+stringgrid1.Cells[6,ARow];
   end;
 end;
 

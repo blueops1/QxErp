@@ -202,7 +202,7 @@ begin
       begin
         close;
         zstoredproc1.StoredProcName:='proc_cx_khandzgdwandxsy_by_cxitemandcxmc';
-        zstoredproc1.ParamByName('cxitem').Value:='khhtxsy';
+        zstoredproc1.ParamByName('cxitem').Value:='khhtxsy1';
         zstoredproc1.ParamByName('cxmc').Value:=ComboBox1.Text;
         open;
         while not eof do

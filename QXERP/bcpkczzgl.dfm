@@ -118,14 +118,15 @@ object Form86: TForm86
     Width = 377
     Height = 369
     ColCount = 4
+    FixedCols = 0
     RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     TabOrder = 1
     OnSelectCell = StringGrid2SelectCell
     ColWidths = (
-      64
-      121
-      102
+      52
+      87
+      127
       70)
   end
   object Button1: TButton

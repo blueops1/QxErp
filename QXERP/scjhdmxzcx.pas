@@ -10,11 +10,14 @@ uses
 type
   TForm90 = class(TForm)
     StringGrid2: TStringGrid;
-    PopupMenu2: TPopupMenu;
-    MenuItem1: TMenuItem;
     ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
     procedure FormShow(Sender: TObject);
-    procedure MenuItem1Click(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
+    procedure StringGrid2DblClick(Sender: TObject);
+    procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
   private
     { Private declarations }
   public
@@ -27,9 +30,17 @@ var
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
-uses main;
+uses main,cpbcpmxzcx;
 
 {$R *.dfm}
+
+procedure TForm90.Execl1Click(Sender: TObject);
+begin
+  if stringgrid2.RowCount>2 then
+    ExportStrGridToExcel([stringgrid2])
+  else
+    application.MessageBox('列表中没有任何数据！','生产计划单信息查询');
+end;
 
 procedure TForm90.FormShow(Sender: TObject);
 var
@@ -81,12 +92,27 @@ begin
   end;
 end;
 
-procedure TForm90.MenuItem1Click(Sender: TObject);
+procedure TForm90.StringGrid2DblClick(Sender: TObject);
 begin
-  if stringgrid2.RowCount>2 then
-    ExportStrGridToExcel([stringgrid2])
-  else
-    application.MessageBox('列表中没有任何数据！','生产计划单信息查询');
+  cpbcpmxzcx.Form91.ShowModal;
+end;
+
+procedure TForm90.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  cpbcpmxzcx.strcpbh:='null';
+  cpbcpmxzcx.strbcpbh:='null';
+  cpbcpmxzcx.strcpzl:='null';
+  cpbcpmxzcx.strcpmc:='';
+  cpbcpmxzcx.strbcpmc:='';
+  if (ARow>0) and (ARow+1<stringgrid2.RowCount) then
+  begin
+    cpbcpmxzcx.strcpbh:=stringgrid2.Cells[2,ARow];
+    //cpbcpmxzcx.strbcpbh:=stringgrid2.Cells[3,ARow];
+    cpbcpmxzcx.strcpzl:=stringgrid2.Cells[3,ARow];
+    cpbcpmxzcx.strcpmc:=stringgrid2.Cells[2,ARow]+'-'+stringgrid2.Cells[3,ARow];
+    //cpbcpmxzcx.strbcpmc:=stringgrid2.Cells[4,ARow]+'-'+stringgrid2.Cells[5,ARow];
+  end;
 end;
 
 end.

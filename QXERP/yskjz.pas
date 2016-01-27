@@ -111,7 +111,7 @@ begin
         ParamByName('yskbh').Value:=edit5.Text;
         ParamByName('jzje').Value:=edit6.Text;
         ParamByName('skdate').Value:=datetimepicker2.Date;
-        ParamByName('memo').Value:=main.strUser+edit7.Text;
+        ParamByName('memo').Value:='*'+main.strUser+edit7.Text;
         ExecSQL;
         edit5.Text := '';
         edit6.Text := '';

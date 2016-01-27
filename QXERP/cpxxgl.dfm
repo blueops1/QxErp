@@ -24,10 +24,8 @@ object Form8: TForm8
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1059
     object TabSheet1: TTabSheet
       Caption = #26032#22686#20135#21697#20449#24687
-      ExplicitWidth = 1051
       object Label6: TLabel
         Left = 398
         Top = 125
@@ -261,9 +259,6 @@ object Form8: TForm8
     object TabSheet4: TTabSheet
       Caption = #20135#21697#20449#24687#20462#25913
       ImageIndex = 3
-      ExplicitLeft = 8
-      ExplicitTop = 28
-      ExplicitWidth = 1051
       object Label15: TLabel
         Left = 278
         Top = 136
@@ -474,7 +469,6 @@ object Form8: TForm8
       Enabled = False
       ImageIndex = 1
       TabVisible = False
-      ExplicitWidth = 1051
       object Label5: TLabel
         Left = 328
         Top = 38

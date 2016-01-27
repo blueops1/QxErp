@@ -95,6 +95,7 @@ begin
         stringgrid2.Cells[1,stringgrid2.RowCount-2]:=stringgrid1.Cells[1,SelArow];
         stringgrid2.Cells[2,stringgrid2.RowCount-2]:=stringgrid1.Cells[2,SelArow];
         stringgrid2.Cells[3,stringgrid2.RowCount-2]:='0';
+        stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
         DeleteStringGridRow(SelArow,stringgrid1);
       end;
     except

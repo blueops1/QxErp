@@ -94,7 +94,9 @@ uses
   scjhzggl in 'scjhzggl.pas' {Form88},
   scjhjdgz in 'scjhjdgz.pas' {Form89},
   scjhdmxzcx in 'scjhdmxzcx.pas' {Form90},
-  cpbcpmxzcx in 'cpbcpmxzcx.pas' {Form91};
+  cpbcpmxzcx in 'cpbcpmxzcx.pas' {Form91},
+  sjscjhmxz in 'sjscjhmxz.pas' {Form92},
+  wxjgdtz in 'wxjgdtz.pas' {Form93};
 
 {$R *.res}
 
@@ -195,5 +197,7 @@ begin
   Application.CreateForm(TForm89, Form89);
   Application.CreateForm(TForm90, Form90);
   Application.CreateForm(TForm91, Form91);
+  Application.CreateForm(TForm92, Form92);
+  Application.CreateForm(TForm93, Form93);
   Application.Run;
 end.

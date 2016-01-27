@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math,
   ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
-  ZDataset, RpDefine, RpRave, RpCon, RpConDS, RpConBDE, RpBase, RpSystem;
+  ZDataset, RpDefine, RpRave, RpCon, RpConDS, RpConBDE, RpBase, RpSystem,
+  IdBaseComponent, IdComponent, IdIPWatch;
 
 type
   TForm1 = class(TForm)
@@ -121,6 +122,8 @@ type
     Button81: TButton;
     Button82: TButton;
     Button83: TButton;
+    IdIPWatch1: TIdIPWatch;
+    Button84: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -211,6 +214,7 @@ type
     procedure Button81Click(Sender: TObject);
     procedure Button83Click(Sender: TObject);
     procedure Button82Click(Sender: TObject);
+    procedure Button84Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -227,6 +231,7 @@ var
   isLogined:Boolean;
   strUserQX:string;
   strUser:string;
+  strUserIP:string;
   filename:string;
   strPort:string;
   strPageCode:string;
@@ -255,9 +260,10 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      bthcsckgl,thcl,kptzs,kptzsdycx,
      jiagongfeijs,jgjsddycx,jgjsdqrpay,
      kptzskpqr,bcpkczzgl,bcpkcgz,
-     scjhzggl,scjhjdgz;
+     scjhzggl,scjhjdgz,wxjgdtz;
 
 {$R *.dfm}
+
 
 procedure TForm1.AppLoginFalse(islogined: Boolean);
 begin
@@ -796,6 +802,14 @@ procedure TForm1.Button83Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,18,1)='1') then
     scjhzggl.Form88.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button84Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    wxjgdtz.Form93.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

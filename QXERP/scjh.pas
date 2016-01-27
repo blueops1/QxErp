@@ -69,6 +69,7 @@ end;
 
 procedure TForm17.Button2Click(Sender: TObject);
 begin
+if stringgrid1.RowCount>2 then
   try
     form1.RvDataSetConnection1.DataSet:=zstoredProc1;
     with zstoredproc1 do
@@ -76,8 +77,8 @@ begin
       close;
       StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
       ParamByName('jhdbh').Value:=stringgrid1.Cells[5,SelARow];
-      ParamByName('htbh').Value:=stringgrid1.Cells[1,SelARow];
-      ExecProc;
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,SelARow];
+      open;
       with form1 do
       begin
         rvproject1.Open;
@@ -151,7 +152,7 @@ begin      //proc_cx_khandzgdwandxsy_by_cxitemandcxmc
  begin
     if combobox1.Items.Count>0 then
     ComboBox1.Items.Clear;
-    //combobox1.Items.Add('*|全部供应商');
+    combobox1.Items.Add('*|全部未发货计划单');
     try
       with zstoredproc1 do
       begin

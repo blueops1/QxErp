@@ -77,16 +77,16 @@ object Form47: TForm47
         Height = 532
         Align = alCustom
         RowCount = 2
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         PopupMenu = PopupMenu1
         TabOrder = 3
         OnSelectCell = StringGrid1SelectCell
         ColWidths = (
           64
-          99
-          99
-          113
-          103)
+          197
+          80
+          76
+          70)
       end
       object StringGrid2: TStringGrid
         Left = 552
@@ -95,15 +95,15 @@ object Form47: TForm47
         Height = 532
         Align = alCustom
         RowCount = 2
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         PopupMenu = PopupMenu2
         TabOrder = 4
         ColWidths = (
           64
-          86
-          83
+          75
+          75
           98
-          140)
+          175)
       end
     end
     object TabSheet2: TTabSheet
@@ -136,16 +136,16 @@ object Form47: TForm47
         Height = 532
         Align = alCustom
         RowCount = 2
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         PopupMenu = PopupMenu3
         TabOrder = 2
         OnSelectCell = StringGrid3SelectCell
         ColWidths = (
           64
-          99
-          106
-          104
-          115)
+          157
+          101
+          80
+          83)
       end
       object StringGrid4: TStringGrid
         Left = 552
@@ -154,7 +154,7 @@ object Form47: TForm47
         Height = 530
         Align = alCustom
         RowCount = 2
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         PopupMenu = PopupMenu4
         TabOrder = 3
         ColWidths = (
@@ -191,17 +191,17 @@ object Form47: TForm47
         Align = alCustom
         ColCount = 6
         RowCount = 2
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         PopupMenu = PopupMenu5
         TabOrder = 0
         OnSelectCell = StringGrid5SelectCell
         ColWidths = (
           64
-          99
-          106
-          88
-          83
-          93)
+          149
+          92
+          87
+          77
+          76)
       end
       object StringGrid6: TStringGrid
         Left = 584
@@ -210,15 +210,15 @@ object Form47: TForm47
         Height = 555
         Align = alCustom
         RowCount = 2
-        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
         PopupMenu = PopupMenu6
         TabOrder = 1
         ColWidths = (
           64
-          84
-          83
-          104
-          115)
+          77
+          75
+          98
+          147)
       end
       object Button3: TButton
         Left = 960

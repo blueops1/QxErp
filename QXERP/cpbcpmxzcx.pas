@@ -4,13 +4,16 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Grids;
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, Grids,
+  StdCtrls;
 
 type
   TForm91 = class(TForm)
     StringGrid2: TStringGrid;
     StringGrid1: TStringGrid;
     ZStoredProc1: TZStoredProc;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -20,7 +23,7 @@ type
 
 var
   Form91: TForm91;
-  strcpbh,strbcpbh,strcpmc,strbcpmc:string;
+  strcpbh,strbcpbh,strcpmc,strbcpmc,strcpzl:string;
 
 implementation
 
@@ -51,6 +54,7 @@ begin
       close;
       StoredProcName:='proc_cx_cpbcpmxz';
       ParamByName('cpbh').Value:=strcpbh;
+      ParamByName('cpzl').Value:=strcpzl;
       ParamByName('bcpbh').Value:=strbcpbh;
       open;
       y:=1;
@@ -81,14 +85,9 @@ begin
         stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
         next;
       end;
-      if strcpmc<>'' then
-      begin
-        form91.Caption:='成品半成品明细帐查询 【成品：'+strcpmc+'】';
-        if strbcpmc<>'' then
+      form91.Caption:='成品半成品明细帐查询 【成品：'+strcpmc+'】';
+      if strbcpmc<>'无-无' then
           form91.Caption:=form91.Caption+'【半成品：'+strbcpmc+'】';
-      end else
-        form91.Caption:='成品半成品明细帐查询 【半成品：'+strbcpmc+'】';
-
    end;
   Except
     Application.MessageBox('查询失败！','生产统计查询提示');

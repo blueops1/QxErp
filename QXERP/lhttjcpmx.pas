@@ -86,7 +86,7 @@ end;
 
 procedure TForm59.Button1Click(Sender: TObject);
 begin
-  if (edit1.Text<>'') and (edit1.Text<>'') and (combobox1.Text<>'')and (edit2.Text<>'') and (combobox3.Text<>'') then
+  if (edit1.Text<>'') and (combobox1.Text<>'')and (combobox3.Text<>'') then
     if (edit7.Text<>'') and (edit8.Text<>'') and (combobox4.Text<>'') then
       begin
         stringgrid1.RowCount:=stringgrid1.RowCount+1;

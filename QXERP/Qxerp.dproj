@@ -322,6 +322,12 @@
 			<DCCReference Include="cpbcpmxzcx.pas">
 				<Form>Form91</Form>
 			</DCCReference>
+			<DCCReference Include="sjscjhmxz.pas">
+				<Form>Form92</Form>
+			</DCCReference>
+			<DCCReference Include="wxjgdtz.pas">
+				<Form>Form93</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

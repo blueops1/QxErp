@@ -120,7 +120,7 @@ begin
         ParamByName('zltj2').Value:=edit14.Text;
         ExecProc;
         if ParamByName('returncode').Value=1 then
-          application.MessageBox('该货架信息已经存在！','仓储信息管理提示')
+          application.MessageBox('该产品信息已经存在！','产品信息管理提示')
         else begin
           Application.MessageBox('新增记录成功！','产品信息管理提示');
           edit2.Text := '';

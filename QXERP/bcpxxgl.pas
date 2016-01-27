@@ -72,6 +72,7 @@ type
     Memo2: TMemo;
     Label49: TLabel;
     Button15: TButton;
+    Label1: TLabel;
     procedure Button10Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
@@ -94,6 +95,7 @@ type
     procedure Button11Click(Sender: TObject);
     procedure ComboBox21DropDown(Sender: TObject);
     procedure ComboBox22DropDown(Sender: TObject);
+    procedure Button15Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -155,6 +157,41 @@ begin
     Application.MessageBox('请选择需要删除的关联产品编号！','半成品管理提示');
 end;
 
+procedure TForm11.Button15Click(Sender: TObject);
+begin
+  if (edit15.Text <> '') and (edit15.Text <> '') and (combobox21.Text <> '') and (combobox22.Text <> '')then
+  begin
+    try
+      with zStoredProc1 do   //proc_insert_bcplxk_bcpkcb   bcpbh,bcpmc,bcplxbh,sscpbh,sscpbh1,memo,czry
+      begin
+        close;
+        StoredProcName:='proc_update_bcplxk_new';        //fbcpmc=bcpmc,fbcplxbh=bcplxbh,fcpzl=cpzl,fmemo=memo,fczry=czry WHERE fbcpbh=bcpbh;
+        if combobox23.Items.Count=0 then
+          ParamByName('cxitem').Value:='all'
+        else
+          ParamByName('cxitem').Value:='mc';
+        ParamByName('bcpbh').Value:=edit15.Text;
+        ParamByName('bcpmc').Value:=edit16.Text;
+        ParamByName('bcplxbh').Value:=splitString(combobox21.Text,'|');
+        ParamByName('cpzl').Value:=combobox22.Text;
+        ParamByName('memo').Value:=edit18.Text;
+        ParamByName('czry').Value:=main.strUser;
+        ExecProc;
+        edit15.Text :='';
+        edit16.Text :='';
+        combobox21.Text :='';
+        combobox22.Text :='';
+        combobox23.Text :='';
+        edit18.Text := '';
+        Application.MessageBox('修改半成品信息成功！','半成品管理提示');
+      end;
+    Except
+      Application.MessageBox('修改半成品信息失败！','半成品管理提示');
+    end;
+  end else
+    Application.MessageBox('请选择需要修改的半成品信息编号！','半成品管理提示');
+end;
+
 procedure TForm11.Button1Click(Sender: TObject);
 begin
   if (edit19.Text <> '') and (edit20.Text <> '') and (combobox24.Text <> '') and (combobox25.Text <> '') and (combobox26.Text <> '')  then
@@ -176,21 +213,9 @@ begin
         ParamByName('memo').Value:=edit21.Text;
         ParamByName('czry').Value:=main.strUser;
         ExecProc;
-        edit19.Text := '';
-        edit20.Text := '';
-        edit21.Text := '';
-        combobox24.Text := '';
-        combobox25.Text := '';
+        memo2.Lines.Add(combobox26.Text);
         combobox26.Text := '';
-        memo2.Lines.Clear;
         Application.MessageBox('新增半成品信息成功！','半成品管理提示');
-        close;
-        StoredProcName:='proc_cx_newbcplxbh';
-        open;
-        if fields[0].AsString<>'' then
-          edit19.Text:=fields[0].AsString
-        else
-          edit19.Text:='1';
       end;
       edit20.SetFocus;
     Except
@@ -491,6 +516,13 @@ begin      //proc_cx_newbcplxbh
   try
     with  zStoredProc1 do
     begin
+      edit19.Text := '';
+      edit20.Text := '';
+      edit21.Text := '';
+      combobox24.Text := '';
+      combobox25.Text := '';
+      combobox26.Text := '';
+      memo2.Lines.Clear;
       close;
       StoredProcName:='proc_cx_newbcplxbh';
       open;
