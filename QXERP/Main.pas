@@ -124,6 +124,8 @@ type
     Button83: TButton;
     IdIPWatch1: TIdIPWatch;
     Button84: TButton;
+    Button85: TButton;
+    Button86: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -215,6 +217,9 @@ type
     procedure Button83Click(Sender: TObject);
     procedure Button82Click(Sender: TObject);
     procedure Button84Click(Sender: TObject);
+    procedure Button85Click(Sender: TObject);
+    procedure Button86Click(Sender: TObject);
+    procedure Button41Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -260,7 +265,8 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      bthcsckgl,thcl,kptzs,kptzsdycx,
      jiagongfeijs,jgjsddycx,jgjsdqrpay,
      kptzskpqr,bcpkczzgl,bcpkcgz,
-     scjhzggl,scjhjdgz,wxjgdtz;
+     scjhzggl,scjhjdgz,wxjgdtz,scjhkcgz,
+     jhdjs,wwcrwslcx;
 
 {$R *.dfm}
 
@@ -518,6 +524,14 @@ procedure TForm1.Button40Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,19,1)='1') then
     qjcx.Form38.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button41Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    wwcrwslcx.Form96.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
@@ -814,6 +828,22 @@ begin
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
+procedure TForm1.Button85Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    scjhkcgz.Form94.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button86Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    jhdjs.Form95.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
 procedure TForm1.Button8Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,6,1)='1') then
@@ -1029,7 +1059,7 @@ end;
 
 procedure TForm1.Button78Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,12,1)='1') then
+  if(MidStr(main.strUserQX,18,1)='1') then
     jgjsdqrpay.Form84.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');

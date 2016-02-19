@@ -271,6 +271,7 @@ begin
     edit3.Text:=stringgrid1.Cells[1,ARow]+'|'+stringgrid1.Cells[2,ARow];
     edit7.Text:=stringgrid1.Cells[7,ARow];
     edit8.Text:=stringgrid1.Cells[4,ARow];
+    edit9.Text:=edit8.Text;
     edit10.Text:=stringgrid1.Cells[5,ARow];
     edit5.Text:=edit7.Text;
   end;

@@ -1,0 +1,28 @@
+unit jhdjs;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
+  Grids;
+
+type
+  TForm95 = class(TForm)
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form95: TForm95;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,47 @@
+object Form94: TForm94
+  Left = 0
+  Top = 0
+  Caption = #29983#20135#35745#21010#21450#24211#23384#36319#36394
+  ClientHeight = 596
+  ClientWidth = 975
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 0
+    Top = 0
+    Width = 975
+    Height = 596
+    Align = alClient
+    ColCount = 6
+    RowCount = 2
+    TabOrder = 0
+    OnDblClick = StringGrid1DblClick
+    OnDrawCell = StringGrid1DrawCell
+    OnSelectCell = StringGrid1SelectCell
+    ExplicitLeft = 320
+    ExplicitTop = 256
+    ExplicitWidth = 320
+    ExplicitHeight = 120
+    ColWidths = (
+      64
+      204
+      169
+      156
+      164
+      181)
+  end
+  object ZStoredProc1: TZStoredProc
+    Connection = Form1.ZConnection1
+    Params = <>
+    Left = 656
+    Top = 368
+  end
+end

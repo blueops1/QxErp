@@ -1,0 +1,30 @@
+unit wwcrwslcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
+  Grids;
+
+type
+  TForm96 = class(TForm)
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form96: TForm96;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+end.
