@@ -86,8 +86,6 @@ object Form17: TForm17
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
     PopupMenu = PopupMenu2
     TabOrder = 4
-    ExplicitTop = 255
-    ExplicitWidth = 1021
     ColWidths = (
       64
       88
@@ -121,6 +119,17 @@ object Form17: TForm17
     object Execl1: TMenuItem
       Caption = #23548#20986#21040'Execl'
       OnClick = Execl1Click
+    end
+    object N1: TMenuItem
+      Caption = #23436#25104#26631#35760#35774#32622
+      object N2: TMenuItem
+        Caption = #26631#35760#23436#25104
+        OnClick = N2Click
+      end
+      object N3: TMenuItem
+        Caption = #26631#35760#26410#23436#25104
+        OnClick = N3Click
+      end
     end
   end
   object PopupMenu2: TPopupMenu

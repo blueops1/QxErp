@@ -111,7 +111,7 @@ var
 begin
 //proc_insert_htinfo_yskxx htbh,khbh,zgdwbh,htdate,xsybh,lxr,lxrdh,htzje,memo
 //proc_insert_htcpmxb htbh,cpbh,cpdj,cpsl
-if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
+if application.MessageBox('确定要保存数据吗？','老合同添加明细提示',1)=1 then
   if stringgrid1.RowCount>1 then
     try
       with zstoredproc1 do
@@ -127,7 +127,7 @@ if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
           execProc;
         end;
       end;
-      application.MessageBox('保存数据成功！','新增合同提示');
+      application.MessageBox('保存数据成功！','老合同添加明细提示');
       edit1.Text:='';
       edit2.Text:='';
       edit11.Text:='0';
@@ -138,9 +138,9 @@ if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
       memo1.Text:='';
       stringgrid1.RowCount:=1;
   except
-    application.MessageBox('保存数据失败！','新增合同提示');
+    application.MessageBox('保存数据失败！','老合同添加明细提示');
   end else
-    application.MessageBox('请添加合同内的销售明细！','新增合同提示');
+    application.MessageBox('请添加合同内的销售明细！','老合同添加明细提示');
 
 end;
 

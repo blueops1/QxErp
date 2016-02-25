@@ -21,6 +21,9 @@ type
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     Button2: TButton;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -31,6 +34,8 @@ type
     procedure Execl1Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -123,7 +128,7 @@ begin
         while not eof do
         begin
           stringgrid1.RowCount:=stringgrid1.RowCount+1;;
-          stringgrid1.Cells[0,i]:=inttostr(i);
+          stringgrid1.Cells[0,i]:=inttostr(i)+fields[9].AsString;
           stringgrid1.Cells[1,i]:=fields[0].AsString;
           stringgrid1.Cells[2,i]:=fields[1].AsString;
           stringgrid1.Cells[3,i]:=fields[2].AsString;
@@ -211,6 +216,43 @@ begin
     ExportStrGridToExcel([stringgrid2])
   else
     application.MessageBox('列表中没有任何数据！','计划单查询提示');
+end;
+
+procedure TForm17.N2Click(Sender: TObject);
+begin
+//proc_update_jihuadaninfo_iswanchengbz
+if (stringgrid1.Cells[5,SelARow]<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_update_jihuadaninfo_iswanchengbz';
+      ParamByName('bz').Value:='ywc';
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,selARow];
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+      execproc;
+    end;
+  except
+    application.MessageBox('设置完成标记失败！','计划单查询提示');
+  end;
+end;
+
+procedure TForm17.N3Click(Sender: TObject);
+begin
+if (stringgrid1.Cells[5,SelARow]<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_update_jihuadaninfo_iswanchengbz';
+      ParamByName('bz').Value:='wwc';
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,selARow];
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+      execproc;
+    end;
+  except
+    application.MessageBox('设置未完成标记失败！','计划单查询提示');
+  end;
 end;
 
 procedure TForm17.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
