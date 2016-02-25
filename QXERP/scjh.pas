@@ -24,6 +24,7 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
+    RadioGroup1: TRadioGroup;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -127,19 +128,38 @@ begin
         i:=1;
         while not eof do
         begin
-          stringgrid1.RowCount:=stringgrid1.RowCount+1;;
-          stringgrid1.Cells[0,i]:=inttostr(i)+fields[9].AsString;
-          stringgrid1.Cells[1,i]:=fields[0].AsString;
-          stringgrid1.Cells[2,i]:=fields[1].AsString;
-          stringgrid1.Cells[3,i]:=fields[2].AsString;
-          stringgrid1.Cells[4,i]:=fields[3].AsString;
-          stringgrid1.Cells[5,i]:=fields[4].AsString;
-          stringgrid1.Cells[6,i]:=fields[5].AsString;
-          stringgrid1.Cells[7,i]:=fields[6].AsString;
-          stringgrid1.Cells[8,i]:=fields[7].AsString;
-          stringgrid1.Cells[9,i]:=fields[8].AsString;
-          i:=i+1;
-          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          if (radiogroup1.ItemIndex=0) and (fields[9].AsString='') then
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i)+fields[9].AsString;
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[2].AsString;
+            stringgrid1.Cells[4,i]:=fields[3].AsString;
+            stringgrid1.Cells[5,i]:=fields[4].AsString;
+            stringgrid1.Cells[6,i]:=fields[5].AsString;
+            stringgrid1.Cells[7,i]:=fields[6].AsString;
+            stringgrid1.Cells[8,i]:=fields[7].AsString;
+            stringgrid1.Cells[9,i]:=fields[8].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          end;
+          if (radiogroup1.ItemIndex=1) and (fields[9].AsString='(Íê³É)') then
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i)+fields[9].AsString;
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[2].AsString;
+            stringgrid1.Cells[4,i]:=fields[3].AsString;
+            stringgrid1.Cells[5,i]:=fields[4].AsString;
+            stringgrid1.Cells[6,i]:=fields[5].AsString;
+            stringgrid1.Cells[7,i]:=fields[6].AsString;
+            stringgrid1.Cells[8,i]:=fields[7].AsString;
+            stringgrid1.Cells[9,i]:=fields[8].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          end;
           next;
         end;
       end;

@@ -27,14 +27,14 @@ object Form17: TForm17
   object ComboBox1: TComboBox
     Left = 92
     Top = 19
-    Width = 565
+    Width = 541
     Height = 21
     DropDownCount = 16
     TabOrder = 0
     OnKeyDown = ComboBox1KeyDown
   end
   object Button6: TButton
-    Left = 698
+    Left = 806
     Top = 17
     Width = 72
     Height = 25
@@ -43,7 +43,7 @@ object Form17: TForm17
     OnClick = Button6Click
   end
   object Button1: TButton
-    Left = 808
+    Left = 899
     Top = 17
     Width = 75
     Height = 25
@@ -99,13 +99,26 @@ object Form17: TForm17
       96)
   end
   object Button2: TButton
-    Left = 923
+    Left = 995
     Top = 17
     Width = 75
     Height = 25
     Caption = #25171#21360#35745#21010#21333
     TabOrder = 5
     OnClick = Button2Click
+  end
+  object RadioGroup1: TRadioGroup
+    Left = 650
+    Top = 4
+    Width = 136
+    Height = 38
+    Caption = #26597#35810#36873#39033
+    Columns = 2
+    ItemIndex = 0
+    Items.Strings = (
+      #26410#23436#25104
+      #24050#23436#25104)
+    TabOrder = 6
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

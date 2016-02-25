@@ -337,6 +337,9 @@
 			<DCCReference Include="wwcrwslcx.pas">
 				<Form>Form96</Form>
 			</DCCReference>
+			<DCCReference Include="rwslcxbyrwdbh.pas">
+				<Form>Form97</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

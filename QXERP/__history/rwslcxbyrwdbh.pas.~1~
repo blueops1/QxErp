@@ -1,0 +1,29 @@
+unit rwslcxbyrwdbh;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  Grids;
+
+type
+  TForm97 = class(TForm)
+    StringGrid1: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form97: TForm97;
+
+implementation
+
+{$R *.dfm}
+
+end.
