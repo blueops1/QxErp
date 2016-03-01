@@ -188,7 +188,7 @@ object Form1: TForm1
       ImageIndex = 1
       object Button11: TButton
         Left = 432
-        Top = 200
+        Top = 297
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#26597#35810
@@ -196,8 +196,8 @@ object Form1: TForm1
         OnClick = Button11Click
       end
       object Button17: TButton
-        Left = 432
-        Top = 104
+        Left = 296
+        Top = 201
         Width = 97
         Height = 65
         Caption = #35745#21010#21333#26597#35810
@@ -206,7 +206,7 @@ object Form1: TForm1
       end
       object Button36: TButton
         Left = 160
-        Top = 200
+        Top = 297
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#20837#24211
@@ -214,8 +214,8 @@ object Form1: TForm1
         OnClick = Button36Click
       end
       object Button38: TButton
-        Left = 296
-        Top = 104
+        Left = 160
+        Top = 201
         Width = 97
         Height = 65
         Caption = #26032#22686#29983#20135#35745#21010
@@ -232,7 +232,7 @@ object Form1: TForm1
         OnClick = Button41Click
       end
       object Button42: TButton
-        Left = 568
+        Left = 432
         Top = 104
         Width = 97
         Height = 65
@@ -242,7 +242,7 @@ object Form1: TForm1
       end
       object Button43: TButton
         Left = 296
-        Top = 200
+        Top = 297
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#29305#27530#20986#24211
@@ -251,7 +251,7 @@ object Form1: TForm1
       end
       object Button44: TButton
         Left = 568
-        Top = 200
+        Top = 297
         Width = 97
         Height = 65
         Caption = #21322#25104#21697#32479#35745#26597#35810
@@ -260,7 +260,7 @@ object Form1: TForm1
       end
       object Button81: TButton
         Left = 160
-        Top = 296
+        Top = 393
         Width = 97
         Height = 65
         Caption = #24120#35268#20135#21697#36319#36394
@@ -269,7 +269,7 @@ object Form1: TForm1
       end
       object Button82: TButton
         Left = 296
-        Top = 296
+        Top = 393
         Width = 97
         Height = 65
         Caption = #35745#21010#36827#24230#36319#36394
@@ -278,7 +278,7 @@ object Form1: TForm1
       end
       object Button83: TButton
         Left = 568
-        Top = 296
+        Top = 393
         Width = 97
         Height = 65
         Caption = #35745#21010#36319#36394#35774#32622
@@ -287,7 +287,7 @@ object Form1: TForm1
       end
       object Button85: TButton
         Left = 432
-        Top = 296
+        Top = 393
         Width = 97
         Height = 65
         Caption = #35745#21010#24211#23384#26597#35810
@@ -295,13 +295,22 @@ object Form1: TForm1
         OnClick = Button85Click
       end
       object Button86: TButton
-        Left = 160
-        Top = 392
+        Left = 432
+        Top = 201
         Width = 97
         Height = 65
         Caption = #35745#21010#21333#32467#26463#22788#29702
         TabOrder = 12
         OnClick = Button86Click
+      end
+      object Button87: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20219#21153#21333#20998#21333#26597#35810
+        TabOrder = 13
+        OnClick = Button87Click
       end
     end
     object TabSheet10: TTabSheet

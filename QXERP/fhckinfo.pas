@@ -77,7 +77,7 @@ var
   y:integer;
 begin
 if application.MessageBox('确定要保存数据吗？','发货出库信息提示',1)=1 then
-  if stringgrid1.RowCount>1 then
+  if (stringgrid1.RowCount>1) and (edit3.Text<>'') then
     try
       with zstoredproc1 do
       begin

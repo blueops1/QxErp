@@ -21,6 +21,10 @@ type
     StringGrid1: TStringGrid;
     StringGrid2: TStringGrid;
     Button2: TButton;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    RadioGroup1: TRadioGroup;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -31,6 +35,8 @@ type
     procedure Execl1Click(Sender: TObject);
     procedure MenuItem1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +84,7 @@ if stringgrid1.RowCount>2 then
       StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
       ParamByName('jhdbh').Value:=stringgrid1.Cells[5,SelARow];
       //ParamByName('htbh').Value:=stringgrid1.Cells[1,SelARow];
-      ExecProc;
+      open;
       with form1 do
       begin
         rvproject1.Open;
@@ -122,19 +128,38 @@ begin
         i:=1;
         while not eof do
         begin
-          stringgrid1.RowCount:=stringgrid1.RowCount+1;;
-          stringgrid1.Cells[0,i]:=inttostr(i);
-          stringgrid1.Cells[1,i]:=fields[0].AsString;
-          stringgrid1.Cells[2,i]:=fields[1].AsString;
-          stringgrid1.Cells[3,i]:=fields[2].AsString;
-          stringgrid1.Cells[4,i]:=fields[3].AsString;
-          stringgrid1.Cells[5,i]:=fields[4].AsString;
-          stringgrid1.Cells[6,i]:=fields[5].AsString;
-          stringgrid1.Cells[7,i]:=fields[6].AsString;
-          stringgrid1.Cells[8,i]:=fields[7].AsString;
-          stringgrid1.Cells[9,i]:=fields[8].AsString;
-          i:=i+1;
-          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          if (radiogroup1.ItemIndex=0) and (fields[9].AsString='') then
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i)+fields[9].AsString;
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[2].AsString;
+            stringgrid1.Cells[4,i]:=fields[3].AsString;
+            stringgrid1.Cells[5,i]:=fields[4].AsString;
+            stringgrid1.Cells[6,i]:=fields[5].AsString;
+            stringgrid1.Cells[7,i]:=fields[6].AsString;
+            stringgrid1.Cells[8,i]:=fields[7].AsString;
+            stringgrid1.Cells[9,i]:=fields[8].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          end;
+          if (radiogroup1.ItemIndex=1) and (fields[9].AsString='(完成)') then
+          begin
+            stringgrid1.RowCount:=stringgrid1.RowCount+1;
+            stringgrid1.Cells[0,i]:=inttostr(i)+fields[9].AsString;
+            stringgrid1.Cells[1,i]:=fields[0].AsString;
+            stringgrid1.Cells[2,i]:=fields[1].AsString;
+            stringgrid1.Cells[3,i]:=fields[2].AsString;
+            stringgrid1.Cells[4,i]:=fields[3].AsString;
+            stringgrid1.Cells[5,i]:=fields[4].AsString;
+            stringgrid1.Cells[6,i]:=fields[5].AsString;
+            stringgrid1.Cells[7,i]:=fields[6].AsString;
+            stringgrid1.Cells[8,i]:=fields[7].AsString;
+            stringgrid1.Cells[9,i]:=fields[8].AsString;
+            i:=i+1;
+            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          end;
           next;
         end;
       end;
@@ -152,7 +177,7 @@ begin      //proc_cx_khandzgdwandxsy_by_cxitemandcxmc
  begin
     if combobox1.Items.Count>0 then
     ComboBox1.Items.Clear;
-    combobox1.Items.Add('*|全部供应商');
+    combobox1.Items.Add('*|全部未发货计划单');
     try
       with zstoredproc1 do
       begin
@@ -211,6 +236,43 @@ begin
     ExportStrGridToExcel([stringgrid2])
   else
     application.MessageBox('列表中没有任何数据！','计划单查询提示');
+end;
+
+procedure TForm17.N2Click(Sender: TObject);
+begin
+//proc_update_jihuadaninfo_iswanchengbz
+if (stringgrid1.Cells[5,SelARow]<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_update_jihuadaninfo_iswanchengbz';
+      ParamByName('bz').Value:='ywc';
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,selARow];
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+      execproc;
+    end;
+  except
+    application.MessageBox('设置完成标记失败！','计划单查询提示');
+  end;
+end;
+
+procedure TForm17.N3Click(Sender: TObject);
+begin
+if (stringgrid1.Cells[5,SelARow]<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_update_jihuadaninfo_iswanchengbz';
+      ParamByName('bz').Value:='wwc';
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,selARow];
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+      execproc;
+    end;
+  except
+    application.MessageBox('设置未完成标记失败！','计划单查询提示');
+  end;
 end;
 
 procedure TForm17.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;

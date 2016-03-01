@@ -4,7 +4,7 @@ object Form17: TForm17
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #29983#20135#35745#21010#21333#26597#35810
   ClientHeight = 739
-  ClientWidth = 1085
+  ClientWidth = 1128
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -34,7 +34,7 @@ object Form17: TForm17
     OnKeyDown = ComboBox1KeyDown
   end
   object Button6: TButton
-    Left = 806
+    Left = 853
     Top = 17
     Width = 72
     Height = 25
@@ -43,7 +43,7 @@ object Form17: TForm17
     OnClick = Button6Click
   end
   object Button1: TButton
-    Left = 899
+    Left = 946
     Top = 17
     Width = 75
     Height = 25
@@ -54,7 +54,7 @@ object Form17: TForm17
   object StringGrid1: TStringGrid
     Left = 0
     Top = 56
-    Width = 1085
+    Width = 1128
     Height = 293
     Align = alCustom
     ColCount = 10
@@ -67,25 +67,26 @@ object Form17: TForm17
     ColWidths = (
       52
       85
-      301
+      367
       72
       70
       73
       72
       73
       165
-      200)
+      81)
   end
   object StringGrid2: TStringGrid
     Left = 0
     Top = 355
-    Width = 1085
+    Width = 1128
     Height = 384
     Align = alBottom
     ColCount = 10
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
     PopupMenu = PopupMenu2
     TabOrder = 4
+    ExplicitWidth = 1085
     ColWidths = (
       64
       88
@@ -99,8 +100,8 @@ object Form17: TForm17
       96)
   end
   object Button2: TButton
-    Left = 995
-    Top = 17
+    Left = 1044
+    Top = 15
     Width = 75
     Height = 25
     Caption = #25171#21360#35745#21010#21333
@@ -110,12 +111,13 @@ object Form17: TForm17
   object RadioGroup1: TRadioGroup
     Left = 650
     Top = 4
-    Width = 136
+    Width = 187
     Height = 38
     Caption = #26597#35810#36873#39033
-    Columns = 2
+    Columns = 3
     ItemIndex = 0
     Items.Strings = (
+      #20840'    '#37096
       #26410#23436#25104
       #24050#23436#25104)
     TabOrder = 6
