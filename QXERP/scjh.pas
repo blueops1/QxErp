@@ -25,6 +25,7 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     RadioGroup1: TRadioGroup;
+    N4: TMenuItem;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -37,6 +38,7 @@ type
     procedure Button2Click(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
+    procedure N4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -290,6 +292,32 @@ if (stringgrid1.Cells[5,SelARow]<>'') then
     end;
   except
     application.MessageBox('设置未完成标记失败！','计划单查询提示');
+  end;
+end;
+
+procedure TForm17.N4Click(Sender: TObject);
+begin
+  if application.MessageBox('确定要删除该计划单信息吗？','计划单查询提示',1)=1 then
+  begin
+    if (stringgrid1.Cells[1,SelARow]<>'') then
+      try
+        with zStoredProc1 do
+        begin
+          close;
+          StoredProcName:='proc_del_jhd_rwd_ht_ysk_info_by_htbh';  //czxm: 1-删除计划单信息 2-删除任务单信息\合同以及应收款信息
+          ParamByName('czxm').Value:=1;
+          ParamByName('htbh').Value:=stringgrid1.Cells[1,selARow];
+          //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+          execproc;
+          if ParamByName('delinfo').Value=1 then
+            application.MessageBox('删除计划单成功！','计划单查询提示')
+          else
+            application.MessageBox('删除计划单失败！','计划单查询提示');
+          button6.Click;
+        end;
+      except
+        application.MessageBox('删除计划单失败1！','计划单查询提示');
+      end;
   end;
 end;
 

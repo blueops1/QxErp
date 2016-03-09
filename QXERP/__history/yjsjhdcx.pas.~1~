@@ -1,0 +1,38 @@
+unit yjsjhdcx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  Grids, StdCtrls;
+
+type
+  TForm98 = class(TForm)
+    Label12: TLabel;
+    ComboBox1: TComboBox;
+    Button6: TButton;
+    StringGrid1: TStringGrid;
+    StringGrid2: TStringGrid;
+    ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    N1: TMenuItem;
+    N2: TMenuItem;
+    N3: TMenuItem;
+    PopupMenu2: TPopupMenu;
+    MenuItem1: TMenuItem;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form98: TForm98;
+
+implementation
+
+{$R *.dfm}
+
+end.

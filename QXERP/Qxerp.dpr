@@ -100,7 +100,9 @@ uses
   scjhkcgz in 'scjhkcgz.pas' {Form94},
   jhdjs in 'jhdjs.pas' {Form95},
   wwcrwslcx in 'wwcrwslcx.pas' {Form96},
-  rwslcxbyrwdbh in 'rwslcxbyrwdbh.pas' {Form97};
+  rwslcxbyrwdbh in 'rwslcxbyrwdbh.pas' {Form97},
+  yjsjhdcx in 'yjsjhdcx.pas' {Form98},
+  delhtinfo in 'delhtinfo.pas' {Form99};
 
 {$R *.res}
 
@@ -207,5 +209,7 @@ begin
   Application.CreateForm(TForm95, Form95);
   Application.CreateForm(TForm96, Form96);
   Application.CreateForm(TForm97, Form97);
+  Application.CreateForm(TForm98, Form98);
+  Application.CreateForm(TForm99, Form99);
   Application.Run;
 end.
