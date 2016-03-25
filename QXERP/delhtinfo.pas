@@ -78,7 +78,8 @@ begin
         StoredProcName:='proc_del_jhd_rwd_ht_ysk_info_by_htbh';  //czxm: 1-删除计划单信息 2-删除任务单信息\合同以及应收款信息
         ParamByName('czxm').Value:=2;
         ParamByName('htbh').Value:=edit1.Text;
-        //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+        ParamByName('jhdbh').Value:='111';
+        ParamByName('rwdbh').Value:='111';
         execproc;
         edit1.Text:='';
         edit2.Text:='';

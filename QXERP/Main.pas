@@ -7,7 +7,9 @@ uses
   Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math,
   ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
   ZDataset, RpDefine, RpRave, RpCon, RpConDS, RpConBDE, RpBase, RpSystem,
-  IdBaseComponent, IdComponent, IdIPWatch;
+  IdBaseComponent, IdComponent, IdIPWatch,ShellAPI, ImgList;
+
+ // CONST WM_BARICON=WM_USER+200;
 
 type
   TForm1 = class(TForm)
@@ -129,6 +131,8 @@ type
     Button87: TButton;
     Button88: TButton;
     Button89: TButton;
+    TrayIcon1: TTrayIcon;
+    ImageList1: TImageList;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -226,14 +230,20 @@ type
     procedure Button87Click(Sender: TObject);
     procedure Button88Click(Sender: TObject);
     procedure Button89Click(Sender: TObject);
+    procedure TrayIcon1Animate(Sender: TObject);
   private
     { Private declarations }
+    {procedure WMSysCommand(var Message: TMessage);
+    message WM_SYSCOMMAND;
+    procedure WMBarIcon(var Message:TMessage);
+    message WM_BARICON;}
   public
     { Public declarations }
   end;
 
 var
   Form1: TForm1;
+  boolsignin:boolean;
   cfginifile:tinifile;
   strDBName:string;
   strServerName:string;
@@ -277,6 +287,60 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
 
 {$R *.dfm}
 
+{
+procedure TForm1.WMSysCommand
+(var Message:TMessage);
+var
+   lpData:PNotifyIconDataW;
+begin
+if Message.WParam = SC_ICON then
+begin
+    //如果用户最小化窗口则将窗口 隐藏并在任务栏上添加图标
+    lpData := new(PNotifyIconDataW);
+    lpData.cbSize := 88;
+//SizeOf(PNotifyIconDataA);
+    lpData.Wnd := Form1.Handle;
+    lpData.hIcon := Form1.Icon.Handle;
+    lpData.uCallbackMessage := WM_BARICON;
+    lpData.uID :=0;
+    lpData.szTip := '秦橡ERP';
+    lpData.uFlags := NIF_ICON
+or NIF_MESSAGE or NIF_TIP;
+    Shell_NotifyIcon(NIM_ADD,lpData);
+    dispose(lpData);
+    Form1.Visible := False;
+end
+else
+begin
+    //如果是其它的SystemCommand 消息则调用系统缺省处理函数处理之。
+    DefWindowProc(Form1.Handle,Message.
+Msg,Message.WParam,Message.LParam);
+end;
+//
+end;
+
+procedure TForm1.WMBarIcon(var Message:TMessage);
+var
+   lpData:PNotifyIconDataW;
+begin
+if (Message.LParam = WM_LBUTTONDOWN) then
+   begin
+    //如果用户点击任务栏图标则将图标删除并回复窗口。
+    lpData := new(PNotifyIconDataW);
+    lpData.cbSize := 88;//SizeOf(PNotifyIconDataA);
+    lpData.Wnd := Form1.Handle;
+    lpData.hIcon := Form1.Icon.Handle;
+    lpData.uCallbackMessage := WM_BARICON;
+    lpData.uID :=0;
+    lpData.szTip := '秦橡ERP';
+    lpData.uFlags := NIF_ICON or NIF_MESSAGE or NIF_TIP;
+    Shell_NotifyIcon(NIM_DELETE,lpData);
+    dispose(lpData);
+    Form1.Visible := True;
+    //form1.BringToFront;
+   end;
+end;
+}
 
 procedure TForm1.AppLoginFalse(islogined: Boolean);
 begin
@@ -461,10 +525,10 @@ end;
 
 procedure TForm1.Button33Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,16,1)='1') then
+  if(main.strUser='Admin') then
     cpck.Form30.Show
   else
-    application.MessageBox('该模块你无使用权限！','系统提示');
+    application.MessageBox('产品发货出库请走正常流程！','系统提示');
 end;
 
 procedure TForm1.Button34Click(Sender: TObject);
@@ -914,7 +978,8 @@ end;
 procedure TForm1.FormShow(Sender: TObject);
 begin
     strcaption:='浙江秦山橡胶工程股份有限公司生产办公管理系统';
-    dlgl.Form10.ShowModal;
+    if boolsignin=false then
+      dlgl.Form10.ShowModal;
     if(isLogined=false) then
     begin
     main.Form1.Close;
@@ -952,6 +1017,7 @@ end;
 
 procedure TForm1.Label1Click(Sender: TObject);
 begin
+  FlashWindow(Application.Handle, false);
   boolmesscandle:=true;
   panel1.Visible:=false;
   form18.Show;
@@ -996,6 +1062,9 @@ begin
       intMessage:=fields[0].AsInteger;
       if intMessage>0 then
       begin
+        trayicon1.ShowBalloonHint;
+        //trayicon1.Animate:=true;
+        //trayicon1.AnimateInterval:=450;
         form1.Caption:=strcaption+'            ========【您有 '+inttostr(intMessage)+' 条新的消息】========';
         form1.Label1.Caption:='您有'+inttostr(intMessage)+'条新的消息';
         panel1.Visible:=true;
@@ -1009,6 +1078,11 @@ begin
     application.MessageBox('查询数据失败！','在线消息提示');
   end;
 end;
+end;
+
+procedure TForm1.TrayIcon1Animate(Sender: TObject);
+begin
+    trayicon1.IconIndex:=1;
 end;
 
 procedure TForm1.X1Click(Sender: TObject);

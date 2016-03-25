@@ -54,6 +54,7 @@ begin
       main.strUserQX:=fields[1].AsString;
       main.struserIP:= form1.IdIPWatch1.LocalIP;
       main.isLogined:=true;
+      main.boolsignin:=true;
       Main.Form1.StatusBar1.Panels.Items[2].Text := '操作员:'+main.strUser+'@'+main.strUserIP;
       form10.Close;
       end else
@@ -131,7 +132,7 @@ procedure TForm10.FormActivate(Sender: TObject);
 var
   oldver,newver:string;
 begin
-    oldver:='2016030901'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
+    oldver:='2016032501'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin

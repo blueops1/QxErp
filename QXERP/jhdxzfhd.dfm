@@ -279,7 +279,7 @@ object Form40: TForm40
     Visible = False
   end
   object Button2: TButton
-    Left = 633
+    Left = 639
     Top = 492
     Width = 107
     Height = 25

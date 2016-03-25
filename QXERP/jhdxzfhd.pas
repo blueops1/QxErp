@@ -159,8 +159,12 @@ begin
           ParamByName('htbh').Value:=edit2.Text;
           ParamByName('khid').Value:=edit6.Text;
           ParamByName('hydid').Value:=edit3.Text;
-          ParamByName('weight').Value:=edit12.Text;
+          if edit12.Text='' then
+            ParamByName('weight').Value:='0'
+          else
+            ParamByName('weight').Value:=edit12.Text;
           ParamByName('cddate').Value:=datetimetostr(now());
+          ParamByName('jhdbh').Value:=scjh.tmpjhdbh;
           ParamByName('memo').Value:='*'+edit5.Text;
           ExecProc;
           edit1.Text:='';

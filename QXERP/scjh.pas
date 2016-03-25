@@ -307,7 +307,8 @@ begin
           StoredProcName:='proc_del_jhd_rwd_ht_ysk_info_by_htbh';  //czxm: 1-删除计划单信息 2-删除任务单信息\合同以及应收款信息
           ParamByName('czxm').Value:=1;
           ParamByName('htbh').Value:=stringgrid1.Cells[1,selARow];
-          //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+          ParamByName('jhdbh').Value:=stringgrid1.Cells[5,selARow];
+          ParamByName('rwdbh').Value:=stringgrid1.Cells[4,selARow];
           execproc;
           if ParamByName('delinfo').Value=1 then
             application.MessageBox('删除计划单成功！','计划单查询提示')

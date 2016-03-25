@@ -64,6 +64,7 @@ var
   Form63: TForm63;
   fhdid:string;
   tmpzjje:string;
+  tmpjhdbh:string;
   function SmallTOBig(small:real):string;stdcall;external 'dlltools.dll';
 
 implementation
@@ -98,6 +99,12 @@ if application.MessageBox('确定要保存数据吗？','发货出库信息提示',1)=1 then
           zstoredproc1.ParamByName('fhdbh').Value:=edit1.Text;
           zstoredproc1.ParamByName('czry').Value:=main.strUser;
           execProc;
+        end;
+        if tmpjhdbh<>'' then
+        begin
+          StoredProcName:='proc_update_jihuadaninfo_isend_by_jhdbh';
+          paramByName('jhdbh').Value:=tmpjhdbh;
+          ExecProc;
         end;
         application.MessageBox('发货单出库成功！','发货出库信息提示');
         edit1.Text:='';
@@ -160,6 +167,7 @@ procedure TForm63.FormShow(Sender: TObject);
 var
   i:integer;
 begin
+  tmpjhdbh:='';
   try
     with zstoredproc1 do
     begin
@@ -176,6 +184,7 @@ begin
       edit16.Text:=fields[5].AsString;
       edit17.Text:=fields[6].AsString;
       edit5.Text:=fields[7].AsString;
+      tmpjhdbh:=fields[9].AsString;
       zstoredproc1.NextResultSet;
       i:=1;
       stringgrid1.Cells[0,0]:='序号';
