@@ -133,6 +133,7 @@ type
     Button89: TButton;
     TrayIcon1: TTrayIcon;
     ImageList1: TImageList;
+    Button90: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -231,6 +232,7 @@ type
     procedure Button88Click(Sender: TObject);
     procedure Button89Click(Sender: TObject);
     procedure TrayIcon1Animate(Sender: TObject);
+    procedure Button90Click(Sender: TObject);
   private
     { Private declarations }
     {procedure WMSysCommand(var Message: TMessage);
@@ -283,7 +285,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      kptzskpqr,bcpkczzgl,bcpkcgz,
      scjhzggl,scjhjdgz,wxjgdtz,scjhkcgz,
      jhdjs,wwcrwslcx,rwslcxbyrwdbh,yjsjhdcx,
-     delhtinfo;
+     delhtinfo,fhdcxyfh;
 
 {$R *.dfm}
 
@@ -525,7 +527,7 @@ end;
 
 procedure TForm1.Button33Click(Sender: TObject);
 begin
-  if(main.strUser='Admin') then
+  if(main.strUser='admin') then
     cpck.Form30.Show
   else
     application.MessageBox('产品发货出库请走正常流程！','系统提示');
@@ -943,6 +945,14 @@ procedure TForm1.Button8Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,6,1)='1') then
     xzht.Form28.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button90Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,15,1)='1') then
+    fhdcxyfh.Form100.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

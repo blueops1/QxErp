@@ -346,6 +346,9 @@
 			<DCCReference Include="delhtinfo.pas">
 				<Form>Form99</Form>
 			</DCCReference>
+			<DCCReference Include="fhdcxyfh.pas">
+				<Form>Form100</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

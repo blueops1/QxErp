@@ -307,7 +307,7 @@ procedure TForm77.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
 begin
   sARow:=ARow;
   if (stringgrid1.RowCount>2) and (ARow>0) and (ARow<stringgrid1.RowCount-1) then
-    fhdid:=stringgrid1.Cells[0,ARow]
+    fhdid:=stringgrid1.Cells[1,ARow]
   else
     fhdid:='';
 end;

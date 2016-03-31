@@ -1,0 +1,31 @@
+unit fhdcxyfh;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
+  Grids, ExtCtrls;
+
+type
+  TForm100 = class(TForm)
+    Label1: TLabel;
+    Edit1: TEdit;
+    RadioGroup1: TRadioGroup;
+    StringGrid1: TStringGrid;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form100: TForm100;
+
+implementation
+
+{$R *.dfm}
+
+end.

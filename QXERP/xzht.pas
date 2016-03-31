@@ -92,25 +92,39 @@ begin
 end;
 
 procedure TForm28.Button1Click(Sender: TObject);
+var
+  booldouble:boolean;
+  i:integer;
 begin
-  if (edit1.Text<>'') and (edit1.Text<>'') and (combobox1.Text<>'')and (edit2.Text<>'') and (combobox3.Text<>'') then
-    if (edit7.Text<>'') and (edit8.Text<>'') and (combobox4.Text<>'') then
-      begin
-        stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
-        stringgrid1.Cells[1,stringgrid1.RowCount-2]:=combobox4.Text;
-        stringgrid1.Cells[2,stringgrid1.RowCount-2]:=edit7.Text;
-        stringgrid1.Cells[3,stringgrid1.RowCount-2]:=edit8.Text;
-        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
-        edit11.Text:=floattostr(strtofloat(edit11.Text)+strtofloat(stringgrid1.Cells[2,stringgrid1.RowCount-2])*strtofloat(stringgrid1.Cells[3,stringgrid1.RowCount-2]));
-        combobox4.Text:='';
-        edit7.Text:='';
-        edit8.Text:='';
-        combobox4.SetFocus;
-      end else
-      application.MessageBox('请将明细填写！','新增合同提示')
-  else
-    application.MessageBox('请先将合同信息填写完整！','新增合同提示');
+  booldouble:=false;
+  for i := 1 to stringgrid1.RowCount - 1 do
+  begin
+    if combobox1.Text=stringgrid1.Cells[1,i] then
+       booldouble:=true;
+  end;
+    if booldouble=true then
+      application.MessageBox('该产品已在下面列表中，请确认！','新增合同提示')
+    else
+     begin
+        if (edit1.Text<>'') and (edit1.Text<>'') and (combobox1.Text<>'')and (edit2.Text<>'') and (combobox3.Text<>'') then
+          if (edit7.Text<>'') and (edit8.Text<>'') and (combobox4.Text<>'') then
+            begin
+              stringgrid1.RowCount:=stringgrid1.RowCount+1;
+              stringgrid1.Cells[0,stringgrid1.RowCount-2]:=inttostr(stringgrid1.RowCount-2);
+              stringgrid1.Cells[1,stringgrid1.RowCount-2]:=combobox4.Text;
+              stringgrid1.Cells[2,stringgrid1.RowCount-2]:=edit7.Text;
+              stringgrid1.Cells[3,stringgrid1.RowCount-2]:=edit8.Text;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+              edit11.Text:=floattostr(strtofloat(edit11.Text)+strtofloat(stringgrid1.Cells[2,stringgrid1.RowCount-2])*strtofloat(stringgrid1.Cells[3,stringgrid1.RowCount-2]));
+              combobox4.Text:='';
+              edit7.Text:='';
+              edit8.Text:='';
+              combobox4.SetFocus;
+            end else
+            application.MessageBox('请将明细填写！','新增合同提示')
+        else
+          application.MessageBox('请先将合同信息填写完整！','新增合同提示');
+    end;
 end;
 
 procedure TForm28.Button2Click(Sender: TObject);

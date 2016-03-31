@@ -82,12 +82,12 @@ object Form85: TForm85
     Caption = #32852#31995#30005#35805
   end
   object Label5: TLabel
-    Left = 33
+    Left = 21
     Top = 453
-    Width = 60
+    Width = 72
     Height = 13
     Alignment = taRightJustify
-    Caption = #36890#30693#20070#22791#27880
+    Caption = #24320#31080#20449#24687#22791#27880
   end
   object Label6: TLabel
     Left = 33
@@ -108,6 +108,21 @@ object Form85: TForm85
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 107
+    Top = 505
+    Width = 224
+    Height = 13
+    Caption = #24320#31080#20449#24687#22791#27880#35831#22635#20837#65306#21457#31080#32534#21495'+'#22791#27880#20449#24687
+    Color = clRed
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentColor = False
     ParentFont = False
   end
   object Edit1: TEdit
@@ -230,8 +245,10 @@ object Form85: TForm85
     Top = 450
     Width = 664
     Height = 49
+    Hint = #36755#20837#21457#31080#32534#21495'+'#22791#27880#20449#24687
     TabStop = False
-    ReadOnly = True
+    ParentShowHint = False
+    ShowHint = False
     TabOrder = 11
   end
   object Button4: TButton

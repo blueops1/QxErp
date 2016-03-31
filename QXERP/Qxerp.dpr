@@ -102,7 +102,8 @@ uses
   wwcrwslcx in 'wwcrwslcx.pas' {Form96},
   rwslcxbyrwdbh in 'rwslcxbyrwdbh.pas' {Form97},
   yjsjhdcx in 'yjsjhdcx.pas' {Form98},
-  delhtinfo in 'delhtinfo.pas' {Form99};
+  delhtinfo in 'delhtinfo.pas' {Form99},
+  fhdcxyfh in 'fhdcxyfh.pas' {Form100};
 
 {$R *.res}
 
@@ -211,5 +212,6 @@ begin
   Application.CreateForm(TForm97, Form97);
   Application.CreateForm(TForm98, Form98);
   Application.CreateForm(TForm99, Form99);
+  Application.CreateForm(TForm100, Form100);
   Application.Run;
 end.

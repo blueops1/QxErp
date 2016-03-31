@@ -86,23 +86,40 @@ end;
 
 procedure TForm59.Button1Click(Sender: TObject);
 begin
-  if (edit1.Text<>'') and (combobox1.Text<>'')and (combobox3.Text<>'') then
-    if (edit7.Text<>'') and (edit8.Text<>'') and (combobox4.Text<>'') then
-      begin
-        stringgrid1.RowCount:=stringgrid1.RowCount+1;
-        stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
-        stringgrid1.Cells[1,stringgrid1.RowCount-1]:=combobox4.Text;
-        stringgrid1.Cells[2,stringgrid1.RowCount-1]:=edit7.Text;
-        stringgrid1.Cells[3,stringgrid1.RowCount-1]:=edit8.Text;
-        edit11.Text:=floattostr(strtofloat(edit11.Text)+strtofloat(stringgrid1.Cells[2,stringgrid1.RowCount-1])*strtofloat(stringgrid1.Cells[3,stringgrid1.RowCount-1]));
-        combobox4.Text:='';
-        edit7.Text:='';
-        edit8.Text:='';
-        combobox4.SetFocus;
-      end else
-      application.MessageBox('请将明细填写！','新增合同提示')
-  else
-    application.MessageBox('请先将合同信息填写完整！','新增合同提示');
+  try
+    with zstoredproc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_cx_lhttjmx_cpbh_double_exzm_by_htbh_cpbh';
+      zstoredproc1.ParamByName('htbh').Value:=edit1.Text;
+      zstoredproc1.ParamByName('cpbh').Value:=splitstring(combobox4.Text,'|');
+      ExecProc;
+        if ParamByName('returncode').Value=1 then
+          application.MessageBox('该产品信息已经存在！请在明细中调整。','合同信息管理提示')
+        else
+          begin
+            if (edit1.Text<>'') and (combobox1.Text<>'')and (combobox3.Text<>'') then
+              if (edit7.Text<>'') and (edit8.Text<>'') and (combobox4.Text<>'') then
+                begin
+                  stringgrid1.RowCount:=stringgrid1.RowCount+1;
+                  stringgrid1.Cells[0,stringgrid1.RowCount-1]:=inttostr(stringgrid1.RowCount-1);
+                  stringgrid1.Cells[1,stringgrid1.RowCount-1]:=combobox4.Text;
+                  stringgrid1.Cells[2,stringgrid1.RowCount-1]:=edit7.Text;
+                  stringgrid1.Cells[3,stringgrid1.RowCount-1]:=edit8.Text;
+                  edit11.Text:=floattostr(strtofloat(edit11.Text)+strtofloat(stringgrid1.Cells[2,stringgrid1.RowCount-1])*strtofloat(stringgrid1.Cells[3,stringgrid1.RowCount-1]));
+                  combobox4.Text:='';
+                  edit7.Text:='';
+                  edit8.Text:='';
+                  combobox4.SetFocus;
+                end else
+                  application.MessageBox('请将明细填写！','新增合同提示')
+            else
+              application.MessageBox('请先将合同信息填写完整！','新增合同提示');
+          end;
+      end;
+  except
+    application.MessageBox('信息查询失败！','合同信息管理提示');
+  end;
 end;
 
 procedure TForm59.Button2Click(Sender: TObject);

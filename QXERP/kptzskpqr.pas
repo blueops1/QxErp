@@ -35,6 +35,7 @@ type
     Edit4: TEdit;
     ZStoredProc1: TZStoredProc;
     Label1: TLabel;
+    Label7: TLabel;
     procedure Edit2KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
@@ -57,6 +58,8 @@ uses main,fhdxxzl;
 {$R *.dfm}
 
 procedure TForm85.Button3Click(Sender: TObject);
+var
+  i:integer;
 begin                              //proc_update_kptzskpqr_by_kptzsid
 if (edit2.Text<>'') and (stringgrid1.RowCount>2) then
   try
@@ -64,8 +67,14 @@ if (edit2.Text<>'') and (stringgrid1.RowCount>2) then
     begin
       close;
       StoredProcName:='proc_update_kptzskpqr_by_kptzsid';
-      ParamByName('kptzsid').Value:=edit2.Text;
-      ExecProc;
+      for I := 1 to stringgrid1.RowCount - 2 do
+      begin
+        ParamByName('kptzsid').Value:=edit2.Text;
+        ParamByName('yskbh').Value:=edit1.Text;
+        ParamByName('kpje').Value:=stringgrid1.Cells[3,i];
+        ParamByName('kpmemo').Value:='*'+main.strUser+memo2.Text;
+        execProc;
+      end;
       application.MessageBox('确认已成功！','开票通知书已开票确认提示');
       memo2.Text:='';
       edit1.Text:='';
@@ -77,6 +86,7 @@ if (edit2.Text<>'') and (stringgrid1.RowCount>2) then
       edit12.text:='';
       edit13.text:='';
       memo1.Lines.Clear;
+      memo2.Lines.Clear;
       stringgrid1.RowCount:=2;
       stringgrid1.Rows[1].Clear;
       edit2.text:='';
@@ -113,6 +123,7 @@ procedure TForm85.Edit2KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 var
   i:integer;
+  txtkptzd:string;
 begin
   if (key=13) and (edit2.Text<>'') then
     try
@@ -125,7 +136,7 @@ begin
         firstresultset;
         if not eof then        //fmemo,fhtbh,fkpje
         begin
-          memo2.Text:=fields[0].AsString;
+          txtkptzd:=fields[0].AsString;
           edit1.Text:= fields[1].AsString;
           edit4.Text:= fields[2].AsString;
         end;
@@ -141,7 +152,7 @@ begin
             stringgrid1.Cells[2,i]:=fields[1].AsString;
             stringgrid1.Cells[3,i]:=fields[2].AsString;
             stringgrid1.Cells[4,i]:=fields[3].AsString;
-            edit4.Text:=floattostr(strtofloat(edit4.Text)+strtofloat(fields[2].asstring));
+            //edit4.Text:=floattostr(strtofloat(edit4.Text)+strtofloat(fields[2].asstring));
             i:=i+1;
             stringgrid1.Rows[stringgrid1.RowCount-1].Clear;         //proc_cx_newkptzsid
           next;
@@ -158,7 +169,7 @@ begin
           edit3.text:=fields[3].AsString;
           edit12.text:=fields[4].AsString;
           edit13.text:=fields[5].AsString;
-          memo1.Text:=fields[6].AsString;
+          memo1.Text:=fields[6].AsString+'    开票通知单备注:'+txtkptzd;
         end;
       end;
     except
