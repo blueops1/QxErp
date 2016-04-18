@@ -28,6 +28,9 @@ type
     Label6: TLabel;
     Button3: TButton;
     Memo1: TMemo;
+    Edit3: TEdit;
+    UpDown1: TUpDown;
+    Label7: TLabel;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button2Click(Sender: TObject);
@@ -40,6 +43,7 @@ type
       var CanSelect: Boolean);
     procedure Edit2KeyPress(Sender: TObject; var Key: Char);
     procedure ComboBox1Select(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -114,7 +118,7 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
             while x<length(strBcpbh) do
             begin
               ParamByName('bcpbh').Value:=StrBcpbh[x];
-              ParamByName('cksl').Value:=stringgrid1.Cells[2,i];
+              ParamByName('cksl').Value:=strtofloat(stringgrid1.Cells[2,i])*strtofloat(edit3.Text);
               ParamByName('jzdate').Value:=stringgrid1.Cells[3,i];
               ParamByName('czry').Value:=main.strUser;
               ExecProc;
@@ -126,6 +130,7 @@ begin   //proc_insert_cpcrkmxz_cprk   cpbh,rksl,jzdate,memo
         stringgrid1.Rows[1].Clear;
         edit1.Text:='';
         edit2.Text:='';
+        edit3.Text:='1';
         edit4.Text:='';
         combobox1.Text:='';
         combobox1.SetFocus;
@@ -171,6 +176,11 @@ begin
       end else
       application.MessageBox('请将明细填写完整！','成品入库提示');
     end;
+end;
+
+procedure TForm29.Button3Click(Sender: TObject);
+begin
+edit3.Text:='1';
 end;
 
 procedure TForm29.ComboBox1KeyDown(Sender: TObject; var Key: Word;

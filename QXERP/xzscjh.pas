@@ -168,7 +168,7 @@ begin
         zstoredproc1.ParamByName('rwdbh').Value:=edit2.Text;
         zstoredproc1.ParamByName('jhksdate').Value:=now();
         zstoredproc1.ParamByName('jhfhdate').Value:=datetimepicker1.Date;
-        zstoredproc1.ParamByName('memo').Value:='*'+memo1.Text;
+        zstoredproc1.ParamByName('memo').Value:='*'+memo1.Text+'  ÷∆µ•»À:'+main.strUser;
         execProc;
         zstoredproc1.StoredProcName:='proc_insert_jihuadan_mxz';  //cpbh,jhsl
         for y := 1 to stringgrid3.RowCount - 2 do

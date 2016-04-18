@@ -76,9 +76,10 @@ begin
       with zStoredProc1 do
       begin
         close;
-        StoredProcName:='proc_insert_scjhdtips';
+        StoredProcName:='proc_insert_scjhdtips_by_czyid';
         ParamByName('scjhdbh').Value:=stringgrid1.Cells[1,SelArow];
         ParamByName('czlx').Value:='ADD';
+        ParamByName('czyid').Value:=main.strUser;
         ExecProc;
         application.MessageBox('增加计划单跟踪项目成功！','生产计划单跟踪信息提示');
         stringgrid2.RowCount:=stringgrid2.RowCount+1;
@@ -102,13 +103,15 @@ begin
     with zStoredProc1 do
     begin
       close;
-      StoredProcName:='proc_insert_scjhdtips';
+      StoredProcName:='proc_insert_scjhdtips_by_czyid';
       ParamByName('scjhdbh').Value:=stringgrid2.Cells[1,gzSelARow];
       ParamByName('czlx').Value:='DEL';
+      ParamByName('czyid').Value:=main.strUser;
       ExecProc;
       DeleteStringGridRow(gzSelARow,stringgrid2);
       close;
-      zstoredproc1.StoredProcName:='proc_cx_wgzjhd';
+      zstoredproc1.StoredProcName:='proc_wgzjhd_by_czyid';
+      ParamByName('czyid').Value:=main.strUser;
       open;
       i:=1;
       stringgrid1.RowCount:=2;
@@ -139,12 +142,14 @@ begin
     with zStoredProc1 do
     begin
       close;
-      StoredProcName:='proc_insert_scjhdtips';
+      StoredProcName:='proc_insert_scjhdtips_by_czyid';
       ParamByName('scjhdbh').Value:='';
       ParamByName('czlx').Value:='CLR';
+      ParamByName('czyid').Value:=main.strUser;
       ExecProc;
       close;
-      zstoredproc1.StoredProcName:='proc_cx_wgzjhd';
+      zstoredproc1.StoredProcName:='proc_wgzjhd_by_czyid';
+      ParamByName('czyid').Value:=main.strUser;
       open;
       i:=1;
       stringgrid1.RowCount:=2;
@@ -160,6 +165,10 @@ begin
         next;
       end;
       application.MessageBox('删除计划单跟踪项目成功！','生产计划单跟踪信息提示');
+    end;
+    for I := 1 to stringgrid2.RowCount - 1 do
+    begin
+      stringgrid2.Rows[i].Clear;
     end;
       stringgrid2.RowCount:=2;
       stringgrid2.Rows[1].Clear;
@@ -187,7 +196,8 @@ begin
       with zstoredproc1 do
       begin
         close;
-        zstoredproc1.StoredProcName:='proc_cx_wgzjhd';
+        zstoredproc1.StoredProcName:='proc_wgzjhd_by_czyid';
+        ParamByName('czyid').Value:=main.strUser;
         open;
         i:=1;
         stringgrid1.RowCount:=2;
@@ -203,7 +213,8 @@ begin
            next;
         end;
         close;
-        StoredProcName:='proc_cx_ygzscjhd';
+        StoredProcName:='proc_cx_ygzscjhd_by_czyid';
+        ParamByName('czyid').Value:=main.strUser;
         open;
         i:=1;
         while not eof do

@@ -181,7 +181,7 @@ object Form14: TForm14
         Top = 223
         Width = 97
         Height = 17
-        Caption = #21322#25104#21697#31649#29702
+        Caption = #22806#21327#21152#24037#31649#29702
         TabOrder = 3
       end
       object CheckBox2: TCheckBox
@@ -213,7 +213,7 @@ object Form14: TForm14
         Top = 183
         Width = 97
         Height = 17
-        Caption = #21512#21516#26041#31649#29702
+        Caption = #26242#26080'5-5'
         TabOrder = 7
       end
       object CheckBox6: TCheckBox
@@ -221,7 +221,7 @@ object Form14: TForm14
         Top = 220
         Width = 97
         Height = 17
-        Caption = #24212#25910#27454#35760#24080
+        Caption = #24212#25910#27454#31649#29702
         TabOrder = 8
       end
       object CheckBox7: TCheckBox
@@ -254,7 +254,7 @@ object Form14: TForm14
         Top = 183
         Width = 97
         Height = 17
-        Caption = #38144#21806#21592#31649#29702
+        Caption = #38144#21806#31649#29702
         TabOrder = 12
       end
       object CheckBox11: TCheckBox
@@ -262,7 +262,7 @@ object Form14: TForm14
         Top = 343
         Width = 97
         Height = 17
-        Caption = #35831#20551#31649#29702
+        Caption = 'OA'#21150#20844
         TabOrder = 13
       end
       object CheckBox12: TCheckBox
@@ -270,7 +270,7 @@ object Form14: TForm14
         Top = 300
         Width = 97
         Height = 17
-        Caption = #24120#35268#24211#23384#36319#36394
+        Caption = #29983#20135#35745#21010
         TabOrder = 14
       end
       object CheckBox13: TCheckBox
@@ -278,7 +278,7 @@ object Form14: TForm14
         Top = 183
         Width = 97
         Height = 17
-        Caption = #20027#31649#21333#20301#31649#29702
+        Caption = #26242#26080'13-4'
         TabOrder = 15
       end
       object CheckBox14: TCheckBox
@@ -318,7 +318,7 @@ object Form14: TForm14
         Top = 183
         Width = 97
         Height = 17
-        Caption = #21512#21516#31649#29702
+        Caption = #26242#26080'18-6'
         TabOrder = 20
       end
       object CheckBox19: TCheckBox
@@ -326,7 +326,7 @@ object Form14: TForm14
         Top = 220
         Width = 97
         Height = 17
-        Caption = #24212#25910#27454#26597#35810
+        Caption = #32467#31639#20013#24515
         TabOrder = 21
       end
       object CheckBox20: TCheckBox
@@ -342,7 +342,7 @@ object Form14: TForm14
         Top = 300
         Width = 97
         Height = 17
-        Caption = #25104#21697#31649#29702
+        Caption = #26242#26080'21-16'
         TabOrder = 23
       end
       object CheckBox22: TCheckBox

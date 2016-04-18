@@ -63,10 +63,11 @@ begin
     begin
       close;
       if strgzlx='cgkcgz' then
-        StoredProcName:='proc_cx_sjscjhmxz'
+        StoredProcName:='proc_cx_sjscjhmxz_by_czyid'
       else
-        StoredProcName:='proc_cx_scjhdsjscmxz';
+        StoredProcName:='proc_cx_scjhdsjscmxz_by_czyid';
       ParamByName('cxitem').Value:=strcxitem;
+      ParamByName('czyid').Value:=main.strUser;
       open;
       i:=1;
       while not eof do

@@ -60,6 +60,7 @@ type
     procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Edit7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -119,7 +120,7 @@ begin
   boolnull:=true;
   for i:=0 to 35 do
   begin
-    if (i<>24) and (i<>33) and (i<>28) and (i<>22) and (i<>25) and (i<>30) and (form19.Components[i] is tedit)  then
+    if (i<>33) and (i<>28) and (i<>22) and (i<>25) and (i<>30) and (form19.Components[i] is tedit)  then
       if tedit(form19.Components[i]).Text='' then
       begin
         //application.MessageBox(pwidechar(form19.Components[i].Name+'|'+inttostr(i)),'aa');
@@ -321,6 +322,11 @@ if key=13 then
     except
       application.MessageBox('查询数据失败！','货运单管理提示');
     end;
+end;
+
+procedure TForm19.Edit7Click(Sender: TObject);
+begin
+  //edit7.Text:=inttostr(edit7.ComponentIndex);
 end;
 
 procedure TForm19.FormShow(Sender: TObject);

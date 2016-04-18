@@ -273,19 +273,19 @@ begin
     if MidStr(strQx,4,1)='0' then
       checkbox13.Checked := false
     else
-      checkbox13.Checked :=true;     //主管单位管理 13 4
+      checkbox13.Checked :=true;     //暂无 13 4
     if MidStr(strQx,5,1)='0' then
       checkbox5.Checked := false
     else
-      checkbox5.Checked :=true;    //合同方管理 5 5
+      checkbox5.Checked :=true;    //暂无 5 5
     if MidStr(strQx,6,1)='0' then
       checkbox18.Checked := false
     else
-      checkbox18.Checked :=true;      //合同管理 18 6
+      checkbox18.Checked :=true;      //暂无 18 6
     if MidStr(strQx,12,1)='0' then
       checkbox1.Checked := false
     else
-      checkbox1.Checked :=true;      //半成品管理 1 12
+      checkbox1.Checked :=true;      //外协加工 1 12
     if MidStr(strQx,9,1)='0' then
       checkbox14.Checked := false
     else
@@ -293,11 +293,11 @@ begin
     if MidStr(strQx,10,1)='0' then
       checkbox6.Checked := false
     else
-      checkbox6.Checked :=true;      //应收款记帐 6 10
+      checkbox6.Checked :=true;      //应收款管理 6 10
     if MidStr(strQx,7,1)='0' then
       checkbox19.Checked := false
     else
-      checkbox19.Checked :=true;      //应收款查询 19 7
+      checkbox19.Checked :=true;      //结算中心 19 7
     if MidStr(strQx,8,1)='0' then
       checkbox2.Checked := false
     else
@@ -317,15 +317,15 @@ begin
     if MidStr(strQx,1,1)='0' then
       checkbox4.Checked := false
     else
-      checkbox4.Checked :=true;      //暂无2 4 1
+      checkbox4.Checked :=true;      //发货管理 4 1
     if MidStr(strQx,3,1)='0' then
       checkbox16.Checked := false
     else
-      checkbox16.Checked :=true;      //暂无3 16 3
+      checkbox16.Checked :=true;      //查询统计 16 3
     if MidStr(strQx,15,1)='0' then
       checkbox12.Checked := false
     else
-      checkbox12.Checked :=true;      //暂无4 12 15
+      checkbox12.Checked :=true;      //生产计划 12 15
     if MidStr(strQx,16,1)='0' then
       checkbox21.Checked := false
     else
@@ -333,15 +333,15 @@ begin
     if MidStr(strQx,17,1)='0' then
       checkbox3.Checked := false
     else
-      checkbox3.Checked :=true;      //暂无6 3 17
+      checkbox3.Checked :=true;      //质量管理 3 17
     if MidStr(strQx,18,1)='0' then
       checkbox17.Checked := false
     else
-      checkbox17.Checked :=true;      //暂无7 17 18
+      checkbox17.Checked :=true;      //生产管理 17 18
     if MidStr(strQx,19,1)='0' then
       checkbox11.Checked := false
     else
-      checkbox11.Checked :=true;      //暂无8 11 19
+      checkbox11.Checked :=true;      //OA办公 11 19
     if MidStr(strQx,20,1)='0' then
       checkbox22.Checked := false
     else

@@ -134,8 +134,8 @@ object Form36: TForm36
     OnClick = Button3Click
   end
   object Button4: TButton
-    Left = 805
-    Top = 520
+    Left = 814
+    Top = 526
     Width = 97
     Height = 25
     Caption = #20445#23384#35745#21010#20449#24687

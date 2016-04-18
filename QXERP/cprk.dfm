@@ -26,7 +26,7 @@ object Form29: TForm29
     Caption = #20135#21697#32534#21495
   end
   object Label2: TLabel
-    Left = 347
+    Left = 316
     Top = 32
     Width = 49
     Height = 13
@@ -35,7 +35,7 @@ object Form29: TForm29
     Caption = #20837#24211#25968#37327
   end
   object Label3: TLabel
-    Left = 546
+    Left = 583
     Top = 32
     Width = 48
     Height = 13
@@ -67,19 +67,28 @@ object Form29: TForm29
     Alignment = taRightJustify
     Caption = #21322#25104#21697#20449#24687
   end
+  object Label7: TLabel
+    Left = 465
+    Top = 32
+    Width = 48
+    Height = 13
+    Alignment = taRightJustify
+    AutoSize = False
+    Caption = #27604#20363' 1'#65306
+  end
   object Edit2: TEdit
-    Left = 418
+    Left = 374
     Top = 29
-    Width = 97
-    Height = 21
+    Width = 79
+    Height = 20
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 0
     OnKeyPress = Edit2KeyPress
   end
   object DateTimePicker1: TDateTimePicker
-    Left = 614
+    Left = 635
     Top = 29
-    Width = 115
+    Width = 94
     Height = 21
     Date = 42180.606373275460000000
     Time = 42180.606373275460000000
@@ -89,7 +98,7 @@ object Form29: TForm29
   object Edit4: TEdit
     Left = 122
     Top = 69
-    Width = 495
+    Width = 509
     Height = 21
     ImeName = #20013#25991'('#31616#20307') - '#26497#28857#20116#31508
     TabOrder = 2
@@ -122,9 +131,9 @@ object Form29: TForm29
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 623
+    Left = 635
     Top = 67
-    Width = 106
+    Width = 94
     Height = 25
     Caption = #28155#21152#26126#32454
     TabOrder = 5
@@ -158,6 +167,7 @@ object Form29: TForm29
     Caption = #32534#36753#21322#25104#21697#20449#24687
     TabOrder = 8
     Visible = False
+    OnClick = Button3Click
   end
   object Memo1: TMemo
     Left = 122
@@ -171,6 +181,32 @@ object Form29: TForm29
     Font.Style = []
     ParentFont = False
     TabOrder = 9
+  end
+  object Edit3: TEdit
+    Left = 510
+    Top = 30
+    Width = 36
+    Height = 21
+    Alignment = taCenter
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 10
+    Text = '0'
+  end
+  object UpDown1: TUpDown
+    Left = 550
+    Top = 30
+    Width = 16
+    Height = 21
+    Associate = Edit3
+    Min = 1
+    Max = 10
+    TabOrder = 11
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

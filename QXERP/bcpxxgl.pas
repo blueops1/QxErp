@@ -104,7 +104,9 @@ type
 
 var
   Form11: TForm11;
+  boolcxend:boolean;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+
 
 implementation
 
@@ -194,7 +196,7 @@ end;
 
 procedure TForm11.Button1Click(Sender: TObject);
 begin
-  if (edit19.Text <> '') and (edit20.Text <> '') and (combobox24.Text <> '') and (combobox25.Text <> '') and (combobox26.Text <> '')  then
+  if (edit19.Text <> '') and (edit20.Text <> '') and (SplitString(combobox24.Text,'|') <> '') and (combobox25.Text <> '') and (SplitString(combobox26.Text,'|') <> '')  then
   begin
     try
       with zStoredProc1 do   //proc_insert_bcplxk_bcpkcb   bcpbh,bcpmc,bcplxbh,sscpbh,sscpbh1,memo,czry
@@ -215,7 +217,10 @@ begin
         ExecProc;
         memo2.Lines.Add(combobox26.Text);
         combobox26.Text := '';
-        Application.MessageBox('新增半成品信息成功！','半成品管理提示');
+        if ParamByName('returncode').Value=1 then
+           Application.MessageBox('半成品编号已存在，保存失败！','半成品管理提示')
+        else
+          Application.MessageBox('新增半成品信息成功！','半成品管理提示');
       end;
       edit20.SetFocus;
     Except
@@ -350,6 +355,7 @@ end;
 procedure TForm11.ComboBox24DropDown(Sender: TObject);
 begin
   combobox24.Items.Clear;
+  boolcxend:=false;
   with zStoredProc1 do
   begin
     close;
@@ -360,12 +366,13 @@ begin
        combobox24.Items.Add(fields[0].asstring);
        next;
     end;
+  boolcxend:=true;
   end;
 end;
 
 procedure TForm11.ComboBox24Select(Sender: TObject);
 begin
-if edit20.Text<>'' then
+if (edit20.Text<>'') and (boolcxend=true) then
   try
     with  zStoredProc1 do
     begin
@@ -378,6 +385,7 @@ if edit20.Text<>'' then
       else
         ParamByName('bcplxbh').Value:='';
       open;
+      firstresultset;
       memo2.Lines.Clear;
       while not eof do
       begin

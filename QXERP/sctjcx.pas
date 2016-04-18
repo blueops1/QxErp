@@ -315,7 +315,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where fjzdate>='''+datetimetostr(datetimepicker1.Date)+''' and fjzdate<='''+datetimetostr(datetimepicker2.Date)+''' and fcpbh='''+strCpbh+'''');
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,CONCAT(fczry,fmemo) from cpcrkmxz where fjzdate>='''+datetimetostr(datetimepicker1.Date)+''' and fjzdate<='''+datetimetostr(datetimepicker2.Date)+''' and fcpbh='''+strCpbh+'''');
       open;
       stringgrid2.RowCount:=RecordCount+1;
       while not eof do
@@ -351,7 +351,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where week(fjzdate)=week('''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,CONCAT(fczry,fmemo) from cpcrkmxz where week(fjzdate)=week('''+datetimetostr(datetimepicker3.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker3.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
       open;
       stringgrid4.RowCount:=RecordCount+1;
       while not eof do
@@ -388,7 +388,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where month(fjzdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker4.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,CONCAT(fczry,fmemo) from cpcrkmxz where month(fjzdate)=month('''+datetimetostr(datetimepicker4.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker4.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
       open;
       stringgrid6.RowCount:=RecordCount+1;
       while not eof do
@@ -424,7 +424,7 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('select fcpbh,frksl,fcksl,fjzdate,fmemo from cpcrkmxz where year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
+      sql.Add('select fcpbh,frksl,fcksl,fjzdate,CONCAT(fczry,fmemo) from cpcrkmxz where year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and year(fjzdate)=year('''+datetimetostr(datetimepicker5.Date)+''') and fisdel=''N'' and fcpbh='''+strCpbh+'''');
       open;
       stringgrid8.RowCount:=RecordCount+1;
       while not eof do

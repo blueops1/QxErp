@@ -67,7 +67,8 @@ begin
     with zStoredProc1 do
     begin
       close;
-      StoredProcName:='proc_cx_scjhdtips_gziteminfo';
+      StoredProcName:='proc_cx_scjhdtips_gziteminfo_by_czyid';
+      ParamByName('czyid').Value:=main.strUser;
       open;
       i:=1;
       while not eof do

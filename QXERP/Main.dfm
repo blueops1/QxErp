@@ -723,6 +723,46 @@ object Form1: TForm1
         OnClick = Button89Click
       end
     end
+    object TabSheet11: TTabSheet
+      Caption = #29983#20135#35745#21010
+      ImageIndex = 10
+      object Button91: TButton
+        Left = 160
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20219#21153#21333#26597#35810
+        TabOrder = 0
+        OnClick = Button91Click
+      end
+      object Button92: TButton
+        Left = 296
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20219#21153#21333#20998#21333#26597#35810
+        TabOrder = 1
+        OnClick = Button92Click
+      end
+      object Button93: TButton
+        Left = 432
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20219#21153#21333#32467#26463#22788#29702
+        TabOrder = 2
+        OnClick = Button93Click
+      end
+      object Button94: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #26032#22686#29983#20135#35745#21010
+        TabOrder = 3
+        OnClick = Button94Click
+      end
+    end
     object TabSheet2: TTabSheet
       Caption = #29983#20135#31649#29702
       ImageIndex = 1
@@ -861,6 +901,15 @@ object Form1: TForm1
         TabOrder = 14
         OnClick = Button88Click
       end
+      object Button95: TButton
+        Left = 568
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #20135#25104#21697#20837#24211
+        TabOrder = 15
+        OnClick = Button95Click
+      end
     end
     object TabSheet10: TTabSheet
       Caption = #22806#21327#21152#24037
@@ -901,40 +950,13 @@ object Form1: TForm1
         TabOrder = 3
         OnClick = Button53Click
       end
-      object Button76: TButton
-        Left = 296
-        Top = 200
-        Width = 97
-        Height = 65
-        Caption = #21152#24037#21333#32467#31639
-        TabOrder = 4
-        OnClick = Button76Click
-      end
-      object Button77: TButton
-        Left = 432
-        Top = 200
-        Width = 97
-        Height = 65
-        Caption = #21152#24037#21333#32467#31639#25171#21360
-        TabOrder = 5
-        OnClick = Button77Click
-      end
-      object Button78: TButton
-        Left = 568
-        Top = 200
-        Width = 97
-        Height = 65
-        Caption = #21152#24037#21333#32467#31639#30830#35748
-        TabOrder = 6
-        OnClick = Button78Click
-      end
       object Button84: TButton
         Left = 568
         Top = 104
         Width = 97
         Height = 65
         Caption = #21152#24037#21333#20462#25913
-        TabOrder = 7
+        TabOrder = 4
         OnClick = Button84Click
       end
     end
@@ -1262,40 +1284,31 @@ object Form1: TForm1
     object TabSheet4: TTabSheet
       Caption = #25910#27454#31649#29702
       ImageIndex = 3
-      object Button6: TButton
+      object Button7: TButton
         Left = 160
         Top = 104
         Width = 97
         Height = 65
-        Caption = #24212#25910#27454#35760#24080
+        Caption = #24212#25910#27454#26597#35810
         TabOrder = 0
-        OnClick = Button6Click
+        OnClick = Button7Click
       end
-      object Button7: TButton
+      object Button18: TButton
         Left = 296
         Top = 104
         Width = 97
         Height = 65
-        Caption = #24212#25910#27454#26597#35810
+        Caption = #24212#25910#27454#35686#31034
         TabOrder = 1
-        OnClick = Button7Click
+        OnClick = Button18Click
       end
-      object Button18: TButton
+      object Button16: TButton
         Left = 432
         Top = 104
         Width = 97
         Height = 65
-        Caption = #24212#25910#27454#35686#31034
-        TabOrder = 2
-        OnClick = Button18Click
-      end
-      object Button16: TButton
-        Left = 568
-        Top = 104
-        Width = 97
-        Height = 65
         Caption = #24212#25910#27454#20652#25910#26597#35810
-        TabOrder = 3
+        TabOrder = 2
         OnClick = Button16Click
       end
     end
@@ -1355,6 +1368,46 @@ object Form1: TForm1
         Caption = #35831#20551#26597#35810
         TabOrder = 5
         OnClick = Button58Click
+      end
+    end
+    object TabSheet12: TTabSheet
+      Caption = #32467#31639#20013#24515
+      ImageIndex = 11
+      object Button76: TButton
+        Left = 160
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21152#24037#21333#32467#31639
+        TabOrder = 0
+        OnClick = Button76Click
+      end
+      object Button77: TButton
+        Left = 304
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21152#24037#21333#32467#31639#25171#21360
+        TabOrder = 1
+        OnClick = Button77Click
+      end
+      object Button78: TButton
+        Left = 448
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #21152#24037#21333#32467#31639#30830#35748
+        TabOrder = 2
+        OnClick = Button78Click
+      end
+      object Button6: TButton
+        Left = 592
+        Top = 104
+        Width = 97
+        Height = 65
+        Caption = #24212#25910#27454#35760#24080
+        TabOrder = 3
+        OnClick = Button6Click
       end
     end
     object TabSheet5: TTabSheet
@@ -20096,14 +20149,14 @@ object Form1: TForm1
     BalloonFlags = bfInfo
     Icons = ImageList1
     Visible = True
-    Left = 576
-    Top = 328
+    Left = 920
+    Top = 248
   end
   object ImageList1: TImageList
     Left = 496
     Top = 392
     Bitmap = {
-      494C0101020008003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000800500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000BB7200FFBB7200FFBA7100FFBA72
       00FFBB7100FFB97100FFBA7100FFBA7100FFBA7100FFBA7100FFBA7100FFBA71
