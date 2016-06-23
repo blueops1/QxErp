@@ -32,6 +32,7 @@ type
 var
   Form10: TForm10;
 
+
 implementation
 uses Main,dbconnecter;
 
@@ -111,11 +112,11 @@ begin
       open;
       if not Eof then
       begin
-      main.strUser:=fields[0].AsString;
-      main.strUserQX:=fields[1].AsString;
-      main.isLogined:=true;
-      Main.Form1.StatusBar1.Panels.Items[2].Text := '操作员:'+main.strUser ;
-      form10.Close;
+        main.strUser:=fields[0].AsString;
+        main.strUserQX:=fields[1].AsString;
+        main.isLogined:=true;
+        Main.Form1.StatusBar1.Panels.Items[2].Text := '操作员:'+main.strUser ;
+        form10.Close;
       end else
       begin
         main.isLogined:=false;
@@ -129,10 +130,8 @@ begin
 end;
 
 procedure TForm10.FormActivate(Sender: TObject);
-var
-  oldver,newver:string;
 begin
-    oldver:='2016041801'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
+    main.oldver:='2016062101'; //****版本更新，请更改版本号！！完整日期加当日两位流水号*****；
     main.filename:=extractfilepath(paramstr(0))+'config.ini';
     if FileExists(filename) = False then
     begin
@@ -159,18 +158,20 @@ begin
           begin
               main.Form1.StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接成功!';
               main.Form1.StatusBar1.Panels.Items[1].Text := '当前数据库:'+strDBName+'@'+strServerName;
+              main.sjts:=0;
               with zquery1 do
               begin
                 close;
                 sql.Clear;
-                SQL.Add('select fver from erpupdate_info');
+                SQL.Add('select fver,ifnull(fmemo,''无升级信息'') from erpupdate_info');
                 Open;
                 if (RecordCount >0) and (not Fields.Fields[0].IsNull ) then
                 begin
                   newver:=Fields.Fields[0].AsString;
                   if trim(newver)>oldver then
                   begin
-                    if messagedlg('系统发现新的软件版本，是否升级？',mtconfirmation,[mbok,mbcancel],0)=mrok then
+                    main.sjts:=1;
+                    if messagedlg('系统发现新的软件版本，是否升级？'+#13+#10+fields[1].AsString,mtconfirmation,[mbok,mbcancel],0)=mrok then
                     begin
                       winexec('uppatch.exe',1);
                       application.Terminate;
@@ -178,6 +179,7 @@ begin
                   end;
                 end;
               end;
+              main.Form1.Timer1.Enabled:=true;
           end else
           begin
                dbconnecter.Form3.ShowModal;

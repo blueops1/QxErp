@@ -176,6 +176,8 @@ begin
           end;
           stringgrid1.RowCount:=2;
           stringgrid1.Rows[1].Clear;
+          stringgrid2.RowCount:=2;
+          stringgrid2.Rows[1].Clear;
           i:=1;
           for y := 0 to 2 do
           begin

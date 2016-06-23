@@ -7,7 +7,8 @@ uses
   Dialogs, Menus, ComCtrls, ToolWin, StdCtrls, DB, Grids, ADODB,inifiles, ExtCtrls,StrUtils,math,
   ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
   ZDataset, RpDefine, RpRave, RpCon, RpConDS, RpConBDE, RpBase, RpSystem,
-  IdBaseComponent, IdComponent, IdIPWatch,ShellAPI, ImgList;
+  IdBaseComponent, IdComponent, IdIPWatch,ShellAPI, ImgList, RpRender,
+  RpRenderPDF;
 
  // CONST WM_BARICON=WM_USER+200;
 
@@ -141,6 +142,8 @@ type
     Button78: TButton;
     Button95: TButton;
     Button6: TButton;
+    Button96: TButton;
+    RvRenderPDF1: TRvRenderPDF;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -245,6 +248,7 @@ type
     procedure Button93Click(Sender: TObject);
     procedure Button94Click(Sender: TObject);
     procedure Button95Click(Sender: TObject);
+    procedure Button96Click(Sender: TObject);
   private
     { Private declarations }
     {procedure WMSysCommand(var Message: TMessage);
@@ -273,8 +277,11 @@ var
   intMessage:integer;
   boolMesscandle:boolean;
   strcaption:string;
+  oldver,newver:string;
+  sjts:integer;
   Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+
 
 implementation
 uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
@@ -297,7 +304,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      kptzskpqr,bcpkczzgl,bcpkcgz,
      scjhzggl,scjhjdgz,wxjgdtz,scjhkcgz,
      jhdjs,wwcrwslcx,rwslcxbyrwdbh,yjsjhdcx,
-     delhtinfo,fhdcxyfh;
+     delhtinfo,fhdcxyfh,cpbj;
 
 {$R *.dfm}
 
@@ -675,7 +682,7 @@ end;
 
 procedure TForm1.Button49Click(Sender: TObject);
 begin
-  if(MidStr(main.strUserQX,9,1)='1') then
+  if(main.strUser='admin') then
     wxdwcprk.Form52.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
@@ -1001,6 +1008,14 @@ begin
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
+procedure TForm1.Button96Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,2,1)='1') then
+    cpbj.Form101.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
 procedure TForm1.Button9Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,13,1)='1') then
@@ -1127,9 +1142,28 @@ begin
         form1.Caption:=strcaption;
         panel1.Visible:=false;
       end;
+      close;
+      sql.Clear;
+      SQL.Add('select fver,ifnull(fmemo,''无升级信息'') from erpupdate_info');
+      Open;
+      if (RecordCount >0) and (not Fields.Fields[0].IsNull ) then
+      begin
+        newver:=Fields.Fields[0].AsString;
+        if (trim(newver)>oldver) and (sjts=0) then
+        begin
+        messagedlg('系统发现新的软件版本，请及时升级！'+#13+#10+fields[1].AsString,mtinformation,[mbOk],0);
+        sjts:=1;
+        end;
+      end;
     end;
   except
-    application.MessageBox('查询数据失败！','在线消息提示');
+  begin
+    StatusBar1.Panels.Items[0].Text := '系统信息：数据库连接已断开，请重新登录!';
+    application.MessageBox('数据库连接已断开，请重新登录!','在线消息提示');
+    timer1.Enabled:=false;
+    zconnection1.Disconnect;
+    dlgl.Form10.ShowModal;
+  end;
   end;
 end;
 end;

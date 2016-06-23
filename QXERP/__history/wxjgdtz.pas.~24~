@@ -1,0 +1,282 @@
+unit wxjgdtz;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  StdCtrls, Grids, ExtCtrls;
+
+type
+  TForm93 = class(TForm)
+    Label6: TLabel;
+    Label7: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Bevel1: TBevel;
+    Label8: TLabel;
+    Label12: TLabel;
+    Label1: TLabel;
+    Edit4: TEdit;
+    Memo1: TMemo;
+    StringGrid1: TStringGrid;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit6: TEdit;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    Label9: TLabel;
+    Edit3: TEdit;
+    Label10: TLabel;
+    Edit7: TEdit;
+    Label11: TLabel;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    Label2: TLabel;
+    Edit5: TEdit;
+    Label3: TLabel;
+    Edit10: TEdit;
+    Label13: TLabel;
+    Label14: TLabel;
+    Memo2: TMemo;
+    Button2: TButton;
+    Label16: TLabel;
+    Edit11: TEdit;
+    Label15: TLabel;
+    procedure Edit4KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure Edit5KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit9KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit9Change(Sender: TObject);
+    procedure Edit5Change(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form93: TForm93;
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm93.Button2Click(Sender: TObject);
+var
+  boolCanexce:boolean;
+  i:integer;
+begin
+  boolCanExce:=true;
+  if edit11.Text='' then
+  begin
+    boolCanExce:=false;
+    application.MessageBox('请填写调整原因！','调整加工单明细提示');
+  end;
+  if edit5.Text='' then
+  begin
+    boolCanExce:=false;
+    application.MessageBox('请填写调整金额！','调整加工单明细提示');
+  end;
+  if edit9.Text='' then
+  begin
+    boolCanExce:=false;
+    application.MessageBox('请填写调整数量！','调整加工单明细提示');
+  end;
+  if strtofloat(edit9.Text)<strtofloat(edit10.Text) then
+  begin
+    boolCanExce:=false;
+    application.MessageBox('调整加工单明细成功','调整加工单明细提示');
+  end;
+  if boolCanexce=true then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_update_tzjgdmxz_by_jgdbh';
+        ParamByName('jgdbh').Value:=edit4.Text;
+        ParamByName('pjbh').Value:=SplitString(edit3.Text,'|');
+        ParamByName('pjsl').Value:=edit9.Text;
+        ParamByName('jgprice').Value:=edit5.Text;
+        ParamByName('memo').Value:='*'+memo2.Text+edit11.Text;
+        ExecProc;
+        application.MessageBox('调整加工单明细成功','调整加工单明细提示');
+        close;
+        StoredProcName:='proc_cx_jgdinfo_mxz_by_jgdbh_modify';
+        ParamByName('jgdbh').Value:=edit4.Text;
+        open;
+        firstresultset;
+        if not eof  then
+        begin
+        edit4.Text:=fields[0].AsString;
+        edit1.Text:=fields[1].AsString;
+        edit2.Text:=fields[2].AsString;
+        memo1.Text:=fields[3].AsString;
+        edit6.Text:=fields[4].AsString;
+        stringgrid1.RowCount:=2;
+        stringgrid1.Rows[1].Clear;
+        i:=1;
+        nextresultset;
+          while not eof do
+          begin
+            if fields[1].AsString<>'' then
+            begin
+              stringgrid1.RowCount:=stringgrid1.RowCount+1;
+              stringgrid1.Cells[0,i]:=inttostr(i);
+              stringgrid1.Cells[1,i]:=fields[0].AsString;
+              stringgrid1.Cells[2,i]:=fields[1].AsString;
+              stringgrid1.Cells[3,i]:=fields[2].AsString;
+              stringgrid1.Cells[4,i]:=fields[3].AsString;
+              stringgrid1.Cells[5,i]:=fields[4].AsString;
+              stringgrid1.Cells[6,i]:=fields[5].AsString;
+              stringgrid1.Cells[7,i]:=fields[6].AsString;
+              stringgrid1.Cells[8,i]:=fields[7].AsString;
+              i:=i+1;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+            end;
+            next;
+          end;
+        edit3.Text:='';
+        edit7.Text:='';
+        edit8.Text:='';
+        edit10.Text:='';
+        edit5.Text:='';
+        edit9.Text:='';
+        memo2.Lines.Clear;
+        edit11.Text:='';
+        end;
+      end;
+    except
+      application.MessageBox('调整加工单明细失败','调整加工单明细提示');
+    end;
+end;
+
+procedure TForm93.Edit4KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  i,y:integer;
+begin
+  if (key=13) and (edit4.Text<>'') then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_jgdinfo_mxz_by_jgdbh_modify';
+        ParamByName('jgdbh').Value:=edit4.Text;
+        open;
+        firstresultset;
+        if not eof  then
+        begin
+        edit4.Text:=fields[0].AsString;
+        edit1.Text:=fields[1].AsString;
+        edit2.Text:=fields[2].AsString;
+        memo1.Text:=fields[3].AsString;
+        edit6.Text:=fields[4].AsString;
+        stringgrid1.RowCount:=2;
+        stringgrid1.Rows[1].Clear;
+        i:=1;
+        nextresultset;
+          while not eof do
+          begin
+            if fields[1].AsString<>'' then
+            begin
+              stringgrid1.RowCount:=stringgrid1.RowCount+1;
+              stringgrid1.Cells[0,i]:=inttostr(i);
+              stringgrid1.Cells[1,i]:=fields[0].AsString;
+              stringgrid1.Cells[2,i]:=fields[1].AsString;
+              stringgrid1.Cells[3,i]:=fields[2].AsString;
+              stringgrid1.Cells[4,i]:=fields[3].AsString;
+              stringgrid1.Cells[5,i]:=fields[4].AsString;
+              stringgrid1.Cells[6,i]:=fields[5].AsString;
+              stringgrid1.Cells[7,i]:=fields[6].AsString;
+              stringgrid1.Cells[8,i]:=fields[7].AsString;
+              i:=i+1;
+              stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+            end;
+            next;
+          end;
+        end else
+        application.MessageBox('未发现该加工单或该加工单已结束！','调整加工单明细提示');
+      end;
+    except
+      application.MessageBox('数据查询失败！','调整加工单明细提示');
+    end;
+end;
+
+procedure TForm93.Edit5Change(Sender: TObject);
+var
+ tmpmemo:string;
+begin
+  memo2.Lines.Clear;
+    if (edit5.text<>'') and (edit5.Text<>edit7.text) then
+    tmpmemo:=('将单价从'+edit7.Text+'调整到'+edit5.Text+',');
+    if (edit9.Text<>'') and (edit9.Text<>edit8.text) then
+    tmpmemo:=tmpmemo+('从数量'+edit8.Text+'调整到'+edit9.Text+',');
+    memo2.Lines.Add('本工件于'+datetimetostr(now())+'将'+tmpmemo+'原因为:');
+    edit6.Text:=floattostr(strtofloat(edit5.Text)*strtofloat(edit9.Text));
+end;
+
+procedure TForm93.Edit5KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit5.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm93.Edit9Change(Sender: TObject);
+var
+ tmpmemo:string;
+begin
+    memo2.Lines.Clear;
+    if (edit5.text<>'') and (edit5.Text<>edit7.text) then
+    tmpmemo:=('加工单价从'+edit7.Text+'调整到'+edit5.Text+',');
+    if (edit9.Text<>'') and (edit9.Text<>edit8.text) then
+    tmpmemo:=tmpmemo+('加工数量从'+edit8.Text+'调整到'+edit9.Text+',');
+    memo2.Lines.Add('本工件于'+datetimetostr(now())+'将'+tmpmemo+'原因为:');
+    edit6.Text:=floattostr(strtofloat(edit5.Text)*strtofloat(edit9.Text));
+end;
+
+procedure TForm93.Edit9KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit9.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm93.FormShow(Sender: TObject);
+begin
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='记录编号';
+  stringgrid1.Cells[2,0]:='工件名称';
+  stringgrid1.Cells[3,0]:='工件类型';
+  stringgrid1.Cells[4,0]:='加工总数';
+  stringgrid1.Cells[5,0]:='已交货总数';
+  stringgrid1.Cells[6,0]:='加工类型';
+  stringgrid1.Cells[7,0]:='加工单价';
+  stringgrid1.Cells[8,0]:='备注';
+end;
+
+procedure TForm93.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if (ARow>0) and (stringgrid1.Cells[2,ARow]<>'') then
+  begin
+    edit3.Text:=stringgrid1.Cells[1,ARow]+'|'+stringgrid1.Cells[2,ARow];
+    edit7.Text:=stringgrid1.Cells[7,ARow];
+    edit8.Text:=stringgrid1.Cells[4,ARow];
+    edit9.Text:=edit8.Text;
+    edit10.Text:=stringgrid1.Cells[5,ARow];
+    edit5.Text:=edit7.Text;
+  end;
+end;
+
+end.

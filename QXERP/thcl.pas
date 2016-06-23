@@ -121,12 +121,14 @@ procedure TForm73.Button2Click(Sender: TObject);
 var
   i:integer;
   newfhdid:string;
+  errordh:integer;
 begin
   if  application.MessageBox('确定要进行退货处理吗？','退货处理提示',1)=1 then
     if (stringgrid1.RowCount>2) and (edit1.Text<>'') then
       try
         with zStoredProc1 do          //proc_modify_tuihuo_htinfo_yskmxzwkp_yskxx htbh,thje,thdate,memo
-        begin                          //proc_modify_tuihuo_htmxz_cpmxz_cpkcb htbh,cpbh,thsl,thdate,czry,memo
+        begin
+          errordh:=0;                   //proc_modify_tuihuo_htmxz_cpmxz_cpkcb htbh,cpbh,thsl,thdate,czry,memo,fhdid,cpdj
           close;
           StoredProcName:='proc_cx_newfhdbh';
           open;
@@ -141,6 +143,8 @@ begin
           ParamByName('thdate').Value:=datetimepicker1.Date;
           ParamByName('memo').Value:='*合同编号为：'+edit1.Text+'退货';
           ParamByName('khid').Value:=edit10.Text;
+          ParamByName('fhdid').Value:=newfhdid;
+          errordh:=1;
           ExecProc;
           close;
           StoredProcName:='proc_modify_tuihuo_htmxz_cpmxz_cpkcb';
@@ -152,7 +156,9 @@ begin
             ParamByName('cpdj').Value:=stringgrid1.Cells[2,i];
             ParamByName('thdate').Value:=datetimepicker1.Date;
             ParamByName('czry').Value:=main.strUser;
-            ParamByName('memo').Value:='*合同编号为：'+edit1.Text+'退货';;
+            ParamByName('memo').Value:='*合同编号为：'+edit1.Text+'退货';
+            ParamByName('fhdid').Value:=newfhdid;
+            errordh:=2;
             ExecProc;
           end;
           edit9.text:='';
@@ -176,7 +182,10 @@ begin
           application.MessageBox('退货处理成功！','退货处理提示');
         end;
       except
-        application.MessageBox('退货处理失败！','退货处理提示');
+      if errordh=1 then
+        application.MessageBox('退货处理应收款处理失败！','退货处理提示')
+      else
+        application.MessageBox('退货处理产品库存处理失败！','退货处理提示') ;
       end else
         application.MessageBox('请调入合同信息以及添加退货明细！','退货处理提示');
 end;
@@ -239,12 +248,14 @@ end;
 
 procedure TForm73.ComboBox4Select(Sender: TObject);
 begin          //proc_cx_tuihui_htmxzinfo_by_cpbh
+if edit1.Text<>'' then
     try
       with zStoredProc1 do
       begin
         close;
         StoredProcName:='proc_cx_tuihui_htmxzinfo_by_cpbh';
         ParamByName('cpbh').Value:=splitstring(combobox4.Text,'|');
+        ParamByName('htbh').Value:=edit1.Text;
         open;
         if not eof then
         begin
@@ -255,7 +266,9 @@ begin          //proc_cx_tuihui_htmxzinfo_by_cpbh
       end;
     except
       application.MessageBox('数据查询失败！','退货处理提示');
-    end;
+    end
+    else
+      application.MessageBox('请输出进行退货处理的合同编号！','退货处理提示');
 end;
 
 procedure TForm73.Edit1KeyDown(Sender: TObject; var Key: Word;

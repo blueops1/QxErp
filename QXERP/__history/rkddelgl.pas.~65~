@@ -1,0 +1,404 @@
+unit rkddelgl;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  Grids, StdCtrls, ComCtrls, ExtCtrls;
+
+type
+  TForm53 = class(TForm)
+    Bevel1: TBevel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Edit3: TEdit;
+    Button1: TButton;
+    StringGrid1: TStringGrid;
+    Edit4: TEdit;
+    ZStoredProc1: TZStoredProc;
+    PopupMenu1: TPopupMenu;
+    N1: TMenuItem;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Label2: TLabel;
+    Edit2: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
+    Label3: TLabel;
+    Edit7: TEdit;
+    Button2: TButton;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    Edit10: TEdit;
+    Edit11: TEdit;
+    Edit13: TEdit;
+    Edit14: TEdit;
+    Edit15: TEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
+    Label16: TLabel;
+    Button3: TButton;
+    Memo1: TMemo;
+    procedure Edit4KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure Edit13KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit14KeyPress(Sender: TObject; var Key: Char);
+    procedure Edit13Change(Sender: TObject);
+    procedure Edit14Change(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form53: TForm53;
+  selRowIndex:integer;
+  function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+
+implementation
+
+uses main;
+
+{$R *.dfm}
+
+procedure TForm53.Button1Click(Sender: TObject);
+var
+  y:integer;
+begin
+if application.MessageBox('确定要删除该入库单吗吗？','入库单管理提示',1)=1 then
+  if stringgrid1.RowCount>1 then
+    try
+      with zstoredproc1 do
+      begin
+      close;
+      zstoredproc1.StoredProcName:='proc_update_ckitem_del_itemljslandljzje';
+        for y := 1 to stringgrid1.RowCount - 2 do
+        begin
+          zstoredproc1.ParamByName('itembh').Value:=splitstring(stringgrid1.Cells[1,y],'|');
+          zstoredproc1.ParamByName('rksl').Value:=stringgrid1.Cells[2,y];
+          zstoredproc1.ParamByName('itemprice').Value:=stringgrid1.Cells[3,y];
+          execProc;
+        end;
+        close;
+        zstoredproc1.StoredProcName:='proc_del_rkdgl_by_rkdbh';
+        zstoredproc1.ParamByName('rkdbh').Value:=edit4.Text;
+        execProc;
+      end;
+      application.MessageBox('删除入库单成功！','入库单管理提示');
+      edit2.Text:='';
+      edit3.Text:='';
+      edit4.Text:='';
+      edit5.Text:='';
+      edit6.Text:='';
+      edit7.Text:='';
+      edit1.Text:='';
+      edit8.Text:='';
+      edit9.Text:='';
+      edit10.Text:='';
+      edit11.Text:='';
+      edit15.Text:='';
+      edit13.Text:='';
+      edit14.Text:='';
+      memo1.Lines.Clear;
+      button1.Enabled:=false;
+      button2.Enabled:=false;
+      button3.Enabled:=false;
+      edit4.SetFocus;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
+  except
+    application.MessageBox('删除入库单失败！','入库单管理提示');
+  end else
+    application.MessageBox('该入库单内没物品明细！','入库单管理提示');
+end;
+
+procedure TForm53.Button2Click(Sender: TObject);
+var
+  y:integer;
+begin
+//proc_del_rukudan_fapiaoinfo_by_rkdbh
+if (edit4.Text<>'') and (application.MessageBox('确定要删除该入库单的发票信息吗？','入库单管理提示',1)=1) then
+  if stringgrid1.RowCount>1 then
+    try
+      with zstoredproc1 do
+      begin
+        close;
+        zstoredproc1.StoredProcName:='proc_del_rukudan_fapiaoinfo_by_rkdbh';
+        zstoredproc1.ParamByName('rkdbh').Value:=edit4.Text;
+        zstoredproc1.ParamByName('memo').Value:='*'+main.strUser+'在'+datetimetostr(now())+'删除了发票信息';
+        execProc;
+        application.MessageBox('删除入库单发票信息成功！','入库单管理提示');
+        StoredProcName:='proc_cx_delrkd_by_rkdbh';
+        ParamByName('rkdbh').Value:=edit4.Text;
+        open;
+        FirstResultSet;
+        if not eof then
+        begin
+          edit3.Text:=fields[1].AsString;
+          edit1.Text:=fields[2].AsString;
+          edit5.Text:=fields[3].AsString;
+          edit2.Text:=fields[4].AsString;
+          edit6.Text:=fields[5].AsString;
+          edit7.Text:=fields[6].AsString;
+        end;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
+      y:=1;
+      NextResultSet;
+      while not eof do
+      begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
+        stringgrid1.Cells[0,y]:=inttostr(y);
+        stringgrid1.Cells[1,y]:=fields[0].AsString;
+        stringgrid1.Cells[2,y]:=fields[1].AsString;
+        stringgrid1.Cells[3,y]:=fields[2].AsString;
+        stringgrid1.Cells[4,y]:=fields[3].AsString;
+        y:=y+1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+        next;
+      end;
+      if (edit1.Text<>'') or (edit7.Text<>main.strUser) then
+      begin
+        button1.Enabled:=false;
+        button3.Enabled:=false;
+      end else
+      begin
+        button1.Enabled:=true;
+        button3.Enabled:=true;
+      end;
+      if (edit1.Text='') or (edit7.Text<>main.strUser) then
+        button2.Enabled:=false
+      else
+        button2.Enabled:=true;
+        edit8.Text:='';
+        edit9.Text:='';
+        edit10.Text:='';
+        edit11.Text:='';
+        edit15.Text:='';
+        edit13.Text:='';
+        edit14.Text:='';
+        memo1.Lines.Clear;
+      end;
+  except
+    application.MessageBox('删除入库单发票信息失败！','入库单管理提示');
+  end else
+    application.MessageBox('该入库单内没物品明细！','入库单管理提示');
+end;
+
+procedure TForm53.Button3Click(Sender: TObject);
+var
+  y:integer;
+begin
+ if (edit6.Text<>'') and (edit9.Text<>'') then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      zstoredproc1.StoredProcName:='proc_update_ckitem_del_itemljslandljzje';
+      zstoredproc1.ParamByName('itembh').Value:=SplitString(edit8.Text,'|');
+      zstoredproc1.ParamByName('rksl').Value:=strtofloat(edit10.Text)-strtofloat(edit14.Text);
+      zstoredproc1.ParamByName('itemprice').Value:=edit13.Text;
+      execProc;
+      close;
+      StoredProcName:='proc_update_rkdwpinfotz_by_rkdbh_wpbh';   //IN `rkdbh` char(20),IN `wpbh` char(20),IN `wpsl` double,IN `wpdj` double,IN `memo` text
+      ParamByName('rkdbh').Value:=edit4.Text;
+      ParamByName('wpbh').Value:=SplitString(edit8.Text,'|');
+      ParamByName('wpsl').Value:=edit14.Text;
+      ParamByName('wpdj').Value:=edit13.Text;
+      ParamByName('memo').Value:='*'+memo1.Text;
+      ExecProc;
+      application.MessageBox('调整入库单物品信息成功','入库单管理提示');
+      close;
+      StoredProcName:='proc_cx_delrkd_by_rkdbh';
+      ParamByName('rkdbh').Value:=edit4.Text;
+      open;
+      FirstResultSet;
+      if not eof then
+      begin
+        edit3.Text:=fields[1].AsString;
+        edit1.Text:=fields[2].AsString;
+        edit5.Text:=fields[3].AsString;
+        edit2.Text:=fields[4].AsString;
+        edit6.Text:=fields[5].AsString;
+        edit7.Text:=fields[6].AsString;
+      end;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
+      y:=1;
+      NextResultSet;
+      while not eof do
+      begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
+        stringgrid1.Cells[0,y]:=inttostr(y);
+        stringgrid1.Cells[1,y]:=fields[0].AsString;
+        stringgrid1.Cells[2,y]:=fields[1].AsString;
+        stringgrid1.Cells[3,y]:=fields[2].AsString;
+        stringgrid1.Cells[4,y]:=fields[3].AsString;
+        y:=y+1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+        next;
+      end;
+      if (edit1.Text<>'') or (edit7.Text<>main.strUser) then
+      begin
+        button1.Enabled:=false;
+        button3.Enabled:=false;
+      end else
+      begin
+        button1.Enabled:=true;
+        button3.Enabled:=true;
+      end;
+      if (edit1.Text='') or (edit7.Text<>main.strUser) then
+        button2.Enabled:=false
+      else
+        button2.Enabled:=true;
+        edit8.Text:='';
+        edit9.Text:='';
+        edit10.Text:='';
+        edit11.Text:='';
+        edit15.Text:='';
+        edit13.Text:='';
+        edit14.Text:='';
+        memo1.Lines.Clear;
+    end;
+  except
+    application.MessageBox('调整物品信息失败','入库单管理提示');
+  end else
+    application.MessageBox('请将必填项填写完整','入库单管理提示');
+end;
+
+procedure TForm53.Edit13Change(Sender: TObject);
+begin
+  if (edit13.Text<>'') and (edit14.Text<>'') then
+     edit15.Text:=floattostr(strtofloat(edit13.Text)*strtofloat(edit14.Text));
+  memo1.Lines.Clear;
+  if (edit9.Text<>'') and (edit9.Text<>edit13.Text) then
+    memo1.Lines.Add('*本物品单价于'+datetimetostr(now())+'从原来的'+edit9.Text+'调整到现在的'+edit13.Text+',原因为:')
+end;
+
+procedure TForm53.Edit13KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit13.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm53.Edit14Change(Sender: TObject);
+begin
+  if (edit13.Text<>'') and (edit14.Text<>'') then
+     edit15.Text:=floattostr(strtofloat(edit13.Text)*strtofloat(edit14.Text));
+  memo1.Lines.Clear;
+  if (edit10.Text<>'') and (edit10.Text<>edit14.Text) then
+    memo1.Lines.Add('*本物品数量于'+datetimetostr(now())+'从原来的'+edit10.Text+'调整到现在的'+edit14.Text+',原因为:')
+end;
+
+procedure TForm53.Edit14KeyPress(Sender: TObject; var Key: Char);
+begin
+  if not charinset(key,['0'..'9','.',#8]) then
+    key:=#0;
+  if (key='.') and (Pos('.',Edit14.Text)>0)   then
+    key:=#0;
+end;
+
+procedure TForm53.Edit4KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+var
+  y:integer;
+begin
+ if key=13 then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_delrkd_by_rkdbh';
+      ParamByName('rkdbh').Value:=edit4.Text;
+      open;
+      FirstResultSet;
+      if not eof then
+      begin
+        edit3.Text:=fields[1].AsString;
+        edit1.Text:=fields[2].AsString;
+        edit5.Text:=fields[3].AsString;
+        edit2.Text:=fields[4].AsString;
+        edit6.Text:=fields[5].AsString;
+        edit7.Text:=fields[6].AsString;
+      end;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[1].Clear;
+      y:=1;
+      NextResultSet;
+      while not eof do
+      begin
+        stringgrid1.RowCount:=stringgrid1.RowCount+1;
+        stringgrid1.Cells[0,y]:=inttostr(y);
+        stringgrid1.Cells[1,y]:=fields[0].AsString;
+        stringgrid1.Cells[2,y]:=fields[1].AsString;
+        stringgrid1.Cells[3,y]:=fields[2].AsString;
+        stringgrid1.Cells[4,y]:=fields[3].AsString;
+        y:=y+1;
+        stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+        next;
+      end;
+      if (edit1.Text<>'') or (edit7.Text<>main.strUser) then
+      begin
+        button1.Enabled:=false;
+        button3.Enabled:=false;
+      end else
+      begin
+        button1.Enabled:=true;
+        button3.Enabled:=true;
+      end;
+      if (edit1.Text='') or (edit7.Text<>main.strUser) then
+        button2.Enabled:=false
+      else
+        button2.Enabled:=true;
+    end;
+  except
+    application.MessageBox('查询数据失败！','入库单管理提示');
+  end;
+end;
+
+procedure TForm53.FormShow(Sender: TObject);
+begin
+  stringgrid1.Cells[0,0]:='序号';
+  stringgrid1.Cells[1,0]:='物品编号';
+  stringgrid1.Cells[2,0]:='入库数量';
+  stringgrid1.Cells[3,0]:='单价';
+  stringgrid1.Cells[4,0]:='备注';
+  edit4.SetFocus;
+
+end;
+
+procedure TForm53.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if (ARow>0) and (stringgrid1.Cells[2,ARow]<>'') then
+  begin
+    edit8.Text:=stringgrid1.Cells[1,ARow];
+    edit9.Text:=stringgrid1.Cells[3,ARow];
+    edit10.Text:=stringgrid1.Cells[2,ARow];
+    edit11.Text:=floattostr(strtofloat(edit9.Text)*strtofloat(edit10.Text));
+    edit15.Text:=edit11.Text;
+    edit13.Text:=edit9.Text;
+    edit14.Text:=edit10.Text;
+    memo1.Lines.Clear;
+    memo1.Lines.Add(stringgrid1.Cells[4,ARow]);
+  end;
+end;
+
+end.

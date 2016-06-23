@@ -173,6 +173,7 @@ begin
   stringgrid2.Cells[4,0]:='合计金额';
   stringgrid2.Cells[5,0]:='已发数量';
   stringgrid2.Cells[6,0]:='发货金额';
+  stringgrid2.Cells[7,0]:='备注';
 end;
 
 procedure TForm6.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -203,6 +204,7 @@ begin
         stringgrid2.Cells[4,y]:=fields[4].AsString;
         stringgrid2.Cells[5,y]:=fields[5].AsString;
         stringgrid2.Cells[6,y]:=fields[6].AsString;
+        stringgrid2.Cells[7,y]:=fields[8].AsString;
         stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
         y:=y+1;
         next;

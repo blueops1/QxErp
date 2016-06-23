@@ -221,6 +221,8 @@
     <Transaction>2016/03/09 10:44:09.208.dfm,E:\QxErp\QXERP\Unit99.dfm=E:\QxErp\QXERP\delhtinfo.dfm</Transaction>
     <Transaction>2016/03/27 16:43:34.293.pas,E:\QxErp\QXERP\Unit100.pas=E:\QxErp\QXERP\fhdcxyfh.pas</Transaction>
     <Transaction>2016/03/27 16:43:34.293.dfm,E:\QxErp\QXERP\Unit100.dfm=E:\QxErp\QXERP\fhdcxyfh.dfm</Transaction>
+    <Transaction>2016/04/24 08:47:19.325.pas,E:\QxErp\QXERP\Unit101.pas=E:\QxErp\QXERP\cpbj.pas</Transaction>
+    <Transaction>2016/04/24 08:47:19.325.dfm,E:\QxErp\QXERP\Unit101.dfm=E:\QxErp\QXERP\cpbj.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="ABOUT.pas"/>
@@ -427,5 +429,7 @@
     <File Path="delhtinfo.dfm"/>
     <File Path="fhdcxyfh.pas"/>
     <File Path="fhdcxyfh.dfm"/>
+    <File Path="cpbj.pas"/>
+    <File Path="cpbj.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

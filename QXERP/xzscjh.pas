@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
-  Grids, ComCtrls;
+  Grids, ComCtrls, Menus;
 
 type
   TForm36 = class(TForm)
@@ -27,6 +27,8 @@ type
     Memo1: TMemo;
     Button5: TButton;
     Button6: TButton;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure Button1Click(Sender: TObject);
@@ -43,6 +45,7 @@ type
     procedure Button5Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
     procedure StringGrid3KeyPress(Sender: TObject; var Key: Char);
+    procedure Execl1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -54,6 +57,7 @@ var
   sARow,sARow2,sACol2:integer;
   tmpString:string;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
+  Function ExportStrGridToExcel(Args: array of const): Boolean;stdcall;external 'dlltools.dll';
 
 implementation
 
@@ -220,6 +224,14 @@ procedure TForm36.Button6Click(Sender: TObject);
 begin
  tjfhfjxx.isfrom:='xzjh';
  tjfhfjxx.Form61.ShowModal;
+end;
+
+procedure TForm36.Execl1Click(Sender: TObject);
+begin
+  if stringgrid2.RowCount>2 then
+    ExportStrGridToExcel([stringgrid2])
+  else
+    application.MessageBox('列表中没有任何数据！','请假查询提示');
 end;
 
 procedure TForm36.FormShow(Sender: TObject);

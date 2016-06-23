@@ -320,6 +320,7 @@ object Form93: TForm93
     Top = 295
     object Execl1: TMenuItem
       Caption = #23548#20986#21040'Execl'
+      OnClick = Execl1Click
     end
   end
 end

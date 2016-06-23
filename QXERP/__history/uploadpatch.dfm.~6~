@@ -1,0 +1,87 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = #19978#20256#26356#26032#25991#20214
+  ClientHeight = 192
+  ClientWidth = 614
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label8: TLabel
+    Left = 56
+    Top = 32
+    Width = 121
+    Height = 13
+    AutoSize = False
+    Caption = #36755#20837#26032#25991#20214#29256#26412#21495
+  end
+  object Label9: TLabel
+    Left = 296
+    Top = 56
+    Width = 81
+    Height = 13
+    AutoSize = False
+    Caption = #24403#21069#29256#26412#21495
+  end
+  object Label7: TLabel
+    Left = 56
+    Top = 96
+    Width = 289
+    Height = 13
+    AutoSize = False
+    Caption = #27491#23558#21319#32423#25991#20214#23548#20837#26381#21153#22120'.........'
+    Visible = False
+  end
+  object Edit6: TEdit
+    Left = 56
+    Top = 56
+    Width = 121
+    Height = 21
+    TabOrder = 0
+  end
+  object Edit7: TEdit
+    Left = 384
+    Top = 48
+    Width = 121
+    Height = 21
+    Color = clWhite
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object Button8: TButton
+    Left = 56
+    Top = 128
+    Width = 147
+    Height = 25
+    Caption = #35013#20837#21319#32423#25991#20214
+    TabOrder = 2
+    OnClick = Button8Click
+  end
+  object ZConnection1: TZConnection
+    ControlsCodePage = cCP_UTF16
+    Port = 0
+    Protocol = 'mysql-5'
+    Left = 400
+    Top = 120
+  end
+  object ZQuery1: TZQuery
+    Connection = ZConnection1
+    Params = <>
+    Left = 512
+    Top = 120
+  end
+end

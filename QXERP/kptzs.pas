@@ -110,7 +110,7 @@ procedure TForm77.Button2Click(Sender: TObject);
 begin
   if (sARow2<stringgrid2.RowCount-1) and (sARow2>0) then
   begin
-    edit4.Text:=floattostr(strtofloat(edit4.Text)+strtofloat(stringgrid2.Cells[3,sARow]));
+    edit4.Text:=floattostr(strtofloat(edit4.Text)+strtofloat(stringgrid2.Cells[3,sARow2]));
     DeleteStringGridRow(sARow2,stringgrid2);
     sARow2:=0;
   end;
@@ -264,6 +264,7 @@ begin
         close;
         StoredProcName:='proc_cx_newkptzsid';
         open;
+        edit4.Text:='0';
         if fields[0].AsString<>'' then
           edit2.Text:=fields[0].AsString
         else

@@ -144,12 +144,24 @@ end;
 
 procedure TForm50.Button2Click(Sender: TObject);
 var
+  booldouble:boolean;
+  i:integer;
   gjprice:string;
 begin
   if (edit1.Text<>'') then
     gjprice:=edit1.Text
   else
     gjprice:=edit3.Text;
+  booldouble:=false;
+  for i := 1 to stringgrid1.RowCount - 1 do
+  begin
+    if comboboxex1.Text=stringgrid1.Cells[1,i] then
+       booldouble:=true;
+  end;
+    if booldouble=true then
+      application.MessageBox('该产品已在下面列表中，请确认！','新增合同提示')
+    else
+     begin
   if (edit4.Text<>'') and (combobox1.Text<>'') then
     if (combobox2.Text<>'') and (comboboxex1.Text<>'') and (edit2.Text<>'') and (edit3.Text<>'') then
       if (strtofloat(edit3.Text)>=strtofloat(gjprice)) then
@@ -175,6 +187,7 @@ begin
         application.MessageBox('请将明细填写！','新增加工单管理提示')
     else
       application.MessageBox('请先将加工单信息填写完整！','新增加工单管理提示');
+     end;
 end;
 
 procedure TForm50.ComboBox1KeyDown(Sender: TObject; var Key: Word;

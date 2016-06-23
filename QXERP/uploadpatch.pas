@@ -17,6 +17,7 @@ type
     Button8: TButton;
     ZConnection1: TZConnection;
     ZQuery1: TZQuery;
+    Memo1: TMemo;
     procedure FormActivate(Sender: TObject);
     procedure Button8Click(Sender: TObject);
   private
@@ -57,6 +58,7 @@ begin
           zquery1.Edit;
         zquery1.FieldByName('fver').AsString:=edit6.Text;
         zquery1.FieldByName('fname').AsString :=filename;
+        zquery1.FieldByName('fmemo').AsString :=memo1.Text;
         BlobStream := zquery1.CreateBlobStream(zquery1.FieldByName('ffilestream'), bmWrite);
         try
           FileStream := TFileStream.Create(filename, fmOpenRead);

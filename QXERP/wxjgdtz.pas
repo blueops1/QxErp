@@ -54,6 +54,7 @@ type
     procedure Edit9Change(Sender: TObject);
     procedure Edit5Change(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Execl1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -250,6 +251,15 @@ begin
     key:=#0;
 end;
 
+procedure TForm93.Execl1Click(Sender: TObject);
+begin
+  if stringgrid1.RowCount>2 then
+    ExportStrGridToExcel([stringgrid1])
+  else
+    application.MessageBox('列表中没有任何数据！','常规库存跟踪管理');
+end;
+
+
 procedure TForm93.FormShow(Sender: TObject);
 begin
   stringgrid1.Cells[0,0]:='序号';
@@ -268,7 +278,7 @@ procedure TForm93.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
 begin
   if (ARow>0) and (stringgrid1.Cells[2,ARow]<>'') then
   begin
-    edit3.Text:=stringgrid1.Cells[1,ARow]+'|'+stringgrid1.Cells[2,ARow];
+    edit3.Text:=stringgrid1.Cells[2,ARow];
     edit7.Text:=stringgrid1.Cells[7,ARow];
     edit8.Text:=stringgrid1.Cells[4,ARow];
     edit9.Text:=edit8.Text;

@@ -4,7 +4,7 @@ object Form36: TForm36
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = #26032#35745#21010#21333
-  ClientHeight = 572
+  ClientHeight = 656
   ClientWidth = 934
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -26,21 +26,21 @@ object Form36: TForm36
   end
   object Label2: TLabel
     Left = 38
-    Top = 509
+    Top = 589
     Width = 84
     Height = 13
     Caption = #24403#21069#20219#21153#21333#32534#21495
   end
   object Label3: TLabel
     Left = 50
-    Top = 538
+    Top = 618
     Width = 72
     Height = 13
     Caption = #35745#21010#21457#36135#26102#38388
   end
   object Label4: TLabel
     Left = 276
-    Top = 509
+    Top = 589
     Width = 24
     Height = 13
     Caption = #22791#27880
@@ -57,7 +57,7 @@ object Form36: TForm36
     Left = 22
     Top = 54
     Width = 889
-    Height = 145
+    Height = 219
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 1
     OnSelectCell = StringGrid1SelectCell
@@ -70,13 +70,14 @@ object Form36: TForm36
   end
   object StringGrid2: TStringGrid
     Left = 22
-    Top = 209
+    Top = 289
     Width = 465
     Height = 281
     ColCount = 6
     FixedCols = 0
     RowCount = 2
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
+    PopupMenu = PopupMenu1
     TabOrder = 2
     OnSelectCell = StringGrid2SelectCell
     ColWidths = (
@@ -89,7 +90,7 @@ object Form36: TForm36
   end
   object StringGrid3: TStringGrid
     Left = 534
-    Top = 209
+    Top = 289
     Width = 377
     Height = 281
     FixedCols = 0
@@ -108,7 +109,7 @@ object Form36: TForm36
   end
   object Button1: TButton
     Left = 493
-    Top = 297
+    Top = 377
     Width = 35
     Height = 33
     Caption = '+'
@@ -117,7 +118,7 @@ object Form36: TForm36
   end
   object Button2: TButton
     Left = 493
-    Top = 369
+    Top = 449
     Width = 35
     Height = 33
     Caption = '--'
@@ -135,7 +136,7 @@ object Form36: TForm36
   end
   object Button4: TButton
     Left = 814
-    Top = 526
+    Top = 606
     Width = 97
     Height = 25
     Caption = #20445#23384#35745#21010#20449#24687
@@ -144,7 +145,7 @@ object Form36: TForm36
   end
   object DateTimePicker1: TDateTimePicker
     Left = 135
-    Top = 536
+    Top = 616
     Width = 121
     Height = 21
     Date = 42337.435255682870000000
@@ -153,7 +154,7 @@ object Form36: TForm36
   end
   object Edit2: TEdit
     Left = 135
-    Top = 506
+    Top = 586
     Width = 121
     Height = 21
     ReadOnly = True
@@ -161,7 +162,7 @@ object Form36: TForm36
   end
   object Memo1: TMemo
     Left = 306
-    Top = 506
+    Top = 586
     Width = 471
     Height = 49
     TabOrder = 10
@@ -189,5 +190,13 @@ object Form36: TForm36
     Params = <>
     Left = 806
     Top = 297
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 328
+    Top = 392
+    object Execl1: TMenuItem
+      Caption = #23548#20986#21040'Execl'
+      OnClick = Execl1Click
+    end
   end
 end
