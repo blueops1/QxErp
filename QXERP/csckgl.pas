@@ -154,7 +154,8 @@ if application.MessageBox('确定要保存数据吗？','成品测试出库提示',1)=1 then
       combobox1.Text:='';
       combobox2.Text:='';
       memo1.Text:='';
-      stringgrid1.RowCount:=1;
+      stringgrid1.RowCount:=2;
+      stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
   except
     application.MessageBox('保存数据失败！','成品测试出库提示');
   end else

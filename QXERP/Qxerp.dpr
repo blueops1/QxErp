@@ -104,7 +104,8 @@ uses
   yjsjhdcx in 'yjsjhdcx.pas' {Form98},
   delhtinfo in 'delhtinfo.pas' {Form99},
   fhdcxyfh in 'fhdcxyfh.pas' {Form100},
-  cpbj in 'cpbj.pas' {Form101};
+  cpbj in 'cpbj.pas' {Form101},
+  scjhxg in 'scjhxg.pas' {Form102};
 
 {$R *.res}
 
@@ -215,5 +216,6 @@ begin
   Application.CreateForm(TForm99, Form99);
   Application.CreateForm(TForm100, Form100);
   Application.CreateForm(TForm101, Form101);
+  Application.CreateForm(TForm102, Form102);
   Application.Run;
 end.

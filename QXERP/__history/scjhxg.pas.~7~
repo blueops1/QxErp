@@ -1,0 +1,57 @@
+unit scjhxg;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls;
+
+type
+  TForm102 = class(TForm)
+    Edit1: TEdit;
+    Edit3: TEdit;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Edit4: TEdit;
+    Bevel1: TBevel;
+    Button1: TButton;
+    Button2: TButton;
+    Edit2: TEdit;
+    Label2: TLabel;
+    Edit5: TEdit;
+    Label5: TLabel;
+    Bevel2: TBevel;
+    Label6: TLabel;
+    Edit6: TEdit;
+    Label7: TLabel;
+    Edit7: TEdit;
+    Label8: TLabel;
+    Edit8: TEdit;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form102: TForm102;
+
+implementation
+  uses scjh;
+
+{$R *.dfm}
+
+procedure TForm102.FormShow(Sender: TObject);
+begin
+  edit5.Text:=scjh.Form17.StringGrid1.Cells[4,scjh.SelARow];
+  edit2.Text:=scjh.Form17.StringGrid1.Cells[5,scjh.SelARow];
+  edit1.Text:=scjh.Form17.StringGrid2.Cells[5,scjh.SelARow];
+  edit3.Text:=scjh.Form17.StringGrid2.Cells[8,scjh.SelARow];
+  edit6.Text:=scjh.Form17.StringGrid2.Cells[1,scjh.SelARow];
+  edit7.Text:=scjh.Form17.StringGrid2.Cells[2,scjh.SelARow];
+  edit8.Text:=scjh.Form17.StringGrid2.Cells[3,scjh.SelARow];
+end;
+
+end.

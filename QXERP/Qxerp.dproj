@@ -352,6 +352,9 @@
 			<DCCReference Include="cpbj.pas">
 				<Form>Form101</Form>
 			</DCCReference>
+			<DCCReference Include="scjhxg.pas">
+				<Form>Form102</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

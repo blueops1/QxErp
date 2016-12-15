@@ -130,8 +130,10 @@ begin
       ParamByName('fhdid').Value:=edit1.Text;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
       open;
       if RecordCount>0 then
-        application.MessageBox('该发货单号已经存在，请核实！','发货单明细提示')
-      else begin
+      begin
+        application.MessageBox('单号已经存在，已重新生成单号，请保存！','发货单明细提示');
+        edit1.Text:=inttostr(strtoint(edit1.Text)+1);
+      end else begin
         errorID:='发货单明细保存错误！';
         gridcount:=stringgrid2.RowCount;
         for i := 1 to stringgrid2.rowcount-2 do

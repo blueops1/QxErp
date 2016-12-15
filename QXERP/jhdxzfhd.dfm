@@ -302,6 +302,7 @@ object Form40: TForm40
     Width = 137
     Height = 21
     Color = clMoneyGreen
+    ReadOnly = True
     TabOrder = 16
   end
   object Button5: TButton

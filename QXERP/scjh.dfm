@@ -83,9 +83,10 @@ object Form17: TForm17
     Height = 384
     Align = alBottom
     ColCount = 10
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
     PopupMenu = PopupMenu2
     TabOrder = 4
+    OnSelectCell = StringGrid2SelectCell
     ColWidths = (
       64
       88
@@ -156,6 +157,10 @@ object Form17: TForm17
     object MenuItem1: TMenuItem
       Caption = #23548#20986#21040'Execl'
       OnClick = MenuItem1Click
+    end
+    object N5: TMenuItem
+      Caption = #20462#25913#35745#21010#25968#37327
+      OnClick = N5Click
     end
   end
 end

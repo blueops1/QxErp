@@ -26,6 +26,7 @@ type
     N3: TMenuItem;
     RadioGroup1: TRadioGroup;
     N4: TMenuItem;
+    N5: TMenuItem;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -39,6 +40,9 @@ type
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure N4Click(Sender: TObject);
+    procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
+      var CanSelect: Boolean);
+    procedure N5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,14 +51,15 @@ type
 
 var
   Form17: TForm17;
-  SelARow:integer;
+  SelARow,SelARowxg:integer;
   tmpjhdbh:string;
   boolReaded:boolean;
+  Oldjhsl,yfhsl:string;
   function SplitString(Source, Deli: string ): String;stdcall;external 'dlltools.dll';
 
 implementation
 
-uses main,jhdxzfhd;
+uses main,jhdxzfhd,scjhxg;
 
 {$R *.dfm}
 
@@ -322,6 +327,13 @@ begin
   end;
 end;
 
+procedure TForm17.N5Click(Sender: TObject);
+begin
+  if   SelARowxg>0 then
+  scjhxg.Form102.ShowModal;
+
+end;
+
 procedure TForm17.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
   var CanSelect: Boolean);
 var
@@ -330,6 +342,7 @@ begin
   stringgrid2.RowCount:=2;
   stringgrid2.Rows[1].Clear;
   SelARow:=ARow;
+  SelARowxg:=0;
   tmpjhdbh:=stringgrid1.Cells[5,ARow];
   if (stringgrid1.Cells[5,ARow]<>'') and (boolReaded=true) then
   try
@@ -362,6 +375,15 @@ begin
   except
     application.MessageBox('数据查询失败！','计划单查询提示');
   end;
+end;
+
+procedure TForm17.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+var
+  i:integer;
+begin
+  if (stringgrid2.Cells[5,ARow]<>'') and (ARow>0) then
+    SelARowxg:=ARow;
 end;
 
 end.
