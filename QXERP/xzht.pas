@@ -157,6 +157,7 @@ if application.MessageBox('确定要保存数据吗？','新增合同提示',1)=1 then
           zstoredproc1.ParamByName('cpbh').Value:=splitstring(stringgrid1.Cells[1,y],'|');
           zstoredproc1.ParamByName('cpdj').Value:=stringgrid1.Cells[2,y];
           zstoredproc1.ParamByName('cpsl').Value:=stringgrid1.Cells[3,y];
+          zstoredproc1.ParamByName('htje').Value:=edit11.Text;
           execProc;
         end;
       end;

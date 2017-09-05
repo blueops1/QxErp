@@ -306,7 +306,7 @@ begin
   stringgrid2.Cells[3,0]:='产品种类';
   stringgrid2.Cells[4,0]:='销售价格';
   stringgrid2.Cells[5,0]:='发货数量(可调整)';
-  stringgrid2.Cells[6,0]:='库存数量';
+  stringgrid2.Cells[6,0]:='可发数量';
   try
     with zStoredProc1 do
     begin
@@ -341,7 +341,7 @@ begin
           stringgrid2.Cells[5,y]:=floattostr(strtofloat(scjh.Form17.StringGrid2.Cells[7,i])-strtofloat(scjh.Form17.StringGrid2.Cells[6,i]))
         else
           stringgrid2.Cells[5,y]:=floattostr(strtofloat(scjh.Form17.StringGrid2.Cells[5,i])-strtofloat(scjh.Form17.StringGrid2.Cells[8,i]));
-        stringgrid2.Cells[6,y]:= scjh.Form17.stringgrid2.Cells[7,i];
+        stringgrid2.Cells[6,y]:= stringgrid2.Cells[5,y];//scjh.Form17.stringgrid2.Cells[7,i];
         stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
       end else
         y:=y-1;

@@ -8,7 +8,7 @@ uses
   ZAbstractConnection, ZConnection, ZAbstractRODataset, ZAbstractDataset,
   ZDataset, RpDefine, RpRave, RpCon, RpConDS, RpConBDE, RpBase, RpSystem,
   IdBaseComponent, IdComponent, IdIPWatch,ShellAPI, ImgList, RpRender,
-  RpRenderPDF;
+  RpRenderPDF,IdHTTP, IdTCPConnection, IdTCPClient;
 
  // CONST WM_BARICON=WM_USER+200;
 
@@ -144,6 +144,8 @@ type
     Button6: TButton;
     Button96: TButton;
     RvRenderPDF1: TRvRenderPDF;
+    Button97: TButton;
+    IdHTTP1: TIdHTTP;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -307,6 +309,49 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      delhtinfo,fhdcxyfh,cpbj;
 
 {$R *.dfm}
+
+
+function GetIP:string;
+const
+  p1 = '_blank';
+  p2 = 'direction=left width=>';
+  Http1 = 'http://code.helpor.net/mine/ip.php';
+  Http2 = 'http://ip.91.com/ip/showip.asp';
+var
+  s:string;
+
+function GetHttp(sHttp:string):string;
+  var
+    IdHTTP1:TIdHTTP;
+  begin
+    try
+      IdHTTP1 := TIdHTTP.Create(nil);
+      try
+        Result := IdHTTP1.Get(sHttp);
+      finally
+        IdHTTP1.Free;
+      end;
+    except
+
+    end;
+  end;
+begin
+  Result := 'ªÒ»°IP ß∞‹';
+  s := GetHttp(Http1);
+  if (s <> '') and (pos(p1, s) > 0) then
+  begin
+    s := MidBStr(s, pos(p1, s) + length(p1) + 2, 17);
+    s := MidBStr(s, 1, pos('<', s)-1);
+    Result := s;
+  end
+  else begin
+    s := GetHttp(Http2);
+    if pos(p2, s) <= 0 then exit;
+    s := MidbStr(s, pos(p2, s) + length(p2), 15);
+    s := MidBStr(s, 1, pos(' ', s)-1);
+    Result := s;
+  end;
+end;
 
 {
 procedure TForm1.WMSysCommand

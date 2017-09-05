@@ -46,7 +46,7 @@ type
     Edit15: TEdit;
     Label6: TLabel;
     Edit6: TEdit;
-    procedure Button1Click(Sender: TObject);
+    CheckBox1: TCheckBox;
     procedure StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
@@ -90,24 +90,6 @@ begin
     end;
     StringGrid.RowCount := StringGrid.RowCount - 1;
   end;
-end;
-
-procedure TForm19.Button1Click(Sender: TObject);
-begin
- { if (sARow<stringgrid1.RowCount) and (sARow>0) then
-  begin
-    stringgrid2.RowCount:=stringgrid2.RowCount+1;
-    stringgrid2.Cells[0,stringgrid2.RowCount-1]:=stringgrid1.Cells[0,sARow];
-    stringgrid2.Cells[1,stringgrid2.RowCount-1]:=stringgrid1.Cells[1,sARow];
-    stringgrid2.Cells[2,stringgrid2.RowCount-1]:=stringgrid1.Cells[2,sARow];
-    stringgrid2.Cells[3,stringgrid2.RowCount-1]:=stringgrid1.Cells[3,sARow];
-    stringgrid2.Cells[4,stringgrid2.RowCount-1]:=stringgrid1.Cells[4,sARow];
-    stringgrid2.Cells[5,stringgrid2.RowCount-1]:=stringgrid1.Cells[5,sARow];
-    stringgrid2.FixedRows:=1;
-    DeleteStringGridRow(sARow,stringgrid1);
-    sARow:=0;
-   end;  }
-
 end;
 
 procedure TForm19.Button2Click(Sender: TObject);
@@ -285,6 +267,14 @@ if key=13 then
             edit3.Text:=edit1.Text;
             edit9.Text:=edit4.Text;
             edit12.Text:=fields[8].AsString;
+            if checkbox1.Checked=true then
+            begin
+              edit7.Text:='1';
+              edit8.Text:='0';
+              edit10.Text:='0';
+              edit11.Text:='0';
+              edit13.Text:='*利英未用软件,因此无货运单位信息';
+            end;
             zstoredproc1.NextResultSet;
             i:=1;
             while not eof do

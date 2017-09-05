@@ -24,21 +24,18 @@ object Form45: TForm45
     Height = 583
     Align = alClient
     ColCount = 6
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
     PopupMenu = PopupMenu1
     TabOrder = 0
     OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
-    ExplicitLeft = 480
-    ExplicitTop = 224
-    ExplicitWidth = 320
-    ExplicitHeight = 120
     ColWidths = (
       64
       131
       96
       93
       124
-      286)
+      312)
   end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1

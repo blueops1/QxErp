@@ -23,6 +23,7 @@ object Form46: TForm46
     Width = 916
     Height = 534
     Align = alClient
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
     PopupMenu = PopupMenu1
     TabOrder = 0
     ColWidths = (

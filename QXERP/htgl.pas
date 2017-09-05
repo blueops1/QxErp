@@ -26,6 +26,7 @@ type
     Button8: TButton;
     RadioGroup1: TRadioGroup;
     ZStoredProc1: TZStoredProc;
+    Button1: TButton;
     procedure Button2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button6Click(Sender: TObject);
@@ -33,6 +34,7 @@ type
       var CanSelect: Boolean);
     procedure Button8Click(Sender: TObject);
     procedure Edit9Change(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +51,45 @@ implementation
 uses Main;
 
 {$R *.dfm}
+
+procedure TForm6.Button1Click(Sender: TObject);
+var
+  y:integer;
+begin
+  if edit9.Text<>'' then
+    y:=1;
+    boolhtinfoloaded:=false;
+    stringgrid1.RowCount:=2;
+    stringgrid1.Rows[1].Clear;
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_htinfo_by_khmc';
+        ParamByName('khmc').Value:=edit9.Text;
+        open;
+        while not eof do
+        begin
+          stringgrid1.RowCount:=stringgrid1.RowCount+1;
+          stringgrid1.Cells[0,y]:=fields[0].AsString;
+          stringgrid1.Cells[1,y]:=fields[1].AsString;
+          stringgrid1.Cells[2,y]:=fields[2].AsString;
+          stringgrid1.Cells[3,y]:=fields[3].AsString;
+          stringgrid1.Cells[4,y]:=fields[4].AsString;
+          stringgrid1.Cells[5,y]:=fields[5].AsString;
+          stringgrid1.Cells[6,y]:=fields[6].AsString;
+          stringgrid1.Cells[7,y]:=fields[7].AsString;
+          stringgrid1.Cells[8,y]:=fields[8].AsString;
+          y:=y+1;
+          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          next;
+        end;
+        boolhtinfoloaded:=true;
+      end;
+    Except
+        Application.MessageBox('查询失败！','合同管理提示');
+    end;
+end;
 
 procedure TForm6.Button2Click(Sender: TObject);
 begin
@@ -104,7 +145,7 @@ end;
 procedure TForm6.Edit9Change(Sender: TObject);
 var y:integer;
 begin
-  if edit9.Text<>'' then
+{  if edit9.Text<>'' then
     y:=1;
     boolhtinfoloaded:=false;
     stringgrid1.RowCount:=2;
@@ -136,7 +177,7 @@ begin
       end;
     Except
         Application.MessageBox('查询失败！','合同管理提示');
-    end;
+    end; }
 end;
 
 procedure TForm6.FormShow(Sender: TObject);

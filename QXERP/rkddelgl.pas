@@ -211,8 +211,8 @@ begin
       close;
       zstoredproc1.StoredProcName:='proc_update_ckitem_del_itemljslandljzje';
       zstoredproc1.ParamByName('itembh').Value:=SplitString(edit8.Text,'|');
-      zstoredproc1.ParamByName('rksl').Value:=strtofloat(edit10.Text)-strtofloat(edit14.Text);
-      zstoredproc1.ParamByName('itemprice').Value:=edit13.Text;
+      zstoredproc1.ParamByName('rksl').Value:=strtofloat(edit14.Text)-strtofloat(edit10.Text);
+      zstoredproc1.ParamByName('itemprice').Value:=strtofloat(edit15.Text)-strtofloat(edit11.Text);
       execProc;
       close;
       StoredProcName:='proc_update_rkdwpinfotz_by_rkdbh_wpbh';   //IN `rkdbh` char(20),IN `wpbh` char(20),IN `wpsl` double,IN `wpdj` double,IN `memo` text

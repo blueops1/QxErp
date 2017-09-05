@@ -328,6 +328,14 @@ object Form19: TForm19
     Color = clMoneyGreen
     TabOrder = 17
   end
+  object CheckBox1: TCheckBox
+    Left = 728
+    Top = 501
+    Width = 97
+    Height = 17
+    Caption = #33258#21160#22635#20805
+    TabOrder = 18
+  end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
