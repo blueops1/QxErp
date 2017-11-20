@@ -230,7 +230,7 @@ object AboutBox: TAboutBox
     object ProductName: TLabel
       Left = 92
       Top = 13
-      Width = 112
+      Width = 157
       Height = 13
       Caption = #31206#23665#27233#33014'Erp'#31649#29702#31995#32479
       IsControl = True
@@ -238,15 +238,15 @@ object AboutBox: TAboutBox
     object Version: TLabel
       Left = 92
       Top = 40
-      Width = 62
+      Width = 115
       Height = 13
-      Caption = 'Version 2015'
+      Caption = 'Version 2015-2017'
       IsControl = True
     end
     object Copyright: TLabel
       Left = 8
       Top = 89
-      Width = 201
+      Width = 199
       Height = 13
       Caption = 'Copyright'#65306'Necho'#39's Workshop CopyRight'
       IsControl = True
@@ -254,8 +254,8 @@ object AboutBox: TAboutBox
     object Comments: TLabel
       Left = 8
       Top = 110
-      Width = 129
-      Height = 11
+      Width = 112
+      Height = 13
       Caption = 'Comments'#65306'1998-2015'
       WordWrap = True
       IsControl = True

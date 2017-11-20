@@ -27,6 +27,9 @@ type
     RadioGroup1: TRadioGroup;
     N4: TMenuItem;
     N5: TMenuItem;
+    Button3: TButton;
+    Edit1: TEdit;
+    Label1: TLabel;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure Button6Click(Sender: TObject);
@@ -43,6 +46,8 @@ type
     procedure StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;
       var CanSelect: Boolean);
     procedure N5Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure StringGrid1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,7 +56,7 @@ type
 
 var
   Form17: TForm17;
-  SelARow,SelARowxg:integer;
+  tmpSelARow,SelARow,SelARowxg:integer;
   tmpjhdbh:string;
   boolReaded:boolean;
   Oldjhsl,yfhsl:string;
@@ -112,6 +117,49 @@ if stringgrid1.RowCount>2 then
     end;
   except
       application.MessageBox('打印失败','计划单打印提示');
+  end;
+end;
+
+procedure TForm17.Button3Click(Sender: TObject);
+var
+  i:integer;
+begin
+  stringgrid2.RowCount:=2;
+  stringgrid2.Rows[1].Clear;
+  SelARow:=tmpSelARow;
+  SelARowxg:=0;
+  tmpjhdbh:=stringgrid1.Cells[5,tmpSelARow];
+  if (stringgrid1.Cells[5,tmpSelARow]<>'') and (boolReaded=true) then
+  try
+    with zStoredProc1 do
+    begin
+      close;
+      StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,tmpSelARow];
+      //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
+      open;
+      i:=1;
+      while not eof do
+      begin
+        stringgrid2.RowCount:=stringgrid2.RowCount+1;
+        stringgrid2.Cells[0,i]:=inttostr(i);
+        stringgrid2.Cells[1,i]:=fields[0].AsString;
+        stringgrid2.Cells[2,i]:=fields[1].AsString;
+        stringgrid2.Cells[3,i]:=fields[2].AsString;
+        stringgrid2.Cells[4,i]:=fields[3].AsString;
+        stringgrid2.Cells[5,i]:=fields[4].AsString;
+        stringgrid2.Cells[6,i]:=fields[5].AsString;
+        stringgrid2.Cells[7,i]:=fields[6].AsString;
+        stringgrid2.Cells[8,i]:=fields[8].AsString;
+        stringgrid2.Cells[9,i]:=fields[7].AsString;
+        i:=i+1;
+        stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
+        next;
+      end;
+      edit1.Text:= tmpjhdbh;
+    end;
+  except
+    application.MessageBox('数据查询失败！','计划单查询提示');
   end;
 end;
 
@@ -334,23 +382,22 @@ begin
 
 end;
 
-procedure TForm17.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
-  var CanSelect: Boolean);
+procedure TForm17.StringGrid1DblClick(Sender: TObject);
 var
   i:integer;
 begin
   stringgrid2.RowCount:=2;
   stringgrid2.Rows[1].Clear;
-  SelARow:=ARow;
+  SelARow:=tmpSelARow;
   SelARowxg:=0;
-  tmpjhdbh:=stringgrid1.Cells[5,ARow];
-  if (stringgrid1.Cells[5,ARow]<>'') and (boolReaded=true) then
+  tmpjhdbh:=stringgrid1.Cells[5,tmpSelARow];
+  if (stringgrid1.Cells[5,tmpSelARow]<>'') and (boolReaded=true) then
   try
     with zStoredProc1 do
     begin
       close;
       StoredProcName:='proc_cx_jhdmxztofhdmzx_by_jhdbh';
-      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,ARow];
+      ParamByName('jhdbh').Value:=stringgrid1.Cells[5,tmpSelARow];
       //ParamByName('htbh').Value:=stringgrid1.Cells[1,ARow];
       open;
       i:=1;
@@ -371,10 +418,18 @@ begin
         stringgrid2.Rows[stringgrid2.RowCount-1].Clear;
         next;
       end;
+      edit1.Text:= tmpjhdbh;
     end;
   except
     application.MessageBox('数据查询失败！','计划单查询提示');
   end;
+end;
+
+procedure TForm17.StringGrid1SelectCell(Sender: TObject; ACol, ARow: Integer;
+  var CanSelect: Boolean);
+begin
+  if (stringgrid1.Cells[5,ARow]<>'') and (ARow>0) then
+    tmpSelARow:=ARow;
 end;
 
 procedure TForm17.StringGrid2SelectCell(Sender: TObject; ACol, ARow: Integer;

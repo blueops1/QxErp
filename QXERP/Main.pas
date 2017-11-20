@@ -146,6 +146,8 @@ type
     RvRenderPDF1: TRvRenderPDF;
     Button97: TButton;
     IdHTTP1: TIdHTTP;
+    Button98: TButton;
+    Button99: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -251,6 +253,8 @@ type
     procedure Button94Click(Sender: TObject);
     procedure Button95Click(Sender: TObject);
     procedure Button96Click(Sender: TObject);
+    procedure Button98Click(Sender: TObject);
+    procedure Button99Click(Sender: TObject);
   private
     { Private declarations }
     {procedure WMSysCommand(var Message: TMessage);
@@ -306,7 +310,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      kptzskpqr,bcpkczzgl,bcpkcgz,
      scjhzggl,scjhjdgz,wxjgdtz,scjhkcgz,
      jhdjs,wwcrwslcx,rwslcxbyrwdbh,yjsjhdcx,
-     delhtinfo,fhdcxyfh,cpbj;
+     delhtinfo,fhdcxyfh,cpbj,bcpweigth,newxzjgd;
 
 {$R *.dfm}
 
@@ -1057,6 +1061,22 @@ procedure TForm1.Button96Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,2,1)='1') then
     cpbj.Form101.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button98Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,16,1)='1') then
+    bcpweigth.Form103.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button99Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,16,1)='1') then
+    newxzjgd.form104.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

@@ -355,6 +355,12 @@
 			<DCCReference Include="scjhxg.pas">
 				<Form>Form102</Form>
 			</DCCReference>
+			<DCCReference Include="bcpweigth.pas">
+				<Form>Form103</Form>
+			</DCCReference>
+			<DCCReference Include="newxzjgd.pas">
+				<Form>Form104</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -385,7 +391,7 @@
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">1</VersionInfo>
+						<VersionInfo Name="Build">2</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -397,7 +403,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName">洪卫工作室</VersionInfoKeys>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">1.0.0.1</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.2</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright">版权所有</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks"/>

@@ -340,9 +340,9 @@ object Form14: TForm14
       object CheckBox21: TCheckBox
         Left = 764
         Top = 300
-        Width = 97
+        Width = 133
         Height = 17
-        Caption = #26242#26080'21-16'
+        Caption = #21322#25104#21697#37325#37327#31649#29702
         TabOrder = 23
       end
       object CheckBox22: TCheckBox

@@ -3,7 +3,7 @@ object Form17: TForm17
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = #29983#20135#35745#21010#21333#26597#35810
-  ClientHeight = 739
+  ClientHeight = 775
   ClientWidth = 1128
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -23,6 +23,13 @@ object Form17: TForm17
     Height = 18
     AutoSize = False
     Caption = #39033#30446#21517#31216
+  end
+  object Label1: TLabel
+    Left = 130
+    Top = 363
+    Width = 84
+    Height = 13
+    Caption = #24403#21069#35745#21010#21333#32534#21495
   end
   object ComboBox1: TComboBox
     Left = 92
@@ -63,6 +70,7 @@ object Form17: TForm17
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goColSizing, goRowSelect]
     PopupMenu = PopupMenu1
     TabOrder = 3
+    OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
     ColWidths = (
       52
@@ -78,7 +86,7 @@ object Form17: TForm17
   end
   object StringGrid2: TStringGrid
     Left = 0
-    Top = 355
+    Top = 391
     Width = 1128
     Height = 384
     Align = alBottom
@@ -87,6 +95,7 @@ object Form17: TForm17
     PopupMenu = PopupMenu2
     TabOrder = 4
     OnSelectCell = StringGrid2SelectCell
+    ExplicitTop = 355
     ColWidths = (
       64
       88
@@ -122,11 +131,28 @@ object Form17: TForm17
       #24050#23436#25104)
     TabOrder = 6
   end
+  object Button3: TButton
+    Left = 632
+    Top = 360
+    Width = 163
+    Height = 25
+    Caption = #26174#31034#35745#21010#21333#26126#32454
+    TabOrder = 7
+    OnClick = Button3Click
+  end
+  object Edit1: TEdit
+    Left = 224
+    Top = 360
+    Width = 153
+    Height = 21
+    ReadOnly = True
+    TabOrder = 8
+  end
   object ZStoredProc1: TZStoredProc
     Connection = Form1.ZConnection1
     Params = <>
-    Left = 640
-    Top = 344
+    Left = 752
+    Top = 464
   end
   object PopupMenu1: TPopupMenu
     Left = 680
