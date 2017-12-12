@@ -644,10 +644,6 @@ object Form1: TForm1
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Button1: TButton
         Left = 160
         Top = 104
@@ -940,10 +936,23 @@ object Form1: TForm1
         TabOrder = 15
         OnClick = Button95Click
       end
+      object Button100: TButton
+        Left = 704
+        Top = 104
+        Width = 123
+        Height = 65
+        Caption = #21512#21516#24050#21457#25968#24635#26597#35810
+        TabOrder = 16
+        OnClick = Button100Click
+      end
     end
     object TabSheet10: TTabSheet
       Caption = #22806#21327#21152#24037
       ImageIndex = 9
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Button47: TButton
         Left = 160
         Top = 104
@@ -1480,6 +1489,15 @@ object Form1: TForm1
         Caption = #24212#25910#27454#35760#24080
         TabOrder = 3
         OnClick = Button6Click
+      end
+      object Button101: TButton
+        Left = 160
+        Top = 208
+        Width = 97
+        Height = 65
+        Caption = #21152#24037#21333#32479#35745
+        TabOrder = 4
+        OnClick = Button101Click
       end
     end
     object TabSheet5: TTabSheet
@@ -20219,8 +20237,8 @@ object Form1: TForm1
     Active = False
     HistoryEnabled = False
     HistoryFilename = 'iphist.dat'
-    Left = 880
-    Top = 408
+    Left = 976
+    Top = 440
   end
   object TrayIcon1: TTrayIcon
     BalloonHint = #24744#26377#26032#30340#28040#24687'!'
@@ -20228,14 +20246,14 @@ object Form1: TForm1
     BalloonFlags = bfInfo
     Icons = ImageList1
     Visible = True
-    Left = 920
+    Left = 984
     Top = 248
   end
   object ImageList1: TImageList
-    Left = 496
+    Left = 992
     Top = 392
     Bitmap = {
-      494C010102000800CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000800D80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000BD730000BD730000BD730000BD73
       0000BD730000BD730000BD730000BD730000BD730000BD730000BD730000BD73
@@ -20393,7 +20411,7 @@ object Form1: TForm1
     Request.BasicAuthentication = False
     Request.UserAgent = 'Mozilla/3.0 (compatible; Indy Library)'
     HTTPOptions = [hoForceEncodeParams]
-    Left = 656
-    Top = 408
+    Left = 984
+    Top = 320
   end
 end

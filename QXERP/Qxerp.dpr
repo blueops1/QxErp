@@ -107,7 +107,9 @@ uses
   cpbj in 'cpbj.pas' {Form101},
   scjhxg in 'scjhxg.pas' {Form102},
   bcpweigth in 'bcpweigth.pas' {Form103},
-  newxzjgd in 'newxzjgd.pas' {Form104};
+  newxzjgd in 'newxzjgd.pas' {Form104},
+  htsccx in 'htsccx.pas' {Form105},
+  jgdtj in 'jgdtj.pas' {Form106};
 
 {$R *.res}
 
@@ -221,5 +223,7 @@ begin
   Application.CreateForm(TForm102, Form102);
   Application.CreateForm(TForm103, Form103);
   Application.CreateForm(TForm104, Form104);
+  Application.CreateForm(TForm105, Form105);
+  Application.CreateForm(TForm106, Form106);
   Application.Run;
 end.

@@ -138,19 +138,22 @@ begin
         gridcount:=stringgrid2.RowCount;
         for i := 1 to stringgrid2.rowcount-2 do
         begin
-          if (stringgrid2.Cells[5,i]<>'') or (stringgrid2.Cells[5,i]<>'0') then
+          if (stringgrid2.Cells[5,i]<>'') then
             begin
-              close;
-              StoredProcName:='proc_insert_fahuodan_mxz';
-              ParamByName('fhdid').Value:=edit1.Text;
-              ParamByName('jhdbh').Value:=scjh.tmpjhdbh;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
-              ParamByName('cpbh').Value:=stringgrid2.Cells[1,i];
-              ParamByName('cpdj').Value:=stringgrid2.Cells[4,i];
-              ParamByName('fhsl').Value:=stringgrid2.Cells[5,i];
-              ExecProc;
+              if stringgrid2.Cells[5,i]<>'0' then
+              begin
+                close;
+                StoredProcName:='proc_insert_fahuodan_mxz';
+                ParamByName('fhdid').Value:=edit1.Text;
+                ParamByName('jhdbh').Value:=scjh.tmpjhdbh;//fhdid,cpbh,cpdj,fhsl,fhdid,htbh,khid,hydid,cddate,fhdmemo,cyrid,sendwhere,carno,price,weight,distance,hydmemo
+                ParamByName('cpbh').Value:=stringgrid2.Cells[1,i];
+                ParamByName('cpdj').Value:=stringgrid2.Cells[4,i];
+                ParamByName('fhsl').Value:=stringgrid2.Cells[5,i];
+                ExecProc;
+              end;
             end else
             begin
-              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量为空(零)，请填写完整'),'发货单明细提示');
+              application.MessageBox(pwidechar('第'+inttostr(i)+'行的发货数量为空，请填写完整'),'发货单明细提示');
               exit;
             end;
         end;

@@ -148,6 +148,8 @@ type
     IdHTTP1: TIdHTTP;
     Button98: TButton;
     Button99: TButton;
+    Button100: TButton;
+    Button101: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -255,6 +257,8 @@ type
     procedure Button96Click(Sender: TObject);
     procedure Button98Click(Sender: TObject);
     procedure Button99Click(Sender: TObject);
+    procedure Button100Click(Sender: TObject);
+    procedure Button101Click(Sender: TObject);
   private
     { Private declarations }
     {procedure WMSysCommand(var Message: TMessage);
@@ -310,7 +314,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      kptzskpqr,bcpkczzgl,bcpkcgz,
      scjhzggl,scjhjdgz,wxjgdtz,scjhkcgz,
      jhdjs,wwcrwslcx,rwslcxbyrwdbh,yjsjhdcx,
-     delhtinfo,fhdcxyfh,cpbj,bcpweigth,newxzjgd;
+     delhtinfo,fhdcxyfh,cpbj,bcpweigth,newxzjgd,htsccx,jgdtj;
 
 {$R *.dfm}
 
@@ -416,6 +420,22 @@ procedure TForm1.AppLoginFalse(islogined: Boolean);
 begin
   if(islogined=false) then
     main.Form1.Close;
+end;
+
+procedure TForm1.Button100Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,18,1)='1') then
+    htsccx.Form105.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button101Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,7,1)='1') then
+    jgdtj.Form106.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
 end;
 
 procedure TForm1.Button10Click(Sender: TObject);

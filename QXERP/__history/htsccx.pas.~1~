@@ -1,0 +1,54 @@
+unit htsccx;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure,
+  StdCtrls;
+
+type
+  TForm105 = class(TForm)
+    Label12: TLabel;
+    Edit9: TEdit;
+    Button1: TButton;
+    ZStoredProc1: TZStoredProc;
+    StringGrid2: TStringGrid;
+    Edit1: TEdit;
+    Label1: TLabel;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form105: TForm105;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm105.Button1Click(Sender: TObject);
+begin
+ try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_htinfo_by_khmc';
+        ParamByName('khmc').Value:=edit9.Text;
+        open;
+        while not eof do
+        begin
+          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          next;
+        end;
+        boolhtinfoloaded:=true;
+      end;
+    Except
+        Application.MessageBox('查询失败！','合同管理提示');
+    end;
+end;
+
+end.

@@ -43,8 +43,8 @@ object Form55: TForm55
     OnClick = Button1Click
   end
   object RadioGroup1: TRadioGroup
-    Left = 681
-    Top = 8
+    Left = 649
+    Top = 18
     Width = 216
     Height = 41
     Caption = #26597#35810#36873#39033
