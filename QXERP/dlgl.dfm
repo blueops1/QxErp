@@ -4,38 +4,50 @@ object Form10: TForm10
   BorderIcons = []
   BorderStyle = bsToolWindow
   Caption = #30331#24405
-  ClientHeight = 168
-  ClientWidth = 425
+  ClientHeight = 220
+  ClientWidth = 556
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
   OnActivate = FormActivate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 120
+  TextHeight = 17
   object Label1: TLabel
-    Left = 141
-    Top = 32
-    Width = 36
-    Height = 13
+    Left = 184
+    Top = 42
+    Width = 42
+    Height = 17
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = #29992#25143#21517
   end
   object Label2: TLabel
-    Left = 141
-    Top = 72
-    Width = 36
-    Height = 13
+    Left = 184
+    Top = 94
+    Width = 44
+    Height = 17
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = #23494'    '#30721
   end
   object ProgramIcon: TImage
-    Left = 31
-    Top = 28
-    Width = 67
-    Height = 63
+    Left = 41
+    Top = 37
+    Width = 87
+    Height = 82
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D494844520000004D0000
       004A0802000000716E4E5F000000017352474200AECE1CE90000000467414D41
@@ -235,37 +247,53 @@ object Form10: TForm10
     IsControl = True
   end
   object Edit2: TEdit
-    Left = 209
-    Top = 69
-    Width = 153
-    Height = 21
+    Left = 273
+    Top = 90
+    Width = 200
+    Height = 25
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     PasswordChar = '*'
     TabOrder = 1
     OnKeyDown = Edit2KeyDown
   end
   object Button1: TButton
-    Left = 209
-    Top = 112
-    Width = 67
-    Height = 25
+    Left = 273
+    Top = 146
+    Width = 88
+    Height = 33
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = #30331#24405
     TabOrder = 2
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 296
-    Top = 112
-    Width = 66
-    Height = 25
+    Left = 387
+    Top = 146
+    Width = 86
+    Height = 33
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = #21462#28040
     TabOrder = 3
     OnClick = Button2Click
   end
   object ComboBox1: TComboBox
-    Left = 209
-    Top = 29
-    Width = 153
-    Height = 21
+    Left = 273
+    Top = 38
+    Width = 200
+    Height = 25
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     DropDownCount = 16
     TabOrder = 0
     OnDropDown = ComboBox1DropDown

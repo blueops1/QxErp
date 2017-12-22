@@ -164,6 +164,10 @@ begin
 end;
 
 procedure TForm18.Button1Click(Sender: TObject);
+var
+i:integer;
+tmpname:string;
+tmp2:string;
 begin
 if (combobox1.Text <> '') and (edit1.Text<>'') and (memo2.Lines.Count>0) then
 begin
@@ -172,8 +176,23 @@ begin
     begin
       close;
       sql.Clear;
-      sql.Add('insert into message_online (fsendid,freciid,fcontent,fsenddate,fmessagetitle) values ('''+main.strUser+''','''+combobox1.Text+''','''+memo2.Lines.Text+''','''+datetimetostr(now())+''','''+edit1.Text+''')');
-      ExecSQL;
+      if combobox1.text='*' then
+      for I := 0 to combobox1.Items.Count - 1 do
+      begin
+        tmpname:=combobox1.Items.Strings[i];
+        if tmpname<>main.strUser then
+        begin
+          sql.Clear;
+          tmp2:='insert into message_online (fsendid,freciid,fcontent,fsenddate,fmessagetitle) values ('''+main.strUser+''','''+tmpname+''','''+memo2.Lines.Text+''','''+datetimetostr(now())+''','''+edit1.Text+''')';
+          sql.Add(tmp2);
+          ExecSQL;
+        end;
+      end else
+      begin
+        sql.Clear;
+        sql.Add('insert into message_online (fsendid,freciid,fcontent,fsenddate,fmessagetitle) values ('''+main.strUser+''','''+combobox1.Text+''','''+memo2.Lines.Text+''','''+datetimetostr(now())+''','''+edit1.Text+''')');
+        ExecSQL;
+      end;
       application.MessageBox('消息发送成功!','系统提示');
       edit1.Text:='';
       memo2.Lines.Clear;

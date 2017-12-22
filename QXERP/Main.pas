@@ -150,6 +150,9 @@ type
     Button99: TButton;
     Button100: TButton;
     Button101: TButton;
+    TabSheet13: TTabSheet;
+    Button102: TButton;
+    Button103: TButton;
     procedure Button2Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -259,6 +262,8 @@ type
     procedure Button99Click(Sender: TObject);
     procedure Button100Click(Sender: TObject);
     procedure Button101Click(Sender: TObject);
+    procedure Button102Click(Sender: TObject);
+    procedure Button103Click(Sender: TObject);
   private
     { Private declarations }
     {procedure WMSysCommand(var Message: TMessage);
@@ -314,7 +319,7 @@ uses dbconnecter,xsygl,zgdwgl,khgl,htgl,
      kptzskpqr,bcpkczzgl,bcpkcgz,
      scjhzggl,scjhjdgz,wxjgdtz,scjhkcgz,
      jhdjs,wwcrwslcx,rwslcxbyrwdbh,yjsjhdcx,
-     delhtinfo,fhdcxyfh,cpbj,bcpweigth,newxzjgd,htsccx,jgdtj;
+     delhtinfo,fhdcxyfh,cpbj,bcpweigth,newxzjgd,htsccx,jgdtj,cwtj,cwsctj;
 
 {$R *.dfm}
 
@@ -434,6 +439,22 @@ procedure TForm1.Button101Click(Sender: TObject);
 begin
   if(MidStr(main.strUserQX,7,1)='1') then
     jgdtj.Form106.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button102Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,4,1)='1') then
+    cwtj.Form107.Show
+  else
+    application.MessageBox('该模块你无使用权限！','系统提示');
+end;
+
+procedure TForm1.Button103Click(Sender: TObject);
+begin
+  if(MidStr(main.strUserQX,4,1)='1') then
+    cwsctj.Form108.Show
   else
     application.MessageBox('该模块你无使用权限！','系统提示');
 end;

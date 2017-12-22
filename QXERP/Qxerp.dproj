@@ -367,6 +367,12 @@
 			<DCCReference Include="jgdtj.pas">
 				<Form>Form106</Form>
 			</DCCReference>
+			<DCCReference Include="cwtj.pas">
+				<Form>Form107</Form>
+			</DCCReference>
+			<DCCReference Include="cwsctj.pas">
+				<Form>Form108</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

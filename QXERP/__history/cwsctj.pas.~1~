@@ -1,0 +1,44 @@
+unit cwsctj;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Menus, Grids, StdCtrls, ComCtrls, DB, ZAbstractRODataset,
+  ZAbstractDataset, ZStoredProcedure;
+
+type
+  TForm108 = class(TForm)
+    ZStoredProc1: TZStoredProc;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    Label1: TLabel;
+    Label2: TLabel;
+    Button1: TButton;
+    StringGrid1: TStringGrid;
+    PopupMenu1: TPopupMenu;
+    Execl1: TMenuItem;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form108: TForm108;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm108.FormShow(Sender: TObject);
+begin
+  stringgrid1.Cells[0,0]:='产品编号';
+  stringgrid1.Cells[1,0]:='产品名称';
+  stringgrid1.Cells[2,0]:='产品种类';
+  stringgrid1.Cells[3,0]:='入库数量';
+  stringgrid1.Cells[4,0]:='出库数量';
+end;
+
+end.
