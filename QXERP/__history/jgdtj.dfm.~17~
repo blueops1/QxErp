@@ -63,7 +63,7 @@ object Form106: TForm106
   end
   object Label1: TLabel
     Left = 69
-    Top = 26
+    Top = 38
     Width = 98
     Height = 17
     Margins.Left = 4
@@ -73,8 +73,8 @@ object Form106: TForm106
     Caption = #21152#24037#21830#21517#31216#26597#35810
   end
   object Label8: TLabel
-    Left = 836
-    Top = 80
+    Left = 1063
+    Top = 88
     Width = 70
     Height = 17
     Margins.Left = 4
@@ -84,8 +84,8 @@ object Form106: TForm106
     Caption = #21152#24037#21830#32534#21495
   end
   object Label9: TLabel
-    Left = 100
-    Top = 76
+    Left = 101
+    Top = 88
     Width = 70
     Height = 17
     Margins.Left = 4
@@ -256,7 +256,7 @@ object Form106: TForm106
   end
   object ComboBox1: TComboBox
     Left = 187
-    Top = 22
+    Top = 34
     Width = 860
     Height = 25
     Margins.Left = 4
@@ -268,9 +268,9 @@ object Form106: TForm106
     OnKeyDown = ComboBox1KeyDown
   end
   object Edit15: TEdit
-    Left = 914
-    Top = 72
-    Width = 132
+    Left = 1151
+    Top = 84
+    Width = 158
     Height = 25
     Margins.Left = 4
     Margins.Top = 4
@@ -281,9 +281,9 @@ object Form106: TForm106
     TabOrder = 1
   end
   object Edit8: TEdit
-    Left = 186
-    Top = 72
-    Width = 628
+    Left = 187
+    Top = 84
+    Width = 860
     Height = 25
     Margins.Left = 4
     Margins.Top = 4
@@ -403,7 +403,7 @@ object Form106: TForm106
     ColCount = 4
     FixedCols = 0
     RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect]
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goRowSelect]
     TabOrder = 11
     OnDblClick = StringGrid1DblClick
     OnSelectCell = StringGrid1SelectCell
@@ -424,7 +424,6 @@ object Form106: TForm106
     Margins.Bottom = 4
     FixedCols = 0
     RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
     TabOrder = 12
     OnDblClick = StringGrid2DblClick
     OnSelectCell = StringGrid2SelectCell
@@ -437,7 +436,7 @@ object Form106: TForm106
   end
   object StringGrid3: TStringGrid
     Left = 726
-    Top = 117
+    Top = 119
     Width = 688
     Height = 724
     Margins.Left = 4
@@ -446,7 +445,7 @@ object Form106: TForm106
     Margins.Bottom = 4
     FixedCols = 0
     RowCount = 2
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
+    Options = [goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect]
     PopupMenu = PopupMenu1
     TabOrder = 20
     OnDblClick = StringGrid2DblClick
@@ -472,7 +471,7 @@ object Form106: TForm106
   end
   object RadioGroup1: TRadioGroup
     Left = 1179
-    Top = 11
+    Top = 23
     Width = 235
     Height = 53
     Margins.Left = 4
@@ -490,7 +489,7 @@ object Form106: TForm106
   end
   object Button6: TButton
     Left = 1084
-    Top = 22
+    Top = 34
     Width = 75
     Height = 25
     Caption = #26597#35810

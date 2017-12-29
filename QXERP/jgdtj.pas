@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, ZAbstractRODataset, ZAbstractDataset, ZStoredProcedure, StdCtrls,
-  Grids, Menus;
+  Grids, Menus, ExtCtrls;
 
 type
   TForm106 = class(TForm)
@@ -47,9 +47,10 @@ type
     Button5: TButton;
     PopupMenu1: TPopupMenu;
     EXECL1: TMenuItem;
+    RadioGroup1: TRadioGroup;
+    Button6: TButton;
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure ComboBox1Select(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure StringGrid1DblClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -61,6 +62,7 @@ type
       var CanSelect: Boolean);
     procedure FormShow(Sender: TObject);
     procedure EXECL1Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -133,15 +135,18 @@ var
 begin
   y:=0;
   try
-    with zstoredproc1 do
+    with zstoredproc1 do       //proc_del_jgdtj_tmp
         begin
           close;
-          StoredProcName:='proc_insert_jgdtjbh';
-        for y := 1 to stringgrid2.RowCount - 2 do
-        begin
-          zstoredproc1.ParamByName('jgdbh').Value:=stringgrid2.Cells[1,y];
+          StoredProcName:='proc_del_jgdtj_tmp';
           execProc;
-        end;
+          close;
+          StoredProcName:='proc_insert_jgdtjbh';
+          for y := 1 to stringgrid2.RowCount - 2 do
+          begin
+            zstoredproc1.ParamByName('jgdbh').Value:=stringgrid2.Cells[1,y];
+            execProc;
+          end;
         close;
         StoredProcName:='proc_cx_doujiagongdan_jiaohuomx';
         open;
@@ -166,6 +171,54 @@ begin
       except
         application.MessageBox('数据查询失败！','新增加工结算单管理提示');
       end;
+end;
+
+procedure TForm106.Button6Click(Sender: TObject);
+var
+  i:integer;
+begin      // proc_cx_bcpjgdinfo_by_cxitem_jgsbh
+  stringgrid1.RowCount:=2;
+  stringgrid1.Rows[1].Clear;
+  stringgrid2.RowCount:=2;
+  stringgrid2.Rows[1].Clear;
+  edit8.Text:=combobox1.Text;
+  edit15.Text:=SplitString(combobox1.Text,'|');
+  if combobox1.Text<>'' then
+    try
+      with zStoredProc1 do
+      begin
+        close;
+        StoredProcName:='proc_cx_bcpjgdinfo_by_cxitem_jgsbh';
+        if radiogroup1.ItemIndex=0 then
+          ParamByName('cxitem').Value:='wjs'
+          else if radiogroup1.ItemIndex=1 then
+            ParamByName('cxitem').Value:='yjs'
+          else
+            ParamByName('cxitem').Value:='all';
+        ParamByName('jgsbh').Value:=SplitString(combobox1.Text,'|');
+        open;
+        i:=1;
+        while not eof do
+        begin
+          stringgrid1.RowCount:=stringgrid1.RowCount+1;
+          stringgrid1.Cells[0,i]:=inttostr(i);
+          stringgrid1.Cells[1,i]:=fields[0].AsString;
+          stringgrid1.Cells[2,i]:=fields[7].AsString;
+          stringgrid1.Cells[3,i]:=fields[8].AsString;
+          //stringgrid1.Cells[4,i]:=fields[3].AsString;
+          //stringgrid1.Cells[5,i]:=fields[4].AsString;
+          //stringgrid1.Cells[6,i]:=fields[5].AsString;
+          //stringgrid1.Cells[7,i]:=fields[6].AsString;
+          //stringgrid1.Cells[8,i]:=fields[7].AsString;
+          //stringgrid1.Cells[9,i]:=fields[8].AsString;
+          i:=i+1;
+          stringgrid1.Rows[stringgrid1.RowCount-1].Clear;
+          next;
+        end;
+      end;
+    except
+       application.MessageBox('数据查询失败！','半成品加工单管理提示');
+    end;
 end;
 
 procedure TForm106.ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -193,66 +246,6 @@ begin
       application.MessageBox('数据查询失败！','新增加工结算单管理提示');
     end;
  end;
-end;
-
-procedure TForm106.ComboBox1Select(Sender: TObject);
-var
-  i:integer;
-begin
-  try
-    if combobox1.Text<>'' then
-    try
-      with zStoredProc1 do
-      begin
-        close;
-        StoredProcName:='proc_cx_jgsinfo_jgsbh';
-        ParamByName('jgsbh').Value:=SplitString(combobox1.Text,'|');
-        open;
-        if not eof then
-        begin
-          Edit15.Text := fields[1].AsString;
-          Edit8.Text := fields[2].AsString;
-          Edit14.Text := fields[3].AsString;
-          Edit9.Text := fields[4].AsString;
-          Edit10.Text := fields[5].AsString;
-          Edit11.Text := fields[6].AsString;
-          Edit12.Text := fields[7].AsString;
-          //Memo2.Text := fields[8].AsString;
-        end;                                  //proc_cx_jgdjiesuan_wxjgdinfo_by_jgsbh
-        close;
-        StoredProcName:='proc_cx_jgdjiesuan_wxjgdinfoall_by_jgsbh';
-        ParamByName('jgsbh').Value:=SplitString(combobox1.Text,'|');
-        open;
-        i:=1;
-        stringgrid1.RowCount:=2;
-        stringgrid1.Rows[1].Clear;
-        while not eof do
-        begin
-            stringgrid1.RowCount:=stringgrid1.RowCount+1;
-            stringgrid1.Cells[0,i]:=inttostr(i);
-            stringgrid1.Cells[1,i]:=fields[0].AsString;
-            stringgrid1.Cells[2,i]:=fields[1].AsString;
-            stringgrid1.Cells[3,i]:=fields[2].AsString;
-            //stringgrid1.Cells[4,i]:=fields[4].AsString;
-            //stringgrid1.Cells[5,i]:=fields[3].AsString;
-            i:=i+1;
-            stringgrid1.Rows[stringgrid1.RowCount-1].Clear;         //proc_cx_newkptzsid
-          next;
-        end;
-        close;
-        StoredProcName:='proc_cx_newjgjsdid';
-        open;
-        if fields[0].AsString<>'' then
-          edit2.Text:=fields[0].AsString
-        else
-          edit2.Text:=formatDateTime('yyyy',date)+'000001';
-      end;
-    except
-      application.MessageBox('数据查询失败！','供应商管理提示');
-    end;
-  except
-    application.MessageBox('数据查询失败111！','供应商管理提示');
-  end;
 end;
 
 procedure TForm106.EXECL1Click(Sender: TObject);

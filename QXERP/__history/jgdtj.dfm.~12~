@@ -310,6 +310,7 @@ object Form106: TForm106
     Height = 554
     FixedCols = 0
     RowCount = 2
+    PopupMenu = PopupMenu1
     TabOrder = 20
     OnDblClick = StringGrid2DblClick
     ColWidths = (
@@ -333,5 +334,13 @@ object Form106: TForm106
     Params = <>
     Left = 752
     Top = 288
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 616
+    Top = 264
+    object EXECL1: TMenuItem
+      Caption = #23548#20986#21040'EXECL'
+      OnClick = EXECL1Click
+    end
   end
 end
